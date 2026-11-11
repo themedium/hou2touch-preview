@@ -43,6 +43,47 @@
 /* логотип — своя пара: у Impact латиница HOU2TOUCH уже кириллицы (74,4 % против 82,1 %) */
 @font-face{font-family:"H2T Logo FB";src:local("Impact");font-weight:100 900;size-adjust:74.37%;ascent-override:100.85%;descent-override:33.62%;line-gap-override:0%}
 @font-face{font-family:"H2T Logo FB2";src:local("HelveticaNeue-CondensedBold"),local("Helvetica Neue Condensed Bold");font-weight:100 900;size-adjust:74.63%;ascent-override:100.5%;descent-override:33.5%;line-gap-override:0%}
+
+/* Блок 05: Упаковка m2 (Проблема → Решение) вместо голого текста под H2 */
+.m2-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);margin-top:14px}
+@media (max-width:980px){.m2-split{grid-template-columns:1fr}}
+.m2-box{padding:18px 22px;border-radius:5px;border:1px solid var(--line2);background:var(--pnb);display:flex;flex-direction:column;gap:8px}
+.m2-box.prob{background:rgba(11,11,12,.04);box-shadow:inset 0 3px 0 var(--mute)}
+.m2-box.sol{box-shadow:inset 0 3px 0 var(--chop)}
+.m2-box .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.m2-box p{font:400 16px/24px var(--sans);color:var(--fg);margin:0}
+
+/* Блок 06: Карточки преподавателей m8 (2 преподавателя на /204 + компактные тезисы биографии) */
+.tch-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
+@media (max-width:980px){.tch-grid{grid-template-columns:1fr}}
+.tch-card{display:flex;flex-direction:column}
+.tch-top{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;padding:20px 22px;border-bottom:1px solid var(--line);align-items:center;background:rgba(11,11,12,.03)}
+.tch-av{width:88px;height:88px;border-radius:4px;overflow:hidden;border:1px solid var(--line2);background:#0e0e10;display:grid;place-items:center;font:700 36px/1 var(--disp);color:#efeee9;box-shadow:inset 0 2px 0 var(--chop)}
+.tch-av img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08)}
+.tch-name{font:700 38px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0 0 4px}
+.tch-role{font:500 12px/1.4 var(--mono);color:var(--mute);margin:0}
+.tch-chips{display:flex;flex-wrap:wrap;gap:6px;padding:14px 22px 0}
+.tch-body{padding:14px 22px 20px;flex:1;display:grid;gap:10px}
+.tch-body p{font:400 15px/22px var(--sans);color:var(--txt);margin:0}
+
+/* Блок 07: Программа для составных путей (/av, /vj, /me, /extreme, /course, /204) */
+.path-cgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
+@media (max-width:980px){.path-cgrid{grid-template-columns:1fr}}
+.path-cc{display:flex;flex-direction:column}
+.path-cc-b{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:10px}
+.path-cc-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.path-cc-h h3{font:700 34px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0}
+.path-cc details{margin-top:auto;border-top:1px solid var(--line);padding-top:10px}
+.path-cc summary{font:500 12px/1.4 var(--mono);color:var(--fg);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.path-cc summary::-webkit-details-marker{display:none}
+
+/* Блок 08: Сбалансированный блок тарифа для страниц с 1 оффером (19 из 26 страниц) + карточка резюме m14 */
+.book-1col{display:grid;grid-template-columns:7fr 5fr;gap:var(--pgap);align-items:stretch}
+@media (max-width:980px){.book-1col{grid-template-columns:1fr}}
+.book-left{display:flex;flex-direction:column;gap:var(--pgap)}
+.book-left>.pn{flex:1;display:flex;flex-direction:column}
+.book-left>.pn>.pf{margin-top:auto}
+
 </style>
 <style>
 /* @keyframes cook — 16 кадров маски Байера 8×8, печёт сборка главной (school/assemble.py → cook_css(), F-04) */
@@ -1106,7 +1147,11 @@ body{margin:0}
     <a href="#b1">01 · About (1A / 1B)</a>
     <a href="#b2">02 · For Whom (2A / 2B)</a>
     <a href="#b3">03 · Course Format (3A / 3B)</a>
-    <a href="#b4">04 · Programme (4A / 4B / 4C)</a>
+    <a href="#b4">04 · Programme</a>
+    <a href="#b5">05 · Lead Problem (m2)</a>
+    <a href="#b6">06 · Teachers (m8 / 204)</a>
+    <a href="#b7">07 · Path Programme (/av)</a>
+    <a href="#b8">08 · Single Tariff (#book)</a>
   </nav>
 </div>
 
@@ -1371,6 +1416,172 @@ body{margin:0}
     </div>
   </div></section>
 </div>
+
+  <!-- ================= БЛОК 5: ПРОБЛЕМА И РЕШЕНИЕ (m2) ================= -->
+  <section id="b5" class="gal-sec paper" style="background:var(--paper);color:var(--ink)"><div class="wrap">
+    <div class="lbl mono"><b>БЛОК 05</b> Вводные абзацы m2 под заголовком H2 (сейчас висят голым текстом без контейнера)</div>
+    <div class="gal-var" id="v5a">
+      <div class="v-pill">Вариант 5A · Двухколоночный сплит «The Challenge / What You Build After» вместо двух голых абзацев</div>
+      <div class="m2-split">
+        <div class="m2-box prob">
+          <span class="mono">01 · the starting point (m2 paragraph 1)</span>
+          <p>You make music, images or installations and want visuals that respond as they happen, but you don&#x27;t know where to begin. TouchDesigner looks strange at first, and 3D geometry can stop a beginner early — this course leaves 3D until the end and starts with how the program works.</p>
+        </div>
+        <div class="m2-box sol">
+          <span class="mono">02 · the result after 8 lessons (m2 paragraph 2)</span>
+          <p>After it, you build interactive images controlled by the mouse or live input and show them on one or several screens. Your visuals react to a microphone or music track down to the kick drum, you have your own movie player, multi-machine sync, and a basic 3D scene.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ================= БЛОК 6: ПРЕПОДАВАТЕЛИ (m8, особенно /204 с 2 авторами) ================= -->
+  <section id="b6" class="gal-sec paper" style="background:var(--paper);color:var(--ink)"><div class="wrap">
+    <div class="lbl mono"><b>БЛОК 06</b> Секция преподавателей m8 (на /204 два автора — сейчас второй свален текстовым блоком внизу)</div>
+    <div class="gal-var" id="v6a">
+      <div class="v-pill">Вариант 6A · Двухколоночные карточки преподавателей с тегами проектов и разбитыми по тезисам абзацами (пример /204)</div>
+      <div class="tch-grid">
+        <article class="pn lite tch-card in" style="--c:var(--chop)">
+          <div class="ph"><span class="id">/lights204/teacher1</span><span class="r">lead instructor · stage &amp; lighting</span></div>
+          <div class="tch-top">
+            <div class="tch-av">PZ</div>
+            <div>
+              <h3 class="tch-name">Pavel Zmunchila</h3>
+              <p class="tch-role">Co-Founder of S E T U P · Multimedia &amp; Lighting Designer</p>
+            </div>
+          </div>
+          <div class="tch-chips">
+            <span class="tag key">S E T U P</span>
+            <span class="tag">NUR Festival</span>
+            <span class="tag">SIGNAL</span>
+            <span class="tag">Capture &amp; Depence</span>
+            <span class="tag">GrandMA2 &amp; Pangolin</span>
+          </div>
+          <div class="tch-body">
+            <p>Multimedia and lighting designer, technical director and visual artist. Co-founder of the creative studio <b>S E T U P</b>, creating large-scale audiovisual installations, concert stage designs and festival mainstages.</p>
+            <p>Teaches the complete real-world workflow from lighting plot, power/signal routing and 3D pre-visualisation in Capture/Depence to DMX/Art-Net fixtures, GrandMA2 integration and laser programming.</p>
+          </div>
+          <div class="pf"><span>level 1: pre-production · level 2: production</span><span>teacher1</span></div>
+        </article>
+
+        <article class="pn lite tch-card in" style="--c:var(--sop)">
+          <div class="ph"><span class="id">/lights204/teacher2</span><span class="r">course author &amp; founder</span></div>
+          <div class="tch-top">
+            <div class="tch-av"><img src="img/author.webp" alt="Stanislav Glazov"></div>
+            <div>
+              <h3 class="tch-name">Stanislav Glazov</h3>
+              <p class="tch-role">Media Artist · Technical Director · Founder of Licht.Pfad &amp; Hou2Touch</p>
+            </div>
+          </div>
+          <div class="tch-chips">
+            <span class="tag key">Licht.Pfad Berlin</span>
+            <span class="tag">Berlin Atonal</span>
+            <span class="tag">Mutek</span>
+            <span class="tag">Ars Electronica</span>
+            <span class="tag">22+ yrs CGI</span>
+          </div>
+          <div class="tch-body">
+            <p>Media artist, technical director (Trixter Film, Scanline VFX, SilaSveta, WhiteVoid) and educator with over 20 years of teaching experience.</p>
+            <p>Designed the TouchDesigner show-control, laser CHOP and Sollinger LA Toolbox modules and the procedural architecture of the Hou2Touch curriculum.</p>
+          </div>
+          <div class="pf"><span>founder of hou2touch</span><span>teacher2</span></div>
+        </article>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ================= БЛОК 7: ПРОГРАММА НА СТРАНИЦАХ ПУТЕЙ (/av, /vj, /me, /extreme, /course, /204) ================= -->
+  <section id="b7" class="gal-sec"><div class="wrap">
+    <div class="lbl mono"><b>БЛОК 07</b> Программа на страницах учебных путей (/av, /vj, /me, /extreme, /course) — сейчас 4–5 простыней друг под другом</div>
+    <div class="gal-var" id="v7a">
+      <div class="v-pill">Вариант 7A · 2-колоночная сетка карточек курсов пути с полосой вьювера Варианта B и сворачиваемым списком уроков</div>
+      <div class="path-cgrid">
+        <article class="pn pgm path-cc in" style="--c:var(--chop)">
+          <div class="ph"><span class="id">/path_av1/step01</span><span class="r">Beginner · 8 lessons · 12 h</span></div>
+          <div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/101.png" alt=""><div class="cc-vw-meta"><span class="mono">step 01 · foundation</span><b>/101</b></div><div class="cc-vw-box"><img src="img/covers/101.png" alt="101"></div></div>
+          <div class="path-cc-b">
+            <div class="path-cc-h"><h3><span style="color:var(--chop);margin-right:6px">101</span>Extreme I</h3><a class="mono" href="101.html" style="font-size:12px;color:var(--fg)">full course →</a></div>
+            <p class="p" style="margin:0;font-size:15px;color:var(--txt)">Learn TouchDesigner from scratch: compositing, feedback, sound-reactive visuals, a custom movie player, machine sync and basic 3D scenes.</p>
+            <details open>
+              <summary><span>8 lessons · 25 videos</span><span>▾</span></summary>
+              <ol class="dat" style="margin-top:8px">
+                <li><span class="n">01</span><span>Foundations &amp; Interface · 1h 31m</span></li>
+                <li><span class="n">02</span><span>CHOPs, TOPs &amp; Compositing · 1h 28m</span></li>
+                <li><span class="n">03</span><span>Audio-Reactive Scene · 1h 23m</span></li>
+                <li><span class="n">04</span><span>Procedural &amp; Modular AV · 1h 38m</span></li>
+              </ol>
+            </details>
+          </div>
+          <div class="pf"><a href="101.html">→ open /101</a><span>TouchDesigner</span></div>
+        </article>
+
+        <article class="pn pgm path-cc in" style="--c:var(--chop)">
+          <div class="ph"><span class="id">/path_av1/step02</span><span class="r">Intermediate · 8 lessons · 11 h</span></div>
+          <div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/102.png" alt=""><div class="cc-vw-meta"><span class="mono">step 02 · 3d &amp; sop</span><b>/102</b></div><div class="cc-vw-box"><img src="img/covers/102.png" alt="102"></div></div>
+          <div class="path-cc-b">
+            <div class="path-cc-h"><h3><span style="color:var(--chop);margin-right:6px">102</span>Extreme II</h3><a class="mono" href="102.html" style="font-size:12px;color:var(--fg)">full course →</a></div>
+            <p class="p" style="margin:0;font-size:15px;color:var(--txt)">Procedural SOP geometry, GPU instancing, real-time PBR rendering, particles, Bullet physics, Kinect tracking and Ableton integration.</p>
+            <details open>
+              <summary><span>8 lessons · 24 videos</span><span>▾</span></summary>
+              <ol class="dat" style="margin-top:8px">
+                <li><span class="n">01</span><span>SOP Procedural Geometry · 1h 54m</span></li>
+                <li><span class="n">02</span><span>Instancing &amp; Render Pipeline · 1h 22m</span></li>
+                <li><span class="n">03</span><span>Particles, Bullet &amp; Kinect · 1h 36m</span></li>
+                <li><span class="n">04</span><span>3D UI, DMX, Lasers &amp; Ableton · 1h 45m</span></li>
+              </ol>
+            </details>
+          </div>
+          <div class="pf"><a href="102.html">→ open /102</a><span>TouchDesigner · Ableton Live</span></div>
+        </article>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ================= БЛОК 8: ТАРИФЫ НА СТРАНИЦАХ С 1 ОФФЕРОМ (#book, m11 + m11-payment + m14) ================= -->
+  <section id="b8" class="gal-sec paper" style="background:var(--paper);color:var(--ink)"><div class="wrap">
+    <div class="lbl mono"><b>БЛОК 08</b> Секция цены #book на страницах с 1 тарифом (19 из 26 страниц — сейчас слева полупустая колонка и дыра посередине)</div>
+    <div class="gal-var" id="v8a">
+      <div class="v-pill">Вариант 8A · Сбалансированный сплит 7fr / 5fr: слева карточка итога m14 + блок условий оплаты/НДС, справа — карточка тарифа в полную высоту</div>
+      <div class="book-1col">
+        <div class="book-left">
+          <div class="pn lite in" style="--c:var(--chop)">
+            <div class="ph"><span class="id">/avlive201/summary1</span><span class="r">what you take away (m14)</span></div>
+            <div style="padding:20px 24px">
+              <h3 class="b3-h" style="margin-bottom:8px">Connect Modular Synths, Ableton &amp; TouchDesigner</h3>
+              <p class="p" style="margin:0">You will be able to connect a modular synthesizer, Ableton Live and TouchDesigner into one audiovisual system, build your own CV, MIDI and audio-reactive tools, and run a live show where generative visuals and cued video work together.</p>
+            </div>
+            <div class="pf"><span>ready for live performance</span><span>5 lessons · 11 h</span></div>
+          </div>
+
+          <div class="pn lite in" style="--c:var(--dat)">
+            <div class="ph"><span class="id">/avlive201/payment1</span><span class="r">payment &amp; vat</span></div>
+            <ol class="dat">
+              <li><span class="n">01</span><span>The price includes German VAT (19%). If you have an EU VAT ID and are located outside Germany, contact us before paying to avoid double tax.</span></li>
+              <li><span class="n">02</span><span>You can pay by card (Stripe), PayPal or bank transfer. Instant access to all lessons on day 1.</span></li>
+            </ol>
+            <div class="pf"><span>questions → stanislav.glazov@gmail.com</span><span>instant access</span></div>
+          </div>
+        </div>
+
+        <article class="pn full tier km dk in" style="--c:var(--chop);margin:0">
+          <div class="ph"><span class="id">tier1</span><span class="r">11 h video · 17 videos</span></div>
+          <div class="tb">
+            <span class="mono tk">TouchDesigner · Ableton Live · live av</span>
+            <h3 class="tn"><span style="font-size:.62em;color:var(--chop);margin-right:.14em">201</span>AV LIVE</h3>
+            <div class="tp"><b>€375</b><p>5 lessons, 17 videos (11 h in total, English), access for 730 days.</p></div>
+            <ul class="tl">
+              <li>Access to all video recordings for 730 days (extended on request)</li>
+              <li>All TouchDesigner &amp; Ableton Live project files used in the lessons</li>
+              <li>All 5 lessons open immediately on day 1</li>
+            </ul>
+            <a class="btn pill rec" href="#b8">Enroll — €375 →</a>
+          </div>
+          <div class="pf"><span class="id">→ hou2touch.com/201</span><span>all lessons open on day 1</span></div>
+        </article>
+      </div>
+    </div>
+  </div></section>
+
 </div>
 <script>
 (function(){
