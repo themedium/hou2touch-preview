@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AV Live (/201) — Hou2Touch</title>
-<meta name="description" content="AV artists and VJs: build a live rig from modular, Ableton, TouchDesigner">
+<meta name="description" content="Build a Unified Live Rig with Modular Synths, Ableton &amp; TouchDesigner">
 <link rel="canonical" href="https://hou2touch.com/201">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hou2Touch">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://hou2touch.com/201">
 <meta property="og:title" content="AV Live (/201) — Hou2Touch">
-<meta property="og:description" content="AV artists and VJs: build a live rig from modular, Ableton, TouchDesigner">
+<meta property="og:description" content="Build a Unified Live Rig with Modular Synths, Ableton &amp; TouchDesigner">
 <meta property="og:image" content="https://hou2touch.com/ru/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e9e7e0">
@@ -970,23 +970,40 @@ html{scroll-padding-block:73px 46px}
 .rc .rc-n>span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rc .rc-d{min-height:0}
 :is(.ph,.op,.hf-h,.cn-h,.wl-h,.n3-rh) u{display:none!important}
-/* 4. Консенсус Awwwards Art Director × FWA Curator: открытая бумага + 1 процедурный прибор на секцию */
-.m2-open{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:20px;padding-top:18px;border-top:1px solid var(--line2)}
+/* 4. Консенсус Awwwards Art Director × FWA Curator (Round 2): хирургическая доводка под сокращённый на 42% копирайт */
+@media (min-width:1061px){
+  .hero .hf{align-items:start}
+  .hero .hr{padding-top:4px}
+}
+.hero .ctas .btn.ghost{border-radius:999px}
+
+.m2-open{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:28px;padding-top:22px;border-top:1px solid var(--line2)}
 @media (max-width:980px){.m2-open{grid-template-columns:1fr}}
 .m2-open>div{display:flex;flex-direction:column;gap:8px}
 .m2-open .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .m2-open p{font:400 18px/26px var(--sans);color:var(--fg);margin:0;letter-spacing:-.01em}
 
-.concept-dat{display:grid;grid-template-columns:7fr 5fr;gap:var(--gap);align-items:start}
+@media (min-width:1101px){
+  .chn-b{grid-template-columns:repeat(var(--n),minmax(0,1fr)) minmax(108px,auto);gap:0 24px;padding:26px 24px 24px}
+  .cn:not(:last-child)::after{width:24px;top:18.5px}
+  .cn .pt{top:14px}
+  .cn.o{align-self:start}
+}
+.cn>.cn-b{padding:12px 14px 14px}
+
+.concept-dat{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
 @media (max-width:980px){.concept-dat{grid-template-columns:1fr}}
 .cd-col{border-top:1px solid var(--line2);padding-top:14px}
 .cd-h{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
 .cd-h .sq9{width:9px;height:9px;border-radius:2px;display:inline-block;flex:none}
 .cd-col .dat{padding:0}
+.cd-col .dat>li:last-child{border-bottom:0}
 
-.roles-wall{margin:0 0 28px;padding:20px 0;border-block:1px solid var(--line2);font:700 clamp(44px,5.2vw,72px)/.9 var(--disp);text-transform:uppercase;color:var(--fg);display:flex;flex-wrap:wrap;gap:10px 32px;align-items:baseline}
+.roles-wall{margin:0 0 28px;padding:20px 0;border-block:1px solid var(--line2);font:700 clamp(44px,5.2vw,72px)/.9 var(--disp);text-transform:uppercase;color:var(--fg);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;align-items:baseline}
 .roles-wall span{display:inline-flex;align-items:baseline;gap:6px}
 .roles-wall sup{font:500 12px/1 var(--mono);color:var(--mute);letter-spacing:.04em}
+.out1>li{padding-right:28px}
+#audience .pn.lite{margin-bottom:40px!important}
 
 .career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:24px}
 @media (max-width:980px){.career-grid{grid-template-columns:1fr}}
@@ -994,45 +1011,24 @@ html{scroll-padding-block:73px 46px}
 .career-card .mono{font-size:11px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
 .career-card p{font:400 16px/24px var(--sans);color:var(--fg);margin:0}
 
-.pgd2 details[open] .s-main span{display:none}
-.book-open-left{display:flex;flex-direction:column;justify-content:center;padding-right:12px}
-.book-open-left .dat{border-top:1px solid var(--line)}
+@media (min-width:981px){
+  .au-bio-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--gap);margin-top:4px}
+  .au-bio-grid .au-c{margin-top:0!important;max-width:none}
+}
 
-.bento-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.bento-3{grid-template-columns:1fr}}
-.bento-3>.pn{display:flex;flex-direction:column}
-.bento-3>.pn>.b3-b{padding:20px 22px;flex:1;display:flex;flex-direction:column;gap:12px}
-.bento-3>.pn>.pf{margin-top:auto}
-.b3-h{font:700 32px/.92 var(--disp);text-transform:uppercase;letter-spacing:.01em;color:var(--fg);margin:0}
+.dek code.mono,.tl code.mono,.spec-cell code.mono{font-size:.86em;color:var(--fg);background:rgba(239,238,233,.09);padding:2px 6px;border-radius:3px;text-transform:none;letter-spacing:.01em}
+.chs>.ch>.p{min-height:44px;padding:4px 16px 16px}
 
-.grid-2x2{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.grid-2x2{grid-template-columns:1fr}}
-.grid-2x2>.pn{display:flex;flex-direction:column}
-.grid-2x2>.pn>.dat{flex:1}
-.grid-2x2>.pn>.pf{margin-top:auto}
-.pn.not-box{background:rgba(11,11,12,.045)}
-
-.tch-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.tch-grid{grid-template-columns:1fr}}
-.tch-card{display:flex;flex-direction:column}
-.tch-top{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;padding:20px 22px;border-bottom:1px solid var(--line);align-items:center;background:rgba(11,11,12,.03)}
-.tch-av{width:88px;height:88px;border-radius:4px;overflow:hidden;border:1px solid var(--line2);background:#0e0e10;display:grid;place-items:center;font:700 36px/1 var(--disp);color:#efeee9;box-shadow:inset 0 2px 0 var(--c,var(--k))}
-.tch-av img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08)}
-.tch-name{font:700 38px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0 0 4px}
-.tch-role{font:500 12px/1.4 var(--mono);color:var(--mute);margin:0}
-.tch-chips{display:flex;flex-wrap:wrap;gap:6px;padding:14px 22px 0}
-.tch-body{padding:14px 22px 20px;flex:1;display:grid;gap:10px}
-.tch-body p{font:400 15px/22px var(--sans);color:var(--txt);margin:0}
-
-.spec-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.spec-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:var(--pgap)}
 @media (max-width:980px){.spec-cells{grid-template-columns:1fr}}
-.spec-cell{padding:14px 18px;border-radius:4px;background:#141416;border:1px solid var(--line2);box-shadow:inset 0 2px 0 var(--c,var(--k))}
+.spec-cell{padding:14px 16px;border-radius:4px;background:rgba(239,238,233,.025);border:1px solid var(--line);box-shadow:none}
 .spec-cell .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
 .spec-cell b{font:600 15px/21px var(--sans);color:var(--fg);display:block}
 
 .pgd2{border-top:1px solid var(--line2)}
 .pgd2 details{border-bottom:1px solid var(--line);background:rgba(239,238,233,.015);transition:background .2s}
 .pgd2 details[open]{background:rgba(239,238,233,.04)}
+.pgd2 details[open] .s-main span{display:none}
 .pgd2 summary{display:grid;grid-template-columns:56px minmax(0,1fr) auto 36px;align-items:center;gap:16px;padding:16px 20px;list-style:none;cursor:pointer}
 .pgd2 summary::-webkit-details-marker{display:none}
 .pgd2 .s-num{font:700 42px/.88 var(--disp)}
@@ -1041,8 +1037,16 @@ html{scroll-padding-block:73px 46px}
 .pgd2 .s-meta{font:500 12px/1 var(--mono);color:var(--mute);white-space:nowrap}
 .pgd2 .s-ic{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font:400 18px/1 var(--mono);color:var(--fg);transition:transform .3s,background .2s}
 .pgd2 details[open] .s-ic{transform:rotate(45deg);background:var(--fg);color:var(--bg)}
-.pgd2 .s-body{display:grid;grid-template-columns:5fr 7fr;gap:24px;padding:14px 20px 22px 92px;border-top:1px solid var(--line)}
+.pgd2 .s-body{display:grid;grid-template-columns:5fr 7fr;gap:36px;padding:20px 24px 26px 92px;border-top:1px solid var(--line)}
+@media (min-width:981px){
+  .pgd2 .s-body>div:last-child{border-left:1px solid var(--line);padding-left:32px}
+}
 @media (max-width:980px){.pgd2 summary{grid-template-columns:44px minmax(0,1fr) 32px}.pgd2 .s-meta{display:none}.pgd2 .s-body{grid-template-columns:1fr;padding-left:20px}}
+.pgd2 .s-body .dat{border-top:1px solid var(--line)}
+.pgd2 .s-body .dat>li{grid-template-columns:38px minmax(0,1fr)}
+.pgd2 .s-body .dat>li:last-child{border-bottom:0}
+.pgd2 .s-body>div:last-child .dat>li>span:last-child{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pgd2 .s-body>div:last-child .dat>li>span:last-child i.mono{white-space:nowrap;font-variant-numeric:tabular-nums}
 
 .path-cgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
 @media (max-width:980px){.path-cgrid{grid-template-columns:1fr}}
@@ -1054,11 +1058,20 @@ html{scroll-padding-block:73px 46px}
 .path-cc summary{font:500 12px/1.4 var(--mono);color:var(--fg);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
 .path-cc summary::-webkit-details-marker{display:none}
 
+.tier .tl li{display:block;position:relative;padding-left:20px;font:400 16px/24px var(--sans);color:var(--txt)}
+.tier .tl li::before{content:"+";position:absolute;left:0;top:0;font:500 13px/24px var(--mono);color:var(--mute)}
 .book-1col{display:grid;grid-template-columns:7fr 5fr;gap:var(--pgap);align-items:stretch}
 @media (max-width:980px){.book-1col{grid-template-columns:1fr}}
-.book-left{display:flex;flex-direction:column;gap:var(--pgap)}
-.book-left>.pn{flex:1;display:flex;flex-direction:column}
-.book-left>.pn>.pf{margin-top:auto}
+.book-1col .tier .tp p{min-height:0}
+.book-open-left{display:flex;flex-direction:column;justify-content:space-between;padding:14px 32px 4px 0;border-top:1px solid var(--line2)}
+.book-open-left .b3-h{font:700 44px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0 0 12px}
+.book-open-left .book-out>.p{font:400 18px/26px var(--sans);color:var(--fg);max-width:44ch;margin:0}
+.book-open-left .dat{border-top:1px solid var(--line)}
+.book-open-left .dat>li:last-child{border-bottom:0}
+
+@media (min-width:981px){.fq-h{position:sticky;top:96px}}
+.fq-7{border-top:1px solid var(--line2);margin-top:4px}
+.fq-7>.mono{color:var(--hou)}
 </style>
 </head>
 <body>
@@ -1085,7 +1098,7 @@ html{scroll-padding-block:73px 46px}
     <div class="hlogo" role="img" aria-label="201 AV Live" style="--wem:3.0705;--lsb:0.011"><span class="cnum" style="font-size:.46em;color:var(--k);margin-right:.16em;letter-spacing:.02em">201</span><span>AV LIVE</span></div>
     <div class="hf">
       <div class="hf-h mono"><span class="k">avlive201 <u>COMP</u></span><span class="id">hou2touch.com/201</span></div>
-      <div class="hf-l"><h1 data-slot="m1">AV artists and VJs: build a live rig from modular, Ableton, TouchDesigner</h1><p class="lead" data-slot="hero.lead">This course is for anyone who wants to create audiovisual performances and understand the technology behind them.</p></div>
+      <div class="hf-l"><h1 data-slot="m1">Build a Unified Live Rig with Modular Synths, Ableton &amp; TouchDesigner</h1><p class="lead" data-slot="hero.lead">Designed around a complete live AV architecture: each tool covers the other&#x27;s weak side.</p></div>
       <div class="hr">
         <div class="ctas"><a class="btn pill rec" href="#book">Enroll <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="btn ghost" href="#program">Programme</a></div>
         <p class="offer" data-slot="hero.offer"><b>€375</b> · 730 days access<br>video recordings &amp; project files</p>
@@ -1096,25 +1109,15 @@ html{scroll-padding-block:73px 46px}
 </header>
 <div class="paper pz"><section id="concept" class="sec" data-lkey="m1-about,m2" data-lmod="1,2"><div class="wrap">
   <div class="lbl mono"><b>01</b> About the course<i class="op" style="--c:var(--comp)">concept1 <u>COMP</u></i></div>
-  <div class="sh"><h2 class="H">Get your synth, Ableton and TouchDesigner working as one system</h2><div class="m2-open" data-lkey="m2">
-    <div><span class="mono">01 · the starting point</span><p>You know TouchDesigner, and you have a DAW or a modular rig. Right now each one runs on its own. You fire video cues by hand, and you can&#x27;t be sure how CV, MIDI and OSC carry signals between your instruments. That makes it hard to build a whole show with a clear structure.</p></div>
-    <div style="--c:var(--chop)"><span class="mono">02 · what you build</span><p>After the course, you can plan a performance system that keeps data, interface and content separate. Ableton Live holds the timeline and the story. TouchDesigner adds generative visuals and sound. Control runs in both directions between them and your modular synth. You also build your own audio, MIDI and CV tools, plus a video player that reads a Premiere cut list and uses MIDI to cue exact moments.</p></div>
+  <div class="sh"><h2 class="H">Run Your Synth, Ableton and TouchDesigner as One Instrument</h2><div class="m2-open" data-lkey="m2">
+    <div><span class="mono">01 · the starting point</span><p>Running TouchDesigner, a DAW and modular hardware as separate setups forces you to trigger video cues by hand and guess how CV, MIDI and OSC interact.</p></div>
+    <div style="--c:var(--chop)"><span class="mono">02 · what you build</span><p>This course connects all three into a single bidirectional performance rig: Ableton Live drives the timeline and arrangement, TouchDesigner generates real-time visuals and custom UI, and your modular synth exchanges clock, CV and audio in sync.</p></div>
   </div></div>
-  <figure class="pn full chn rv" style="--c:var(--comp);margin-bottom:28px">
+  <figure class="pn full chn rv" style="--c:var(--comp);margin-bottom:0">
     <div class="ph"><span class="id">/avlive201/chain1</span><span class="r">5 lessons in teaching order</span></div>
-    <div class="chn-b" style="--n:5"><a class="cn" href="#les-1" onclick="const d=document.getElementById('les-1');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson1</div><div class="cn-b"><span class="mono dt">lesson 1 · 2h 19m</span>Foundations: Modular Synthesis &amp; TouchDesigner</div></a><a class="cn" href="#les-2" onclick="const d=document.getElementById('les-2');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson2</div><div class="cn-b"><span class="mono dt">lesson 2 · 2h 27m</span>TouchDesigner Architecture &amp; UI for AV Systems</div></a><a class="cn" href="#les-3" onclick="const d=document.getElementById('les-3');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson3</div><div class="cn-b"><span class="mono dt">lesson 3 · 2h 08m</span>TouchDesigner &amp; Ableton Integration</div></a><a class="cn" href="#les-4" onclick="const d=document.getElementById('les-4');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson4</div><div class="cn-b"><span class="mono dt">lesson 4 · 1h 57m</span>Control Voltage, Hardware I/O &amp; Custom Audio Tools</div></a><a class="cn" href="#les-5" onclick="const d=document.getElementById('les-5');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson5</div><div class="cn-b"><span class="mono dt">lesson 5 · 2h 15m</span>Video Playback &amp; Cueing with EDL</div></a><a class="cn o" href="#book" style="--c:var(--chop)"><span class="pt i"></span><div class="cn-h">out1</div><div class="cn-b">→ enroll</div></a></div>
-    <figcaption class="pf"><span>click any lesson node to open in programme</span><a href="#program">full programme <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></figcaption>
+    <div class="chn-b" style="--n:5"><a class="cn" href="#les-1" onclick="const d=document.getElementById('les-1');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson01</div><div class="cn-b"><span class="mono dt">2h 19m</span>Foundations: Modular Synthesis &amp; Signal Routing</div></a><a class="cn" href="#les-2" onclick="const d=document.getElementById('les-2');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson02</div><div class="cn-b"><span class="mono dt">2h 27m</span>TouchDesigner Architecture &amp; Custom Performance UI</div></a><a class="cn" href="#les-3" onclick="const d=document.getElementById('les-3');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson03</div><div class="cn-b"><span class="mono dt">2h 08m</span>Bidirectional Ableton Live &amp; TouchDesigner Integration</div></a><a class="cn" href="#les-4" onclick="const d=document.getElementById('les-4');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson04</div><div class="cn-b"><span class="mono dt">1h 57m</span>Control Voltage, Hardware I/O &amp; Custom Audio Tools</div></a><a class="cn" href="#les-5" onclick="const d=document.getElementById('les-5');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson05</div><div class="cn-b"><span class="mono dt">2h 15m</span>Frame-Accurate Video Playback &amp; EDL Cueing</div></a><a class="cn o" href="#book" style="--c:var(--chop)"><span class="pt i"></span><div class="cn-h">out1</div><div class="cn-b">→ enroll</div></a></div>
+    <figcaption class="pf"><span>click any lesson node to inspect in programme</span><a href="#program">full programme <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></figcaption>
   </figure>
-  <div class="concept-dat" data-lkey="m1-about">
-    <div class="cd-col">
-      <div class="cd-h mono"><span class="sq9" style="background:var(--comp)"></span>/avlive201/overview1 · how the system works</div>
-      <p class="p" style="margin:0 0 12px">This course is for anyone who wants to create audiovisual performances and understand the technology behind them. You learn how signals travel between instruments: analog control voltages and audio, digital MIDI and OSC, and how to keep hardware and software in sync. You learn the basics of modular synthesis and connect a modular synthesizer, Ableton Live and TouchDesigner into one system. In TouchDesigner you build your own CV utilities, sound and MIDI tools, an interface generated from a component&#x27;s parameters, and a video player that reads a cut list from Premiere, builds a video library from it and cues exact moments by MIDI; you also study how complete AV shows are structured. The core of the course is how to build an audiovisual project so that each tool covers the other&#x27;s weak side: the Ableton timeline gives the show its structure and story, TouchDesigner adds generative visuals and sound, and control runs in both directions between them.</p>
-    </div>
-    <div class="cd-col">
-      <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/avlive201/aims1 · course aims</div>
-      <ol class="dat"><li><span class="n">01</span><span>To give students a working understanding of how audiovisual instruments exchange signals (analog control voltages and audio, digital MIDI and OSC), and the ability to connect modular synthesisers, Ableton Live and TouchDesigner and build their own tools for control in both directions.</span></li><li><span class="n">02</span><span>To develop students&#x27; ability to design reliable audiovisual shows in which the Ableton Live timeline and TouchDesigner&#x27;s generative visuals and cued video playback cover each other&#x27;s weak sides.</span></li></ol>
-    </div>
-  </div>
 </div></section>
 <section id="audience" class="sec" data-lkey="m3,m4"><div class="wrap">
   <div class="lbl mono"><b>02</b> For whom &amp; outcomes<i class="op" style="--c:var(--dat)">audience1 <u>DAT</u></i></div>
@@ -1122,16 +1125,16 @@ html{scroll-padding-block:73px 46px}
   <div class="roles-wall" aria-label="Target audience roles"><span>AV artists<sup>/01</sup></span><span>Live electronic musicians<sup>/02</sup></span><span>VJs<sup>/03</sup></span></div>
   <div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
     <div class="ph"><span class="id">/avlive201/outputs1</span><span class="r">what you will be able to do</span></div>
-    <ol class="out1"><li><span class="n">01</span><span>Plan a modular visual-performance system that keeps data, interface and content apart, so your video cues fire reliably.</span></li><li><span class="n">02</span><span>Build a video-playback workflow in TouchDesigner for live performance that is timed and controlled over MIDI.</span></li><li><span class="n">03</span><span>Connect TouchDesigner, Ableton Live and your modular hardware so control runs in both directions between sound and image.</span></li><li><span class="n">04</span><span>Build your own audio, MIDI and CV tools for expressive real-time performance.</span></li></ol>
+    <ol class="out1"><li><span class="n">01</span><span>Architect a modular live AV system that separates data, control UI and visual content.</span></li><li><span class="n">02</span><span>Exchange analog CV, audio, MIDI and OSC bidirectionally between Eurorack, Ableton Live and TouchDesigner.</span></li><li><span class="n">03</span><span>Build custom oscilloscopes, CV utilities, audio filters and auto-generated Python UI sliders in TouchDesigner.</span></li><li><span class="n">04</span><span>Build a frame-accurate, MIDI-triggered video player in TouchDesigner driven by Adobe Premiere EDL cut lists.</span></li></ol>
   </div>
   <div class="concept-dat" data-lkey="m3,m3-not">
     <div class="cd-col">
       <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/avlive201/for_whom1 · for you if</div>
-      <ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span><b>You are a musician or AV artist who wants to make your own audiovisual performances.</b> You connect a modular synthesizer, Ableton Live and TouchDesigner into one system. The Ableton timeline gives the show its structure and story, TouchDesigner adds generative visuals and sound, and control runs in both directions between them.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span><b>You are a musician or AV artist who wants to understand the technology behind your setup.</b> You learn how analog CV and audio, digital MIDI and OSC travel between instruments, how to keep hardware and software in sync, and the basics of modular synthesis. In TouchDesigner you build your own CV utilities and your own sound and MIDI tools.</span></li><li><span class="n" style="color:var(--chop)">+03</span><span><b>You are a VJ who wants more precise control over video.</b> You build a video player that reads a cut list from Premiere, builds a video library from it and cues exact moments by MIDI. You also build an interface generated from a component&#x27;s parameters and study how complete AV shows are structured.</span></li></ol>
+      <ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span><b>AV Artists &amp; Technical Directors</b> — Move from fragile single-patch setups to fault-tolerant show architectures that separate data, control UI and visual content.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span><b>Live Electronic Musicians &amp; Modular Performers</b> — Link Eurorack or desktop synths with Ableton Live and TouchDesigner via DC-coupled audio interfaces, CV utilities and shared clocks.</span></li><li><span class="n" style="color:var(--chop)">+03</span><span><b>VJs &amp; Visual Performers</b> — Replace manual clip launching with timeline-locked, MIDI-cued playback driven by Adobe Premiere EDL cut lists.</span></li></ol>
     </div>
     <div class="cd-col">
       <div class="cd-h mono"><span class="sq9" style="background:var(--mute)"></span>/avlive201/filter1 · prerequisites &amp; not for you if</div>
-      <ol class="dat"><li><span class="n">–</span><span>You have not completed TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, and you do not have equivalent working knowledge of basic CHOP signal flow, component architecture, storing settings in DAT tables and UI generation.</span></li><li><span class="n">–</span><span>You already work comfortably across modular, Ableton Live and TouchDesigner, and there is nothing specific you want to learn or build here.</span></li></ol>
+      <ol class="dat"><li><span class="n">–</span><span>You are new to TouchDesigner — complete <b>TouchDesigner 101: Extreme I</b> and <b>102: Extreme II</b> first (CHOP signal flow, COMP architecture, DAT tables and basic UI).</span></li><li><span class="n">–</span><span>You already run bidirectional Ableton, modular CV and TouchDesigner rigs in production.</span></li></ol>
     </div>
   </div>
   
@@ -1144,8 +1147,8 @@ html{scroll-padding-block:73px 46px}
       <div class="pf"><span><span data-f="print" data-v0="tone">halftone</span><span class="only-d"> · cook 0.6&nbsp;s</span></span><span>author1</span></div></figure>
     <div class="au-t">
       <h2 class="au-n">Stanislav Glazov</h2>
-      <p class="au-r"><span>Media artist, technical director, founder of Hou2Touch</span></p>
-      <p class="p au-c" data-lkey="m8">Stanislav started in computer graphics in 1998 with commercials and music videos, and has been teaching since 2001: Maya at RealTime School in Moscow and at SAE Institute in Munich, Houdini at Scream School, CG Event and the British Higher School of Art and Design (2008–2012). In 2009 he launched his own Houdini school, houdini-howto.com, and in 2014 he began teaching TouchDesigner. He was a character and VFX technical director on animated features at Caligari Film, Trixter and Scanline, working on rigging, cloth and hair pipelines, simulation and Maya API development. In 2010 he built the Houdini infographics pipeline for Kommersant TV, then moved into real-time visuals: video mapping at SILA SVETA and Visuals.108 (2011–2013) and, from 2013 to 2019, his own studio Licht.Pfad. He made the first Hou2Touch course in 2020 and built the school as a team in 2022. More than 2,000 people have studied with him.</p><p class="p au-c" style="margin-top:10px">His AV performances have been shown at Berlin Atonal, Mutek Montreal, Ars Electronica, Unsound, the Barbican and the Raster-Noton night at Berghain, including work with Dasha Rush and Robert Lippok.</p><p class="p au-c" style="margin-top:10px">He performs live on modular synthesizers since 2015 and is a Certified Bitwig Trainer (2023).</p>
+      <p class="au-r"><span>Media artist, technical director, founder of Licht.Pfad &amp; Hou2Touch</span></p>
+      <div class="au-bio-grid" data-lkey="m8"><p class="p au-c">25+ years in CGI production (Trixter Film, Scanline VFX, SilaSveta, WhiteVoid) and 20+ years of teaching. His school Hou2Touch has trained 2,000+ real-time artists and technical directors.</p><p class="p au-c">Performs live on modular synthesizers since 2015 and is a Certified Bitwig Trainer (2023). Presented audiovisual shows at Berlin Atonal, Mutek Montréal, Ars Electronica, Unsound, Barbican London and Berghain (Raster-Noton), including collaborations with Dasha Rush and Robert Lippok.</p></div>
       <ul class="cv" id="cv" hidden>
         <li><span class="mono">Before 2010</span><p class="p">Killer Tank, Pilot TV, early animation productions at Klassika Studio; Trixter Film and Scanline VFX: Pipeline Technical Director, Character Animation, Cloth Simulation TD, R&amp;D VFX.</p></li>
         <li><span class="mono">After 2010</span><p class="p">Automated real-time infographic broadcast system for Kommersant TV. Architectural video mapping with SilaSveta, Stereotaktik, Invisible, and Raduga Design.</p></li>
@@ -1156,7 +1159,7 @@ html{scroll-padding-block:73px 46px}
       </ul>
       <button class="btn ghost cv-b" type="button" id="cvB" aria-expanded="false" aria-controls="cv">Full biography <span>+</span></button>
       <div class="au-s">
-        <div><b>22+</b><span class="mono">years in CGI &amp; real-time art</span></div>
+        <div><b>25+</b><span class="mono">years in CGI &amp; real-time art</span></div>
         <div><b>20</b><span class="mono">years of teaching</span></div>
         <div><b>Licht.Pfad</b><span class="mono">generative studio since 2013</span></div>
       </div>
@@ -1168,9 +1171,9 @@ html{scroll-padding-block:73px 46px}
 <div class="seam" aria-hidden="true"></div>
 <section id="course" class="sec" data-lkey="m15,m7"><div class="wrap">
   <div class="lbl mono"><b>04</b> Course facts &amp; format<i class="op" style="--c:var(--comp)">passport1 <u>COMP</u></i></div>
-  <div class="sh" data-lkey="m7"><h2 class="H">How the course works</h2><p class="dek" style="max-width:66ch">The course is recorded and self-paced: 5 lessons with 17 videos, 11 hours of video in total, all in English. Plan time for practice in addition to watching the videos. Every lesson is open from the first day, so you choose your own pace.</p></div>
-  <div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--chop);--d:0"><div class="ph">hours1</div><div class="cv0"><b>11</b><span class="mono">h video</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H6.0 V8.7 H42.0 V56 H54.0 V6.0 H90.0 V56 H102.0 V12.5 H138.0 V56 H150.0 V16.2 H186.0 V56 H198.0 V10.1 H234.0 V56 H240"/></svg><p class="p">lessons: 2:19 · 2:27 · 2:08 · 1:57 · 2:15</p><div class="pf"><span>passport1/hours1</span><span>bars · 5</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:1"><div class="ph">lessons1</div><div class="cv0"><b>5</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V46.0 H48.0 V36.0 H96.0 V26.0 H144.0 V16.0 H192.0 V6.0 H240"/></svg><p class="p">17 topic videos · downloadable project files</p><div class="pf"><span>passport1/lessons1</span><span>step · 1–5</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:2"><div class="ph">access1</div><div class="cv0"><b>730</b><span class="mono">days access</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H10.8 V6 H37.2 V56 H70.8 V6 H97.2 V56 H130.8 V6 H157.2 V56 H190.8 V6 H217.2 V56 H240"/></svg><p class="p">self-paced · extended on request</p><div class="pf"><span>passport1/access1</span><span>hold · 730d</span></div></div></div>
-  <div class="spec-cells" data-lkey="m15"><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Pace</span><b>self-paced; every lesson is open from the first day; access for 730 days; on top of the video: practice</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Language</span><b>English</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Level</span><b>Intermediate</b></div></div>
+  <div class="sh" data-lkey="m7"><h2 class="H">How the course works</h2><p class="dek" style="max-width:66ch">Self-paced recorded training: 5 lessons (17 videos, 11 hours in English) with downloadable TouchDesigner <code class="mono">.toe</code> patches and Ableton project files. All lessons unlock on day 1 with 730 days of access.</p></div>
+  <div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--chop);--d:0"><div class="ph">hours1</div><div class="cv0"><b>11</b><span class="mono">h video</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H6.0 V8.7 H42.0 V56 H54.0 V6.0 H90.0 V56 H102.0 V12.5 H138.0 V56 H150.0 V16.2 H186.0 V56 H198.0 V10.1 H234.0 V56 H240"/></svg><p class="p">lessons: 2:19 · 2:27 · 2:08 · 1:57 · 2:15</p><div class="pf"><span>passport1/hours1</span><span>bars · 5</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:1"><div class="ph">lessons1</div><div class="cv0"><b>5</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V46.0 H48.0 V36.0 H96.0 V26.0 H144.0 V16.0 H192.0 V6.0 H240"/></svg><p class="p">17 topic videos · downloadable project files</p><div class="pf"><span>passport1/lessons1</span><span>step · 1–5</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:2"><div class="ph">access1</div><div class="cv0"><b>730</b><span class="mono">days access</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H10.8 V6 H37.2 V56 H70.8 V6 H97.2 V56 H130.8 V6 H157.2 V56 H190.8 V6 H217.2 V56 H240"/></svg><p class="p">Self-paced · all 5 lessons open on day 1 · 730 days access · extended on request</p><div class="pf"><span>passport1/access1</span><span>hold · 730d</span></div></div></div>
+  <div class="spec-cells" data-lkey="m15"><div class="spec-cell"><span class="mono">Language</span><b>English</b></div><div class="spec-cell"><span class="mono">Level</span><b>Intermediate (after TD 101 &amp; 102)</b></div><div class="spec-cell"><span class="mono">Before you start</span><b>Working knowledge of CHOPs, COMP architecture, DAT tables &amp; UI (TD 101 + 102)</b></div></div>
 </div></section>
 <section id="program" class="sec" data-lkey="m5"><div class="wrap">
   <div class="lbl mono"><b>05</b> Programme<i class="op" style="--c:var(--comp)">program1 <u>COMP</u></i></div>
@@ -1180,57 +1183,57 @@ html{scroll-padding-block:73px 46px}
     <div class="pgd2"><details id="les-1" open>
       <summary>
         <span class="s-num" style="color:var(--chop)">01</span>
-        <span class="s-main"><b>Foundations: Modular Synthesis &amp; TouchDesigner</b><span>This module explains audio and music protocols and how signals connect TouchDesigner, Ableton Live and modular hardware: MIDI, OSC, audio and control voltage, AC- and DC-coupled interfaces, and oscilloscope views.</span></span>
+        <span class="s-main"><b>Foundations: Modular Synthesis &amp; Signal Routing</b><span>Signal routing across TouchDesigner, Ableton Live and modular hardware: MIDI, OSC, audio and control voltage via AC/DC-coupled interfaces.</span></span>
         <span class="s-meta">3 videos · 2h 19m</span>
         <span class="s-ic" aria-hidden="true">+</span>
       </summary>
       <div class="s-body">
-        <div><p class="p" style="margin:0 0 12px;color:var(--txt)">This module explains audio and music protocols and how signals connect TouchDesigner, Ableton Live and modular hardware: MIDI, OSC, audio and control voltage, AC- and DC-coupled interfaces, and oscilloscope views. It then follows a basic modular voice (oscillator, clock and sequencer, envelope, filter, LFO) and tours modules for wave folding, complex oscillators, granular processing and clock division.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Learning aims</div><ol class="dat"><li><span class="n">aim</span><span>To provide an integrated understanding of signal behaviour and routing between TouchDesigner, Ableton and modular hardware.</span></li><li><span class="n">aim</span><span>To introduce modular synthesis: the blocks of a basic voice and modules that make a sound more complex.</span></li></ol></div>
-        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Video topics · 3 videos · 2h 19m</div><ol class="dat"><li><span class="n">1.1</span><span>Signal protocols and routing: MIDI, OSC, CV <i class="mono" style="color:var(--mute);font-style:normal">· 46m</i></span></li><li><span class="n">1.2</span><span>The Basics of Modular synthesis <i class="mono" style="color:var(--mute);font-style:normal">· 43m</i></span></li><li><span class="n">1.3</span><span>Eurorack modules walk-through <i class="mono" style="color:var(--mute);font-style:normal">· 50m</i></span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Module overview</div><p class="p" style="margin:0 0 12px;color:var(--txt)">Signal routing across TouchDesigner, Ableton Live and modular hardware: MIDI, OSC, audio and control voltage via AC/DC-coupled interfaces. We build a complete modular voice (oscillator, clock, sequencer, envelope, filter, LFO) and explore wave folding, complex oscillators and granular processing.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Learning aims</div><ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>Route MIDI, OSC, audio and CV between software and hardware using oscilloscope diagnostics.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>Patch a complete modular synthesis voice with clock division and complex modulation.</span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Video breakdown</div><ol class="dat"><li><span class="n">1.1</span><span><span>Signal protocols and routing: MIDI, OSC, CV</span><i class="mono" style="color:var(--mute);font-style:normal">46m</i></span></li><li><span class="n">1.2</span><span><span>The Basics of Modular synthesis</span><i class="mono" style="color:var(--mute);font-style:normal">43m</i></span></li><li><span class="n">1.3</span><span><span>Eurorack modules walk-through</span><i class="mono" style="color:var(--mute);font-style:normal">50m</i></span></li></ol></div>
       </div>
     </details><details id="les-2">
       <summary>
         <span class="s-num" style="color:var(--chop)">02</span>
-        <span class="s-main"><b>TouchDesigner Architecture &amp; UI for AV Systems</b><span>This module builds the architecture of a live AV system around TouchDesigner: separating data, controls and content, sending triggers and MIDI notes from music to visuals, and combining generative animation with a planned story.</span></span>
+        <span class="s-main"><b>TouchDesigner Architecture &amp; Custom Performance UI</b><span>Live AV system architecture in TouchDesigner: separating data, controls and visual content, A/B scene loading, and LTC timecode sync.</span></span>
         <span class="s-meta">4 videos · 2h 27m</span>
         <span class="s-ic" aria-hidden="true">+</span>
       </summary>
       <div class="s-body">
-        <div><p class="p" style="margin:0 0 12px;color:var(--txt)">This module builds the architecture of a live AV system around TouchDesigner: separating data, controls and content, sending triggers and MIDI notes from music to visuals, and combining generative animation with a planned story. It walks through the instructor&#x27;s performance systems and A/B scene loading, then writes a Python script that generates parameter sliders from custom parameters, with a short introduction to LTC timecode.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Learning aims</div><ol class="dat"><li><span class="n">aim</span><span>To develop a coherent understanding of modular system design for audiovisual live performance.</span></li><li><span class="n">aim</span><span>To develop practical skills in designing performance interfaces that control visual content.</span></li></ol></div>
-        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Video topics · 4 videos · 2h 27m</div><ol class="dat"><li><span class="n">2.1</span><span>AV performance design: data, UI and content <i class="mono" style="color:var(--mute);font-style:normal">· 40m</i></span></li><li><span class="n">2.2</span><span>Anatomy of a live AV system: three case studies <i class="mono" style="color:var(--mute);font-style:normal">· 32m</i></span></li><li><span class="n">2.3</span><span>Architecture of your own AV show <i class="mono" style="color:var(--mute);font-style:normal">· 47m</i></span></li><li><span class="n">2.4</span><span>Generating sliders from parameters with Python <i class="mono" style="color:var(--mute);font-style:normal">· 28m</i></span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Module overview</div><p class="p" style="margin:0 0 12px;color:var(--txt)">Live AV system architecture in TouchDesigner: separating data, controls and visual content, A/B scene loading, and LTC timecode sync. You write a Python script that automatically generates performance sliders from custom component parameters.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Learning aims</div><ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>Structure a fault-tolerant live AV project with separated data, UI and rendering layers.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>Auto-generate custom performance control panels using Python and custom parameters.</span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Video breakdown</div><ol class="dat"><li><span class="n">2.1</span><span><span>AV performance design: data, UI and content</span><i class="mono" style="color:var(--mute);font-style:normal">40m</i></span></li><li><span class="n">2.2</span><span><span>Anatomy of a live AV system: three case studies</span><i class="mono" style="color:var(--mute);font-style:normal">32m</i></span></li><li><span class="n">2.3</span><span><span>Architecture of your own AV show</span><i class="mono" style="color:var(--mute);font-style:normal">47m</i></span></li><li><span class="n">2.4</span><span><span>Generating sliders from parameters with Python</span><i class="mono" style="color:var(--mute);font-style:normal">28m</i></span></li></ol></div>
       </div>
     </details><details id="les-3">
       <summary>
         <span class="s-num" style="color:var(--chop)">03</span>
-        <span class="s-main"><b>TouchDesigner &amp; Ableton Integration</b><span>This module develops bidirectional integration between Ableton Live and TouchDesigner for audiovisual performance and generative control.</span></span>
+        <span class="s-main"><b>Bidirectional Ableton Live &amp; TouchDesigner Integration</b><span>Two-way communication between Ableton Live and TouchDesigner via Ableton Link, MIDI and OSC.</span></span>
         <span class="s-meta">3 videos · 2h 08m</span>
         <span class="s-ic" aria-hidden="true">+</span>
       </summary>
       <div class="s-body">
-        <div><p class="p" style="margin:0 0 12px;color:var(--txt)">This module develops bidirectional integration between Ableton Live and TouchDesigner for audiovisual performance and generative control. Students build modular workflows that sequence media and translate audio, MIDI, OSC, and parameter data into responsive changes across both environments.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Learning aims</div><ol class="dat"><li><span class="n">aim</span><span>To develop an understanding of two-way control between Ableton Live and TouchDesigner.</span></li><li><span class="n">aim</span><span>To develop practical skills in driving Ableton generatively from TouchDesigner and driving visuals from the Ableton timeline.</span></li></ol></div>
-        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Video topics · 3 videos · 2h 08m</div><ol class="dat"><li><span class="n">3.1</span><span>TDAbleton. Building an adaptable modular patch <i class="mono" style="color:var(--mute);font-style:normal">· 40m</i></span></li><li><span class="n">3.2</span><span>Generative control of Ableton Live <i class="mono" style="color:var(--mute);font-style:normal">· 54m</i></span></li><li><span class="n">3.3</span><span>Controlling TouchDesigner from Ableton <i class="mono" style="color:var(--mute);font-style:normal">· 34m</i></span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Module overview</div><p class="p" style="margin:0 0 12px;color:var(--txt)">Two-way communication between Ableton Live and TouchDesigner via Ableton Link, MIDI and OSC. Drive generative visual parameters from Ableton tracks and sequence Ableton synths and effects directly from TouchDesigner CHOP networks.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Learning aims</div><ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>Synchronise Ableton Live and TouchDesigner timelines and parameter states in real time.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>Trigger and modulate Ableton devices generatively from TouchDesigner signals.</span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Video breakdown</div><ol class="dat"><li><span class="n">3.1</span><span><span>TDAbleton. Building an adaptable modular patch</span><i class="mono" style="color:var(--mute);font-style:normal">40m</i></span></li><li><span class="n">3.2</span><span><span>Generative control of Ableton Live</span><i class="mono" style="color:var(--mute);font-style:normal">54m</i></span></li><li><span class="n">3.3</span><span><span>Controlling TouchDesigner from Ableton</span><i class="mono" style="color:var(--mute);font-style:normal">34m</i></span></li></ol></div>
       </div>
     </details><details id="les-4">
       <summary>
         <span class="s-num" style="color:var(--chop)">04</span>
-        <span class="s-main"><b>Control Voltage, Hardware I/O &amp; Custom Audio Tools</b><span>This module connects digital performance controls with modular hardware and audiovisual systems through MIDI, timing, gestural data, and control voltage.</span></span>
+        <span class="s-main"><b>Control Voltage, Hardware I/O &amp; Custom Audio Tools</b><span>Connecting TouchDesigner to physical modular hardware through DC-coupled interfaces, CV, gate, clock and gestural controllers.</span></span>
         <span class="s-meta">4 videos · 1h 57m</span>
         <span class="s-ic" aria-hidden="true">+</span>
       </summary>
       <div class="s-body">
-        <div><p class="p" style="margin:0 0 12px;color:var(--txt)">This module connects digital performance controls with modular hardware and audiovisual systems through MIDI, timing, gestural data, and control voltage. Students develop reusable control and sound-shaping tools while testing signal behaviour across software, audio interfaces, and hardware.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Learning aims</div><ol class="dat"><li><span class="n">aim</span><span>To develop an understanding of how control voltage, clock and MIDI pass between TouchDesigner and modular hardware.</span></li><li><span class="n">aim</span><span>To develop practical skills in building CV utilities and sound tools in TouchDesigner.</span></li></ol></div>
-        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Video topics · 4 videos · 1h 57m</div><ol class="dat"><li><span class="n">4.1</span><span>BeatStep Pro: MIDI and CV routing <i class="mono" style="color:var(--mute);font-style:normal">· 16m</i></span></li><li><span class="n">4.2</span><span>CV output from TouchDesigner <i class="mono" style="color:var(--mute);font-style:normal">· 12m</i></span></li><li><span class="n">4.3</span><span>Building Wavefolder in TouchDesigner <i class="mono" style="color:var(--mute);font-style:normal">· 40m</i></span></li><li><span class="n">4.4</span><span>Clock divider and CV utilities <i class="mono" style="color:var(--mute);font-style:normal">· 50m</i></span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Module overview</div><p class="p" style="margin:0 0 12px;color:var(--txt)">Connecting TouchDesigner to physical modular hardware through DC-coupled interfaces, CV, gate, clock and gestural controllers. You build reusable CV utilities, custom envelopes and sound-shaping tools inside TouchDesigner.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Learning aims</div><ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>Calibrate and pass CV, gate and clock signals between TouchDesigner and Eurorack hardware.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>Build reusable CV modulation utilities and audio-processing tools in TouchDesigner.</span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Video breakdown</div><ol class="dat"><li><span class="n">4.1</span><span><span>BeatStep Pro: MIDI and CV routing</span><i class="mono" style="color:var(--mute);font-style:normal">16m</i></span></li><li><span class="n">4.2</span><span><span>CV output from TouchDesigner</span><i class="mono" style="color:var(--mute);font-style:normal">12m</i></span></li><li><span class="n">4.3</span><span><span>Building Wavefolder in TouchDesigner</span><i class="mono" style="color:var(--mute);font-style:normal">40m</i></span></li><li><span class="n">4.4</span><span><span>Clock divider and CV utilities</span><i class="mono" style="color:var(--mute);font-style:normal">50m</i></span></li></ol></div>
       </div>
     </details><details id="les-5">
       <summary>
         <span class="s-num" style="color:var(--chop)">05</span>
-        <span class="s-main"><b>Video Playback &amp; Cueing with EDL</b><span>This module turns Adobe Premiere into a cueing tool for TouchDesigner.</span></span>
+        <span class="s-main"><b>Frame-Accurate Video Playback &amp; EDL Cueing</b><span>Turn Adobe Premiere into a timeline editor for TouchDesigner.</span></span>
         <span class="s-meta">3 videos · 2h 15m</span>
         <span class="s-ic" aria-hidden="true">+</span>
       </summary>
       <div class="s-body">
-        <div><p class="p" style="margin:0 0 12px;color:var(--txt)">This module turns Adobe Premiere into a cueing tool for TouchDesigner. Cut points are set where cutting is easy, in the editor&#x27;s timeline, and exported as an EDL instead of being searched for frame by frame in TouchDesigner, which has no timeline or cutting tools. A Python script turns the EDL into a table of timed segments, every movie is preloaded into memory, and MIDI notes from Ableton fire each cut frame-accurately, with only the playing movie passed to the output.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Learning aims</div><ol class="dat"><li><span class="n">aim</span><span>To develop an understanding of a cueing workflow that prepares cut points in a video editor and plays them frame-accurately in TouchDesigner.</span></li><li><span class="n">aim</span><span>To develop practical skills in building a note-triggered video player from an EDL with Python and the Timer CHOP.</span></li></ol></div>
-        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Video topics · 3 videos · 2h 15m</div><ol class="dat"><li><span class="n">5.1</span><span>Parsing a Premiere EDL with Python for video cues <i class="mono" style="color:var(--mute);font-style:normal">· 42m</i></span></li><li><span class="n">5.2</span><span>Turning the EDL into Timer segments with Python <i class="mono" style="color:var(--mute);font-style:normal">· 34m</i></span></li><li><span class="n">5.3</span><span>Triggering video cues by MIDI notes from Ableton <i class="mono" style="color:var(--mute);font-style:normal">· 58m</i></span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Module overview</div><p class="p" style="margin:0 0 12px;color:var(--txt)">Turn Adobe Premiere into a timeline editor for TouchDesigner. Export edit cut points as an EDL, parse them into timed DAT tables with Python, preload video clips into RAM, and fire frame-accurate cuts from Ableton MIDI notes.</p><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Learning aims</div><ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>Convert Adobe Premiere EDL cut lists into preloaded TouchDesigner playback tables with Python.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>Build a zero-latency, MIDI-cued video player using Timer CHOP and preloaded movie bins.</span></li></ol></div>
+        <div><div class="mono" style="font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Video breakdown</div><ol class="dat"><li><span class="n">5.1</span><span><span>Parsing a Premiere EDL with Python for video cues</span><i class="mono" style="color:var(--mute);font-style:normal">42m</i></span></li><li><span class="n">5.2</span><span><span>Turning the EDL into Timer segments with Python</span><i class="mono" style="color:var(--mute);font-style:normal">34m</i></span></li><li><span class="n">5.3</span><span><span>Triggering video cues by MIDI notes from Ableton</span><i class="mono" style="color:var(--mute);font-style:normal">58m</i></span></li></ol></div>
       </div>
     </details></div>
     <div class="pf"><a href="#book">→ price &amp; enrollment</a><span>hou2touch.com/201</span></div>
@@ -1265,20 +1268,24 @@ html{scroll-padding-block:73px 46px}
   <div class="sh"><h2 class="H">Price &amp; What&#x27;s Included</h2></div>
   <div class="book-1col">
       <div class="book-open-left" data-lkey="m14,m11-payment">
-      <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/avlive201/summary1 · outcome</div>
-      <h3 class="b3-h" style="margin:0 0 10px">Your rig, ready for the stage</h3>
-      <p class="p" style="margin:0 0 28px">You will leave with a live rig in which TouchDesigner, Ableton Live and your modular hardware pass control both ways, and video cues fire on time over MIDI. Your own audio, MIDI and CV tools sit on top of it, so the performance stays yours.</p>
-      <div class="cd-h mono"><span class="sq9" style="background:var(--dat)"></span>/avlive201/payment1 · payment &amp; vat</div>
-      <ol class="dat"><li><span class="n">01</span><span>The price includes German VAT (19%). If you have an EU VAT ID and are located outside Germany, contact us before paying to avoid double tax.</span></li><li><span class="n">02</span><span>You can pay by card (Stripe), PayPal or bank transfer.</span></li></ol>
-      <p class="mono" style="margin-top:18px;font-size:12px;color:var(--mute)">questions → <a href="mailto:stanislav.glazov@gmail.com" style="color:var(--fg)">stanislav.glazov@gmail.com</a></p>
+      <div class="book-out">
+        <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/avlive201/summary1 · outcome</div>
+        <h3 class="b3-h">Your Rig, Ready for the Stage</h3>
+        <p class="p">Leave with a complete, stage-tested performance architecture where Ableton Live, TouchDesigner and your hardware exchange control in both directions and every video cue fires on time.</p>
+      </div>
+      <div class="book-pay">
+        <div class="cd-h mono"><span class="sq9" style="background:var(--dat)"></span>/avlive201/payment1 · payment &amp; vat</div>
+        <ol class="dat"><li><span class="n">01</span><span>Includes 19% German VAT (EU VAT ID reverse-charge available outside Germany — contact us before checkout).</span></li><li><span class="n">02</span><span>Pay via Card (Stripe), PayPal or bank transfer / invoice.</span></li></ol>
+        <p class="mono" style="margin-top:16px;font-size:12px;color:var(--mute)">questions → <a href="mailto:stanislav.glazov@gmail.com" style="color:var(--fg)">stanislav.glazov@gmail.com</a></p>
+      </div>
     </div>
       <article class="pn full tier km dk rv" style="--c:var(--k);--d:0;margin:0" data-lkey="m11">
       <div class="ph">tier1<span class="r">11 h video</span></div>
       <div class="tb">
         <span class="mono tk">TouchDesigner · Ableton Live · live av</span>
         <h3 class="tn"><span style="font-size:.62em;color:var(--chop);margin-right:.14em">201</span>AV Live</h3>
-        <div class="tp"><b>€375</b><p>5 lessons, 17 videos (11 h in total, English), access for 730 days.</p></div>
-        <ul class="tl"><li>Access to all video recordings for 730 days</li><li>The project files used in the lessons</li></ul>
+        <div class="tp"><b>€375</b><p>5 lessons, 17 videos (11 h in total, English), 730 days access.</p></div>
+        <ul class="tl"><li>17 HD video lessons (11 hours total) — all 5 modules open on day 1</li><li>Downloadable TouchDesigner <code class="mono">.toe</code> patches, Python scripts &amp; Ableton project files</li><li>730 days of access (extended free on request)</li></ul>
         <a class="btn pill rec" href="#buy-3893863" data-offer="3893863" onclick="if(window.ltAddToBasket){ltAddToBasket(3893863);return false;}">Enroll — €375 <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
       </div>
       <div class="pf"><span class="id">→ hou2touch.com/201</span><span>all lessons open on day 1</span></div>
@@ -1289,7 +1296,7 @@ html{scroll-padding-block:73px 46px}
   <div class="lbl mono"><b>09</b> FAQ<i class="op" style="--c:var(--dat)">faq1 <u>DAT</u></i></div>
   <div class="fq">
     <div class="fq-h sh"><h2 class="H">FAQ</h2></div>
-    <div class="pn lite fq-l" style="--c:var(--dat)"><div class="ph"><span class="id">/avlive201/faq1</span><span class="r">8 questions</span></div><details><summary><span class="mono">01</span><span class="q">Why pay for the course if there are free tutorials on YouTube?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">A tutorial can show you one patch or one trick. This course is 11 hours of video on how a whole audiovisual system fits together: how signals travel between a modular synthesizer, Ableton Live and TouchDesigner, how to keep hardware and software in sync, and how to structure a show so that each tool covers the other&#x27;s weak side.</p></div></details><details><summary><span class="mono">02</span><span class="q">How much of the course is about modular synthesis?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">One of the five modules introduces it: the blocks of a basic voice and the modules that make a sound more complex. Another covers how control voltage, clock and MIDI pass between TouchDesigner and modular hardware, and there you build CV utilities and sound tools. The other modules deal with video cueing, Ableton Live integration and system design.</p></div></details><details><summary><span class="mono">03</span><span class="q">How does the video cueing work?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">You prepare cut points in a video editor. The player you build in TouchDesigner reads the cut list from Premiere as an EDL, builds a video library from it and plays exact moments when it receives MIDI, so the cuts you made in the edit become cues you can trigger in a show.</p></div></details><details><summary><span class="mono">04</span><span class="q">How are Ableton Live and TouchDesigner divided in a show?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">The Ableton Live timeline gives the show its structure and story. TouchDesigner adds generative visuals and sound. Control runs in both directions: you drive Ableton Live generatively from TouchDesigner and drive visuals from the Ableton Live timeline.</p></div></details><details><summary><span class="mono">05</span><span class="q">How long will I have access to the lessons?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">730 days. If you need more time, write to us and we extend it.</p></div></details><details><summary><span class="mono">06</span><span class="q">I work on a Mac. Will the course work for me?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Yes.</p></div></details><details><summary><span class="mono">07</span><span class="q">Is the free version of the software enough?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner Non-Commercial is enough for the whole course, with the limits of the free licence.</p></div></details><details><summary><span class="mono">08</span><span class="q">Do you issue a certificate?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">We don&#x27;t issue certificates.</p></div></details><a class="fq-7" href="mailto:stanislav.glazov@gmail.com"><span class="mono">09</span><span class="q">Have a question before paying? Write to <span class="id">stanislav.glazov@gmail.com</span></span><i aria-hidden="true"><svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></i></a></div>
+    <div class="pn lite fq-l" style="--c:var(--dat)"><div class="ph"><span class="id">/avlive201/faq1</span><span class="r">8 questions</span></div><details><summary><span class="mono">01</span><span class="q">Why take this course instead of free YouTube tutorials?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Tutorials show isolated patches. This course teaches how an entire stage-ready AV system fits together: bidirectional routing between Eurorack, Ableton Live and TouchDesigner, custom Python UI generation, and frame-accurate EDL video cueing.</p></div></details><details><summary><span class="mono">02</span><span class="q">Do I need a physical modular synthesizer?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">No. While two modules cover hardware CV routing and basic modular synthesis, all routing, Ableton integration, custom UI and EDL video playback workflows apply directly to software and DAW-based setups.</p></div></details><details><summary><span class="mono">03</span><span class="q">How does the Premiere EDL video cueing workflow work?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">You set cut points on the Adobe Premiere timeline and export an EDL file. A Python script in TouchDesigner converts the EDL into a preloaded clip table so MIDI notes from Ableton trigger exact cuts with zero lag.</p></div></details><details><summary><span class="mono">04</span><span class="q">How do Ableton Live and TouchDesigner share the workload in a live show?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Ableton Live holds the arrangement timeline and musical structure; TouchDesigner generates real-time visuals, custom interfaces and cued video, with MIDI, OSC and CV flowing both ways.</p></div></details><details><summary><span class="mono">05</span><span class="q">How long will I have access to the lessons?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">730 days. If you need more time, write to us and we extend it.</p></div></details><details><summary><span class="mono">06</span><span class="q">I work on a Mac. Will the course work for me?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Yes.</p></div></details><details><summary><span class="mono">07</span><span class="q">Is the free version of the software enough?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner Non-Commercial is enough for the whole course, with the limits of the free licence.</p></div></details><details><summary><span class="mono">08</span><span class="q">Do you issue a certificate?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">We don&#x27;t issue certificates.</p></div></details><a class="fq-7" href="mailto:stanislav.glazov@gmail.com"><span class="mono">→</span><span class="q">Have a question before paying? Write to <span class="id">stanislav.glazov@gmail.com</span></span><i aria-hidden="true"><svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></i></a></div>
   </div>
 </div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
