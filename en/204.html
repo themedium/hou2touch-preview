@@ -970,50 +970,65 @@ html{scroll-padding-block:73px 46px}
 .rc .rc-n>span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rc .rc-d{min-height:0}
 :is(.ph,.op,.hf-h,.cn-h,.wl-h,.n3-rh) u{display:none!important}
-/* 4. Модульная сетка 1B · 2B · 3B · 4B · 5A · 6A · 7A · 8A */
-.m2-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);margin-top:16px}
-@media (max-width:980px){.m2-split{grid-template-columns:1fr}}
-.m2-box{padding:18px 22px;border-radius:5px;border:1px solid var(--line2);background:var(--pnb);display:flex;flex-direction:column;gap:8px}
-.m2-box.prob{background:rgba(11,11,12,.04);box-shadow:inset 0 3px 0 var(--mute)}
-.m2-box.sol{box-shadow:inset 0 3px 0 var(--c,var(--k))}
-.m2-box .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
-.m2-box p{font:400 16px/24px var(--sans);color:var(--fg);margin:0}
+/* 4. Консенсус Awwwards Art Director × FWA Curator (Round 2): хирургическая доводка под сокращённый на 42% копирайт */
+@media (min-width:1061px){
+  .hero .hf{align-items:start}
+  .hero .hr{padding-top:4px}
+}
+.hero .ctas .btn.ghost{border-radius:999px}
 
-.bento-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.bento-3{grid-template-columns:1fr}}
-.bento-3>.pn{display:flex;flex-direction:column}
-.bento-3>.pn>.b3-b{padding:20px 22px;flex:1;display:flex;flex-direction:column;gap:12px}
-.bento-3>.pn>.pf{margin-top:auto}
-.b3-h{font:700 32px/.92 var(--disp);text-transform:uppercase;letter-spacing:.01em;color:var(--fg);margin:0}
+.m2-open{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:28px;padding-top:22px;border-top:1px solid var(--line2)}
+@media (max-width:980px){.m2-open{grid-template-columns:1fr}}
+.m2-open>div{display:flex;flex-direction:column;gap:8px}
+.m2-open .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.m2-open p{font:400 18px/26px var(--sans);color:var(--fg);margin:0;letter-spacing:-.01em}
 
-.grid-2x2{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.grid-2x2{grid-template-columns:1fr}}
-.grid-2x2>.pn{display:flex;flex-direction:column}
-.grid-2x2>.pn>.dat{flex:1}
-.grid-2x2>.pn>.pf{margin-top:auto}
-.pn.not-box{background:rgba(11,11,12,.045)}
+@media (min-width:1101px){
+  .chn-b{grid-template-columns:repeat(var(--n),minmax(0,1fr)) minmax(108px,auto);gap:0 24px;padding:26px 24px 24px}
+  .cn:not(:last-child)::after{width:24px;top:18.5px}
+  .cn .pt{top:14px}
+  .cn.o{align-self:start}
+}
+.cn>.cn-b{padding:12px 14px 14px}
 
-.tch-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
-@media (max-width:980px){.tch-grid{grid-template-columns:1fr}}
-.tch-card{display:flex;flex-direction:column}
-.tch-top{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;padding:20px 22px;border-bottom:1px solid var(--line);align-items:center;background:rgba(11,11,12,.03)}
-.tch-av{width:88px;height:88px;border-radius:4px;overflow:hidden;border:1px solid var(--line2);background:#0e0e10;display:grid;place-items:center;font:700 36px/1 var(--disp);color:#efeee9;box-shadow:inset 0 2px 0 var(--c,var(--k))}
-.tch-av img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08)}
-.tch-name{font:700 38px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0 0 4px}
-.tch-role{font:500 12px/1.4 var(--mono);color:var(--mute);margin:0}
-.tch-chips{display:flex;flex-wrap:wrap;gap:6px;padding:14px 22px 0}
-.tch-body{padding:14px 22px 20px;flex:1;display:grid;gap:10px}
-.tch-body p{font:400 15px/22px var(--sans);color:var(--txt);margin:0}
+.concept-dat{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
+@media (max-width:980px){.concept-dat{grid-template-columns:1fr}}
+.cd-col{border-top:1px solid var(--line2);padding-top:14px}
+.cd-h{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.cd-h .sq9{width:9px;height:9px;border-radius:2px;display:inline-block;flex:none}
+.cd-col .dat{padding:0}
+.cd-col .dat>li:last-child{border-bottom:0}
 
-.spec-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.roles-wall{margin:0 0 28px;padding:20px 0;border-block:1px solid var(--line2);font:700 clamp(44px,5.2vw,72px)/.9 var(--disp);text-transform:uppercase;color:var(--fg);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;align-items:baseline}
+.roles-wall span{display:inline-flex;align-items:baseline;gap:6px}
+.roles-wall sup{font:500 12px/1 var(--mono);color:var(--mute);letter-spacing:.04em}
+.out1>li{padding-right:28px}
+#audience .pn.lite{margin-bottom:40px!important}
+
+.career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:24px}
+@media (max-width:980px){.career-grid{grid-template-columns:1fr}}
+.career-card{padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.career-card .mono{font-size:11px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.career-card p{font:400 16px/24px var(--sans);color:var(--fg);margin:0}
+
+@media (min-width:981px){
+  .au-bio-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--gap);margin-top:4px}
+  .au-bio-grid .au-c{margin-top:0!important;max-width:none}
+}
+
+.dek code.mono,.tl code.mono,.spec-cell code.mono{font-size:.86em;color:var(--fg);background:rgba(239,238,233,.09);padding:2px 6px;border-radius:3px;text-transform:none;letter-spacing:.01em}
+.chs>.ch>.p{min-height:44px;padding:4px 16px 16px}
+
+.spec-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:var(--pgap)}
 @media (max-width:980px){.spec-cells{grid-template-columns:1fr}}
-.spec-cell{padding:14px 18px;border-radius:4px;background:#141416;border:1px solid var(--line2);box-shadow:inset 0 2px 0 var(--c,var(--k))}
+.spec-cell{padding:14px 16px;border-radius:4px;background:rgba(239,238,233,.025);border:1px solid var(--line);box-shadow:none}
 .spec-cell .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
 .spec-cell b{font:600 15px/21px var(--sans);color:var(--fg);display:block}
 
 .pgd2{border-top:1px solid var(--line2)}
 .pgd2 details{border-bottom:1px solid var(--line);background:rgba(239,238,233,.015);transition:background .2s}
 .pgd2 details[open]{background:rgba(239,238,233,.04)}
+.pgd2 details[open] .s-main span{display:none}
 .pgd2 summary{display:grid;grid-template-columns:56px minmax(0,1fr) auto 36px;align-items:center;gap:16px;padding:16px 20px;list-style:none;cursor:pointer}
 .pgd2 summary::-webkit-details-marker{display:none}
 .pgd2 .s-num{font:700 42px/.88 var(--disp)}
@@ -1022,8 +1037,16 @@ html{scroll-padding-block:73px 46px}
 .pgd2 .s-meta{font:500 12px/1 var(--mono);color:var(--mute);white-space:nowrap}
 .pgd2 .s-ic{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;font:400 18px/1 var(--mono);color:var(--fg);transition:transform .3s,background .2s}
 .pgd2 details[open] .s-ic{transform:rotate(45deg);background:var(--fg);color:var(--bg)}
-.pgd2 .s-body{display:grid;grid-template-columns:5fr 7fr;gap:24px;padding:14px 20px 22px 92px;border-top:1px solid var(--line)}
+.pgd2 .s-body{display:grid;grid-template-columns:5fr 7fr;gap:36px;padding:20px 24px 26px 92px;border-top:1px solid var(--line)}
+@media (min-width:981px){
+  .pgd2 .s-body>div:last-child{border-left:1px solid var(--line);padding-left:32px}
+}
 @media (max-width:980px){.pgd2 summary{grid-template-columns:44px minmax(0,1fr) 32px}.pgd2 .s-meta{display:none}.pgd2 .s-body{grid-template-columns:1fr;padding-left:20px}}
+.pgd2 .s-body .dat{border-top:1px solid var(--line)}
+.pgd2 .s-body .dat>li{grid-template-columns:38px minmax(0,1fr)}
+.pgd2 .s-body .dat>li:last-child{border-bottom:0}
+.pgd2 .s-body>div:last-child .dat>li>span:last-child{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pgd2 .s-body>div:last-child .dat>li>span:last-child i.mono{white-space:nowrap;font-variant-numeric:tabular-nums}
 
 .path-cgrid{display:grid;grid-template-columns:1fr 1fr;gap:var(--pgap);align-items:stretch}
 @media (max-width:980px){.path-cgrid{grid-template-columns:1fr}}
@@ -1035,11 +1058,22 @@ html{scroll-padding-block:73px 46px}
 .path-cc summary{font:500 12px/1.4 var(--mono);color:var(--fg);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
 .path-cc summary::-webkit-details-marker{display:none}
 
+.tier .tl li{display:block;position:relative;padding-left:20px;font:400 16px/24px var(--sans);color:var(--txt)}
+.tier .tl li::before{content:"+";position:absolute;left:0;top:0;font:500 13px/24px var(--mono);color:var(--mute)}
 .book-1col{display:grid;grid-template-columns:7fr 5fr;gap:var(--pgap);align-items:stretch}
 @media (max-width:980px){.book-1col{grid-template-columns:1fr}}
-.book-left{display:flex;flex-direction:column;gap:var(--pgap)}
-.book-left>.pn{flex:1;display:flex;flex-direction:column}
-.book-left>.pn>.pf{margin-top:auto}
+.book-1col .tier .tp p{min-height:0}
+.book-open-left{display:flex;flex-direction:column;justify-content:space-between;padding:14px 32px 4px 0;border-top:1px solid var(--line2)}
+.book-open-left.wide{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start;padding-right:0}
+@media (max-width:980px){.book-open-left.wide{grid-template-columns:1fr}}
+.book-open-left .b3-h{font:700 44px/.9 var(--disp);text-transform:uppercase;color:var(--fg);margin:0 0 12px}
+.book-open-left .book-out>.p{font:400 18px/26px var(--sans);color:var(--fg);max-width:44ch;margin:0}
+.book-open-left .dat{border-top:1px solid var(--line)}
+.book-open-left .dat>li:last-child{border-bottom:0}
+
+@media (min-width:981px){.fq-h{position:sticky;top:96px}}
+.fq-7{border-top:1px solid var(--line2);margin-top:4px}
+.fq-7>.mono{color:var(--hou)}
 </style>
 </head>
 <body>
@@ -1077,58 +1111,35 @@ html{scroll-padding-block:73px 46px}
 </header>
 <div class="paper pz"><section id="concept" class="sec" data-lkey="m1-about,m2" data-lmod="1,2"><div class="wrap">
   <div class="lbl mono"><b>01</b> About the course<i class="op" style="--c:var(--comp)">concept1 <u>COMP</u></i></div>
-  <div class="sh"><h2 class="H">My lights, screens and lasers need to work as one show</h2><div class="m2-split" data-lkey="m2">
-    <div class="m2-box prob"><span class="mono">01 · the starting point</span><p>A client brief still has to become a show the venue can carry, with safety limits, budget and documentation settled first. Then TouchDesigner, GrandMA, DMX and lasers have to run as one system and stay reliable through the show.</p></div>
-    <div class="m2-box sol" style="--c:var(--chop)"><span class="mono">02 · what you build</span><p>After the course you can develop a concept from a brief, check it against venue limits, and prepare a rental-based estimate. You visualise the rig in Capture, build the stage in Depence, and produce plots and patch lists. You build pixel mapping in TouchDesigner, program GrandMA2, share one rig between them over Art-Net, drive the console from MIDI and sound, and send graphics to a laser over Ethernet.</p></div>
+  <div class="sh"><h2 class="H">My lights, screens and lasers need to work as one show</h2><div class="m2-open" data-lkey="m2">
+    <div><span class="mono">01 · the starting point</span><p>A client brief still has to become a show the venue can carry, with safety limits, budget and documentation settled first. Then TouchDesigner, GrandMA, DMX and lasers have to run as one system and stay reliable through the show.</p></div>
+    <div style="--c:var(--chop)"><span class="mono">02 · what you build</span><p>After the course you can develop a concept from a brief, check it against venue limits, and prepare a rental-based estimate. You visualise the rig in Capture, build the stage in Depence, and produce plots and patch lists. You build pixel mapping in TouchDesigner, program GrandMA2, share one rig between them over Art-Net, drive the console from MIDI and sound, and send graphics to a laser over Ethernet.</p></div>
   </div></div>
-  <div class="bento-3" data-lkey="m1-about" style="margin-bottom:20px">
-    <div class="pn lite rv" style="--c:var(--comp)">
-      <div class="ph"><span class="id">/lights204/overview1</span><span class="r">01 · overview</span></div>
-      <div class="b3-b"><h3 class="b3-h" style="margin-bottom:6px">TouchDesigner 204: Real Lights — Level 1: Pre-production</h3><p class="p" style="margin:0 0 8px">This course develops the preproduction capability to translate creative live-event briefs into feasible lighting and multimedia productions. Learners integrate venue, safety, technical, commercial, and operational constraints to design spatial and control systems, visualise design intent, and produce the documentation and coordinated workflows required for reliable delivery.</p><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 L24.0 51.0 L72.0 41.0 L144.0 26.0 L240.0 6.0"/></svg></div>
-      <div class="pf"><span>/lights204/overview1</span><span>methodology</span></div>
-    </div>
-    <div class="pn lite rv" style="--c:var(--chop)">
-      <div class="ph"><span class="id">/lights204/structure1</span><span class="r">02 · structure</span></div>
-      <div class="b3-b"><div style="margin-bottom:10px"><b style="display:block;font:600 15px/20px var(--sans);color:var(--fg);margin-bottom:4px">TouchDesigner 204: Real Lights — Level 2: Production</b><p class="p" style="margin:0;font-size:15px">This course develops the ability to design and operate integrated real-time systems for lighting, pixel-mapping, moving heads, and lasers. Working across TouchDesigner and GrandMA over networked DMX, learners map visual and geometric data onto fixtures and lasers, program coordinated cue playback, drive the console from MIDI and sound, and keep a show&#x27;s output reliable and correctly prioritised.</p></div></div>
-      <div class="pf"><span>/lights204/structure1</span><span>architecture</span></div>
-    </div>
-    <div class="pn lite rv" style="--c:var(--dat)">
-      <div class="ph"><span class="id">/lights204/aims1</span><span class="r">03 · course aims</span></div>
-      <div class="b3-b" style="padding:12px 20px"><ol class="dat"><li><span class="n">01</span><span>To provide an understanding of how a live-event lighting and multimedia production moves from client brief to delivery: lighting and control technology, venue and safety limits, roles, budgets and supplier agreements.</span></li><li><span class="n">02</span><span>To develop practical skills in visualising lighting and screen concepts in Capture and Depence and in producing the plots, equipment reports, renders and patch lists that a production team works from.</span></li><li><span class="n">03</span><span>To provide an understanding of how DMX and Art-Net carry control data to lighting fixtures and lasers, how geometry and UV maps link a venue model to its LED screens, what a show-laser scanner can draw safely, and how TouchDesigner and a GrandMA2 console share control of one rig.</span></li><li><span class="n">04</span><span>To develop practical skills in building TouchDesigner control, pixel-mapping and show-control systems (MIDI and sound) for fixtures, moving heads and LED rigs, preparing scanner-safe laser graphics, and programming cue playback in GrandMA2.</span></li></ol></div>
-      <div class="pf"><span>/lights204/aims1</span><span>4 course aims</span></div>
-    </div>
-  </div>
-  <figure class="pn full chn rv" style="--c:var(--comp)">
-    <div class="ph"><span class="id">/lights204/chain1</span><span class="r">19 modules</span></div>
-    <p class="chn-g mono dt"><b>TouchDesigner 204: Real Lights — Level 1: Pre-production</b> · 8 lessons</p><div class="chn-b" style="--n:4"><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson1</div><div class="cn-b"><span class="mono dt">lesson 1 · 1h 32m</span>Lighting Fundamentals</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson3</div><div class="cn-b"><span class="mono dt">lesson 3 · 1h 15m</span>Venues, Constructions &amp; H&amp;S</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson6</div><div class="cn-b"><span class="mono dt">lesson 6 · 4h 16m</span>Capture Advanced &amp; Tech Docs</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson8</div><div class="cn-b"><span class="mono dt">lesson 8 · 55m</span>Depence: Lighting</div></div></div><p class="chn-g mono dt"><b>TouchDesigner 204: Real Lights — Level 2: Production</b> · 11 lessons</p><div class="chn-b" style="--n:4"><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson1</div><div class="cn-b"><span class="mono dt">lesson 1 · 2h 23m</span>TouchDesigner DMX / Art-Net</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson4</div><div class="cn-b"><span class="mono dt">lesson 4 · 2h 30m</span>GrandMA Patching (Fixtures, Pixel, Moving)</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson8</div><div class="cn-b"><span class="mono dt">lesson 8 · 2h 48m</span>Pixel Mapping</div></div><div class="cn" style="--c:var(--chop)"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson11</div><div class="cn-b"><span class="mono dt">lesson 11 · 1h 09m</span>Moving Heads</div></div><a class="cn o" href="#book" style="--c:var(--chop)"><span class="pt i"></span><div class="cn-h">out1</div><div class="cn-b">→ enroll</div></a></div>
-    <figcaption class="pf"><span>lessons in teaching order</span><a href="#program">full programme <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></figcaption>
+  <figure class="pn full chn rv" style="--c:var(--comp);margin-bottom:0">
+    <div class="ph"><span class="id">/lights204/chain1</span><span class="r">19 lessons in teaching order</span></div>
+    <p class="chn-g mono dt"><b>TouchDesigner 204: Real Lights — Level 1: Pre-production</b> · 8 lessons</p><div class="chn-b" style="--n:4"><a class="cn" href="#les-1" onclick="const d=document.getElementById('les-1');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson01</div><div class="cn-b"><span class="mono dt">1h 32m</span>Lighting Fundamentals</div></a><a class="cn" href="#les-3" onclick="const d=document.getElementById('les-3');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson03</div><div class="cn-b"><span class="mono dt">1h 15m</span>Venues, Constructions &amp; H&amp;S</div></a><a class="cn" href="#les-6" onclick="const d=document.getElementById('les-6');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson06</div><div class="cn-b"><span class="mono dt">4h 16m</span>Capture Advanced &amp; Tech Docs</div></a><a class="cn" href="#les-8" onclick="const d=document.getElementById('les-8');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson08</div><div class="cn-b"><span class="mono dt">55m</span>Depence: Lighting</div></a></div><p class="chn-g mono dt"><b>TouchDesigner 204: Real Lights — Level 2: Production</b> · 11 lessons</p><div class="chn-b" style="--n:4"><a class="cn" href="#les-9" onclick="const d=document.getElementById('les-9');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson01</div><div class="cn-b"><span class="mono dt">2h 23m</span>TouchDesigner DMX / Art-Net</div></a><a class="cn" href="#les-12" onclick="const d=document.getElementById('les-12');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson04</div><div class="cn-b"><span class="mono dt">2h 30m</span>GrandMA Patching (Fixtures, Pixel, Moving)</div></a><a class="cn" href="#les-16" onclick="const d=document.getElementById('les-16');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson08</div><div class="cn-b"><span class="mono dt">2h 48m</span>Pixel Mapping</div></a><a class="cn" href="#les-19" onclick="const d=document.getElementById('les-19');if(d)d.open=true;" style="--c:var(--chop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson11</div><div class="cn-b"><span class="mono dt">1h 09m</span>Moving Heads</div></a><a class="cn o" href="#book" style="--c:var(--chop)"><span class="pt i"></span><div class="cn-h">out1</div><div class="cn-b">→ enroll</div></a></div>
+    <figcaption class="pf"><span>click any lesson node to inspect in programme</span><a href="#program">full programme <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></figcaption>
   </figure>
 </div></section>
 <section id="audience" class="sec" data-lkey="m3,m4"><div class="wrap">
   <div class="lbl mono"><b>02</b> For whom &amp; outcomes<i class="op" style="--c:var(--dat)">audience1 <u>DAT</u></i></div>
-  <div class="sh"><h2 class="H">Who this course is for</h2><p class="dek">Who will get the most out of this programme — and what you will build.</p></div>
-  <div class="grid-2x2">
-    <div class="pn lite rv" style="--c:var(--chop)" data-lkey="m3">
-      <div class="ph"><span class="id">01 · /lights204/for_whom1</span><span class="r">for you if</span></div>
+  <div class="sh"><h2 class="H">Who this course is for</h2></div>
+  <div class="roles-wall" aria-label="Target audience roles"><span>AV Artists<sup>/01</sup></span><span>Live Electronic Musicians<sup>/02</sup></span><span>VJs &amp; Performers<sup>/03</sup></span><span>TouchDesigner Users<sup>/04</sup></span></div>
+  <div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
+    <div class="ph"><span class="id">/lights204/outputs1</span><span class="r">what you will be able to do</span></div>
+    <ol class="out1"><li><span class="n">01</span><span>Check a lighting and stage design against a venue&#x27;s safety limits, including structural and wind loads, haze and fire alarms, sound, heat, lasers and strobes, and decide what needs qualified approval.</span></li><li><span class="n">02</span><span>Visualise a lighting rig and media screens in Capture, from importing the venue model to testing fixtures and haze, then produce plots, equipment reports and concept renders for a production team.</span></li><li><span class="n">03</span><span>Control PARs and moving heads from TouchDesigner over Art-Net/DMX with smooth 16-bit movement, and aim moving heads at real-world positions using XYZ coordinates and stage markers.</span></li><li><span class="n">04</span><span>Build a pixel-mapping engine in TouchDesigner that turns fixture positions and video into RGBW channel data, packs it into DMX universes and sends it over Art-Net to a visualiser, then find and fix order and flip errors.</span></li><li><span class="n">05</span><span>Program GrandMA2 from patch to playback: patch conventional, pixel and moving fixtures, build groups and presets, and record cue sequences with tracking and shaped transitions.</span></li><li><span class="n">06</span><span>Share one rig between TouchDesigner and a GrandMA2 console over Art-Net, merge their signals by priority, and drive the console from MIDI and sound with fader, cue and beat triggers.</span></li></ol>
+  </div>
+  <div class="concept-dat" data-lkey="m3,m3-not">
+    <div class="cd-col">
+      <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/lights204/for_whom1 · for you if</div>
       <ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span><b>You work as a lighting designer, show designer or operator and want to add real-time control to your skills.</b> You will connect TouchDesigner and GrandMA over networked DMX, map visual and geometric data onto fixtures and lasers, and program coordinated cue playback.</span></li><li><span class="n" style="color:var(--chop)">+02</span><span><b>You design events and want your creative briefs to hold up in production.</b> You will work through venue, safety, technical, commercial and operational constraints, then design the spatial and control systems, visualise the intent and produce the documentation needed for delivery.</span></li><li><span class="n" style="color:var(--chop)">+03</span><span><b>You are a media engineer or build interactive systems and want to find out what it takes to control lights.</b> You will drive a console from MIDI and sound, send data to pixel-mapped fixtures, moving heads and lasers, and keep a show&#x27;s output reliable and correctly prioritised.</span></li><li><span class="n" style="color:var(--chop)">+04</span><span><b>You come from lighting or show operation and are curious how far TouchDesigner can go alongside a console.</b> You will try pixel-mapping, moving heads, lasers and sound-driven control in one integrated system, and see how that system is planned before it reaches the venue.</span></li></ol>
-      <div class="pf"><span>/lights204/for_whom1</span><span>4 profiles</span></div>
     </div>
-    <div class="pn lite not-box rv" style="--c:var(--comp)" data-lkey="m3-not">
-      <div class="ph"><span class="id">02 · /lights204/filter1</span><span class="r">not for you if</span></div>
+    <div class="cd-col">
+      <div class="cd-h mono"><span class="sq9" style="background:var(--mute)"></span>/lights204/filter1 · prerequisites &amp; not for you if</div>
       <ol class="dat"><li><span class="n">–</span><span>You want a tutorial on one effect or a single topic. This course goes from the brief through to operating an integrated show system.</span></li><li><span class="n">–</span><span>You have not completed TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, and do not have equivalent working knowledge of 3D scene navigation, modelling with primitives, lighting and shadows, materials and textures, and camera depth and clipping.</span></li><li><span class="n">–</span><span>You are already an expert in this field and have nothing specific you want to get from the course.</span></li></ol>
-      <div class="pf"><span>/lights204/filter1</span><span>prerequisite check</span></div>
-    </div>
-    <div class="pn lite rv" style="--c:var(--dat)" data-lkey="m4">
-      <div class="ph"><span class="id">03 · /lights204/outputs1</span><span class="r">what you will be able to do</span></div>
-      <ol class="dat"><li><span class="n">01</span><span>Check a lighting and stage design against a venue&#x27;s safety limits, including structural and wind loads, haze and fire alarms, sound, heat, lasers and strobes, and decide what needs qualified approval.</span></li><li><span class="n">02</span><span>Visualise a lighting rig and media screens in Capture, from importing the venue model to testing fixtures and haze, then produce plots, equipment reports and concept renders for a production team.</span></li><li><span class="n">03</span><span>Control PARs and moving heads from TouchDesigner over Art-Net/DMX with smooth 16-bit movement, and aim moving heads at real-world positions using XYZ coordinates and stage markers.</span></li><li><span class="n">04</span><span>Build a pixel-mapping engine in TouchDesigner that turns fixture positions and video into RGBW channel data, packs it into DMX universes and sends it over Art-Net to a visualiser, then find and fix order and flip errors.</span></li><li><span class="n">05</span><span>Program GrandMA2 from patch to playback: patch conventional, pixel and moving fixtures, build groups and presets, and record cue sequences with tracking and shaped transitions.</span></li><li><span class="n">06</span><span>Share one rig between TouchDesigner and a GrandMA2 console over Art-Net, merge their signals by priority, and drive the console from MIDI and sound with fader, cue and beat triggers.</span></li></ol>
-      <div class="pf"><span>/lights204/outputs1</span><span>6 practical outcomes</span></div>
-    </div>
-    <div class="pn lite rv" style="--c:var(--top)" data-lkey="m16">
-      <div class="ph"><span class="id">04 · /lights204/career1</span><span class="r">where the course leads</span></div>
-      <ol class="dat"><li><span class="n">→</span><span>Apply the tools and project files from <b>Real Lights</b> directly in your own audiovisual sets, installations, and studio pipelines.</span></li><li><span class="n">→</span><span>Continue to <a class="u" href="101.html"><b>Extreme I (/101)</b></a> — Sound-reactive real-time visuals in TouchDesigner: workspace, CHOPs, TOPs, compositing, custom movie player, and intro to 3D.</span></li><li><span class="n">→</span><span>Continue to <a class="u" href="102.html"><b>Extreme II (/102)</b></a> — Procedural SOP geometry, GPU instancing, PBR rendering, particles, Bullet dynamics, Kinect tracking, 3D UI, and Ableton control.</span></li></ol>
-      <div class="pf"><span>/lights204/career1</span><span>next steps in curriculum</span></div>
     </div>
   </div>
+  
 </div></section>
 <section id="author" class="sec light paper" data-lkey="m8"><div class="wrap">
   <div class="lbl mono"><b>03</b> Your teachers<i class="op" style="--c:var(--comp)">author1 <u>COMP</u></i></div>
@@ -1163,15 +1174,14 @@ html{scroll-padding-block:73px 46px}
 <div class="seam" aria-hidden="true"></div>
 <section id="course" class="sec" data-lkey="m15,m7"><div class="wrap">
   <div class="lbl mono"><b>04</b> Course facts &amp; format<i class="op" style="--c:var(--comp)">passport1 <u>COMP</u></i></div>
-  <div class="sh"><h2 class="H">How the course works</h2><p class="dek">Course format, study materials, and technical specification.</p></div>
-  <div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--chop);--d:0"><div class="ph">hours1</div><div class="cv0"><b>40</b><span class="mono">h video</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H6.0 V38.0 H9.0 V56 H21.0 V40.4 H24.0 V56 H36.0 V41.4 H39.0 V56 H51.0 V44.1 H54.0 V56 H66.0 V38.4 H69.0 V56 H81.0 V6.0 H84.0 V56 H96.0 V40.8 H99.0 V56 H111.0 V45.3 H114.0 V56 H126.0 V28.1 H129.0 V56 H141.0 V16.7 H144.0 V56 H156.0 V26.3 H159.0 V56 H171.0 V26.7 H174.0 V56 H186.0 V24.0 H189.0 V56 H201.0 V32.6 H204.0 V56 H216.0 V21.0 H219.0 V56 H231.0 V23.2 H234.0 V56 H240"/></svg><p class="p">lessons: 1:32 · 1:20 · 1:15 · 1:01 · 1:30 · 4:16 · 1:18 · 0:55 …</p><div class="pf"><span>passport1/hours1</span><span>bars · 19</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:1"><div class="ph">lessons1</div><div class="cv0"><b>19</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V52.9 H15.0 V49.8 H30.0 V46.6 H45.0 V43.5 H60.0 V40.4 H75.0 V37.2 H90.0 V34.1 H105.0 V31.0 H120.0 V27.9 H135.0 V24.8 H150.0 V21.6 H165.0 V18.5 H180.0 V15.4 H195.0 V12.2 H210.0 V9.1 H225.0 V6.0 H240"/></svg><p class="p">2 levels, 19 lessons (TouchDesigner 204: Real Lights — Level 1: Pre-production: 8, TouchDesigner 204: Real Lights — Level 2: Production: 11)</p><div class="pf"><span>passport1/lessons1</span><span>step · 1–19</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:2"><div class="ph">access1</div><div class="cv0"><b>730</b><span class="mono">days access</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H10.8 V6 H37.2 V56 H70.8 V6 H97.2 V56 H130.8 V6 H157.2 V56 H190.8 V6 H217.2 V56 H240"/></svg><p class="p">extended on request if you need more time</p><div class="pf"><span>passport1/access1</span><span>hold · 730d</span></div></div></div>
-  <div class="bento-3" style="margin-top:20px" data-lkey="m7"><div class="pn lite rv" style="--c:var(--chop)"><div class="ph"><span class="id">/lights204/step_01</span><span class="r">recorded lessons</span></div><div class="b3-b"><h3 class="b3-h">01 · Recorded Format</h3><p class="p" style="margin:0">The course is recorded and self-paced: 19 lessons with 53 videos, 40 hours of video in total, all in English.</p></div></div><div class="pn lite rv" style="--c:var(--chop)"><div class="ph"><span class="id">/lights204/step_02</span><span class="r">practice & files</span></div><div class="b3-b"><h3 class="b3-h">02 · Project Files & Practice</h3><p class="p" style="margin:0">Plan time for practice in addition to watching the videos.</p></div></div><div class="pn lite rv" style="--c:var(--chop)"><div class="ph"><span class="id">/lights204/step_03</span><span class="r">pace & access</span></div><div class="b3-b"><h3 class="b3-h">03 · Pace & Access</h3><p class="p" style="margin:0">You keep access to the lessons for 730 days.</p></div></div></div>
-  <div class="spec-cells" data-lkey="m15"><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Structure</span><b>2 levels, 19 lessons (TouchDesigner 204: Real Lights — Level 1: Pre-production: 8, TouchDesigner 204: Real Lights — Level 2: Production: 11)</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Video</span><b>53 videos, 40 h in total</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Pace</span><b>self-paced; access for 730 days; on top of the video: practice</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Language</span><b>English</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Level</span><b>Intermediate</b></div><div class="spec-cell" style="--c:var(--chop)"><span class="mono">Before you start</span><b>Completion of TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, or an equivalent working knowledge of 3D scene navigation and object manipulation, 3D modelling with primitives, lighting and shadow concepts, material and texture workflows, and camera depth and clipping concepts.</b></div></div>
+  <div class="sh" data-lkey="m7"><h2 class="H">How the course works</h2><p class="dek" style="max-width:66ch">The course is recorded and self-paced: 19 lessons with 53 videos, 40 hours of video in total, all in English. Plan time for practice in addition to watching the videos. You keep access to the lessons for 730 days.</p></div>
+  <div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--chop);--d:0"><div class="ph">hours1</div><div class="cv0"><b>40</b><span class="mono">h video</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H6.0 V38.0 H9.0 V56 H21.0 V40.4 H24.0 V56 H36.0 V41.4 H39.0 V56 H51.0 V44.1 H54.0 V56 H66.0 V38.4 H69.0 V56 H81.0 V6.0 H84.0 V56 H96.0 V40.8 H99.0 V56 H111.0 V45.3 H114.0 V56 H126.0 V28.1 H129.0 V56 H141.0 V16.7 H144.0 V56 H156.0 V26.3 H159.0 V56 H171.0 V26.7 H174.0 V56 H186.0 V24.0 H189.0 V56 H201.0 V32.6 H204.0 V56 H216.0 V21.0 H219.0 V56 H231.0 V23.2 H234.0 V56 H240"/></svg><p class="p">lessons: 1:32 · 1:20 · 1:15 · 1:01 · 1:30 · 4:16 · 1:18 · 0:55 …</p><div class="pf"><span>passport1/hours1</span><span>bars · 19</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:1"><div class="ph">lessons1</div><div class="cv0"><b>19</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V52.9 H15.0 V49.8 H30.0 V46.6 H45.0 V43.5 H60.0 V40.4 H75.0 V37.2 H90.0 V34.1 H105.0 V31.0 H120.0 V27.9 H135.0 V24.8 H150.0 V21.6 H165.0 V18.5 H180.0 V15.4 H195.0 V12.2 H210.0 V9.1 H225.0 V6.0 H240"/></svg><p class="p">53 topic videos · downloadable project files</p><div class="pf"><span>passport1/lessons1</span><span>step · 1–19</span></div></div><div class="pn ch rv" style="--c:var(--chop);--d:2"><div class="ph">access1</div><div class="cv0"><b>730</b><span class="mono">days access</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H10.8 V6 H37.2 V56 H70.8 V6 H97.2 V56 H130.8 V6 H157.2 V56 H190.8 V6 H217.2 V56 H240"/></svg><p class="p">self-paced · extended on request</p><div class="pf"><span>passport1/access1</span><span>hold · 730d</span></div></div></div>
+  <div class="spec-cells" data-lkey="m15"><div class="spec-cell"><span class="mono">Language</span><b>English</b></div><div class="spec-cell"><span class="mono">Level</span><b>Intermediate</b></div><div class="spec-cell"><span class="mono">Before you start</span><b>Completion of TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, or an equivalent working knowledge of 3D scene navigation and object manipulation, 3D modelling with primitives, lighting and shadow concepts, material and texture workflows, and camera depth and clipping concepts.</b></div></div>
 </div></section>
 <section id="program" class="sec" data-lkey="m5"><div class="wrap">
   <div class="lbl mono"><b>05</b> Programme<i class="op" style="--c:var(--comp)">program1 <u>COMP</u></i></div>
   <div class="sh"><h2 class="H">Programme — 2 modules · 19 lessons</h2><p class="dek">Each course module in teaching order, with its summary and lesson breakdown.</p></div>
-  <div class="path-cgrid"><article class="pn pgm path-cc rv" style="--c:var(--chop)">
+  <div class="path-cgrid"><article class="pn pgm path-cc rv" id="les-1" style="--c:var(--chop)">
       <div class="ph"><span class="id">/lights204/course1</span><span class="r">8 lessons · 13 h</span></div>
       <div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/204.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">module 01 · stage &amp; light</span><b>/01</b></div><div class="cc-vw-box"><img src="img/covers/204.png" alt="TouchDesigner 204: Real Lights — Level 1: Pre-production" loading="lazy" decoding="async"></div></div>
       <div class="path-cc-b">
@@ -1183,7 +1193,7 @@ html{scroll-padding-block:73px 46px}
         </details>
       </div>
       <div class="pf"><span>module 01</span><span>8 lessons · 13 h</span></div>
-    </article><article class="pn pgm path-cc rv" style="--c:var(--chop)">
+    </article><article class="pn pgm path-cc rv" id="les-2" style="--c:var(--chop)">
       <div class="ph"><span class="id">/lights204/course2</span><span class="r">11 lessons · 27 h</span></div>
       <div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/204.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">module 02 · stage &amp; light</span><b>/02</b></div><div class="cc-vw-box"><img src="img/covers/204.png" alt="TouchDesigner 204: Real Lights — Level 2: Production" loading="lazy" decoding="async"></div></div>
       <div class="path-cc-b">
@@ -1223,20 +1233,20 @@ html{scroll-padding-block:73px 46px}
 </div></section>
 <section id="book" class="sec paper tf" data-lkey="m11,m11-payment,m14"><div class="edge t" aria-hidden="true"></div><div class="wrap">
   <div class="lbl mono"><b>08</b> Pricing &amp; payment<i class="op" style="--c:var(--dat)">book1 <u>DAT</u></i></div>
-  <div class="sh"><h2 class="H">Price &amp; What&#x27;s Included</h2><p class="dek">Instant access to all recorded video lessons and project files.</p></div>
+  <div class="sh"><h2 class="H">Price &amp; What&#x27;s Included</h2></div>
   <div class="book-1col">
-      <div class="book-left"><div class="pn lite rv" style="--c:var(--chop)" data-lkey="m14">
-        <div class="ph"><span class="id">/lights204/summary1</span><span class="r">what you take away</span></div>
-        <div style="padding:20px 24px">
-          <h3 class="b3-h" style="margin-bottom:8px">From venue check to light show</h3>
-          <p class="p" style="margin:0">You will check a design against a venue&#x27;s safety limits, visualise the rig in Capture and program it on GrandMA2. You will also control fixtures from TouchDesigner, then share one rig between TouchDesigner and the console over Art-Net to build light shows.</p>
-        </div>
-        <div class="pf"><span>/lights204/summary1</span><span>40 h video</span></div>
-      </div><div class="pn lite rv" style="--c:var(--dat)" data-lkey="m11-payment">
-        <div class="ph"><span class="id">/lights204/payment1</span><span class="r">payment & vat</span></div>
+      <div class="book-open-left" data-lkey="m14,m11-payment">
+      <div class="book-out">
+        <div class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>/lights204/summary1 · outcome</div>
+        <h3 class="b3-h">From venue check to light show</h3>
+        <p class="p">You will check a design against a venue&#x27;s safety limits, visualise the rig in Capture and program it on GrandMA2. You will also control fixtures from TouchDesigner, then share one rig between TouchDesigner and the console over Art-Net to build light shows.</p>
+      </div>
+      <div class="book-pay">
+        <div class="cd-h mono"><span class="sq9" style="background:var(--dat)"></span>/lights204/payment1 · payment &amp; vat</div>
         <ol class="dat"><li><span class="n">01</span><span>The price includes German VAT (19%). If you have an EU VAT ID and are located outside Germany, contact us before paying to avoid double tax.</span></li><li><span class="n">02</span><span>You can pay by card (Stripe), PayPal or bank transfer.</span></li></ol>
-        <div class="pf"><span>questions → stanislav.glazov@gmail.com</span><span>instant access</span></div>
-      </div></div>
+        <p class="mono" style="margin-top:16px;font-size:12px;color:var(--mute)">questions → <a href="mailto:stanislav.glazov@gmail.com" style="color:var(--fg)">stanislav.glazov@gmail.com</a></p>
+      </div>
+    </div>
       <article class="pn full tier km dk rv" style="--c:var(--k);--d:0;margin:0" data-lkey="m11">
       <div class="ph">tier1<span class="r">40 h video</span></div>
       <div class="tb">
@@ -1254,7 +1264,7 @@ html{scroll-padding-block:73px 46px}
   <div class="lbl mono"><b>09</b> FAQ<i class="op" style="--c:var(--dat)">faq1 <u>DAT</u></i></div>
   <div class="fq">
     <div class="fq-h sh"><h2 class="H">FAQ</h2></div>
-    <div class="pn lite fq-l" style="--c:var(--dat)"><div class="ph"><span class="id">/lights204/faq1</span><span class="r">10 questions</span></div><details><summary><span class="mono">01</span><span class="q">Why pay for the course if there are free tutorials on YouTube?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">A free tutorial is often enough for a single technique. This course follows one line through a show across 40 hours of recorded video: client brief, venue and safety limits, budget, visualisation in Capture and Depence, then TouchDesigner and a GrandMA2 console sharing control of one rig over Art-Net. You get the whole chain in one order, including the plots, equipment reports and patch lists a production team works from.</p></div></details><details><summary><span class="mono">02</span><span class="q">What is the difference between Level 1 and Level 2?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Level 1 is pre-production: you develop a concept from a brief, check it against the venue, prepare an equipment estimate, plan power, signal and control, and visualise the design in Capture and Depence. Level 2 is production: you build control and pixel mapping in TouchDesigner, program GrandMA2 from patch to playback, drive the console from MIDI and sound, and prepare laser graphics.</p></div></details><details><summary><span class="mono">03</span><span class="q">Which software does the course work in?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner, GrandMA2 onPC, Capture and Depence. Ableton Live appears in the show control part, where it drives the console with MIDI and beat triggers.</p></div></details><details><summary><span class="mono">04</span><span class="q">How far does the laser part go?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">You learn how a show-laser scanner draws geometry and which speeds, sizes and point orders can damage it. Then you prepare, colour and animate laser graphics in TouchDesigner and send them to a Capture preview and to a real laser over Ethernet.</p></div></details><details><summary><span class="mono">05</span><span class="q">Will this course qualify me to approve the safety of a rig?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">No. Level 1 goes through structural and wind loads, haze and fire alarms, sound, heat, lasers and strobes, and who approves them. You learn to check a design against these limits and decide what needs qualified approval. The approval itself stays with those qualified people.</p></div></details><details><summary><span class="mono">06</span><span class="q">How long will I have access to the lessons?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">730 days. If you need more time, write to us and we extend it.</p></div></details><details><summary><span class="mono">07</span><span class="q">I work on a Mac. Will the course work for me?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Yes.</p></div></details><details><summary><span class="mono">08</span><span class="q">Is the free version of the software enough?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner Non-Commercial is enough for the whole course, with the limits of the free licence.</p></div></details><details><summary><span class="mono">09</span><span class="q">Is there a discount on software licences?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Students of the course get TouchDesigner Commercial for $400 instead of $600.</p></div></details><details><summary><span class="mono">10</span><span class="q">Do you issue a certificate?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">We don&#x27;t issue certificates.</p></div></details><a class="fq-7" href="mailto:stanislav.glazov@gmail.com"><span class="mono">11</span><span class="q">Have a question before paying? Write to <span class="id">stanislav.glazov@gmail.com</span></span><i aria-hidden="true"><svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></i></a></div>
+    <div class="pn lite fq-l" style="--c:var(--dat)"><div class="ph"><span class="id">/lights204/faq1</span><span class="r">10 questions</span></div><details><summary><span class="mono">01</span><span class="q">Why pay for the course if there are free tutorials on YouTube?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">A free tutorial is often enough for a single technique. This course follows one line through a show across 40 hours of recorded video: client brief, venue and safety limits, budget, visualisation in Capture and Depence, then TouchDesigner and a GrandMA2 console sharing control of one rig over Art-Net. You get the whole chain in one order, including the plots, equipment reports and patch lists a production team works from.</p></div></details><details><summary><span class="mono">02</span><span class="q">What is the difference between Level 1 and Level 2?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Level 1 is pre-production: you develop a concept from a brief, check it against the venue, prepare an equipment estimate, plan power, signal and control, and visualise the design in Capture and Depence. Level 2 is production: you build control and pixel mapping in TouchDesigner, program GrandMA2 from patch to playback, drive the console from MIDI and sound, and prepare laser graphics.</p></div></details><details><summary><span class="mono">03</span><span class="q">Which software does the course work in?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner, GrandMA2 onPC, Capture and Depence. Ableton Live appears in the show control part, where it drives the console with MIDI and beat triggers.</p></div></details><details><summary><span class="mono">04</span><span class="q">How far does the laser part go?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">You learn how a show-laser scanner draws geometry and which speeds, sizes and point orders can damage it. Then you prepare, colour and animate laser graphics in TouchDesigner and send them to a Capture preview and to a real laser over Ethernet.</p></div></details><details><summary><span class="mono">05</span><span class="q">Will this course qualify me to approve the safety of a rig?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">No. Level 1 goes through structural and wind loads, haze and fire alarms, sound, heat, lasers and strobes, and who approves them. You learn to check a design against these limits and decide what needs qualified approval. The approval itself stays with those qualified people.</p></div></details><details><summary><span class="mono">06</span><span class="q">How long will I have access to the lessons?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">730 days. If you need more time, write to us and we extend it.</p></div></details><details><summary><span class="mono">07</span><span class="q">I work on a Mac. Will the course work for me?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Yes.</p></div></details><details><summary><span class="mono">08</span><span class="q">Is the free version of the software enough?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">TouchDesigner Non-Commercial is enough for the whole course, with the limits of the free licence.</p></div></details><details><summary><span class="mono">09</span><span class="q">Is there a discount on software licences?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">Students of the course get TouchDesigner Commercial for $400 instead of $600.</p></div></details><details><summary><span class="mono">10</span><span class="q">Do you issue a certificate?</span><i aria-hidden="true"></i></summary><div class="fq-a"><p class="p">We don&#x27;t issue certificates.</p></div></details><a class="fq-7" href="mailto:stanislav.glazov@gmail.com"><span class="mono">→</span><span class="q">Have a question before paying? Write to <span class="id">stanislav.glazov@gmail.com</span></span><i aria-hidden="true"><svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></i></a></div>
   </div>
 </div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
