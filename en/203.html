@@ -1114,9 +1114,14 @@ html{scroll-padding-block:73px 46px}
 .ix-rv blockquote p{font:400 clamp(24px,2.3vw,34px)/1.22 var(--sans)!important;letter-spacing:-.025em}
 .ix-rv{padding:36px!important}
 .ix-buy{padding-top:clamp(64px,8vw,120px)!important;padding-bottom:clamp(64px,8vw,120px)!important;border-top:1px solid var(--line2)}
-.ix-buyline{font:700 clamp(40px,5vw,84px)/.92 var(--disp)!important;letter-spacing:.005em!important;text-transform:uppercase}
+.ix-buyline{font:700 clamp(34px,3.9vw,66px)/.95 var(--disp)!important;letter-spacing:.005em!important;text-transform:uppercase}
 .ix-buyline strong{font-weight:700}
 .ix-buyline .btn{height:64px;padding:0 36px;font-size:13px}
+.ix-buyline{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:center}
+.ix-buyline .btn{margin:0!important;justify-self:end}
+.ix-buy .wrap{border-top:2px solid var(--c,var(--top));padding-top:clamp(28px,3vw,44px)}
+@media (min-width:981px){#faq .ix-ask{margin-left:33.8%;width:66.2%}}
+@media (max-width:640px){.ix-buyline{grid-template-columns:1fr}.ix-buyline .btn{justify-self:start}}
 .ix-ask{border:1px solid var(--line2)!important;border-radius:6px;padding:24px 26px!important}
 .ix-ask p:first-child strong{font:700 22px/1 var(--disp);text-transform:uppercase;letter-spacing:.01em}
 @media (max-width:980px){.ix-2c{grid-template-columns:1fr}}
@@ -1768,7 +1773,7 @@ document.fonts.ready.then(()=>{
   <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div>
 </section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="ix-rvs"><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>It&#x27;s like watching a professional at work.</p></blockquote><figcaption class="mono">Michael Straeubig · Systems Theory and Practice, Germany · Media Server · 30.06.2020</figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>The subdivision in small components ready to be implemented in a project</p></blockquote><figcaption class="mono">Alessandro Grisendi · Sound/Video Technician, Italia · Media Server · 28.06.2020</figcaption></figure></div></div></section>
-<section id="buy" class="sec ix-buy" data-lkey="m-buy"><div class="wrap"><p class="ix-buyline"><b>TouchDesigner 203: Developing Media Server</b> — <span data-h2t="price" data-slug="/203">€525</span><span class="ix-vh"> · </span><a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll</a></p></div></section>
+<section id="buy" class="sec ix-buy" data-lkey="m-buy"><div class="wrap"><p class="ix-buyline"><span class="ix-bt"><b>TouchDesigner 203: Developing Media Server</b> — <span data-h2t="price" data-slug="/203">€525</span></span><span class="ix-vh"> · </span><a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll</a></p></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>06</b> Courses</div>
   <div class="sh"><h2 class="H">Learning Paths &amp; Courses</h2><p class="dek">Related courses and learning paths in the Hou2Touch curriculum.</p></div>
