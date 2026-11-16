@@ -1097,6 +1097,19 @@ html{scroll-padding-block:73px 46px}
 .ix-buyline .btn{margin-left:auto}
 .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 #book .book-1col>.book-open-left{order:-1}
+/* ---- buy v2: closing block ---- */
+.ix-buy{padding-top:clamp(48px,6vw,96px)!important;padding-bottom:clamp(48px,6vw,96px)!important;border-top:0!important}
+.ix-buy .wrap{position:relative;border:1px solid var(--line2)!important;border-top:2px solid var(--c,var(--top))!important;padding:clamp(28px,4vw,64px)!important;overflow:hidden;isolation:isolate}
+.ix-buy .wrap::before{content:"";position:absolute;inset:0;z-index:-1;background-color:var(--bg2,#121214);background-image:radial-gradient(circle,var(--top) 1.7px,transparent 2.1px);background-size:8px 8px;opacity:1;-webkit-mask-image:linear-gradient(100deg,transparent 38%,rgba(0,0,0,.35) 60%,#000 100%);mask-image:linear-gradient(100deg,transparent 38%,rgba(0,0,0,.35) 60%,#000 100%)}
+.ix-buy .wrap{background:var(--bg2,#121214)}
+.ix-buyline{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(220px,auto)!important;grid-template-rows:auto auto;column-gap:clamp(28px,5vw,96px)!important;row-gap:18px!important;align-items:end!important;margin:0}
+.ix-buyline .ix-bt{display:contents}
+.ix-buyline strong,.ix-buyline b{grid-column:1;grid-row:1/3;align-self:center;font:700 clamp(40px,5.2vw,88px)/.9 var(--disp)!important;letter-spacing:.005em;text-transform:uppercase;max-width:14ch;color:var(--fg,#efeee9)}
+.ix-buyline .ix-dash{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ix-buyline .ix-bp{grid-column:2;grid-row:1;justify-self:stretch;font:700 clamp(84px,9vw,150px)/.8 var(--disp)!important;text-shadow:0 0 0 #000;letter-spacing:0;color:var(--fg,#efeee9)}
+.ix-buyline .btn{grid-column:2;grid-row:2;justify-self:stretch!important;justify-content:center;height:64px!important;color:#fff!important;font-size:13px!important}
+.ix-buy .wrap{border-top:4px solid var(--top)!important;margin-left:var(--pad,40px)!important;margin-right:var(--pad,40px)!important;border-radius:6px}
+@media (max-width:760px){.ix-buyline{grid-template-columns:1fr!important}.ix-buyline strong,.ix-buyline b{grid-row:auto;grid-column:1}.ix-buyline .ix-bp,.ix-buyline .btn{grid-column:1;grid-row:auto}.ix-buy .wrap::before{-webkit-mask-image:linear-gradient(180deg,transparent 40%,#000 100%);mask-image:linear-gradient(180deg,transparent 40%,#000 100%)}}
 /* ---- module tiles, prereq pills ---- */
 .ix-mods{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line2);border-left:1px solid var(--line2)}
 .ix-mods li{display:flex;flex-direction:column;gap:10px;min-height:150px;padding:20px 22px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
@@ -1946,7 +1959,7 @@ document.fonts.ready.then(()=>{
   <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div>
 </section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="ix-rvs"><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>It&#x27;s like watching a professional at work.</p></blockquote><figcaption class="mono">Michael Straeubig · Systems Theory and Practice, Germany · Media Server · 30.06.2020</figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>The subdivision in small components ready to be implemented in a project</p></blockquote><figcaption class="mono">Alessandro Grisendi · Sound/Video Technician, Italia · Media Server · 28.06.2020</figcaption></figure></div></div></section>
-<section id="buy" class="sec ix-buy" data-lkey="m-buy"><div class="wrap"><p class="ix-buyline"><span class="ix-bt"><b>TouchDesigner 203: Developing Media Server</b> — <span data-h2t="price" data-slug="/203">€525</span></span><span class="ix-vh"> · </span><a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll</a></p></div></section>
+<section id="buy" class="sec ix-buy" data-lkey="m-buy"><div class="wrap"><p class="ix-buyline"><span class="ix-bt"><b>TouchDesigner 203: Developing Media Server</b><span class="ix-dash"> — </span><span class="ix-bp"><span data-h2t="price" data-slug="/203">€525</span></span></span><span class="ix-vh"> · </span><a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll</a></p></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>06</b> Courses</div>
   <div class="sh"><h2 class="H">Learning Paths &amp; Courses</h2><p class="dek">Related courses and learning paths in the Hou2Touch curriculum.</p></div>
