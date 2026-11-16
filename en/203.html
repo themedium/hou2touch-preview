@@ -1520,6 +1520,25 @@ html:not(.x-old) body .ix-k{margin-bottom:var(--r-sub)!important}
 html:not(.x-old) body #audience .cd-col>.cd-h.mono:first-child,html:not(.x-old) body #audience .cd-col>h3.b3-h{margin-bottom:var(--r-sub)!important}
 html:not(.x-old) body .ix-blk>h3.ix-h2{margin-bottom:var(--r-sub)!important}
 html:not(.x-old) body .pn.lite[data-lkey="m4"] .ph{margin-bottom:var(--r-sub)!important}
+/* before you start (16.11): two columns on the audience grid, course chips in one row, punctuation kept for readers but hidden */
+html body [data-lkey="m-prereq"]{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:0;align-items:start}
+html body [data-lkey="m-prereq"]>h3{grid-column:1/-1}
+html body [data-lkey="m-prereq"]>p{margin:0!important}
+html body [data-lkey="m-prereq"]>p:not(.pr-row){grid-column:1;grid-row:2/span 2;max-width:34em}
+html body [data-lkey="m-prereq"]>p.pr-row{grid-column:2;display:flex;flex-wrap:wrap;align-items:center;gap:12px 10px}
+html body [data-lkey="m-prereq"]>p.pr-row+p.pr-row{margin-top:24px!important;grid-row:3}
+html body [data-lkey="m-prereq"]>p.pr-row:first-of-type,html body [data-lkey="m-prereq"]>h3+p+p.pr-row{grid-row:2}
+html body .pr-l{flex:0 0 100%;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+html body .pr-t{font:400 16px/24px var(--sans)}
+html body [data-lkey="m-prereq"] a.u{display:inline-flex!important;align-items:center;min-height:40px;margin:0!important;padding:0 16px!important;border:1px solid var(--ink,#0b0b0c)!important;border-radius:999px!important;font:500 15px/1 var(--sans)!important;letter-spacing:-.01em;line-height:1!important;color:var(--ink,#0b0b0c)!important;text-decoration:none!important;white-space:nowrap;background:transparent!important;transition:background .15s,color .15s}
+html body [data-lkey="m-prereq"] a.u::after{content:"→";margin-left:10px;font:500 12px/1 var(--mono)}
+html body [data-lkey="m-prereq"] a.u:hover,html body [data-lkey="m-prereq"] a.u:focus-visible{background:var(--ink,#0b0b0c)!important;color:var(--paper,#e9e7e0)!important}
+@media (max-width:900px){
+html body [data-lkey="m-prereq"]{display:block!important}
+html body [data-lkey="m-prereq"]>p:not(.pr-row){max-width:none}
+html body [data-lkey="m-prereq"]>p.pr-row{margin-top:24px!important}
+html body [data-lkey="m-prereq"] a.u{min-height:44px}
+}
 /* ---- overview variants: board (default) · ticks · matrix ---- */
 .ix-mods{display:none!important}
 .ix-board,.ix-vmx,.ix-ticks,.ix-seq,.ix-poster,.ix-film,.ix-nodes{display:none}
@@ -2669,8 +2688,8 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   
 <div class="ix-blk" data-lkey="m-prereq"><h3 class="ix-h2">Before you start</h3>
 <p>Completion of TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, or an equivalent working knowledge of basic TOP and CHOP manipulation, GLSL basics, Table DAT basics, Timer CHOP basics, and CHOP Execute scripting.</p>
-<p>Required courses: <a class="u" href="/101">TouchDesigner 101: Extreme I</a>, <a class="u" href="/102">TouchDesigner 102: Extreme II</a></p>
-<p>Not taken them yet? Both are in the <a class="u" href="/extreme">TouchDesigner Extreme Bundle (EN)</a>.</p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
+<p class="pr-row"><span class="pr-l">Required courses:</span><a class="u" href="/101">TouchDesigner 101: Extreme I</a><span class="ix-vh">, </span><a class="u" href="/102">TouchDesigner 102: Extreme II</a></p>
+<p class="pr-row"><span class="pr-t">Not taken them yet? Both are in the</span><a class="u" href="/extreme">TouchDesigner Extreme Bundle (EN)</a><span class="ix-vh">.</span></p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
     <div class="ph"><span class="r">What you will be able to do</span></div>
     <ol class="out1"><li><span class="n">01</span><span>Design a media server in TouchDesigner that keeps the interface apart from the model, so the same model can be driven from sliders, OSC or other controllers, and generate a layer&#x27;s controls from a table with a Python script and save its settings as presets in JSON files.</span></li><li><span class="n">02</span><span>Build a movie player and a preloaded movie library with live camera inputs, timed crossfades between movies and a clickable movie browser with Render Pick, plus a self-contained custom slider that stays in sync with the model.</span></li><li><span class="n">03</span><span>Build real-time colour correction in a single GLSL shader, with a LUT browser and a switchable library of ported ShaderToy effects.</span></li><li><span class="n">04</span><span>Keep two machines in step with LTC timecode, drive reusable fades and A/B movie transitions from a cue table, and prepare venue output: several projectors in one window, keystone correction, and NDI between machines with a recorded backup.</span></li></ol>
   </div>
