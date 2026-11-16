@@ -1374,11 +1374,11 @@ linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradi
 .ipt-t.acc small,.ipt-t.hot small{color:var(--cc)}
 @media (max-width:900px){.ipt-t small{display:none}}
 /* coherence pass 16.11: one sub-heading voice, one frame language, one accent */
-html body .ix-k strong,html body .cd-col>.cd-h.mono:first-child,html body .pn.lite .ph,html body .pn.lite .ph .r,html body .ix-h3.ix-pay{font:700 32px/1 "H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif!important;letter-spacing:.01em!important;text-transform:uppercase!important;color:var(--ink,#0b0b0c)!important}
+html body .ix-k strong,html body .cd-col>.cd-h.mono:first-child,html body .pn.lite[data-lkey="m4"] .ph,html body .pn.lite[data-lkey="m4"] .ph .r,html body .ix-h3.ix-pay{font:700 32px/1 "H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif!important;letter-spacing:.01em!important;text-transform:uppercase!important;color:var(--ink,#0b0b0c)!important}
 html body .cd-col>.cd-h.mono:first-child .sq9{display:none}
 html body .cd-col>.cd-h.mono:first-child{margin-bottom:14px}
-html body .pn.lite .ph{display:block!important;text-align:left!important;margin-bottom:18px!important;padding:0!important}
-html body .pn.lite .ph::before,html body .pn.lite .ph::after{display:none!important}
+html body .pn.lite[data-lkey="m4"] .ph{display:block!important;text-align:left!important;margin-bottom:18px!important;padding:0!important}
+html body .pn.lite[data-lkey="m4"] .ph::before,html body .pn.lite[data-lkey="m4"] .ph::after{display:none!important}
 html body .ix-k{margin-bottom:16px}
 html body .ix-h3.ix-pay{margin:28px 0 14px!important;padding-top:0!important;border-top:0!important}
 html body .roles-wall span{font-size:clamp(34px,3.4vw,52px)!important}
@@ -1447,7 +1447,7 @@ html.x-lvl body .lvl-g.dk i{border-color:rgba(239,238,233,.08)}
 @media (max-width:760px){canvas.lvl-h{display:none}}
 /* no double dividers (16.11) */
 html body .roles-wall{border-bottom:0!important;box-shadow:none!important}
-html body .pn.lite .ph{border-bottom:0!important;box-shadow:none!important}
+html body .pn.lite[data-lkey="m4"] .ph{border-bottom:0!important;box-shadow:none!important}
 html body .ix-after-in .ix-path{border-top:0!important;border-bottom:0!important;box-shadow:none!important}
 /* patch alignment: fixed header, exact tile size */
 @media (min-width:1201px){
@@ -1487,6 +1487,8 @@ html body #audience .cd-col>h3.b3-h,html body #audience .cd-col>.cd-h.mono:first
 @media (max-width:760px){html body .roles-wall{grid-template-columns:1fr!important}}
 html body #book .book-pay>.ix-pay+p,html body #book .book-1col .ix-pay+p{border-top:0!important;box-shadow:none!important;padding-top:0!important}
 html body #book .book-pay>.ix-pay+p::before{top:0!important}
+/* one weight system: Inter 400 text / 500 headings & emphasis, no faux bold (16.11) */
+html body .ix-why li>b,html body #program p.ix-lt,html body #program .ix-ls p.ix-lt,html body .ix-lt b,html body .ix-ask b,html body .ix-ask p>b,html body #out .enl b,html body main p>b,html body main li>b:not([class]){font-weight:500!important}
 /* ---- overview variants: board (default) · ticks · matrix ---- */
 .ix-mods{display:none!important}
 .ix-board,.ix-vmx,.ix-ticks,.ix-seq,.ix-poster,.ix-film,.ix-nodes{display:none}
