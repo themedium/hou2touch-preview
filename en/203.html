@@ -1109,6 +1109,23 @@ html{scroll-padding-block:73px 46px}
 .ix-big{font:500 clamp(24px,2.3vw,36px)/1.15 var(--sans);letter-spacing:-.03em;margin:0 0 18px;max-width:20ch}
 .ix-sm{font:400 17px/1.55 var(--sans);opacity:.8;max-width:46ch;margin:0}
 @media (max-width:980px){.ix-ahg{grid-template-columns:1fr}}
+/* ---- after + how v2: compact info strip ---- */
+#after.ix-ah{padding-top:clamp(56px,6vw,96px)!important;padding-bottom:clamp(56px,6vw,96px)!important}
+.ix-ahg{gap:0!important;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.ix-ahc{padding:clamp(28px,3vw,44px) clamp(24px,3.4vw,56px) clamp(28px,3vw,44px) 0}
+.ix-ahc+.ix-ahc{padding-left:clamp(24px,3.4vw,56px);padding-right:0;border-left:1px solid var(--line2)}
+.ix-ah .ix-ahc .H{font:700 clamp(26px,2.4vw,38px)/1 var(--disp)!important;letter-spacing:.01em;white-space:nowrap;margin:0 0 26px!important}
+.ix-kick{margin:0 0 10px!important}
+.ix-path{border:0!important;border-top:1px solid var(--line2)!important;border-bottom:1px solid var(--line2)!important;border-radius:0!important;background:none!important;padding:18px 0!important;gap:4px 20px!important}
+.ix-path b{font:500 clamp(20px,1.7vw,26px)/1.15 var(--sans)!important;letter-spacing:-.02em!important;text-transform:none!important}
+.ix-path .ix-pm{font-size:11px!important}
+.ix-path .ix-ar{width:44px;height:44px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;font-size:18px!important}
+.ix-path:hover .ix-ar{background:var(--c);border-color:var(--c);color:var(--bg,#0b0b0c);transform:none!important}
+.ix-path:hover b{color:var(--c)}
+.ix-big{font:500 clamp(20px,1.7vw,26px)/1.25 var(--sans)!important;letter-spacing:-.02em!important;max-width:26ch!important;margin:0 0 12px!important}
+.ix-sm{font-size:15px!important;max-width:52ch!important}
+.ix-slot{height:0!important;padding:0!important;overflow:hidden}.ix-slot .ix-ph{display:none}
+@media (max-width:980px){.ix-ahc{padding:28px 0!important}.ix-ahc+.ix-ahc{border-left:0;border-top:1px solid var(--line2)}.ix-ah .ix-ahc .H{white-space:normal}}
 /* ---- FWA pass 16.11 ---- */
 .ix-note{display:inline-block;font:500 10px/1.3 var(--mono)!important;letter-spacing:.07em!important;text-transform:uppercase;opacity:.55;vertical-align:middle;margin-left:.5em;white-space:nowrap}
 .tier .ix-note,.tier .tp .ix-note{display:block;margin:10px 0 0;font-size:10px!important}
