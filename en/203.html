@@ -1459,11 +1459,10 @@ html body .ipt-box.r1 .ipt-t{height:calc(var(--T)*2 + 6px)!important;aspect-rati
 html body .ipt-box.r1{grid-auto-rows:calc(var(--T)*2 + 6px)}
 }
 /* frames: corners instead of perimeter boxes (16.11) */
-html body #faq .pn.lite.ix-ask,html body #family .pn.rc,html body #out a.enl,html body #buy .pn.full.tier,html body #author .pn.au-p{border-color:transparent!important;border-radius:0!important;box-shadow:none!important;--k:14px;background:linear-gradient(var(--l),var(--l)) 0 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat!important}
-html body #faq .pn.lite.ix-ask,html body #family .pn.rc,html body #out a.enl,html body #buy .pn.full.tier{--l:rgba(239,238,233,.55)}
+html body #faq .pn.lite.ix-ask,html body #out a.enl,html body #author .pn.au-p{border-color:transparent!important;border-radius:0!important;box-shadow:none!important;--k:14px;background:linear-gradient(var(--l),var(--l)) 0 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat!important}
+html body #faq .pn.lite.ix-ask,html body #out a.enl{--l:rgba(239,238,233,.55)}
 html body #author .pn.au-p{--l:var(--ink,#0b0b0c)}
-html body #family .pn.rc:hover,html body #family .pn.rc.cur,html body #family div.pn.rc{--l:rgba(239,238,233,.9)}
-html body #buy .pn.full.tier>*,html body #author .pn.au-p>*:not(canvas):not(img){background-color:transparent!important}
+html body #author .pn.au-p>*:not(canvas):not(img){background-color:transparent!important}
 html body #book .pn.full.tier{border-color:transparent!important;position:relative;overflow:visible!important}
 html body #book .pn.full.tier::before{display:block!important;content:""!important;position:absolute!important;inset:-9px!important;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;background:linear-gradient(var(--l),var(--l)) 0 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat!important;--l:var(--ink,#0b0b0c);--k:16px;pointer-events:none;z-index:2;box-shadow:none!important;outline:0!important;filter:none!important;opacity:1!important}
 html body .ipt-t small{font-size:12px!important;letter-spacing:.03em!important;padding:4px 6px 3px!important}
@@ -1471,6 +1470,23 @@ html body #author .pn.au-p .ph{border-bottom:0!important;box-shadow:none!importa
 @media (min-width:1201px){html body .ipt-h{height:134px!important}}
 html body .roles-wall span{display:inline!important}html body .roles-wall sup{display:inline!important;margin-left:6px!important;vertical-align:baseline}
 @media (max-width:760px){html body .roles-wall{display:grid!important;row-gap:6px!important}}
+/* one divider rule for list blocks: rule above the block, none under the heading, hairlines only between items (16.11) */
+html body :is(#concept,#audience) :is(ol.dat,ol.out1,ul.ix-l),html body #book .book-1col ul.ix-l{border-top:0!important;border-bottom:0!important;box-shadow:none!important}
+html body :is(#concept,#audience) :is(ol.dat,ol.out1,ul.ix-l)>li,html body #book .book-1col ul.ix-l>li{border-top:1px solid var(--line2,rgba(11,11,12,.16))!important;border-bottom:0!important;box-shadow:none!important}
+html body #audience :is(ol.dat,ul.ix-l)>li:first-child,html body #book .book-1col ul.ix-l>li:first-child{border-top:0!important;padding-top:0!important}
+html body :is(#concept ol.dat,#audience ol.out1)>li:nth-child(-n+2){border-top:0!important;padding-top:0!important}
+html body #book .book-1col h3.ix-wyg{border-bottom:0!important;box-shadow:none!important}
+/* audience block: names over their columns, columns start level, same list style */
+html body .roles-wall{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:20px!important}
+html body #audience .cd-col>h3.b3-h+.cd-h.mono{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html body #audience .cd-col ol.dat>li{display:block!important;padding:14px 0!important;line-height:1.6!important}
+html body #audience .cd-col ol.dat>li>.n{display:none!important}
+html body #audience .cd-col ol.dat a.u{line-height:inherit!important;padding:0!important;border:0!important;background:none!important;text-decoration:underline;text-underline-offset:3px}
+html body #audience .ix-why ul.ix-l>li{padding:14px 0!important;line-height:1.6!important}
+html body #audience .cd-col>h3.b3-h,html body #audience .cd-col>.cd-h.mono:first-child{margin:0 0 18px!important;padding-top:18px!important}
+@media (max-width:760px){html body .roles-wall{grid-template-columns:1fr!important}}
+html body #book .book-pay>.ix-pay+p,html body #book .book-1col .ix-pay+p{border-top:0!important;box-shadow:none!important;padding-top:0!important}
+html body #book .book-pay>.ix-pay+p::before{top:0!important}
 /* ---- overview variants: board (default) · ticks · matrix ---- */
 .ix-mods{display:none!important}
 .ix-board,.ix-vmx,.ix-ticks,.ix-seq,.ix-poster,.ix-film,.ix-nodes{display:none}
