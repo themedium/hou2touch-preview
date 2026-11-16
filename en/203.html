@@ -1104,6 +1104,19 @@ html{scroll-padding-block:73px 46px}
 .ix-buycard{opacity:1}
 .ix-buycap{display:block!important;font:500 11px/1.5 var(--mono)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ix-buycap strong,.ix-buycap b{font-weight:500}
+/* ---- enroll v4: the price card as a full-width ticket ---- */
+.ix-buy2 .ix-buywrap{max-width:none!important}
+@media (min-width:981px){
+.ix-buycard{position:relative;overflow:hidden;isolation:isolate}
+.ix-buycard::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,var(--top) 1.6px,transparent 2px);background-size:8px 8px;-webkit-mask-image:linear-gradient(100deg,transparent 46%,rgba(0,0,0,.3) 70%,#000 100%);mask-image:linear-gradient(100deg,transparent 46%,rgba(0,0,0,.3) 70%,#000 100%);opacity:.75}
+.ix-buycard .tb{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,3fr) minmax(220px,3fr);grid-template-rows:auto auto 1fr;column-gap:clamp(28px,4vw,72px);row-gap:12px;align-items:start;padding:clamp(24px,3vw,44px)!important}
+.ix-buycard .tb>.tk{grid-column:1;grid-row:1}
+.ix-buycard .tb>.tn{grid-column:1;grid-row:2;font-size:clamp(40px,4vw,64px)!important;line-height:.9!important;margin:0!important}
+.ix-buycard .tb>.tl{grid-column:1;grid-row:3;margin-top:10px!important}
+.ix-buycard .tb>.tp{grid-column:2;grid-row:1/4;align-self:center;margin:0!important}
+.ix-buycard .tb>.tp b>span[data-h2t]{font-size:clamp(84px,8vw,140px)!important;line-height:.8!important;display:block}
+.ix-buycard .tb>.btn{grid-column:3;grid-row:1/4;align-self:center;justify-self:stretch;height:72px!important;margin:0!important;font-size:14px!important}
+}
 /* ---- buy v2: closing block ---- */
 .ix-buy{padding-top:clamp(48px,6vw,96px)!important;padding-bottom:clamp(48px,6vw,96px)!important;border-top:0!important}
 .ix-buy .wrap{position:relative;border:1px solid var(--line2)!important;border-top:2px solid var(--c,var(--top))!important;padding:clamp(28px,4vw,64px)!important;overflow:hidden;isolation:isolate}
