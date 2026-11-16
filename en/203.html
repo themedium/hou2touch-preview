@@ -1402,6 +1402,10 @@ html body #ix .hero .foot dl{display:grid!important;width:100%!important;grid-te
 #ix .hero .foot dl>div{grid-row:auto!important;grid-column:auto!important;align-self:start!important;padding:0 18px!important;border-left:1px solid var(--line2,rgba(11,11,12,.22))!important;margin:0!important}
 #ix .hero .foot dl>div:first-child{padding-left:0!important;border-left:0!important}
 @media (max-width:900px){html body #ix .hero .foot dl{grid-template-columns:1fr 1fr!important;row-gap:16px!important;column-gap:20px!important}#ix .hero .foot dl>div{border-left:0!important;padding:0!important}#ix .hero .foot dl>div:nth-child(3){grid-column:1/-1!important}}
+/* hero grooming 16.11 */
+html body #ix .cta .pr{font:700 clamp(40px,3.4vw,56px)/.9 "H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif!important;letter-spacing:.005em!important;color:var(--ink,#0b0b0c)}
+html body #ix .cta .btn.rec i{display:none!important}
+html body #ix .cta .btn.rec::after{content:"→";margin-left:10px;font-family:var(--mono)}
 /* ---- overview variants: board (default) · ticks · matrix ---- */
 .ix-mods{display:none!important}
 .ix-board,.ix-vmx,.ix-ticks,.ix-seq,.ix-poster,.ix-film,.ix-nodes{display:none}
@@ -2422,10 +2426,11 @@ function draw(sc,now){
  gl.uniform2f(u.P,sc.p[0],sc.p[1]);gl.uniform1f(u.PA,sc.pa);gl.uniform1i(u.TX,0);gl.uniform1f(u.HT,sc.ht);gl.uniform1f(u.FN,FINE?1:0); gl.uniform4fv(u.BX,sc.bx);
  if(FINE){const asp=sc.W/sc.H,RL=.17,bx=sc.bx;
   let lx=.7+.16*Math.sin(t*.13),ly=.5+.1*Math.sin(t*.17+1);
-  if(sc.pa>.02){lx+=(sc.p[0]-lx)*sc.pa;ly+=(sc.p[1]-ly)*sc.pa;}
   const r=RL/asp;
   if(bx[2]<.72&&asp>1.4){lx=Math.max(lx,bx[2]+r+.03);ly=Math.min(Math.max(ly,RL+.11),1-RL-.1);}
   else{ly=Math.min(Math.max(ly,RL+.11),bx[1]-RL-.06);lx=Math.min(Math.max(lx,r+.04),1-r-.04);}
+  if(sc.pa>.02){const mx=Math.min(Math.max(sc.p[0],r+.01),1-r-.01),my=Math.min(Math.max(sc.p[1],RL+.02),1-RL-.02);lx+=(mx-lx)*sc.pa;ly+=(my-ly)*sc.pa;} // pointer wins over the title-avoid rule
+  if(ly-RL<0){ly=RL+.02}
   lx=Math.min(lx,1-r-.02);sc.lc=[lx,ly];
   gl.uniform2f(u.LC,lx,ly);gl.uniform1f(u.RL,RL);gl.uniform3fv(u.GR,sc.gr);
   if(sc.ret){sc.ret.style.left=(lx*sc.W+RL*sc.H*0.78+10)+'px';sc.ret.style.top=(ly*sc.H-RL*sc.H*0.78-18)+'px';
