@@ -1104,6 +1104,31 @@ html{scroll-padding-block:73px 46px}
 .ix-buycard{opacity:1}
 .ix-buycap{display:block!important;font:500 11px/1.5 var(--mono)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ix-buycap strong,.ix-buycap b{font-weight:500}
+/* ---- lesson matrix on paper: dark panel, static rows, patch wires per module ---- */
+.ix-mx{margin-top:clamp(28px,3vw,44px);background:#0e0e10!important;color:#efeee9;--fg:#efeee9;--txt:#cfcec9;--mute:#8f8e8a;--line:rgba(239,238,233,.11);--line2:rgba(239,238,233,.22);border:1px solid rgba(239,238,233,.14);border-radius:6px;overflow:hidden}
+.ix-mx .ph{color:var(--mute)}
+.ix-mx .mx-c{grid-template-columns:repeat(var(--nm,6),minmax(0,1fr))!important}
+.ix-mx{--mxw:clamp(360px,39vw,600px)}
+.ix-mx .mx-r .t{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-size:16px!important}
+.ix-mx .ix-mxd{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ix-mx .mx-r .n{font-size:28px!important}
+.ix-mx .mx-r .mx-c>i.pt::before{content:"";position:absolute;left:calc(50% - 1px);width:2px;background:var(--c);opacity:.85;z-index:-1}
+.ix-mx .mx-r .mx-c>i.pt.s::before{top:50%;bottom:0}
+.ix-mx .mx-r .mx-c>i.pt.m::before{top:0;bottom:0}
+.ix-mx .mx-r .mx-c>i.pt.e::before{top:0;bottom:50%}
+.ix-mx .mx-r .mx-c>i.pt::after{width:18px!important;height:18px!important;transform:none!important}
+.ix-mx .mx-r:hover,.ix-mx .mx-r:focus-visible{background:rgba(255,255,255,.035)}
+.ix-mx .mx-r:hover .n,.ix-mx .mx-r:hover .t{color:var(--fg)}
+.ix-mx .mx-r:hover .mx-c>i.pt::after{box-shadow:0 0 0 4px rgba(239,238,233,.1),0 0 22px var(--c)}
+.ix-mx .mx-h .mx-c b{color:var(--c)}
+@media (max-width:760px){
+.ix-mx .mx-h,.ix-mx .mx-r .mx-c{display:none!important}
+.ix-mx .mx-r{display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;align-items:center!important;border-bottom:1px solid var(--line)!important}
+.ix-mx .mx-r .n{height:auto!important;padding:12px 0;font-size:22px!important}
+.ix-mx .mx-r .t{flex-direction:column;gap:4px;padding:12px 12px 12px 0!important}
+.ix-mx .mx-r.mxs{border-top:2px solid var(--c)!important}
+.ix-mx .mx-r.mxs::before{content:"Module " attr(data-m);grid-column:1/-1;padding:14px 12px 2px 12px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+}
 /* ---- details pass 16.11 ---- */
 .ix-buy2{padding-top:160px!important;padding-bottom:0!important}
 .ix-after-in{margin-top:clamp(56px,6vw,96px)}
@@ -1310,6 +1335,65 @@ html{scroll-padding-block:73px 46px}
 .ix-lt{font:600 16px/1.35 var(--sans);margin:0 0 6px}.ix-ls p{font:400 15px/1.55 var(--sans);max-width:72ch;margin:0 0 6px}
 @media (max-width:640px){.ix-prog summary{grid-template-columns:32px minmax(0,1fr) 20px}.ix-mm{grid-column:2;grid-row:2}.ix-lss{padding-left:0}}
 </style>
+<style id="ix-mx">/* ---------- 06 что вы будете изучать: патч-матрица 13 × 6 ---------- */
+.mx{--mxw:clamp(360px,39vw,560px)}
+.mx-h,.mx-r{display:grid;grid-template-columns:56px minmax(0,1fr) var(--mxw)}
+.mx-h{background:#161618;border-bottom:1px solid var(--line2);position:relative;z-index:3}
+.mx-h>.mono{padding:14px 16px}
+.mx-c{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.mx-c>*{border-left:1px solid var(--line)}
+.mx-h .mx-c>div{padding:12px 0;text-align:center}
+.mx-h .mx-c b{display:inline-flex;align-items:center;gap:6px;font:500 13px/1 var(--mono);letter-spacing:.08em;color:var(--c)}
+.mx-h .mx-c b::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c)}
+.mx-h .mx-c span{display:block;margin-top:5px;font:500 12px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.mx-b{position:relative}
+.mx-r{align-items:center;border-bottom:1px solid var(--line);transition:background .3s;outline:0}
+.mx-r:last-child{border-bottom:0}
+.mx-r .n{display:grid;place-items:center;height:56px;font:700 36px/.8 var(--disp);color:var(--mute);transition:color .3s}
+.mx-r .t{padding:12px 16px;font:400 18px/1.3 var(--sans);letter-spacing:-.01em;color:var(--txt);transition:color .3s}
+.mx-r .t .tt{display:block}
+.mx-r .tags{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.mx-r .tags>span{overflow:hidden;display:flex;gap:6px;flex-wrap:wrap}
+.mx-r .tags .tag{margin-top:8px}
+.mx-r .mx-c{align-self:stretch}
+.mx-r .mx-c>i{display:grid;place-items:center;min-height:56px;position:relative;z-index:2}
+.mx-r .mx-c>i::after{content:"";width:6px;height:6px;border-radius:50%;background:rgba(239,238,233,.16)}
+.mx-r .mx-c>i.pt::after{width:30px;height:30px;border-radius:3px;background:var(--c);transform:scale(.733);transition:transform .35s var(--ease),box-shadow .35s}
+.mx-r.on{background:rgba(255,255,255,.03)}
+.mx-r.on .n,.mx-r.on .t{color:var(--fg)}
+.mx-r.on .tags{grid-template-rows:1fr}
+.mx-r.on .mx-c>*{background:rgba(255,255,255,.035)}
+.mx-r.on .mx-c>i.pt::after{transform:none;box-shadow:0 0 0 5px rgba(239,238,233,.1),0 0 26px var(--c)}
+.mx-r:focus-visible{box-shadow:inset 2px 0 0 var(--td)}
+.mx-w{position:absolute;top:0;right:0;bottom:0;width:var(--mxw);pointer-events:none;z-index:1}
+.mx-w i{position:absolute;top:0;left:calc(var(--k)*100%/6 + 100%/12 - 1px);width:2px;height:0;background:var(--c);opacity:.85}
+.mx .pf .cnt b{font-weight:500}
+@media (max-width:600px){.mx-h{grid-template-columns:44px minmax(0,1fr)}
+.mx-h>.mono{display:none}
+.mx-h .mx-c{grid-column:2}
+.mx-h .mx-c>div{padding:10px 0}
+.mx-h .mx-c b{font-size:12px;letter-spacing:.02em;gap:4px}
+.mx-h .mx-c b::before{width:7px;height:7px}
+.mx-h .mx-c span{display:none}
+.mx-r{grid-template-columns:44px minmax(0,1fr);align-items:stretch;border-bottom:0}
+.mx-r .n,.mx-r .t{border-bottom:1px solid var(--line)}
+.mx-r .n{height:auto;min-height:56px;font-size:28px}
+.mx-r .t{display:flex;flex-direction:column;justify-content:center;padding:10px 8px;font-size:16px;line-height:24px}
+.mx-h,.mx-r .mx-c{display:none}
+/* SC-13: на телефоне — чипы семейств под темой (тег = колонка), без ряда точек */
+  .mx-r:last-child .n,.mx-r:last-child .t{border-bottom:0}
+.mx-r .tags{display:inline}
+.mx-r .tags>span{display:inline-flex;flex-wrap:nowrap;gap:4px;vertical-align:top}
+.mx-r .tags .tag{margin-top:0}
+/* чипы — в строку за последним словом темы */
+  .mx-w{display:none}
+.mx .pf{flex-wrap:wrap;white-space:normal}}
+@media (prefers-reduced-motion:reduce){.lp .bar i,.lsh .bar i,.lsh .pn,.mx-r .tags,.mx-r .mx-c>i.pt::after{transition:none}}
+/* T-07 (финал 02.10, типограф): без одиноких коротких последних строк — пункты программ и списков, вопросы и ответы FAQ, строки маршрута,
+   темы флагмана; без поддержки text-wrap:pretty — обычный перенос */
+.h2t li,.h2t .q,.h2t .fq-a p,.h2t .cs-n,.h2t .mx-r .t{text-wrap:pretty}
+/* T-07: последняя строка не из одного слова (пункты, темы, вопросы, ответы) */
+.h2t :is(.dek,.p,li,.mx-r .t,.fq-l .q,.nd .nt,.pl-r .t,.h3,.cap b){text-wrap:pretty}</style>
 <style id="ix-fin">#out{contain-intrinsic-block-size:auto 911px}
 @media (max-width:600px){#out{contain-intrinsic-block-size:auto 738px}}
 /* r2 · D: перемер 1440 / 390 — #author 390 (C2-08, портрет во всю колонку), #out 390 (T2-04), f-faq2: #faq ≥981 и #reviews 390 */
@@ -1926,7 +2010,7 @@ document.fonts.ready.then(()=>{
     <div><span class="mono">01</span><p>This course takes the idea of 202 AV Streaming further and turns the system into a media server for events and theatre. It is for TouchDesigner users who want to build their own media server without a large team or years of development.</p></div>
     <div style="--c:var(--top)"><span class="mono">02</span><p>You build it block by block: an engine kept separate from its interface, so Ableton over OSC can drive it with or without sliders; a movie library preloaded into GPU memory, with live cameras, a Kinect gesture trigger and a movie-bin interface next to a custom slider; colour correction and grading in GLSL with an effects library; a cue and preset system; and timecode control with smooth cross-blends between movies. At the end you take the server to the venue: output to several projectors with keystone correction, NDI between machines and safety nets for a live show, and protecting your components with a TouchDesigner Pro licence.</p></div>
   </div></div>
-  <div class="ix-blk"><p class="ix-k"><strong>Course aims</strong></p><ol class="dat"><li><span class="n">01</span><span>To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</span></li><li><span class="n">02</span><span>To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</span></li></ol></div><div class="ix-blk" data-lkey="m-chain"><h3 class="b3-h">Course modules</h3><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>Media Server Architecture (MVC Basics)</b><span class="ix-vh"> · </span><span class="d">33 min</span></li><li><span class="n" aria-hidden="true">02</span><b>Video Playback</b><span class="ix-vh"> · </span><span class="d">2 h 42 min</span></li><li><span class="n" aria-hidden="true">03</span><b>User Interfaces</b><span class="ix-vh"> · </span><span class="d">1 h 53 min</span></li><li><span class="n" aria-hidden="true">04</span><b>Color Grading; Image Processing ; GLSL</b><span class="ix-vh"> · </span><span class="d">2 h 5 min</span></li><li><span class="n" aria-hidden="true">05</span><b>Preset Management</b><span class="ix-vh"> · </span><span class="d">1 h 43 min</span></li><li><span class="n" aria-hidden="true">06</span><b>Timing and Synchronisation</b><span class="ix-vh"> · </span><span class="d">1 h 51 min</span></li></ol></div>
+  <div class="ix-blk"><p class="ix-k"><strong>Course aims</strong></p><ol class="dat"><li><span class="n">01</span><span>To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</span></li><li><span class="n">02</span><span>To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</span></li></ol></div><div class="ix-blk" data-lkey="m-chain"><h3 class="b3-h">Course modules</h3><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>Media Server Architecture (MVC Basics)</b><span class="ix-vh"> · </span><span class="d">33 min</span></li><li><span class="n" aria-hidden="true">02</span><b>Video Playback</b><span class="ix-vh"> · </span><span class="d">2 h 42 min</span></li><li><span class="n" aria-hidden="true">03</span><b>User Interfaces</b><span class="ix-vh"> · </span><span class="d">1 h 53 min</span></li><li><span class="n" aria-hidden="true">04</span><b>Color Grading; Image Processing ; GLSL</b><span class="ix-vh"> · </span><span class="d">2 h 5 min</span></li><li><span class="n" aria-hidden="true">05</span><b>Preset Management</b><span class="ix-vh"> · </span><span class="d">1 h 43 min</span></li><li><span class="n" aria-hidden="true">06</span><b>Timing and Synchronisation</b><span class="ix-vh"> · </span><span class="d">1 h 51 min</span></li></ol></div><div class="pn mx ix-mx rv" style="--c:var(--top);--nm:6" aria-label="Lessons by module"><div class="ph">lessons1 <u>TOP</u><span class="r">20 × 6</span></div><div class="mx-h"><span class="mono">#</span><span class="mono"></span><div class="mx-c"><div><b>01</b><span>33 min</span></div><div><b>02</b><span>2 h 42 min</span></div><div><b>03</b><span>1 h 53 min</span></div><div><b>04</b><span>2 h 5 min</span></div><div><b>05</b><span>1 h 43 min</span></div><div><b>06</b><span>1 h 51 min</span></div></div></div><div class="mx-b"><div class="mx-r mxs" data-m="01" tabindex="0"><span class="n">01</span><span class="t"><span class="tt">MVC Media Server Controls</span><span class="ix-mxd">33 min</span></span><div class="mx-c"><i class="pt one"></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r mxs" data-m="02" tabindex="0"><span class="n">02</span><span class="t"><span class="tt">Interactive Movie Playback Control</span><span class="ix-mxd">28 min</span></span><div class="mx-c"><i></i><i class="pt s"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="02" tabindex="0"><span class="n">03</span><span class="t"><span class="tt">Building a bidirectional movie playback slider</span><span class="ix-mxd">40 min</span></span><div class="mx-c"><i></i><i class="pt m"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="02" tabindex="0"><span class="n">04</span><span class="t"><span class="tt">Connecting video cameras and streams; Kinect hand-raise movie trigger</span><span class="ix-mxd">19 min</span></span><div class="mx-c"><i></i><i class="pt m"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="02" tabindex="0"><span class="n">05</span><span class="t"><span class="tt">Procedural Movie Library Management</span><span class="ix-mxd">27 min</span></span><div class="mx-c"><i></i><i class="pt m"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="02" tabindex="0"><span class="n">06</span><span class="t"><span class="tt">Building a movie library browser with playback</span><span class="ix-mxd">30 min</span></span><div class="mx-c"><i></i><i class="pt m"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="02" tabindex="0"><span class="n">07</span><span class="t"><span class="tt">Crossfading selected movies; Building a 2D texture array</span><span class="ix-mxd">18 min</span></span><div class="mx-c"><i></i><i class="pt e"></i><i></i><i></i><i></i><i></i></div></div><div class="mx-r mxs" data-m="03" tabindex="0"><span class="n">08</span><span class="t"><span class="tt">Building an instanced video browser with Render Pick</span><span class="ix-mxd">44 min</span></span><div class="mx-c"><i></i><i></i><i class="pt s"></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="03" tabindex="0"><span class="n">09</span><span class="t"><span class="tt">Building lightweight interfaces with panels and custom parameters</span><span class="ix-mxd">26 min</span></span><div class="mx-c"><i></i><i></i><i class="pt m"></i><i></i><i></i><i></i></div></div><div class="mx-r" data-m="03" tabindex="0"><span class="n">10</span><span class="t"><span class="tt">Caching slider visuals with Cache TOP; Building a standalone slider</span><span class="ix-mxd">43 min</span></span><div class="mx-c"><i></i><i></i><i class="pt e"></i><i></i><i></i><i></i></div></div><div class="mx-r mxs" data-m="04" tabindex="0"><span class="n">11</span><span class="t"><span class="tt">Building a LUT browser with before-and-after comparison</span><span class="ix-mxd">31 min</span></span><div class="mx-c"><i></i><i></i><i></i><i class="pt s"></i><i></i><i></i></div></div><div class="mx-r" data-m="04" tabindex="0"><span class="n">12</span><span class="t"><span class="tt">Building a GLSL color-correction shader; Generating UV patterns</span><span class="ix-mxd">28 min</span></span><div class="mx-c"><i></i><i></i><i></i><i class="pt m"></i><i></i><i></i></div></div><div class="mx-r" data-m="04" tabindex="0"><span class="n">13</span><span class="t"><span class="tt">Building HSV and YIQ saturation with temperature correction; Prototype multi-pass GLSL effects</span><span class="ix-mxd">30 min</span></span><div class="mx-c"><i></i><i></i><i></i><i class="pt m"></i><i></i><i></i></div></div><div class="mx-r" data-m="04" tabindex="0"><span class="n">14</span><span class="t"><span class="tt">Converting ShaderToy effects to GLSL TOPs; Building a selectable shader library</span><span class="ix-mxd">37 min</span></span><div class="mx-c"><i></i><i></i><i></i><i class="pt e"></i><i></i><i></i></div></div><div class="mx-r mxs" data-m="05" tabindex="0"><span class="n">15</span><span class="t"><span class="tt">Generating custom parameters from a control table</span><span class="ix-mxd">29 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i class="pt s"></i><i></i></div></div><div class="mx-r" data-m="05" tabindex="0"><span class="n">16</span><span class="t"><span class="tt">Building a dictionary-based preset manager</span><span class="ix-mxd">50 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i class="pt m"></i><i></i></div></div><div class="mx-r" data-m="05" tabindex="0"><span class="n">17</span><span class="t"><span class="tt">Saving and loading parameter presets as JSON</span><span class="ix-mxd">24 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i class="pt e"></i><i></i></div></div><div class="mx-r mxs" data-m="06" tabindex="0"><span class="n">18</span><span class="t"><span class="tt">Converting LTC timecode to frames with Script CHOP</span><span class="ix-mxd">37 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i></i><i class="pt s"></i></div></div><div class="mx-r" data-m="06" tabindex="0"><span class="n">19</span><span class="t"><span class="tt">Cueing and Segmented Playback</span><span class="ix-mxd">45 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i></i><i class="pt m"></i></div></div><div class="mx-r" data-m="06" tabindex="0"><span class="n">20</span><span class="t"><span class="tt">Multi-projector output with Layout TOP and keystoning; Movie crossfades</span><span class="ix-mxd">28 min</span></span><div class="mx-c"><i></i><i></i><i></i><i></i><i></i><i class="pt e"></i></div></div></div></div>
 </div></section>
 <section id="audience" class="sec" data-lkey="m3,m4"><div class="wrap">
   <div class="lbl mono"><b>02</b> For whom &amp; outcomes<i class="op" style="--c:var(--dat)">audience1 <u>DAT</u></i></div>
