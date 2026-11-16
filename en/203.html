@@ -1183,6 +1183,19 @@ html{scroll-padding-block:73px 46px}
 #author .au-bio-grid>p:nth-child(n+2)::before{content:counter(au,decimal-leading-zero);display:block;grid-row:1/99;font:700 34px/.9 var(--disp);color:var(--top)}
 }
 @media (max-width:760px){#author .au-bio-grid>p:nth-child(n+2){border-top:1px solid var(--line2);padding-top:14px!important;margin-top:18px!important}}
+/* ---- price as on /me: text left, big card right ---- */
+@media (min-width:981px){
+#book .book-1col{grid-template-columns:minmax(0,6fr) minmax(0,6fr)!important;column-gap:clamp(32px,4.4vw,80px)!important}
+#book .book-1col>.tier{grid-column:2!important;grid-row:1/6!important}
+#book .book-pay>h4,#book .book-pay>ul,#book .book-pay>p{grid-column:1!important;padding-left:0!important;border-left:0!important;box-shadow:none!important}
+#book .book-pay>h4:nth-of-type(1){padding-top:6px!important;border-top:1px solid var(--line2)!important;padding-top:18px!important}
+#book .book-pay>ul li{font:400 17px/1.45 var(--sans)!important}
+#book .book-pay>h4:nth-of-type(2){margin-top:28px!important;padding-top:0!important;border-top:0!important}
+#book .book-pay{counter-reset:pay}
+#book .book-pay>p{counter-increment:pay;display:grid!important;grid-template-columns:44px minmax(0,1fr);padding:12px 0!important;border-top:1px solid var(--line2)!important;font:400 15px/1.55 var(--sans)!important;color:var(--txt)!important;max-width:none!important}
+#book .book-pay>p:last-of-type{border-bottom:1px solid var(--line2)!important}
+#book .book-pay>p::before{content:counter(pay,decimal-leading-zero);font:500 11px/1.9 var(--mono);color:var(--mute)}
+}
 /* ---- after + how ---- */
 .ix-ahg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,72px);align-items:start}
 .ix-ahc .H{margin-bottom:22px}
