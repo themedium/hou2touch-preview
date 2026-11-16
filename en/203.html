@@ -2553,7 +2553,7 @@ let pr=null;for(const t of tn){const up=cs.textTransform==="uppercase";for(let i
 const x=(rc.left-r0.left)*D,y=(rc.top-r0.top-ct0+(rc.height-fs)/2+fs*.86)*D,c2=up?ch.toUpperCase():ch;g.strokeText(c2,x,y);g.fillText(c2,x,y);if(pr&&Math.abs(pr.top-rc.top)<4&&rc.left-pr.right<fs*.6){g.fillRect((pr.right-r0.left)*D-2,y-fs*.78*D-11*D,(rc.left-pr.right)*D+4,fs*.78*D+22*D)}pr=rc}}
 g.globalCompositeOperation="source-over"};
 const doStrips=()=>{let i=0;document.querySelectorAll("section.sec h2.H").forEach(h=>{const sh=h.closest(".sh")||h.parentNode;if(sh.getBoundingClientRect().width<640)return;try{strip(h,i++)}catch(e){}})};
-(document.fonts?document.fonts.ready:Promise.resolve()).then(doStrips);let rz=0;addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(doStrips,250)});
+/* H2 strips removed by owner 16.11 */
 document.querySelectorAll("details.ix-mod").forEach(d=>{const k=+d.id.slice(3)-1;const src=document.querySelectorAll('.ipt-m[data-m="'+k+'"] .ipt-t');const mm=d.querySelector(".ix-mm");if(!src.length||!mm)return;
 const st=document.createElement("span");st.className="lvl-strip";st.setAttribute("aria-hidden","true");
 src.forEach(t=>{const e=document.createElement("span");e.className=t.className.replace("hot","");e.dataset.t=t.dataset.t;e.dataset.g=t.dataset.g;e.dataset.a=t.dataset.a;e.appendChild(document.createElement("canvas"));st.appendChild(e)});
