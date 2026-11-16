@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><script>(()=>{const x=new URLSearchParams(location.search).get("x")||"";x.split(",").forEach(v=>{if(["board","matrix","ticks","seq","poster","film","nodes","dial","mosaic","toc","barcode","tally","net","patch","lvl","cor"].includes(v))document.documentElement.classList.add("x-"+v)})})()</script>
+<head><script>(()=>{const x=new URLSearchParams(location.search).get("x")||"";x.split(",").forEach(v=>{if(["board","matrix","ticks","seq","poster","film","nodes","dial","mosaic","toc","barcode","tally","net","patch","lvl","cor","old"].includes(v))document.documentElement.classList.add("x-"+v)})})()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Media Server (/203) — Hou2Touch</title>
@@ -1489,6 +1489,37 @@ html body #book .book-pay>.ix-pay+p,html body #book .book-1col .ix-pay+p{border-
 html body #book .book-pay>.ix-pay+p::before{top:0!important}
 /* one weight system: Inter 400 text / 500 headings & emphasis, no faux bold (16.11) */
 html body .ix-why li>b,html body #program p.ix-lt,html body #program .ix-ls p.ix-lt,html body .ix-lt b,html body .ix-ask b,html body .ix-ask p>b,html body #out .enl b,html body main p>b,html body main li>b:not([class]){font-weight:500!important}
+/* ===== rhythm P1 (16.11): tokens + one gap per boundary type; ?x=old shows the previous rhythm ===== */
+:root{--r-air:96px;--r-block:56px;--r-sub:24px;--r-head:40px}
+@media (max-width:600px){:root{--r-air:48px;--r-block:40px;--r-sub:16px}}
+/* theme changes: equal air on both sides of the pixel band */
+html:not(.x-old) body .paper.pz{padding-bottom:var(--r-air)!important}
+html:not(.x-old) body .seam+.sec{padding-top:var(--r-air)!important}
+html:not(.x-old) body .sec.tf{margin-top:var(--r-air)!important;padding-top:calc(var(--edge) + var(--r-air))!important;padding-bottom:calc(var(--edge) + var(--r-air))!important}
+html:not(.x-old) body .sec.tf+.sec{padding-top:var(--r-air)!important}
+/* same theme: one gap (section padding-top), no extra tails */
+html:not(.x-old) body .fstrip{padding-bottom:0!important}
+html:not(.x-old) body .ix-buy2{padding-top:var(--sec)!important}
+/* label -> content in reviews = 40 like every other section */
+html:not(.x-old) body .ix-rvs{padding-top:0!important}
+html:not(.x-old) body .ix-rv{padding-top:0!important;padding-bottom:0!important}
+/* blocks inside a section */
+html:not(.x-old) body #concept .m2-open{margin-top:var(--r-block)!important}
+html:not(.x-old) body .ix-blk{margin-top:var(--r-block)!important}
+html:not(.x-old) body #audience .concept-dat{margin-top:var(--r-head)!important}
+html:not(.x-old) body .pn.lite[data-lkey="m4"]{margin-top:var(--r-block)!important;margin-bottom:0!important}
+html:not(.x-old) body #audience ol.out1{margin-bottom:-20px!important}
+html:not(.x-old) body #audience .pn.lite{margin-bottom:0!important}
+html:not(.x-old) body #concept .ix-blk>h3.b3-h{margin-bottom:var(--r-sub)!important}
+html:not(.x-old) body .ix-blk p{margin-bottom:16px!important}
+html:not(.x-old) body .ix-blk p:last-child{margin-bottom:0!important}
+html:not(.x-old) body .ix-after-in{margin-top:var(--r-block)!important}
+html:not(.x-old) body .fq-l .ix-ask,html:not(.x-old) body .pn.lite.ix-ask{margin-top:var(--r-block)!important}
+/* sub-heading -> its content */
+html:not(.x-old) body .ix-k{margin-bottom:var(--r-sub)!important}
+html:not(.x-old) body #audience .cd-col>.cd-h.mono:first-child,html:not(.x-old) body #audience .cd-col>h3.b3-h{margin-bottom:var(--r-sub)!important}
+html:not(.x-old) body .ix-blk>h3.ix-h2{margin-bottom:var(--r-sub)!important}
+html:not(.x-old) body .pn.lite[data-lkey="m4"] .ph{margin-bottom:var(--r-sub)!important}
 /* ---- overview variants: board (default) · ticks · matrix ---- */
 .ix-mods{display:none!important}
 .ix-board,.ix-vmx,.ix-ticks,.ix-seq,.ix-poster,.ix-film,.ix-nodes{display:none}
