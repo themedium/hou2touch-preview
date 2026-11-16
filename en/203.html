@@ -1130,7 +1130,11 @@ html{scroll-padding-block:73px 46px}
 #ix .hero .foot .fx{grid-column:1/-1!important;width:auto!important;max-width:none!important}
 #ix .hero .foot dl{grid-template-columns:auto auto minmax(0,3fr) minmax(0,1fr) minmax(0,1fr)!important}
 @media (max-width:640px){#ix .hero .foot dl{grid-template-columns:1fr 1fr!important}}
-@media (max-width:760px){#author .au{grid-template-columns:minmax(0,1fr)!important}#author .au>*,#author .au-t>*{grid-column:1/-1!important;width:auto!important;max-width:none!important}#author .au-bio-grid{display:block!important;columns:auto!important}}
+#author .au-bio-grid{display:block!important;columns:2;column-gap:var(--gap,32px);column-fill:balance;margin-top:8px}
+#author .au-bio-grid .au-c{break-inside:auto;margin:0 0 1em!important;font-size:16px!important;line-height:1.62!important}
+#author .ph>.r,#author .ph .r{display:none!important}
+#author .au-r,#author .au-role{max-width:none!important;width:auto!important;font:500 12px/1.5 var(--mono)!important;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)!important}
+@media (max-width:760px){#author .au{grid-template-columns:minmax(0,1fr)!important}#author .au>*,#author .au-t>*{grid-column:1/-1!important;width:auto!important;max-width:none!important}#author .au-bio-grid{display:block!important;columns:1!important}}
 /* ---- opinion pass: modules line, about asymmetry, reviews, price ---- */
 .ix-mods{grid-template-columns:repeat(6,minmax(0,1fr))!important;border:0!important;position:relative;margin-top:28px!important}
 .ix-mods::before{content:"";position:absolute;left:0;right:0;top:58px;height:1px;background:var(--line2)}
