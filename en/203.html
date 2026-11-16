@@ -2050,6 +2050,36 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px!important}
 .f-out.ck #finR.pr{-webkit-mask-size:40px 40px;mask-size:40px 40px;animation:cook .8s both}
 .f-out.ck #finR.pr.dn{animation:none;-webkit-mask-image:none;mask-image:none}
 @media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}</style>
+<style id="ix-dock">/* dock: page timeline (>980px) and sign-up bar (<=980px), ported from the flagship index.html (16.11) */
+.tlb{position:fixed;left:0;right:0;bottom:0;z-index:55;height:34px;display:flex;align-items:center;gap:18px;padding:0 var(--pad);background:rgba(11,11,12,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(100%);transition:transform .8s var(--ease)}
+.tlb.on{transform:none}
+.tlb b{color:var(--fg);font-weight:500;font-variant-numeric:tabular-nums}
+.tlt{position:relative;flex:1;height:100%;touch-action:none;cursor:ew-resize}
+.tlt::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line2)}
+.tlt .fill{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--fg);opacity:.5;transform-origin:0 0;transform:scaleX(0)}
+.tlt .ph{position:absolute;left:0;top:5px;bottom:3px;width:1px;background:var(--fg);z-index:2;pointer-events:none;will-change:transform}
+.tls{position:absolute;inset:0;display:flex}
+.tls button{flex:1 1 auto;display:flex;align-items:center;gap:6px;height:100%;padding:0 10px 4px;margin:0;border:0;border-left:1px solid var(--line2);border-radius:0;background:none;color:var(--txt);white-space:nowrap;overflow:hidden;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;transition:color .12s cubic-bezier(.2,0,0,1)}
+.tls button i{font-style:normal;color:var(--mute);text-transform:none;letter-spacing:0}
+.tls button.on{color:var(--fg)}
+.tls button:focus-visible{outline:2px solid var(--fg);outline-offset:-2px}
+@media (hover:hover){.tls button:hover{color:var(--fg)}}
+.tls button.sh i{display:none}
+section[tabindex="-1"]:focus{outline:none}
+.tbar{display:none}
+@media (max-width:980px){
+.tlb{display:none}
+.tbar{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom,0px));background:#0b0b0c;border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s var(--ease)}
+.tbar.on{transform:none}
+.tbar .mono b{color:var(--fg);font-weight:500}
+.tbar .mono{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fnav.tb .btn.rec{display:none}
+html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+}
+@media (min-width:981px){html body{padding-bottom:34px}}
+@media (prefers-reduced-motion:reduce){.tlb,.tbar,.tls button{transition:none}}
+@media print{.tlb,.tbar{display:none!important}}
+</style>
 </head>
 <body>
 <div class="h2t f-fam f-lc f-print f-rev2 f-short" id="h2t" style="--k:var(--top);--edge-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAYCAYAAADH2bwQAAAAOUlEQVR42mNgoBp4+fzBf+rohPGJNxFdB41MIEuSeEW0NQFuCkET8GEqmoAsQJoJ6DpxKiBoAi4MANqxYbA7Y3AmAAAAAElFTkSuQmCC)">
@@ -2789,6 +2819,8 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
 </svg></a> <a class="id" href="mailto:hello@hou2touch.com">hello@hou2touch.com</a> <a class="so" href="https://www.youtube.com/@StanislavGlazov">YouTube</a> <a class="so" href="https://www.instagram.com/hou2touch/">Instagram</a> <a class="so" href="https://x.com/hou2touch">X</a></div>
   <div class="ft2-b mono"><a href="impressum.html">Impressum</a><span style="opacity:.55" title="Draft — do not publish yet">Widerrufsbelehrung (draft)</span><span style="opacity:.55" title="Draft — do not publish yet">AGB (draft)</span><span style="opacity:.55" title="Draft — do not publish yet">Privacy Policy (draft)</span><span class="cr">hou2touch © 2026 · draft</span></div>
 </div></footer>
+<div class="tlb mono" id="tlb" inert><span aria-hidden="true">frame <b id="tlF">0000</b> / 1800</span><div class="tlt" id="tlt"><div class="fill" id="tlFill"></div><div class="tls" id="tls" role="navigation" aria-label="Page sections"></div><div class="ph" id="tlPh"></div></div><span aria-hidden="true"><b id="tlFps">60</b> fps</span></div>
+<div class="tbar" id="tbar" inert aria-hidden="true"><span class="mono"><b><span data-h2t="price" data-slug="/203">€525</span></b> · 203 Media Server</span><a class="btn pill rec sm" id="tbA" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}" tabindex="-1"><span>Enroll</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
 
 </div>
 <script>window.H2T_A="../";
@@ -6721,6 +6753,68 @@ setTimeout(function(){
 
 const EDGE={cv:null,s:0,rows:12};let SEAMSPLIT=null; // край ↔ слоган (вариант seamfull)
 
+})();</script>
+<script>(()=>{
+const R=document,H=R.documentElement,clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,mq=matchMedia("(max-width:980px)");
+const tlb=R.getElementById("tlb"),tlt=R.getElementById("tlt"),tls=R.getElementById("tls"),tlPh=R.getElementById("tlPh"),tlFill=R.getElementById("tlFill"),tlF=R.getElementById("tlF"),tlFps=R.getElementById("tlFps");
+const bar=R.getElementById("tbar"),barA=R.getElementById("tbA"),fnav=R.getElementById("fnav");
+if(!tlb||!tls)return;
+const DEF=[["concept", "About"], ["audience", "For whom"], ["program", "Programme"], ["book", "Price"], ["faq", "FAQ"], ["author", "Teacher"], ["reviews", "Reviews"], ["family", "Courses"]];
+const TL=DEF.map(([id,l])=>{const el=R.getElementById(id);if(!el||!el.offsetHeight)return null;const op=el.querySelector(".lbl .op");return[id,op&&op.firstChild?(op.firstChild.textContent||"").trim():id,l]}).filter(Boolean);
+let segs=[],TLI=[],TA=-2,PX=-1;const G={h:1,ih:1,tt:[],sg:[],tw:0,fv:""};
+if(TL.length){tls.innerHTML=TL.map(([id,op,l])=>`<button type="button" data-s="${id}"><i>${op}</i>${l}</button>`).join("");
+  segs=[...tls.children];TLI=segs.map(s=>s.querySelector("i"));TL.forEach(t=>R.getElementById(t[0]).setAttribute("tabindex","-1"))}
+const TLR=R.createRange();
+function tlGeo(){const y=scrollY;G.h=Math.max(1,H.scrollHeight);G.ih=innerHeight;
+  if(getComputedStyle(tlb).display==="none"||!segs.length){G.tw=0;return}
+  G.tt=TL.map(t=>R.getElementById(t[0]).getBoundingClientRect().top+y);
+  const T=G.tt,end=G.h,cs=getComputedStyle(segs[0]),pad=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth),gap=parseFloat(cs.columnGap)||0;
+  segs.forEach(s=>s.classList.remove("sh"));
+  const tw=segs.map((s,j)=>{TLR.selectNode(TLI[j].nextSibling);return TLR.getBoundingClientRect().width}),iw=TLI.map(i=>i.getBoundingClientRect().width);
+  const W=tlt.clientWidth,sp=segs.map((s,j)=>Math.max(1,(j<T.length-1?T[j+1]:end)-T[j])),mn=tw.map(w=>Math.ceil(w+pad)),fx=new Set();let w=[];
+  for(let k=0;k<=segs.length;k++){const free=W-[...fx].reduce((a,j)=>a+mn[j],0),sum=sp.reduce((a,h,j)=>fx.has(j)?a:a+h,0);w=sp.map((h,j)=>fx.has(j)?mn[j]:Math.max(0,free)*h/sum);
+    const lo=w.map((x,j)=>!fx.has(j)&&x<mn[j]?j:-1).filter(j=>j>=0);if(!lo.length)break;lo.forEach(j=>fx.add(j))}
+  segs.forEach((s,j)=>{s.style.flex=`0 0 ${w[j].toFixed(2)}px`;s.style.minWidth="0"});
+  G.sg=segs.map((s,j)=>{const x=s.getBoundingClientRect().width;if(x<tw[j]+iw[j]+gap+pad-.5)s.classList.add("sh");return[s.offsetLeft,x]});G.tw=W;PX=-1}
+function tlPos(y){y+=G.ih*.35;const T=G.tt;let i=-1;T.forEach((t,j)=>{if(y>=t)i=j});
+  if(i<0)return{i:-1,f:0};const nx=i<T.length-1?T[i+1]:G.h;return{i,f:clamp((y-T[i])/(nx-T[i]),0,1)}}
+function setPh(x){tlPh.style.transform=`translateX(${x.toFixed(2)}px)`;tlFill.style.transform=`scaleX(${(G.tw?x/G.tw:0).toFixed(5)})`}
+let pend=false;
+function upd(){pend=false;const y=scrollY;
+  const on=!mq.matches&&y>80;tlb.classList.toggle("on",on);tlb.toggleAttribute("inert",!on);
+  if(!G.tw||!segs.length)return;
+  const p=clamp(y/Math.max(1,G.h-G.ih),0,1),fv=String(Math.round(p*1800)).padStart(4,"0");if(fv!==G.fv){G.fv=fv;tlF.textContent=fv}
+  const {i,f}=tlPos(y),x=i<0?0:G.sg[i][0]+f*G.sg[i][1];
+  if(i!==TA){TA=i;segs.forEach((s,j)=>{s.classList.toggle("on",j===i);if(j===i)s.setAttribute("aria-current","location");else s.removeAttribute("aria-current")})}
+  if(Math.abs(x-PX)>=.25){PX=x;setPh(x)}}
+// live fps: counted only while the page is scrolling, shows the last measure
+let fr=0,acc=0,last=0,raf=0,idle=0;
+function fpsTick(n){raf=0;if(last){fr++;acc+=Math.min(.1,(n-last)/1000);if(acc>=.5){tlFps.textContent=Math.round(fr/acc);fr=0;acc=0}}last=n;
+  if(performance.now()-idle<500)raf=requestAnimationFrame(fpsTick);else{last=0;fr=0;acc=0}}
+function onScroll(){if(!pend){pend=true;requestAnimationFrame(upd)}idle=performance.now();if(!raf&&!mq.matches)raf=requestAnimationFrame(fpsTick)}
+let geoT=0;const geo=()=>{clearTimeout(geoT);geoT=setTimeout(()=>{tlGeo();onScroll()},150)};
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",()=>{tlGeo();onScroll()});
+const mainEl=R.querySelector("main")||H;new ResizeObserver(geo).observe(mainEl);
+if(R.fonts&&R.fonts.ready)R.fonts.ready.then(()=>{tlGeo();onScroll()});
+function go(t){window.scrollTo({top:t.getBoundingClientRect().top+scrollY,behavior:reduce?"auto":"smooth"});
+  const fix=()=>{const d=t.getBoundingClientRect().top;if(Math.abs(d)>2)window.scrollTo({top:d+scrollY,behavior:"auto"})};
+  if("onscrollend" in window)addEventListener("scrollend",fix,{once:true});else setTimeout(fix,900)}
+let scrub=false;
+const seek=e=>{if(!G.sg.length)return;const r=tlt.getBoundingClientRect(),X=clamp(e.clientX-r.left,0,r.width);let j=G.sg.findIndex(([l,w])=>X>=l&&X<l+w);if(j<0)j=segs.length-1;
+  const [l,w]=G.sg[j],f=(X-l)/w,T=G.tt,nx=j<T.length-1?T[j+1]:G.h;window.scrollTo({top:T[j]+f*(nx-T[j])-innerHeight*.35,behavior:scrub?"auto":"smooth"})};
+let pd=null;
+tlt.addEventListener("pointerdown",e=>{pd={x:e.clientX,s:e.target.closest("[data-s]")};scrub=false;tlt.setPointerCapture(e.pointerId)});
+tlt.addEventListener("pointermove",e=>{if(!pd)return;if(!scrub&&Math.abs(e.clientX-pd.x)>4)scrub=true;if(scrub)seek(e)});
+tlt.addEventListener("pointerup",()=>{if(pd&&!scrub&&pd.s)go(R.getElementById(pd.s.dataset.s));pd=null;scrub=false});
+tls.addEventListener("click",e=>{if(e.detail!==0)return;const b=e.target.closest("[data-s]");if(!b)return;const t=R.getElementById(b.dataset.s);go(t);t.focus({preventScroll:true})});
+// sign-up bar (<=980): after the hero button leaves the screen, hidden while any Enroll button of the page is in view or the finale is
+if(bar&&barA){
+  const hero=R.querySelector("#top .cta .btn")||R.getElementById("top"),block=new Set();let past=false;
+  const updBar=()=>{const on=past&&!block.size&&mq.matches;bar.classList.toggle("on",on);bar.toggleAttribute("inert",!on);bar.setAttribute("aria-hidden",!on);barA.tabIndex=on?0:-1;if(fnav)fnav.classList.toggle("tb",mq.matches&&on)};
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.target===hero)past=!e.isIntersecting&&e.boundingClientRect.top<0;else if(e.isIntersecting)block.add(e.target);else block.delete(e.target)});updBar()});
+  [hero,...R.querySelectorAll("#book .tier .btn, #buy .btn"),R.getElementById("out")].filter(Boolean).forEach(el=>io.observe(el));
+  mq.addEventListener("change",()=>{updBar();tlGeo();onScroll()});updBar()}
+tlGeo();onScroll();
 })();</script>
 </body>
 </html>
