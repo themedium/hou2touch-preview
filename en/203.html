@@ -1097,6 +1097,12 @@ html{scroll-padding-block:73px 46px}
 .ix-buyline .btn{margin-left:auto}
 .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 #book .book-1col>.book-open-left{order:-1}
+/* ---- buy v3: duplicate of the price card ---- */
+.ix-buy2{padding-top:clamp(56px,7vw,112px)!important;padding-bottom:clamp(56px,7vw,112px)!important}
+.ix-buywrap{max-width:560px;margin:0 auto}
+.ix-buycard{opacity:1}
+.ix-buycap{display:block!important;font:500 11px/1.5 var(--mono)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ix-buycap strong,.ix-buycap b{font-weight:500}
 /* ---- buy v2: closing block ---- */
 .ix-buy{padding-top:clamp(48px,6vw,96px)!important;padding-bottom:clamp(48px,6vw,96px)!important;border-top:0!important}
 .ix-buy .wrap{position:relative;border:1px solid var(--line2)!important;border-top:2px solid var(--c,var(--top))!important;padding:clamp(28px,4vw,64px)!important;overflow:hidden;isolation:isolate}
@@ -1959,7 +1965,17 @@ document.fonts.ready.then(()=>{
   <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div>
 </section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="ix-rvs"><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>It&#x27;s like watching a professional at work.</p></blockquote><figcaption class="mono">Michael Straeubig · Systems Theory and Practice, Germany · Media Server · 30.06.2020</figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--top)"><blockquote><p>The subdivision in small components ready to be implemented in a project</p></blockquote><figcaption class="mono">Alessandro Grisendi · Sound/Video Technician, Italia · Media Server · 28.06.2020</figcaption></figure></div></div></section>
-<section id="buy" class="sec ix-buy" data-lkey="m-buy"><div class="wrap"><p class="ix-buyline"><span class="ix-bt"><b>TouchDesigner 203: Developing Media Server</b><span class="ix-dash"> — </span><span class="ix-bp"><span data-h2t="price" data-slug="/203">€525</span></span></span><span class="ix-vh"> · </span><a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll</a></p></div></section>
+<section id="buy" class="sec ix-buy2" data-lkey="m-buy"><div class="wrap"><div class="ix-buywrap"><article class="pn full tier km dk rv ix-buycard" style="--c:var(--k);--d:0;margin:0" data-lkey="m11">
+      <div class="ph">tier1<span class="r">11 h video</span></div>
+      <div class="tb">
+        <span class="mono tk">TouchDesigner · Ableton Live · media server</span>
+        <h3 class="tn"><span style="font-size:.62em;color:var(--top);margin-right:.14em">203</span>Media Server</h3>
+        <div class="tp"><b><span data-h2t="price" data-slug="/203">€525</span> <small class="ix-note">(placeholder: old price)</small></b></div>
+        <ul class="tl"><li>Access to all video recordings for 730 days</li><li>The project files used in the lessons</li></ul>
+        <a class="btn pill rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}">Enroll <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
+      </div>
+      <div class="pf ix-buycap"><b>TouchDesigner 203: Developing Media Server</b> — <span data-h2t="price" data-slug="/203">€525</span> · Enroll</div>
+    </article></div></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>06</b> Courses</div>
   <div class="sh"><h2 class="H">Learning Paths &amp; Courses</h2><p class="dek">Related courses and learning paths in the Hou2Touch curriculum.</p></div>
