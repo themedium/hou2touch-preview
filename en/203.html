@@ -6701,6 +6701,17 @@ tlGeo();onScroll();
 })();</script>
 <style id="pp-unify">
 /* ===== pp-unify: one native plate language for the paper blocks before Programme ===== */
+/* 0 · spacing system: one air scale for the whole page, full-bleed container */
+:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px)}
+html body .ipt-wave{height:clamp(120px,11vw,170px)}
+html body .wrap{max-width:none}
+html body .sec{padding-top:var(--r-air)}
+html body .paper.pz{padding-bottom:var(--r-air)}
+html body .lbl{margin-bottom:var(--r-head)}
+html body #concept .ab-g{margin-bottom:clamp(40px,4.4vw,64px)}
+html body #concept .ix-blk[data-lkey="m-chain"]{margin-bottom:var(--r-block)}
+html body #audience .roles-wall,html body #audience .cd-col,html body #audience .ix-blk{margin-top:var(--r-block)}
+
 /* 1 · section label rows: the same chip, the same accent as the modules */
 html body #audience .lbl .op::before{background:var(--top)}
 
