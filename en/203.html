@@ -1779,57 +1779,32 @@ html body #audience ol.out1>li>.n{margin:0;padding:0 0 10px;font-size:52px;backg
 #audience ol.out1>li:nth-child(n)::before{content:"";left:22px;right:auto;top:52px;bottom:0;width:1.5px;height:auto;transform:none;background:var(--aud)}
 #audience ol.out1>li:last-child::before{background:linear-gradient(var(--aud),transparent)}
 }
-/* ===== concept v7: branch scheme on the site's chrome (chamfered .pn tickets, .fl flags, TD ports) ===== */
-#concept{--ab:var(--top);--ncol:46px;--ch:14px}
+/* ===== concept v8: numbered items in the page's own out1 language ===== */
+#concept{--ab:var(--top)}
 #concept .sh{margin:0}
 #concept .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#concept .ab-g{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7.4fr) minmax(0,1.2fr);column-gap:clamp(24px,3.4vw,56px);align-items:start;margin:0 0 clamp(34px,4.4vw,64px);padding:0}
-#concept .ab-g.ab-g2{grid-template-columns:minmax(0,3fr) minmax(0,9fr)}
+#concept .ab-g{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(32px,5vw,88px);align-items:start;margin:0 0 clamp(38px,4.6vw,68px);padding:0}
 html:not(.x-old) body #concept .m2-open,html:not(.x-old) body #concept .ix-blk{padding-top:0;border-top:0;margin-top:0;max-width:none}
 
-/* left: Bebas title with a short purple rule, plus the faint bracket of the scheme */
-#concept .ab-side{grid-column:1;position:relative;align-self:start;padding-top:2px}
-#concept .ab-ttl{margin:0;font:700 clamp(58px,5vw,80px)/.85 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+/* left: the Bebas title with the same short violet rule as the other paper sections */
+#concept .ab-side{grid-column:1;align-self:start}
+#concept .ab-ttl{margin:0;font:700 clamp(56px,4.9vw,78px)/.86 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
 #concept .ab-ttl span{display:block}
-#concept .ab-bar{display:block;width:46px;height:5px;margin-top:20px;background:var(--ab)}
-#concept .ab-br{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-#concept .ab-br .grey{stroke:var(--line2);stroke-width:1.1;fill:none}
-#concept .ab-br .wire{stroke:var(--ab);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#concept .ab-bar{display:block;width:46px;height:5px;margin-top:clamp(16px,1.8vw,24px);background:var(--ab)}
 
-/* tickets: a .pn plate with 45° cut corners — two clip layers keep a true 1px ink outline */
-#concept .ab-tk{position:relative;display:block;margin:0;padding:14px 20px 22px;min-height:0;border:0;background:none;border-radius:0;max-width:none}
-#concept .ab-tk::before,#concept .ab-tk::after{content:"";position:absolute;pointer-events:none;z-index:0;clip-path:polygon(var(--ch) 0,calc(100% - var(--ch)) 0,100% var(--ch),100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,var(--ch) 100%,0 calc(100% - var(--ch)),0 var(--ch))}
-#concept .ab-tk::before{inset:0;background:rgba(11,11,12,.55)}
-#concept .ab-tk::after{inset:1px;background:var(--pnb)}
-#concept .ab-tk>*{position:relative;z-index:1}
-#concept .ab-hd{display:grid;grid-template-columns:var(--ncol) minmax(0,1fr) auto;align-items:center;column-gap:0;margin:0 0 12px}
-#concept .ab-n{font:700 32px/.86 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums}
-#concept .ab-t{border-left:1px solid var(--line2);padding-left:16px;font:500 12px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-/* the three status squares are the site's .pn>.ph .fl chips */
-#concept .ab-fl{display:flex;gap:4px;align-self:start;margin-top:-2px}
-#concept .ab-fl s{display:block;width:13px;height:13px;box-shadow:inset 0 0 0 1px var(--line2)}
-#concept .ab-fl s.on{background:var(--ab);box-shadow:none}
-#concept .ab-p{margin:0;padding-left:calc(var(--ncol) + 17px);font:400 clamp(16px,1.18vw,18px)/1.52 var(--sans);letter-spacing:-.008em;color:var(--txt);max-width:50ch;text-wrap:pretty}
+/* right: numbered items — big violet number, connector, Inter title, copy */
+html body #concept .ab-items{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);row-gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line2);max-width:none}
+html body #concept .ab-it{position:relative;margin:0;padding:clamp(20px,2vw,28px) clamp(0px,1vw,12px) 0 0;border:0;min-width:0}
+html body #concept .ab-it .n{position:relative;z-index:1;display:inline-block;margin:0 0 14px;padding:0 16px 0 0;background:var(--paper);font:700 clamp(52px,4.6vw,68px)/.82 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums}
+html body #concept .ab-it h3{margin:0 0 10px;font:500 clamp(18px,1.55vw,22px)/1.22 var(--sans);letter-spacing:-.02em;color:var(--fg);text-wrap:balance}
+html body #concept .ab-it p{margin:0;font:400 16px/24px var(--sans);letter-spacing:-.005em;color:var(--txt);max-width:38ch;text-wrap:pretty}
+@media (max-width:760px){html body #concept .ab-it p{max-width:none}}
 
-/* stacks */
-#concept .ab-stack{grid-column:2;display:grid;gap:26px;min-width:0}
-#concept .ab-duo{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,34px);min-width:0;list-style:none;margin:0;padding:0}
-#concept .ab-duo>.ab-tk{min-width:0}
+/* the connector: the same hairline + square node that links the columns further down */
+html body #concept .ab-it:not(:last-child)::before{content:"";position:absolute;z-index:0;left:0;right:calc(-1*var(--gap));top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:9px;transform:translateY(-4px);background:radial-gradient(circle at 4.5px 4.5px,var(--paper) 2.6px,var(--ab) 3px 4.5px,transparent 5px) right 2px top/9px 9px no-repeat,linear-gradient(var(--ab),var(--ab)) left center/calc(100% - 11px) 1.5px no-repeat}
+html body #concept .ab-it:last-child::before{content:"";position:absolute;z-index:0;left:0;right:0;top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:1.5px;transform:translateY(-.75px);background:linear-gradient(90deg,var(--ab),transparent)}
 
-/* square TD ports and the junction */
-#concept .ab-pt{position:absolute;width:10px;height:10px;background:var(--ab);z-index:3;pointer-events:none}
-#concept .ab-pt.l{left:-6px;top:calc(50% - 5px)}
-#concept .ab-pt.r{right:-6px;top:calc(50% - 5px)}
-#concept .ab-pt.t{top:-6px;left:calc(50% - 5px)}
-#concept .ab-j{position:absolute;width:10px;height:10px;background:var(--ab);z-index:4;pointer-events:none;opacity:0}
-#concept .ab-tk .ab-pt{opacity:0}
-#concept .ab-br{opacity:0;transition:opacity .3s}
-#concept.ab-wired .ab-j,#concept.ab-wired .ab-tk .ab-pt,#concept.ab-wired .ab-br{opacity:1}
-
-/* decorative registration grid of + marks, right of the first group */
-#concept .ab-plus{grid-column:3;align-self:start;height:100%;min-height:210px;background:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='30'%3E%3Cpath d='M5 0v10M0 5h10' stroke='%230b0b0c' stroke-opacity='.3' stroke-width='1'/%3E%3C/svg%3E") 0 0/34px 30px repeat;opacity:.75}
-
-/* stepped rule with the three purple slashes before the untouched 20-lessons patch */
+/* the modules bar above the untouched 20-lessons patch — same bar as the other section heads */
 html:not(.x-old) body #concept .ix-blk[data-lkey="m-chain"]{position:relative;display:block;margin:0 0 clamp(20px,2.3vw,34px);padding:0;border:0;max-width:none}
 #concept .m-bar{display:flex;align-items:center;gap:0;min-width:0}
 html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40px,3.5vw,52px)/.86 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
@@ -1842,30 +1817,25 @@ html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40p
 #concept .m-chain-meta s{display:block;width:8px;height:8px;background:var(--ab)}#concept .m-chain-meta s:nth-child(2){background:var(--ink)}
 
 @media (max-width:1180px){
-  #concept .ab-g{grid-template-columns:minmax(0,2.6fr) minmax(0,7.8fr)}
-  #concept .ab-plus{display:none}
-  #concept .ab-g.ab-g2{grid-template-columns:minmax(0,2.6fr) minmax(0,9.4fr)}
-  #concept .ab-p{max-width:none}
+  #concept .ab-g{grid-template-columns:minmax(0,2.6fr) minmax(0,7.8fr);column-gap:48px}
+  html body #concept .ab-it{padding-right:0}
 }
 @media (max-width:940px){
-  #concept{--ncol:40px}
   #concept .ab-ttl{font-size:clamp(44px,5.4vw,60px)}
-  #concept .ab-duo{grid-template-columns:minmax(0,1fr);gap:20px}
-  #concept .ab-n{font-size:28px}
+  html body #concept .ab-it .n{font-size:clamp(44px,4.8vw,54px)}
+  html body #concept .ab-it:not(:last-child)::before{right:calc(-1*var(--gap))}
 }
 @media (max-width:760px){
-  html body #concept .ab-g{display:flex;flex-direction:column;align-items:stretch;grid-template-columns:minmax(0,1fr)!important;row-gap:18px;column-gap:0;margin:0 0 38px}
+  html body #concept .ab-g{display:flex;flex-direction:column;align-items:stretch;grid-template-columns:minmax(0,1fr)!important;row-gap:18px;column-gap:0;margin:0 0 40px}
   html body #concept .ab-ttl{font-size:clamp(50px,13vw,70px)}
   #concept .ab-bar{width:38px;height:4px;margin-top:14px}
-  #concept .ab-stack,#concept .ab-duo{grid-column:auto!important;width:100%;min-width:0;gap:16px}
-  #concept .ab-tk{padding:12px 14px 18px}
-  #concept{--ncol:34px}
-  #concept .ab-hd{margin-bottom:9px}
-  #concept .ab-n{font-size:26px}
-  #concept .ab-t{font-size:11px;letter-spacing:.05em;padding-left:12px}
-  #concept .ab-fl{display:none}
-  #concept .ab-p{padding-left:0;font-size:15px;line-height:23px}
-  #concept .ab-br,#concept .ab-j,#concept .ab-pt{display:none}
+  html body #concept .ab-items{grid-column:auto!important;grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
+  html body #concept .ab-it{padding:18px 0 0}
+  html body #concept .ab-it+.ab-it{padding-top:24px;margin-top:4px;border-top:1px solid var(--line)}
+  html body #concept .ab-it .n{font-size:42px;margin-bottom:10px}
+  html body #concept .ab-it h3{font-size:17px;margin-bottom:8px}
+  html body #concept .ab-it p{font-size:15px;line-height:23px}
+  html body #concept .ab-it::before{display:none!important}
   #concept .m-step,#concept .m-chain-meta{display:none}
 }
 }</style>
@@ -2525,75 +2495,14 @@ document.fonts.ready.then(()=>{
 <div class="paper pz"><section id="concept" class="sec" data-lkey="m1-about,m2" data-lmod="1,2"><div class="wrap">
   <div class="lbl mono"><b>01</b><span>About the course</span><i class="op" style="--c:var(--top)">concept1 <u>COMP</u></i></div>
   <div class="sh"><h2 class="H ix-vh">About the course</h2></div>
-  <div class="m2-open ab-g" data-lkey="m2" data-kind="branch">
+  <div class="m2-open ab-g" data-lkey="m2">
     <div class="ab-side"><h2 class="ab-ttl"><span>About</span><span>the</span><span>course</span></h2><i class="ab-bar"></i></div>
-    <div class="ab-stack"><article class="ab-tk"><div class="ab-hd"><span class="ab-n">01</span><span class="ab-t">Overview</span><span class="ab-fl" aria-hidden="true"><s></s><s></s><s class="on"></s></span></div><p class="ab-p">This course takes the idea of 202 AV Streaming further and turns the system into a media server for events and theatre.</p><i class="ab-pt l" aria-hidden="true"></i></article><article class="ab-tk"><div class="ab-hd"><span class="ab-n">02</span><span class="ab-t">Who it’s for</span><span class="ab-fl" aria-hidden="true"><s></s><s></s><s class="on"></s></span></div><p class="ab-p">It is for TouchDesigner users who want to build their own media server without a large team or years of development.</p><i class="ab-pt l" aria-hidden="true"></i></article></div>
-    <div class="ab-plus" aria-hidden="true"></div>
-    <i class="ab-j" aria-hidden="true"></i><svg class="ab-br" aria-hidden="true"></svg>
+    <ol class="ab-items"><li class="ab-it"><span class="n">01</span><h3>Overview</h3><p>This course takes the idea of 202 AV Streaming further and turns the system into a media server for events and theatre.</p></li><li class="ab-it"><span class="n">02</span><h3>Who it’s for</h3><p>It is for TouchDesigner users who want to build their own media server without a large team or years of development.</p></li></ol>
   </div>
-  <div class="ix-blk ab-g ab-g2 ab-aims" data-kind="rail">
+  <div class="ix-blk ab-g ab-aims">
     <div class="ab-side"><h3 class="ab-ttl"><span>Course</span><span>aims</span></h3><i class="ab-bar"></i></div>
-    <ol class="dat ab-duo"><article class="ab-tk"><div class="ab-hd"><span class="ab-n">01</span><span class="ab-t">Course objective</span><span class="ab-fl" aria-hidden="true"><s></s><s></s><s class="on"></s></span></div><p class="ab-p">To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</p><i class="ab-pt l" aria-hidden="true"></i></article><article class="ab-tk"><div class="ab-hd"><span class="ab-n">02</span><span class="ab-t">Practical skills</span><span class="ab-fl" aria-hidden="true"><s></s><s></s><s class="on"></s></span></div><p class="ab-p">To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</p><i class="ab-pt t" aria-hidden="true"></i></article></ol>
-    <i class="ab-j" aria-hidden="true"></i><svg class="ab-br" aria-hidden="true"></svg>
-  </div><script data-about-wire>(()=>{
-const R=12;
-const v=n=>n.toFixed(1);const p=(x,y)=>v(x)+' '+v(y);
-const draw=g=>{
- if(matchMedia('(max-width:760px)').matches)return;
- const svg=g.querySelector('.ab-br'),j=g.querySelector('.ab-j');
- if(!svg||!j)return;
- svg.setAttribute('viewBox',`0 0 ${g.clientWidth} ${g.clientHeight}`);
- /* offsets, not client rects: the tickets animate in (rv), so rects are transient */
- const pos=e=>{let x=0,y=0,n=e;while(n&&n!==g){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}return {x,y}};
- const box=e=>{const o=pos(e);return {x:o.x+e.offsetWidth/2,y:o.y+e.offsetHeight/2,left:o.x,right:o.x+e.offsetWidth,top:o.y,bottom:o.y+e.offsetHeight}};
- const side=g.querySelector('.ab-side'),bar=side.querySelector('.ab-bar'),bb=box(bar);
- const barEnd=bb.right,barMid=bb.y;
- const tk=[...g.querySelectorAll('.ab-tk')];
- const port=(i,cls)=>box(tk[i].querySelector('.ab-pt.'+cls));
- const kind=g.dataset.kind;
- let jx,jy,grey='',wire='';
- if(kind==='branch'){
-   const a=port(0,'l'),b=port(1,'l');
-   jx=a.left-46; jy=(a.y+b.y)/2;
-   j.style.left=jx-5+'px'; j.style.top=jy-5+'px';
-   grey=`M ${v(barEnd+8)} ${v(barMid)} H ${v(jx)} V ${v(jy)}`;
-   wire=`M ${p(jx,jy)} H ${v(jx+R)} V ${v(a.y+R)} Q ${p(jx+R,a.y)} ${p(jx+R+R,a.y)} H ${v(a.x)}`;
-   wire+=` M ${p(jx,jy)} H ${v(jx+R)} V ${v(b.y-R)} Q ${p(jx+R,b.y)} ${p(jx+R+R,b.y)} H ${v(b.x)}`;
- }else{
-   const a=port(0,'l'),t=port(1,'t');
-   jx=a.left-46; jy=a.y;
-   j.style.left=jx-5+'px'; j.style.top=jy-5+'px';
-   const railTop=Math.min(a.top,t.top)-34;
-   grey=`M ${v(barEnd+8)} ${v(barMid)} H ${v(jx)} V ${v(jy)}`;
-   wire=`M ${p(jx,jy)} H ${v(a.x)}`;
-   wire+=` M ${p(jx,jy)} V ${v(railTop+R)} Q ${p(jx,railTop)} ${p(jx+R,railTop)} H ${v(t.x-R)} Q ${p(t.x,railTop)} ${p(t.x,railTop+R)} V ${v(t.y)}`;
- }
- svg.innerHTML=`<path class="grey" d="${grey}"/><path class="wire" d="${wire}"/>`;
-};
-const all=()=>{
- const gs=[...document.querySelectorAll('#concept .ab-g')];
- gs.forEach(draw);
- document.querySelector('#concept').classList.add('ab-wired');
-};
-requestAnimationFrame(all);
-/* layout settles late here (webfont, reveal animations) — redraw on a short ladder */
-[0,140,320,700,1400].forEach(ms=>setTimeout(all,ms));
-addEventListener('load',all);
-if(document.fonts)document.fonts.ready.then(()=>{all();setTimeout(all,160)});
-document.querySelectorAll('#concept .ab-tk').forEach(tk=>tk.addEventListener('transitionend',all));
-let t,last='';
-addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(all,120)});
-if(window.ResizeObserver){
- const o=new ResizeObserver(()=>{
-   const now=[...document.querySelectorAll('#concept .ab-g')].map(g=>g.clientWidth).join(':');
-   if(now===last)return;
-   last=now;clearTimeout(t);t=setTimeout(all,80);
- });
- document.querySelectorAll('#concept .ab-g').forEach(g=>o.observe(g));
-}
-new IntersectionObserver((es,ob)=>{if(es.some(e=>e.isIntersecting)){all();ob.disconnect()}}).observe(document.querySelector('#concept'));
-})()</script>
-<div class="ix-blk" data-lkey="m-chain"><div class="m-bar"><h3 class="b3-h">Course modules</h3><span class="m-slashes" aria-hidden="true"><i></i><i></i><i></i></span><i class="m-step" aria-hidden="true"></i><span class="m-chain-meta" aria-hidden="true">6 modules · 20 lessons · 11 h<i><s></s><s></s><s></s></i></span></div><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>Media Server Architecture (MVC Basics)</b><span class="ix-vh"> · </span><span class="d">33 min</span></li><li><span class="n" aria-hidden="true">02</span><b>Video Playback</b><span class="ix-vh"> · </span><span class="d">2 h 42 min</span></li><li><span class="n" aria-hidden="true">03</span><b>User Interfaces</b><span class="ix-vh"> · </span><span class="d">1 h 53 min</span></li><li><span class="n" aria-hidden="true">04</span><b>Color Grading; Image Processing ; GLSL</b><span class="ix-vh"> · </span><span class="d">2 h 5 min</span></li><li><span class="n" aria-hidden="true">05</span><b>Preset Management</b><span class="ix-vh"> · </span><span class="d">1 h 43 min</span></li><li><span class="n" aria-hidden="true">06</span><b>Timing and Synchronisation</b><span class="ix-vh"> · </span><span class="d">1 h 51 min</span></li></ol></div><nav class="ix-ov" aria-label="Lessons by module" style="--c:var(--top)"><script>document.addEventListener("DOMContentLoaded",()=>{if(!document.documentElement.classList.contains("x-lvl"))return;
+    <ol class="ab-items"><li class="ab-it"><span class="n">01</span><h3>Course objective</h3><p>To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</p></li><li class="ab-it"><span class="n">02</span><h3>Practical skills</h3><p>To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</p></li></ol>
+  </div><div class="ix-blk" data-lkey="m-chain"><div class="m-bar"><h3 class="b3-h">Course modules</h3><span class="m-slashes" aria-hidden="true"><i></i><i></i><i></i></span><i class="m-step" aria-hidden="true"></i><span class="m-chain-meta" aria-hidden="true">6 modules · 20 lessons · 11 h<i><s></s><s></s><s></s></i></span></div><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>Media Server Architecture (MVC Basics)</b><span class="ix-vh"> · </span><span class="d">33 min</span></li><li><span class="n" aria-hidden="true">02</span><b>Video Playback</b><span class="ix-vh"> · </span><span class="d">2 h 42 min</span></li><li><span class="n" aria-hidden="true">03</span><b>User Interfaces</b><span class="ix-vh"> · </span><span class="d">1 h 53 min</span></li><li><span class="n" aria-hidden="true">04</span><b>Color Grading; Image Processing ; GLSL</b><span class="ix-vh"> · </span><span class="d">2 h 5 min</span></li><li><span class="n" aria-hidden="true">05</span><b>Preset Management</b><span class="ix-vh"> · </span><span class="d">1 h 43 min</span></li><li><span class="n" aria-hidden="true">06</span><b>Timing and Synchronisation</b><span class="ix-vh"> · </span><span class="d">1 h 51 min</span></li></ol></div><nav class="ix-ov" aria-label="Lessons by module" style="--c:var(--top)"><script>document.addEventListener("DOMContentLoaded",()=>{if(!document.documentElement.classList.contains("x-lvl"))return;
 const lum=c=>{const m=c.match(/\d+(\.\d+)?/g);return m?(+m[0]*.3+ +m[1]*.59+ +m[2]*.11):255};const bgOf=e=>{for(;e;e=e.parentElement){const c=getComputedStyle(e).backgroundColor;if(c&&c!=="transparent"&&!/rgba\(0, 0, 0, 0\)/.test(c))return c}return "rgb(233,231,224)"};
 /* background grid removed by owner 16.11 */
 
@@ -2680,7 +2589,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   <div class="sh"><h2 class="H">Who this course is for</h2><div class="aud-dith" aria-hidden="true"><svg viewBox="0 0 600 120" preserveAspectRatio="xMaxYMax meet" focusable="false"><path d="M240 24h4v4h-4zM264 24h4v4h-4zM276 24h4v4h-4zM288 24h4v4h-4zM300 24h4v4h-4zM312 24h4v4h-4zM324 24h4v4h-4zM336 24h4v4h-4zM348 24h4v4h-4zM360 24h4v4h-4zM384 24h4v4h-4zM408 24h4v4h-4zM270 30h4v4h-4zM282 30h4v4h-4zM294 30h4v4h-4zM306 30h4v4h-4zM318 30h4v4h-4zM330 30h4v4h-4zM342 30h4v4h-4zM354 30h4v4h-4zM366 30h4v4h-4zM204 36h4v4h-4zM216 36h4v4h-4zM228 36h4v4h-4zM240 36h4v4h-4zM252 36h4v4h-4zM264 36h4v4h-4zM276 36h4v4h-4zM282 36h4v4h-4zM288 36h4v4h-4zM294 36h4v4h-4zM300 36h4v4h-4zM306 36h4v4h-4zM312 36h4v4h-4zM318 36h4v4h-4zM324 36h4v4h-4zM330 36h4v4h-4zM336 36h4v4h-4zM342 36h4v4h-4zM348 36h4v4h-4zM354 36h4v4h-4zM360 36h4v4h-4zM372 36h4v4h-4zM384 36h4v4h-4zM396 36h4v4h-4zM408 36h4v4h-4zM420 36h4v4h-4zM444 36h4v4h-4zM210 42h4v4h-4zM222 42h4v4h-4zM234 42h4v4h-4zM246 42h4v4h-4zM258 42h4v4h-4zM270 42h4v4h-4zM282 42h4v4h-4zM294 42h4v4h-4zM300 42h4v4h-4zM306 42h4v4h-4zM312 42h4v4h-4zM318 42h4v4h-4zM324 42h4v4h-4zM330 42h4v4h-4zM336 42h4v4h-4zM342 42h4v4h-4zM348 42h4v4h-4zM354 42h4v4h-4zM366 42h4v4h-4zM372 42h4v4h-4zM378 42h4v4h-4zM390 42h4v4h-4zM402 42h4v4h-4zM414 42h4v4h-4zM426 42h4v4h-4zM120 48h4v4h-4zM144 48h4v4h-4zM156 48h4v4h-4zM168 48h4v4h-4zM180 48h4v4h-4zM192 48h4v4h-4zM204 48h4v4h-4zM216 48h4v4h-4zM228 48h4v4h-4zM240 48h4v4h-4zM246 48h4v4h-4zM252 48h4v4h-4zM264 48h4v4h-4zM270 48h4v4h-4zM276 48h4v4h-4zM282 48h4v4h-4zM288 48h4v4h-4zM294 48h4v4h-4zM300 48h4v4h-4zM306 48h4v4h-4zM312 48h4v4h-4zM318 48h4v4h-4zM324 48h4v4h-4zM330 48h4v4h-4zM336 48h4v4h-4zM342 48h4v4h-4zM348 48h4v4h-4zM354 48h4v4h-4zM360 48h4v4h-4zM366 48h4v4h-4zM372 48h4v4h-4zM378 48h4v4h-4zM384 48h4v4h-4zM390 48h4v4h-4zM396 48h4v4h-4zM402 48h4v4h-4zM408 48h4v4h-4zM414 48h4v4h-4zM420 48h4v4h-4zM432 48h4v4h-4zM438 48h4v4h-4zM444 48h4v4h-4zM456 48h4v4h-4zM468 48h4v4h-4zM480 48h4v4h-4zM492 48h4v4h-4zM504 48h4v4h-4zM528 48h4v4h-4zM552 48h4v4h-4zM576 48h4v4h-4zM174 54h4v4h-4zM198 54h4v4h-4zM222 54h4v4h-4zM246 54h4v4h-4zM270 54h4v4h-4zM294 54h4v4h-4zM306 54h4v4h-4zM318 54h4v4h-4zM330 54h4v4h-4zM342 54h4v4h-4zM354 54h4v4h-4zM360 54h4v4h-4zM366 54h4v4h-4zM372 54h4v4h-4zM378 54h4v4h-4zM384 54h4v4h-4zM390 54h4v4h-4zM396 54h4v4h-4zM402 54h4v4h-4zM408 54h4v4h-4zM414 54h4v4h-4zM420 54h4v4h-4zM426 54h4v4h-4zM432 54h4v4h-4zM438 54h4v4h-4zM450 54h4v4h-4zM462 54h4v4h-4zM474 54h4v4h-4zM486 54h4v4h-4zM108 60h4v4h-4zM132 60h4v4h-4zM156 60h4v4h-4zM180 60h4v4h-4zM204 60h4v4h-4zM228 60h4v4h-4zM252 60h4v4h-4zM276 60h4v4h-4zM300 60h4v4h-4zM312 60h4v4h-4zM324 60h4v4h-4zM336 60h4v4h-4zM348 60h4v4h-4zM360 60h4v4h-4zM372 60h4v4h-4zM378 60h4v4h-4zM384 60h4v4h-4zM390 60h4v4h-4zM396 60h4v4h-4zM402 60h4v4h-4zM408 60h4v4h-4zM414 60h4v4h-4zM420 60h4v4h-4zM426 60h4v4h-4zM432 60h4v4h-4zM438 60h4v4h-4zM444 60h4v4h-4zM450 60h4v4h-4zM456 60h4v4h-4zM462 60h4v4h-4zM468 60h4v4h-4zM474 60h4v4h-4zM480 60h4v4h-4zM492 60h4v4h-4zM504 60h4v4h-4zM516 60h4v4h-4zM528 60h4v4h-4zM540 60h4v4h-4zM552 60h4v4h-4zM564 60h4v4h-4zM588 60h4v4h-4zM378 66h4v4h-4zM390 66h4v4h-4zM402 66h4v4h-4zM414 66h4v4h-4zM420 66h4v4h-4zM426 66h4v4h-4zM432 66h4v4h-4zM438 66h4v4h-4zM444 66h4v4h-4zM450 66h4v4h-4zM456 66h4v4h-4zM462 66h4v4h-4zM468 66h4v4h-4zM474 66h4v4h-4zM486 66h4v4h-4zM498 66h4v4h-4zM510 66h4v4h-4zM522 66h4v4h-4zM534 66h4v4h-4zM546 66h4v4h-4zM570 66h4v4h-4zM72 72h4v4h-4zM336 72h4v4h-4zM360 72h4v4h-4zM372 72h4v4h-4zM384 72h4v4h-4zM396 72h4v4h-4zM408 72h4v4h-4zM414 72h4v4h-4zM420 72h4v4h-4zM426 72h4v4h-4zM432 72h4v4h-4zM438 72h4v4h-4zM444 72h4v4h-4zM450 72h4v4h-4zM456 72h4v4h-4zM462 72h4v4h-4zM468 72h4v4h-4zM474 72h4v4h-4zM480 72h4v4h-4zM486 72h4v4h-4zM492 72h4v4h-4zM498 72h4v4h-4zM504 72h4v4h-4zM510 72h4v4h-4zM516 72h4v4h-4zM522 72h4v4h-4zM528 72h4v4h-4zM534 72h4v4h-4zM540 72h4v4h-4zM552 72h4v4h-4zM558 72h4v4h-4zM564 72h4v4h-4zM576 72h4v4h-4zM588 72h4v4h-4zM414 78h4v4h-4zM426 78h4v4h-4zM438 78h4v4h-4zM450 78h4v4h-4zM456 78h4v4h-4zM462 78h4v4h-4zM468 78h4v4h-4zM474 78h4v4h-4zM480 78h4v4h-4zM486 78h4v4h-4zM492 78h4v4h-4zM498 78h4v4h-4zM504 78h4v4h-4zM510 78h4v4h-4zM516 78h4v4h-4zM522 78h4v4h-4zM528 78h4v4h-4zM534 78h4v4h-4zM546 78h4v4h-4zM558 78h4v4h-4zM570 78h4v4h-4zM582 78h4v4h-4zM594 78h4v4h-4zM396 84h4v4h-4zM420 84h4v4h-4zM432 84h4v4h-4zM444 84h4v4h-4zM450 84h4v4h-4zM456 84h4v4h-4zM462 84h4v4h-4zM468 84h4v4h-4zM474 84h4v4h-4zM480 84h4v4h-4zM486 84h4v4h-4zM492 84h4v4h-4zM498 84h4v4h-4zM504 84h4v4h-4zM510 84h4v4h-4zM516 84h4v4h-4zM522 84h4v4h-4zM528 84h4v4h-4zM534 84h4v4h-4zM540 84h4v4h-4zM546 84h4v4h-4zM552 84h4v4h-4zM558 84h4v4h-4zM564 84h4v4h-4zM570 84h4v4h-4zM576 84h4v4h-4zM582 84h4v4h-4zM588 84h4v4h-4zM594 84h4v4h-4zM450 90h4v4h-4zM462 90h4v4h-4zM474 90h4v4h-4zM486 90h4v4h-4zM498 90h4v4h-4zM510 90h4v4h-4zM516 90h4v4h-4zM522 90h4v4h-4zM528 90h4v4h-4zM534 90h4v4h-4zM540 90h4v4h-4zM546 90h4v4h-4zM552 90h4v4h-4zM558 90h4v4h-4zM564 90h4v4h-4zM570 90h4v4h-4zM576 90h4v4h-4zM582 90h4v4h-4zM588 90h4v4h-4zM594 90h4v4h-4zM432 96h4v4h-4zM444 96h4v4h-4zM456 96h4v4h-4zM468 96h4v4h-4zM480 96h4v4h-4zM486 96h4v4h-4zM492 96h4v4h-4zM498 96h4v4h-4zM504 96h4v4h-4zM510 96h4v4h-4zM516 96h4v4h-4zM522 96h4v4h-4zM528 96h4v4h-4zM534 96h4v4h-4zM540 96h4v4h-4zM546 96h4v4h-4zM552 96h4v4h-4zM558 96h4v4h-4zM564 96h4v4h-4zM570 96h4v4h-4zM576 96h4v4h-4zM582 96h4v4h-4zM588 96h4v4h-4zM594 96h4v4h-4zM486 102h4v4h-4zM498 102h4v4h-4zM510 102h4v4h-4zM522 102h4v4h-4zM534 102h4v4h-4zM546 102h4v4h-4zM552 102h4v4h-4zM558 102h4v4h-4zM564 102h4v4h-4zM570 102h4v4h-4zM576 102h4v4h-4zM582 102h4v4h-4zM588 102h4v4h-4zM594 102h4v4h-4zM468 108h4v4h-4zM492 108h4v4h-4zM504 108h4v4h-4zM516 108h4v4h-4zM528 108h4v4h-4zM540 108h4v4h-4zM546 108h4v4h-4zM552 108h4v4h-4zM558 108h4v4h-4zM564 108h4v4h-4zM570 108h4v4h-4zM576 108h4v4h-4zM582 108h4v4h-4zM588 108h4v4h-4zM594 108h4v4h-4zM546 114h4v4h-4zM558 114h4v4h-4zM570 114h4v4h-4zM582 114h4v4h-4zM594 114h4v4h-4z"/></svg></div></div>
   <div class="roles-wall" aria-label="Target audience roles"><span>Media engineers<sup>/01</sup></span><span>Interactive systems developers<sup>/02</sup></span></div>
   <div class="concept-dat" data-lkey="m3,m3-not">
-    <div class="cd-col aud-yes pn full dk" style="--c:var(--top)"><i class="tk-frame" aria-hidden="true"></i>
+    <div class="cd-col aud-yes pn full dk" style="--c:var(--top)">
       <h3 class="cd-h mono"><span class="sq9" style="background:var(--top)"></span>For you if</h3>
       <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">Media engineers</b><span class="aud-dash"> — </span><span class="aud-t">You already work in TouchDesigner beyond the basics, and this course is for building a media server for events and theatre yourself, without a large team or years of development.</span></li><li><b class="aud-who">Interactive systems developers</b><span class="aud-dash"> — </span><span class="aud-t">The course starts from the TouchDesigner you already know and takes you through a server for events and theatre one block at a time, so you can build it yourself without a team behind you.</span></li></ul></div>
     </div>
@@ -6791,40 +6700,16 @@ if(bar&&barA){
 tlGeo();onScroll();
 })();</script>
 <style id="pp-unify">
-/* ===== pp-unify: one plate language for the paper blocks before Programme ===== */
-/* 1 · section label rows: same square marker, same accent */
-html body .lbl .op::before{border-radius:0;width:8px;height:8px}
+/* ===== pp-unify: one native plate language for the paper blocks before Programme ===== */
+/* 1 · section label rows: the same chip, the same accent as the modules */
 html body #audience .lbl .op::before{background:var(--top)}
-html body .lbl{align-items:center}
 
 /* 2 · every paper section title carries the short violet bar of #concept */
 html body #audience .sh .H::after{content:"";display:block;width:46px;height:5px;margin-top:clamp(16px,1.8vw,24px);background:var(--top)}
 html body #audience .sh{align-items:start}
 
-/* 3 · ports on paper plates are squares, filled with the section accent */
-html body #audience{--port:var(--top)}
-html body #audience .pn.full::before,html body #audience .pn.full::after{border-radius:0;background:var(--port);box-shadow:none;width:8px;height:8px;top:21px}
-html body #audience .pn.full::before{left:-4px}
-html body #audience .pn.full::after{right:-4px}
-
-/* 4 · the dark "for you if" plate becomes a chamfered ticket of the same family */
-html body #audience .aud-yes{--ch:16px;border:0;border-radius:0;background:none;box-shadow:none;padding:26px clamp(22px,2.2vw,32px) 24px;isolation:isolate}
-html body #audience .aud-yes>.tk-frame{position:absolute;inset:0;z-index:0;pointer-events:none;background:rgba(239,238,233,.30);clip-path:polygon(var(--ch) 0,calc(100% - var(--ch)) 0,100% var(--ch),100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,var(--ch) 100%,0 calc(100% - var(--ch)),0 var(--ch))}
-html body #audience .aud-yes>.tk-frame::after{content:"";position:absolute;inset:1px;background:linear-gradient(180deg,#151517,#101012);box-shadow:inset 0 2px 0 var(--top);clip-path:inherit}
-html body #audience .aud-yes>*:not(.tk-frame){position:relative;z-index:1}
-
-/* 5 · marks are square: status chips, "+" rows, "×" rows, wire nodes */
-html body #audience .cd-h .sq9{border-radius:0;width:8px;height:8px}
-html body #audience .ix-why li::before{border-radius:0}
-html body #audience .ix-why li::before{box-shadow:inset 0 0 0 1px var(--top)}
-html body #audience .aud-no ol.dat>li>.n{border-radius:0;box-shadow:inset 0 0 0 1px var(--line2)}
-html body #audience .ix-blk a.aud-c::before{border-radius:0;width:9px;height:9px;top:1px;background:transparent;box-shadow:inset 0 0 0 1.5px var(--top)}
-html body #audience .ix-blk a.aud-cb::before{background:var(--top);box-shadow:none}
-html body #audience .ix-blk a.aud-c1 small::after,html body #audience .ix-blk a.aud-c2 small::after{left:11px;top:5px}
-html body #audience .ix-blk a.aud-c b i{color:var(--top)}
-
-/* 6 · mono meta scale matches the concept block everywhere in the paper area */
-html body :is(#concept,#audience) .cd-h:not(h3),html body #audience .roles-wall sup,html body #audience .lbl,html body #audience .pr-l,html body #audience .pr-t{font-size:11px;letter-spacing:.06em}
+/* 3 · mono meta scale matches the concept block everywhere in the paper area */
+html body #audience .roles-wall sup,html body #audience .lbl,html body #audience .pr-l,html body #audience .pr-t{font-size:11px;letter-spacing:.06em}
 </style>
 </body>
 </html>
