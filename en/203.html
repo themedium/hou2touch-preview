@@ -2708,8 +2708,8 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
       <p class="au-s"><span><b>28</b> <span class="mono">years in CGI &amp; real-time art</span></span><span class="ix-sep"> · </span><span><b>2,000+</b> <span class="mono">students</span></span><span class="ix-sep"> · </span><span><span class="mono">teaching since</span> <b>2001</b></span></p>
     </div>
   </div></div></div>
-<div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
-  <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div>
+<div class="marq-gap"><div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
+  <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div></div>
 <div class="edge b" aria-hidden="true"></div></section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="lbl mono"><b>08</b> Reviews<i class="op" style="--c:var(--dat)">text1 <u>DAT</u></i></div><div class="ix-rvs"><div class="ph ix-plh" aria-hidden="true">text1 <u>DAT</u><span class="r">2 reviews</span></div></div></div><script>document.addEventListener("DOMContentLoaded",function(){var D=window.REV2,box=document.querySelector("#reviews .ix-rvs");if(!D||!D.items||!box)return;
 D.items.forEach(function(x){var f=document.createElement("figure");f.className="pn lite ix-rv";f.style.setProperty("--c","var(--top)");
@@ -6913,8 +6913,10 @@ html body .buy-x a{color:var(--fg);text-decoration:underline;text-underline-offs
 html body .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-height:20px;color:var(--txt);max-width:46ch}
 </style>
 
-<style id="marq-fix">/* бегущая строка фестивалей: бумага под собой, иначе текст уходит на тёмный body */
-html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border-block:1px solid var(--ink,#0b0b0c);margin-top:0;padding:14px 0}
+<style id="marq-fix">/* бегущая строка фестивалей: своя бумага + зазор до био */
+html body .marq-gap{background:var(--paper,#e9e7e0);padding-top:56px}
+@media(max-width:760px){html body .marq-gap{padding-top:40px}}
+html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border:0;margin:0;padding:14px 0}
 html body #fests .marq-t span,html body #fests .marq-t em{color:var(--ink,#0b0b0c)}
 html body #fests .marq-t em{background:var(--comp,#9a9a96)}
 html body .marq-w{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
