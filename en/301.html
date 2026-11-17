@@ -1949,51 +1949,40 @@ html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){.tlb,.tbar,.tls button{transition:none}}
 @media print{.tlb,.tbar{display:none!important}}
 }</style>
-<script id="pix-3d">/* декор: 3D-поверхность из точек 4 px, без осей; своя функция в деке и в шапке */
-(()=>{const P=4,INK="#0b0b0c",STEP=2.0,YAW=.45,PITCH=.52,ZK=.85,FAR=.55;
-/* --- ДЕКА: спираль — логарифмические рукава + кольца + ядро (распространение сигнала) --- */
-const spiral=(x,y)=>{const xx=x+.15, r=Math.hypot(xx*.80,y*1.55), th=Math.atan2(y,xx);
- const arms=Math.sin(2.8*Math.log(r+.32)-2.2*th)*Math.exp(-.50*r);
- const rings=.32*Math.sin(5.2*r-.5)*Math.exp(-.70*r);
- const core=.30*Math.exp(-1.1*r*r);
- const noise=.08*Math.sin(3.3*xx+.6)*Math.cos(2.1*y);
- return 1.05*arms+rings+core+noise};
-/* --- ШАПКА: орбиты — два фокуса, интерференция колец + спиральная фаза --- */
-const orbits=(x,y)=>{const r1=Math.hypot(x+.78,y*1.55), r2=Math.hypot(x-.74,y*1.55);
- let z=.95*Math.cos(3.3*r1)*Math.exp(-.85*r1)+.90*Math.cos(3.0*r2)*Math.exp(-.95*r2);
- const r=Math.hypot(x,y), th=Math.atan2(y,x);
- z+=.24*Math.sin(1.9*Math.log(r+.26)-2.2*th);
- z+=.12*Math.exp(-.7*r*r);
- return z};
+<script id="pix-3d">/* декор: плоские кривые из точек 4 px; x вправо, y вверх, без перспективы */
+(()=>{const P=4,INK="#0b0b0c",PAD=.06;
+/* --- ДЕКА: эллиптическая спираль, 3.4 витка, растянута по x --- */
+const spiral=()=>{const a=[],T=3.4,N=5000,AR=2.9;
+ for(let i=0;i<N;i++){const t=i/(N-1), th=t*T*2*Math.PI, r=.05+.95*t;
+  a.push([r*Math.cos(th)*AR, r*Math.sin(th)]);}
+ return a};
+/* --- ШАПКА: две эллиптические орбиты под углом ±0.42 --- */
+const orbits=()=>{const a=[],N=2500;
+ [[.42,1.0],[-.42,.78]].forEach(([rot,rr])=>{
+  const cr=Math.cos(rot), sr=Math.sin(rot);
+  for(let i=0;i<N;i++){const th=i/N*2*Math.PI;
+   const x=rr*Math.cos(th), y=rr*Math.sin(th)*.46;
+   a.push([x*cr-y*sr, x*sr+y*cr]);}});
+ return a};
 const FN={deck:spiral,aud:orbits};
+/* вписать точки в блок по bounding box с полями PAD */
+const fit=(a)=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+ for(const p of a){if(p[0]<x0)x0=p[0];if(p[0]>x1)x1=p[0];if(p[1]<y0)y0=p[1];if(p[1]>y1)y1=p[1];}
+ const w=x1-x0||1, h=y1-y0||1;
+ return a.map(p=>[(p[0]-x0)/w, (p[1]-y0)/h]);};
 const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
  const D=Math.min(2.5,window.devicePixelRatio||1);
  cv.width=Math.round(w*D);cv.height=Math.round(h*D);
- const g2=cv.getContext("2d");g2.setTransform(D,0,0,D,0,0);g2.clearRect(0,0,w,h);g2.fillStyle=INK;
- const nx=Math.ceil(w/P),ny=Math.ceil(h/P),ar=nx/ny;
- const XS=2.9*ar/6.38, YS=1.1;                 /* домен под пропорции блока */
- const sx=Math.max(20,Math.round(nx/STEP)), sy=Math.max(14,Math.round(ny/STEP));
- const fn=FN[cv.dataset.d3]||FN.aud;
- const cyw=Math.cos(YAW), syw=Math.sin(YAW);
- const px_=[],py_=[],dp_=[]; let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,d0=1e9,d1=-1e9;
- for(let i=0;i<sx;i++){const x=-XS+2*XS*(i+.5)/sx;
-  for(let j=0;j<sy;j++){const y=-YS+2*YS*(j+.5)/sy, z=fn(x,y);
-   const rx=x*cyw-y*syw, ry=x*syw+y*cyw;
-   const px=rx, py=ry*PITCH-z*ZK, d=-ry;
-   px_.push(px);py_.push(py);dp_.push(d);
-   if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py;
-   if(d<d0)d0=d; if(d>d1)d1=d;}}
- /* z-буфер: в клетке остаётся ближайшая точка поверхности */
- const zb=new Map();
- for(let k=0;k<px_.length;k++){
-  const cx=Math.round((px_[k]-x0)/(x1-x0)*(nx-1)), cy=Math.round((py_[k]-y0)/(y1-y0)*(ny-1));
+ const g=cv.getContext("2d");g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,w,h);g.fillStyle=INK;
+ const nx=Math.ceil(w/P), ny=Math.ceil(h/P);
+ const pts=fit((FN[cv.dataset.d3]||FN.aud)());
+ const seen=new Set();
+ for(const [u,v] of pts){
+  const cx=Math.round((PAD+u*(1-2*PAD))*(nx-1));
+  const cy=Math.round((1-PAD-v*(1-2*PAD))*(ny-1));   /* y вверх */
   if(cx<0||cy<0||cx>=nx||cy>=ny)continue;
-  const key=cy*nx+cx, d=dp_[k], prev=zb.get(key);
-  if(prev===undefined||d>prev)zb.set(key,d);}
- /* глубина: дальняя половина поверхности — через одну точку */
- zb.forEach((d,key)=>{const t=(d-d0)/(d1-d0||1), cx=key%nx, cy=(key-cx)/nx;
-  if(t<FAR&&((cx+cy)&1))return;
-  g2.fillRect(cx*P,cy*P,P,P);});
+  const k=cy*nx+cx; if(seen.has(k))continue; seen.add(k);
+  g.fillRect(cx*P,cy*P,P,P);}
  cv.dataset.drawn="1"};
 const all=()=>document.querySelectorAll("[data-3d]").forEach(draw);
 window.H2T3D={draw,all};
@@ -6906,6 +6895,7 @@ html body #fests .marq-t em{background:var(--comp,#9a9a96)}
 html body .marq-w{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
 html body .marq-w .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
+
 
 
 
