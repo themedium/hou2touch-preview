@@ -6818,6 +6818,13 @@ html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{padding-
 /* 17 · bundle note under the buy button (repo copy) */
 html body #book .tier .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-height:20px;color:var(--txt);max-width:46ch}
 html body #book .tier .buy-x a.u{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+
+/* 18 · pink as the third accent: "does not fit" and quotes (lime = fits/index, orange = buy) */
+:root{--pink:#c34f9a}
+html body #audience .aud-no::before,html body #audience .aud-no::after{box-shadow:inset 0 0 0 2px var(--pink)}
+html body #audience .aud-no>.ph .r{color:var(--pink)}
+html body #audience .aud-no ol.dat>li>.n{box-shadow:inset 0 0 0 1px rgba(195,79,154,.55)}
+html body #reviews .ix-rvs figure.ix-rv::before,html body #reviews .ix-rvs figure.ix-rv blockquote::before{color:var(--pink)}
 </style>
 </body>
 </html>
