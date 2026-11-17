@@ -2587,10 +2587,10 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   <div class="roles-wall" aria-label="Target audience roles"><span>Media engineers<sup>/01</sup></span><span>Interactive systems developers<sup>/02</sup></span></div>
   <div class="concept-dat" data-lkey="m3,m3-not">
     <div class="cd-col aud-yes pn full dk" style="--c:var(--dat)"><div class="ph"><span class="id">audience1</span><u>DAT</u><span class="r">/ match</span></div><h3 class="cd-h">For you if</h3>
-      <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">Media engineers</b><span class="aud-dash"> — </span><span class="aud-t">You already work in TouchDesigner beyond the basics, and this course is for building a media server for events and theatre yourself, without a large team or years of development.</span></li><li><b class="aud-who">Interactive systems developers</b><span class="aud-dash"> — </span><span class="aud-t">The course starts from the TouchDesigner you already know and takes you through a server for events and theatre one block at a time, so you can build it yourself without a team behind you.</span></li></ul></div>
+      <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">Media engineers</b><span class="aud-dash"> — </span><span class="aud-t">You already work in TouchDesigner beyond the basics, and this course is for building a media server for events and theatre yourself, without a large team or years of development.</span></li><li><b class="aud-who">Interactive systems developers</b><span class="aud-dash"> — </span><span class="aud-t">The course starts from the TouchDesigner you already know and takes you through a server for events and theatre one block at a time, so you can build it yourself without a team behind you.</span></li></ul></div><div class="pf aud-pf"><span class="id">→ audience1</span><span>2 reasons</span></div>
     </div>
     <div class="cd-col aud-no"><div class="ph"><span class="id">prerequisites</span><u>DAT</u><span class="r">/ no match</span></div><h3 class="b3-h">Not for you if</h3>
-      <ol class="dat"><li><span class="n">–</span><span>you do not meet the requirements in “Before you start”</span></li><li><span class="n">–</span><span>you have not taken <a class="u" href="/101">TouchDesigner 101: Extreme I</a>, <a class="u" href="/102">TouchDesigner 102: Extreme II</a> and don&#x27;t have equivalent experience</span></li></ol>
+      <ol class="dat"><li><span class="n">–</span><span>you do not meet the requirements in “Before you start”</span></li><li><span class="n">–</span><span>you have not taken <a class="u" href="/101">TouchDesigner 101: Extreme I</a>, <a class="u" href="/102">TouchDesigner 102: Extreme II</a> and don&#x27;t have equivalent experience</span></li></ol><div class="pf aud-pf"><span class="id">→ prerequisites</span><span>2 exclusions</span></div>
     </div>
   </div>
   
@@ -6808,6 +6808,12 @@ html body #audience .aud-yes>.ph,html body #audience .aud-no>.ph{display:flex!im
 html body #audience .aud-yes>h3.cd-h,html body #audience .aud-no>h3.b3-h{display:flex!important;align-items:center!important;height:74px!important;margin:0!important;padding:0 30px!important;font-family:var(--disp)!important;font-weight:700!important;font-size:32px!important;line-height:1!important;letter-spacing:0!important;text-transform:uppercase!important;color:var(--fg)!important;background:none!important}
 html body #audience .aud-yes>h3.cd-h::after,html body #audience .aud-no>h3::after{content:none!important}
 html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{margin:0!important;padding:16px 30px 26px!important;border-top:1px solid var(--line2)!important}
+
+/* 16 · bottom strip of both audience plates — same as the tier plate footer */
+html body #audience .aud-yes{display:flex;flex-direction:column}
+html body #audience .aud-yes>.pf,html body #audience .aud-no>.pf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:14px 30px;border-top:1px solid var(--line2);font-family:var(--mono);font-weight:500;font-size:11px;line-height:1;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+html body #audience .aud-yes>.pf .id,html body #audience .aud-no>.pf .id{color:var(--mute)}
+html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{padding-bottom:22px!important}
 </style>
 </body>
 </html>
