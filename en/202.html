@@ -1949,34 +1949,43 @@ html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){.tlb,.tbar,.tls button{transition:none}}
 @media print{.tlb,.tbar{display:none!important}}
 }</style>
-<script id="pix-burst">/* графика: разлёт из точек 4 px, один цвет; форма одна на всех страницах */
-(()=>{const P=4,INK="#0b0b0c",DENS=.15,SEED=7;
-const rng=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);
- t=t+Math.imul(t^t>>>7,61|t)^t;t^=t>>>14;return (t>>>0)/4294967296};
+<script id="pix-3d">/* декор: 3D-поверхность из точек 4 px, без осей; один цвет */
+(()=>{const P=4,INK="#0b0b0c",STEP=2.0,YAW=.45,PITCH=.52,ZK=.85;
+/* функция: купол + затухающая круговая рябь */
+const fz=(x,y)=>{const r2=x*x*.30+y*y*1.9,r=Math.sqrt(x*x+y*y);
+ return 1.25*Math.exp(-r2)+.26*Math.exp(-r2*.45)*Math.sin(1.9*r)};
 const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
  const D=Math.min(2.5,window.devicePixelRatio||1);
  cv.width=Math.round(w*D);cv.height=Math.round(h*D);
  const g=cv.getContext("2d");g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,w,h);g.fillStyle=INK;
- const nx=Math.ceil(w/P),ny=Math.ceil(h/P),ar=w/h,R=rng(SEED);
- const N=Math.max(60,Math.round(nx*ny*DENS)),rmax=ar*.92;
- const ox=.05,oy=.5,cone=.58,curve=.5,decay=1.6,seen=new Set();
- const put=(x,y)=>{if(x<0||y<0||x>=nx||y>=ny)return;const k=x+","+y;if(seen.has(k))return;seen.add(k);g.fillRect(x*P,y*P,P,P)};
- for(let i=0;i<N;i++){
-  const back=R()<.10;
-  let a=(R()*2-1)*(back?Math.PI:cone);
-  const r=.08+rmax*Math.pow(R(),decay);
-  a+=curve*(R()-.5)*r*.35;
-  const sx=ox+(R()-.5)*.03, sy=oy+(R()-.5)*.07;
-  const seg=r<.4?1:r<1?2:r<2.2?3:4;
-  for(let k=0;k<seg;k++){
-   const rr=r*(1-.12*k)+.05*(R()-.5), aa=a+.12*k*(R()-.5);
-   if(k&&R()<=.5)continue;
-   put(Math.floor((sx+rr*Math.cos(aa)/ar)*nx),Math.floor((sy+rr*Math.sin(aa))*ny));}}
+ const nx=Math.ceil(w/P),ny=Math.ceil(h/P),ar=nx/ny;
+ const XS=2.9*ar/6.38, YS=1.1;                    /* домен под пропорции блока */
+ const sx=Math.max(20,Math.round(nx/STEP)), sy=Math.max(14,Math.round(ny/STEP));
+ const cyw=Math.cos(YAW), syw=Math.sin(YAW);
+ const px_=[],py_=[],dp_=[]; let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,d0=1e9,d1=-1e9;
+ for(let i=0;i<sx;i++){const x=-XS+2*XS*(i+.5)/sx;
+  for(let j=0;j<sy;j++){const y=-YS+2*YS*(j+.5)/sy, z=fz(x,y);
+   const rx=x*cyw-y*syw, ry=x*syw+y*cyw;
+   const px=rx, py=ry*PITCH-z*ZK, d=-ry;
+   px_.push(px);py_.push(py);dp_.push(d);
+   if(px<x0)x0=px; if(px>x1)x1=px; if(py<y0)y0=py; if(py>y1)y1=py;
+   if(d<d0)d0=d; if(d>d1)d1=d;}}
+ /* z-буфер: в клетке остаётся ближайшая точка */
+ const zb=new Map();
+ for(let k=0;k<px_.length;k++){
+  const cx=Math.round((px_[k]-x0)/(x1-x0)*(nx-1)), cy=Math.round((py_[k]-y0)/(y1-y0)*(ny-1));
+  if(cx<0||cy<0||cx>=nx||cy>=ny)continue;
+  const key=cy*nx+cx, d=dp_[k], prev=zb.get(key);
+  if(prev===undefined||d>prev)zb.set(key,d);}
+ /* глубина: дальняя половина поверхности — через одну точку */
+ zb.forEach((d,key)=>{const t=(d-d0)/(d1-d0||1), cx=key%nx, cy=(key-cx)/nx;
+  if(t<.55&&((cx+cy)&1))return;
+  g.fillRect(cx*P,cy*P,P,P);});
  cv.dataset.drawn="1"};
-const all=()=>document.querySelectorAll("[data-burst]").forEach(draw);
-window.H2TBURST={draw,all};
+const all=()=>document.querySelectorAll("[data-3d]").forEach(draw);
+window.H2T3D={draw,all};
 if(document.readyState!=="loading")all();else document.addEventListener("DOMContentLoaded",all);
-addEventListener("resize",()=>{clearTimeout(window.__burstT);window.__burstT=setTimeout(all,180)});
+addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeout(all,180)});
 })();</script>
 </head>
 <body>
@@ -2555,7 +2564,7 @@ const doStrips=()=>{let i=0;document.querySelectorAll("section.sec h2.H").forEac
 document.querySelectorAll("details.ix-mod").forEach(d=>{const k=+d.id.slice(3)-1;const src=document.querySelectorAll('.ipt-m[data-m="'+k+'"] .ipt-t');const mm=d.querySelector(".ix-mm");if(!src.length||!mm)return;
 const st=document.createElement("span");st.className="lvl-strip";st.setAttribute("aria-hidden","true");
 src.forEach(t=>{const e=document.createElement("span");e.className=t.className.replace("hot","");e.dataset.t=t.dataset.t;e.dataset.g=t.dataset.g;e.dataset.a=t.dataset.a;e.appendChild(document.createElement("canvas"));st.appendChild(e)});
-mm.prepend(st);requestAnimationFrame(()=>st.querySelectorAll("canvas").forEach(c=>window.H2TP&&window.H2TP.draw(c,false)))})});</script><div class="ix-patch"><div class="ipt-top"><div class="ipt-hd" aria-hidden="true"><b>8</b><div><span>lessons</span><span>4 modules · 4.2 h</span></div></div><canvas class="ipt-wave" aria-hidden="true" data-burst="1"></canvas></div><div class="ipt-mods" style="grid-template-columns:minmax(0,1.60fr) minmax(0,1.60fr) minmax(0,1.60fr) minmax(0,1.60fr)"><div class="ipt-m" data-m="0"><div class="ipt-h" aria-hidden="true"><b data-t="M01"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="46 MIN"></span><span class="nm">Setup Video Sources &amp; Color correction</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-01" data-pm="pm-01" data-t="01 · Connecting camera feeds; Organising a reusable source component · 22 min" data-g="0" data-a="0.79" aria-label="Lesson 01, Connecting camera feeds; Organising a reusable source component, 22 min, module 1: Setup Video Sources &amp; Color correction"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="01"></b><small aria-hidden="true" data-t="22 MIN"></small></a><a class="ipt-t" href="#pm-01" data-pm="pm-01" data-t="02 · OpenColorIO camera correction; Kinect Azure NDI and RealSense streams · 23 min" data-g="1" data-a="0.92" aria-label="Lesson 02, OpenColorIO camera correction; Kinect Azure NDI and RealSense streams, 23 min, module 1: Setup Video Sources &amp; Color correction"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="02"></b><small aria-hidden="true" data-t="23 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M01"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="1"><div class="ipt-h" aria-hidden="true"><b data-t="M02"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="1 H 19 MIN"></span><span class="nm">Camera-Selection Interface</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-02" data-pm="pm-02" data-t="03 · Building a camera selector UI with Replicator COMP · 35 min" data-g="2" data-a="0.86" aria-label="Lesson 03, Building a camera selector UI with Replicator COMP, 35 min, module 2: Camera-Selection Interface"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="03"></b><small aria-hidden="true" data-t="35 MIN"></small></a><a class="ipt-t" href="#pm-02" data-pm="pm-02" data-t="04 · Building a camera color-correction interface; Browsing LUTs · 44 min" data-g="3" data-a="0.99" aria-label="Lesson 04, Building a camera color-correction interface; Browsing LUTs, 44 min, module 2: Camera-Selection Interface"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="04"></b><small aria-hidden="true" data-t="44 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M02"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="2"><div class="ipt-h" aria-hidden="true"><b data-t="M03"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="1 H 11 MIN"></span><span class="nm">System Architecture &amp; Presets</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-03" data-pm="pm-03" data-t="05 · Saving per-camera colour-correction presets; Replacing direct wiring with Select operators · 36 min" data-g="4" data-a="0.93" aria-label="Lesson 05, Saving per-camera colour-correction presets; Replacing direct wiring with Select operators, 36 min, module 3: System Architecture &amp; Presets"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="05"></b><small aria-hidden="true" data-t="36 MIN"></small></a><a class="ipt-t acc" href="#pm-03" data-pm="pm-03" data-t="06 · Applying preset values to camera item parameters; Recalling controls on camera change · 34 min" data-g="5" data-a="0.78" aria-label="Lesson 06, Applying preset values to camera item parameters; Recalling controls on camera change, 34 min, module 3: System Architecture &amp; Presets"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="06"></b><small aria-hidden="true" data-t="34 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M03"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="3"><div class="ipt-h" aria-hidden="true"><b data-t="M04"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="56 MIN"></span><span class="nm">Live Control &amp; Broadcasting</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t acc" href="#pm-04" data-pm="pm-04" data-t="07 · Building a streaming camera layer interface · 36 min" data-g="6" data-a="0.72" aria-label="Lesson 07, Building a streaming camera layer interface, 36 min, module 4: Live Control &amp; Broadcasting"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="07"></b><small aria-hidden="true" data-t="36 MIN"></small></a><a class="ipt-t" href="#pm-04" data-pm="pm-04" data-t="08 · Streaming through NDI and RTMP; A/B mixing patch walkthrough · 20 min" data-g="7" data-a="0.85" aria-label="Lesson 08, Streaming through NDI and RTMP; A/B mixing patch walkthrough, 20 min, module 4: Live Control &amp; Broadcasting"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="08"></b><small aria-hidden="true" data-t="20 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M04"></b><i><s></s><s></s></i></span></div></div><div class="ipt-leg" aria-hidden="true"><span class="ipt-lg"><b data-t="M01"></b><i><s></s><s></s></i></span><span class="ipt-lg alt"><b data-t="M02"></b><i><s></s><s></s></i></span><span class="ipt-lg"><b data-t="M03"></b><i><s></s><s></s></i></span><span class="ipt-lg alt"><b data-t="M04"></b><i><s></s><s></s></i></span></div><div class="ipt-tip" aria-hidden="true"></div><script>(()=>{const r=document.currentScript.parentNode,tp=r.querySelector(".ipt-tip");
+mm.prepend(st);requestAnimationFrame(()=>st.querySelectorAll("canvas").forEach(c=>window.H2TP&&window.H2TP.draw(c,false)))})});</script><div class="ix-patch"><div class="ipt-top"><div class="ipt-hd" aria-hidden="true"><b>8</b><div><span>lessons</span><span>4 modules · 4.2 h</span></div></div><canvas class="ipt-wave" aria-hidden="true" data-3d="1"></canvas></div><div class="ipt-mods" style="grid-template-columns:minmax(0,1.60fr) minmax(0,1.60fr) minmax(0,1.60fr) minmax(0,1.60fr)"><div class="ipt-m" data-m="0"><div class="ipt-h" aria-hidden="true"><b data-t="M01"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="46 MIN"></span><span class="nm">Setup Video Sources &amp; Color correction</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-01" data-pm="pm-01" data-t="01 · Connecting camera feeds; Organising a reusable source component · 22 min" data-g="0" data-a="0.79" aria-label="Lesson 01, Connecting camera feeds; Organising a reusable source component, 22 min, module 1: Setup Video Sources &amp; Color correction"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="01"></b><small aria-hidden="true" data-t="22 MIN"></small></a><a class="ipt-t" href="#pm-01" data-pm="pm-01" data-t="02 · OpenColorIO camera correction; Kinect Azure NDI and RealSense streams · 23 min" data-g="1" data-a="0.92" aria-label="Lesson 02, OpenColorIO camera correction; Kinect Azure NDI and RealSense streams, 23 min, module 1: Setup Video Sources &amp; Color correction"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="02"></b><small aria-hidden="true" data-t="23 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M01"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="1"><div class="ipt-h" aria-hidden="true"><b data-t="M02"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="1 H 19 MIN"></span><span class="nm">Camera-Selection Interface</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-02" data-pm="pm-02" data-t="03 · Building a camera selector UI with Replicator COMP · 35 min" data-g="2" data-a="0.86" aria-label="Lesson 03, Building a camera selector UI with Replicator COMP, 35 min, module 2: Camera-Selection Interface"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="03"></b><small aria-hidden="true" data-t="35 MIN"></small></a><a class="ipt-t" href="#pm-02" data-pm="pm-02" data-t="04 · Building a camera color-correction interface; Browsing LUTs · 44 min" data-g="3" data-a="0.99" aria-label="Lesson 04, Building a camera color-correction interface; Browsing LUTs, 44 min, module 2: Camera-Selection Interface"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="04"></b><small aria-hidden="true" data-t="44 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M02"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="2"><div class="ipt-h" aria-hidden="true"><b data-t="M03"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="1 H 11 MIN"></span><span class="nm">System Architecture &amp; Presets</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t" href="#pm-03" data-pm="pm-03" data-t="05 · Saving per-camera colour-correction presets; Replacing direct wiring with Select operators · 36 min" data-g="4" data-a="0.93" aria-label="Lesson 05, Saving per-camera colour-correction presets; Replacing direct wiring with Select operators, 36 min, module 3: System Architecture &amp; Presets"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="05"></b><small aria-hidden="true" data-t="36 MIN"></small></a><a class="ipt-t acc" href="#pm-03" data-pm="pm-03" data-t="06 · Applying preset values to camera item parameters; Recalling controls on camera change · 34 min" data-g="5" data-a="0.78" aria-label="Lesson 06, Applying preset values to camera item parameters; Recalling controls on camera change, 34 min, module 3: System Architecture &amp; Presets"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="06"></b><small aria-hidden="true" data-t="34 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M03"></b><i><s></s><s></s></i></span></div><div class="ipt-m" data-m="3"><div class="ipt-h" aria-hidden="true"><b data-t="M04"></b><i data-t="×2"></i><em class="ipt-q"><s></s><s></s></em><span class="d" data-t="56 MIN"></span><span class="nm">Live Control &amp; Broadcasting</span></div><div class="ipt-box r2" style="--cols:2"><a class="ipt-t acc" href="#pm-04" data-pm="pm-04" data-t="07 · Building a streaming camera layer interface · 36 min" data-g="6" data-a="0.72" aria-label="Lesson 07, Building a streaming camera layer interface, 36 min, module 4: Live Control &amp; Broadcasting"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="07"></b><small aria-hidden="true" data-t="36 MIN"></small></a><a class="ipt-t" href="#pm-04" data-pm="pm-04" data-t="08 · Streaming through NDI and RTMP; A/B mixing patch walkthrough · 20 min" data-g="7" data-a="0.85" aria-label="Lesson 08, Streaming through NDI and RTMP; A/B mixing patch walkthrough, 20 min, module 4: Live Control &amp; Broadcasting"><canvas aria-hidden="true"></canvas><b aria-hidden="true" data-t="08"></b><small aria-hidden="true" data-t="20 MIN"></small></a></div><span class="ipt-plug" aria-hidden="true"></span><span class="ipt-pl" aria-hidden="true"><b data-t="M04"></b><i><s></s><s></s></i></span></div></div><div class="ipt-leg" aria-hidden="true"><span class="ipt-lg"><b data-t="M01"></b><i><s></s><s></s></i></span><span class="ipt-lg alt"><b data-t="M02"></b><i><s></s><s></s></i></span><span class="ipt-lg"><b data-t="M03"></b><i><s></s><s></s></i></span><span class="ipt-lg alt"><b data-t="M04"></b><i><s></s><s></s></i></span></div><div class="ipt-tip" aria-hidden="true"></div><script>(()=>{const r=document.currentScript.parentNode,tp=r.querySelector(".ipt-tip");
 const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
 const cl=v=>v<0?0:v>1?1:v;
 const rng=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
@@ -2578,7 +2587,7 @@ g.clearRect(0,0,w,h);let col="#e9e7e0";if(hot)col=pc;else if(t.classList.contain
 const hx=hot||t.classList.contains("acc")?pc:"#e9e7e0";g.__c=[parseInt(hx.slice(1,3),16),parseInt(hx.slice(3,5),16),parseInt(hx.slice(5,7),16)];
 g.strokeStyle=col;g.fillStyle=col;g.lineWidth=Math.max(1.1,1.05*D);g.lineCap="round";L[+t.dataset.g%L.length](g,w,h,R,A,D)};
 window.H2TP={draw:(cv,hot)=>draw(cv,hot)};
-const wave=()=>{const cv=r.querySelector(".ipt-wave");if(cv&&window.H2TBURST)window.H2TBURST.draw(cv)};
+const wave=()=>{const cv=r.querySelector(".ipt-wave");if(cv&&window.H2T3D)window.H2T3D.draw(cv)};
 const lay=()=>{const M=r.querySelector(".ipt-mods");if(!M)return;const ms=[...M.querySelectorAll(":scope>.ipt-m")];
 if(!matchMedia("(min-width:1201px)").matches){M.style.gridTemplateColumns="";ms.forEach(m=>{m.style.removeProperty("--T")});return}
 const cs=getComputedStyle(M),G=parseFloat(cs.columnGap)||24,gap=6,pad=10;const cols=ms.map(m=>+getComputedStyle(m.querySelector(".ipt-box")).getPropertyValue("--cols")||1);
@@ -2601,7 +2610,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
 </div></section>
 <section id="audience" class="sec" data-lkey="m3,m4"><div class="wrap">
   <div class="lbl mono"><b>02</b> For whom &amp; outcomes<i class="op" style="--c:var(--dat)">audience1 <u>DAT</u></i></div>
-  <div class="sh"><h2 class="H">Who this course is for</h2><div class="aud-dith" aria-hidden="true"><canvas aria-hidden="true" data-burst="1"></canvas></div></div>
+  <div class="sh"><h2 class="H">Who this course is for</h2><div class="aud-dith" aria-hidden="true"><canvas aria-hidden="true" data-3d="1"></canvas></div></div>
   <div class="roles-wall" aria-label="Target audience roles"><span>Streaming AV artists<sup>/01</sup></span><span>Online VJs<sup>/02</sup></span><span>Media engineers<sup>/03</sup></span></div>
   <div class="concept-dat" data-lkey="m3,m3-not">
     <div class="cd-col aud-yes pn full dk" style="--c:var(--dat)"><div class="ph"><span class="id">audience1</span><u>DAT</u><span class="r">/ match</span></div><h3 class="cd-h">For you if</h3>
@@ -6882,10 +6891,15 @@ html body #fests .marq-t em{background:var(--comp,#9a9a96)}
 html body .marq-w{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
 html body .marq-w .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
-<style id="pix-burst-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
+
+<style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
-</style><style id="l9-paths">.ix-paths{display:grid;gap:18px}</style><style id="pix-burst-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
+</style>
+<style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
+#audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+html body .ipt-wave{image-rendering:pixelated}
+</style><style id="l9-paths">.ix-paths{display:grid;gap:18px}</style><style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
 </style>
