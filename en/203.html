@@ -1779,93 +1779,63 @@ html body #audience ol.out1>li>.n{margin:0;padding:0 0 10px;font-size:52px;backg
 #audience ol.out1>li:nth-child(n)::before{content:"";left:22px;right:auto;top:52px;bottom:0;width:1.5px;height:auto;transform:none;background:var(--aud)}
 #audience ol.out1>li:last-child::before{background:linear-gradient(var(--aud),transparent)}
 }
-/* ===== concept v4: the branch wireframe translated into the site's TD ticket/node language ===== */
-#concept{--ab:var(--top);--ab-g:clamp(18px,1.7vw,24px);--ab-ch:20px;--ab-cut:120px}
-#concept .sh{margin:0 0 clamp(18px,1.7vw,24px)}
+/* ===== concept v5: branch layout on native .pn plates — no connectors from the title ===== */
+#concept{--ab:var(--top)}
+#concept .sh{margin:0}
 #concept .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #concept .ab-group{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(40px,6.5vw,112px);align-items:center;margin:0 0 clamp(32px,4.5vw,68px);padding:0}
 html:not(.x-old) body #concept .m2-open,html:not(.x-old) body #concept .ix-blk{padding-top:0;border-top:0;margin-top:0;max-width:none}
-#concept .ab-title{position:relative;z-index:1;align-self:center;margin:0;max-width:3em;font:700 clamp(60px,5.2vw,82px)/.86 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+#concept .ab-title{margin:0;max-width:3em;font:700 clamp(60px,5.2vw,82px)/.86 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
 #concept .ab-title span{display:block}
-html body #concept .ab-rows{position:relative;display:grid;grid-template-columns:minmax(0,1fr)!important;gap:24px;grid-column:2;list-style:none;margin:0;padding:0;max-width:none;border:0;box-shadow:none}
-html body #concept .ab-rows>.ab-row{position:relative;display:block;min-height:clamp(124px,9.5vw,146px);margin:0;padding:0;border:0;max-width:none}
+html body #concept .ab-rows{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:24px;grid-column:2;list-style:none;margin:0;padding:0;max-width:none;border:0;box-shadow:none}
 
-/* Ticket: a continuous 1px ink outline, 45-degree cut corners. The ports live OUTSIDE the clipping layers. */
-#concept .ab-row::before,#concept .ab-row::after{content:"";position:absolute;pointer-events:none;z-index:0;clip-path:polygon(var(--ab-ch) 0,calc(100% - var(--ab-ch)) 0,100% var(--ab-ch),100% calc(100% - var(--ab-ch)),calc(100% - var(--ab-ch)) 100%,var(--ab-ch) 100%,0 calc(100% - var(--ab-ch)),0 var(--ab-ch))}
-#concept .ab-row::before{inset:0;background:rgba(11,11,12,.55)}
-#concept .ab-row::after{inset:1px;background:var(--paper,#e9e7e0)}
-#concept .ab-row-grid{position:relative;z-index:1;display:grid;grid-template-columns:clamp(82px,7.5vw,110px) minmax(0,1fr) clamp(96px,13.5vw,188px);height:100%;min-height:inherit;align-items:center}
-#concept .ab-slot{position:relative;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:10px 16px 12px}
-html body #concept .ab-num{margin:0;padding:0;font:700 clamp(42px,3.8vw,56px)/.86 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums;background:none}
-/* TouchDesigner-style lower-case operator path at the foot of the number slot */
-#concept .ab-op{margin-top:auto;padding-top:14px;display:flex;align-items:center;gap:6px;white-space:nowrap;font:500 10px/14px var(--mono);letter-spacing:0;color:var(--mute)}
-#concept .ab-op::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--ab);flex:none}
-#concept .ab-op u{text-decoration:none;color:var(--dim)}
-/* diagonal separator cut, as in the supplied schematic, with site's hairline .55 ink */
-#concept .ab-cutline{position:absolute;left:clamp(82px,7.5vw,110px);top:0;width:44px;height:100%;pointer-events:none;background:linear-gradient(45deg,transparent calc(50% - .55px),rgba(11,11,12,.50) calc(50% - .55px) calc(50% + .55px),transparent calc(50% + .55px)) 0 0/44px 44px no-repeat;z-index:2}
-#concept .ab-copy{padding:20px 18px 18px 28px;align-self:center;min-width:0}
-#concept .ab-k{display:block;margin:0 0 11px;font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
-html body #concept .ab-copy p,html body #concept .ab-rows>li>span:not(.n){margin:0;padding:0;font:500 17px/25px var(--sans);letter-spacing:-.012em;color:var(--txt);text-wrap:pretty;max-width:none;display:block}
+/* rows: the site's own plate chrome (.pn/.ph/.pn.full ports), on paper */
+html body #concept .ab-rows>.ab-row{display:block;margin:0;padding:0;border:1px solid var(--line2);border-radius:6px;background:var(--pnb);max-width:none;min-height:0}
+html body #concept .ab-row>.ph{gap:10px;padding:10px 16px}
+html body #concept .ab-row>.ph .ab-t{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+html body #concept .ab-row>.ph .r{font:500 12px/1.4 var(--mono);letter-spacing:0;text-transform:none;color:var(--mute)}
+#concept .ab-b{display:grid;grid-template-columns:auto minmax(0,1fr) clamp(120px,13.5vw,188px);align-items:center;padding:20px 18px 22px 18px}
+html body #concept .ab-num{margin:0;padding:2px 24px 0 2px;font:700 clamp(44px,3.9vw,58px)/.84 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums;background:none;align-self:start}
+html body #concept .ab-copy{margin:0;padding:2px 26px 0 24px;border-left:1px solid var(--line);min-width:0;align-self:stretch;display:flex;align-items:center}
+html body #concept .ab-copy p,html body #concept .ab-copy>span{margin:0;padding:0;font:400 17px/25px var(--sans);letter-spacing:-.012em;color:var(--txt);text-wrap:pretty;max-width:none;display:block}
 
-/* The small right-hand module view is the ACTUAL patch tile engine from .ipt-t (nested inline render using H2TP.draw). */
-#concept .ab-mini{position:relative;justify-self:end;align-self:center;width:calc(100% - 18px);max-width:170px;margin-right:18px;padding:9px 8px 8px;--k:10px;background:linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 0 0/var(--k) 1px no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 0 0/1px var(--k) no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 100% 0/var(--k) 1px no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 100% 0/1px var(--k) no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 0 100%/var(--k) 1px no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 0 100%/1px var(--k) no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(rgba(11,11,12,.55),rgba(11,11,12,.55)) 100% 100%/1px var(--k) no-repeat}
+/* right-hand mini viewer: the actual .ipt-t patch engine, framed with the site's corner ticks */
+#concept .ab-mini{position:relative;justify-self:end;width:calc(100% - 12px);max-width:170px;padding:9px 8px 8px;--k:10px;--l:rgba(11,11,12,.5);background:linear-gradient(var(--l),var(--l)) 0 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 0/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat}
 #concept .ab-th{width:100%;aspect-ratio:2.5/1;display:block;position:relative;background:#141416;overflow:hidden;border-radius:3px;box-shadow:2px 3px 0 rgba(11,11,12,.14)}
-#concept .ab-th canvas{display:block;width:100%;height:100%;max-width:none;image-rendering:auto}
+#concept .ab-th canvas{display:block;width:100%;height:100%;max-width:none}
 #concept .ab-th b{position:absolute;left:5px;top:4px;padding:2px 4px 1px;background:#141416;border-radius:2px;color:#efeee9;font:700 20px/1 var(--disp);letter-spacing:0}
 #concept .ab-th small{position:absolute;left:0;right:0;bottom:0;padding:4px 5px 3px;background:#141416;font:500 9px/1 var(--mono);letter-spacing:.05em;color:var(--ab);white-space:nowrap}
 #concept .ab-mf{display:flex;align-items:center;gap:7px;margin-top:8px;font:500 9px/12px var(--mono);letter-spacing:0;color:var(--mute);white-space:nowrap}
 #concept .ab-mf .ab-q{display:inline-flex;gap:2px;margin-left:auto}
 #concept .ab-mf .ab-q s{display:block;width:6px;height:8px;background:var(--ab)}
-#concept .ab-port{position:absolute;left:-5px;top:calc(50% - 5px);width:10px;height:10px;background:var(--ab);z-index:3;pointer-events:none}
-#concept .ab-links{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
-#concept .ab-links .tail{stroke:var(--line2);stroke-width:1.1;fill:none}
-#concept .ab-links .wire{stroke:var(--ab);stroke-width:1.65;fill:none;stroke-linecap:round}
-#concept .ab-links .joint,#concept .ab-links .point{fill:var(--ab)}
-#concept .ab-links .point{width:10px;height:10px}
-#concept .ab-junction{position:absolute;left:20%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;background:var(--ab);z-index:3;pointer-events:none}
 
-/* bottom lead into the untouched 20-lessons patch: same frame/corner language, same mono/number family */
+/* lead into the untouched 20-lessons patch */
 html:not(.x-old) body #concept .ix-blk[data-lkey="m-chain"]{position:relative;display:flex;align-items:center;gap:20px;margin:0 0 clamp(20px,2.3vw,34px);padding:0;border:0;max-width:none}
-html body #concept .ix-blk[data-lkey="m-chain"]>h3.b3-h{position:relative;margin:0!important;font:700 clamp(40px,3.5vw,52px)/.86 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
-#concept .m-chain-lead{position:relative;flex:1 1 auto;height:1px;margin-top:23px;background:rgba(11,11,12,.55)}
-#concept .m-chain-lead::before{content:"";position:absolute;left:0;top:-1px;width:42px;height:26px;background:linear-gradient(-45deg,transparent calc(50% - .55px),rgba(11,11,12,.55) calc(50% - .55px) calc(50% + .55px),transparent calc(50% + .55px)) 0 0/42px 22px no-repeat}
+html body #concept .ix-blk[data-lkey="m-chain"]>h3.b3-h{margin:0!important;font:700 clamp(40px,3.5vw,52px)/.86 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+#concept .m-chain-lead{flex:1 1 auto;height:1px;margin-top:23px;background:var(--line2)}
 #concept .m-chain-meta{display:flex;align-items:center;gap:7px;margin-top:23px;font:500 10px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 #concept .m-chain-meta i{display:inline-flex;gap:2px;margin-left:7px;font-style:normal}
 #concept .m-chain-meta s{display:block;width:8px;height:8px;background:var(--ab)}#concept .m-chain-meta s:nth-child(2){background:var(--ink)}
 
-@media (min-width:1181px){
-  /* Aim rows reserve a little more copy space because the practical build sentence is intentionally full. */
-  #concept .ab-aims .ab-row-grid{grid-template-columns:clamp(82px,7.5vw,110px) minmax(0,1fr) clamp(96px,12vw,168px)}
-}
 @media (max-width:1180px){
   #concept .ab-group{grid-template-columns:minmax(0,2.4fr) minmax(0,7.6fr);column-gap:60px}
-  #concept .ab-row-grid{grid-template-columns:76px minmax(0,1fr) 98px}
-  #concept .ab-cutline{left:76px}
-  #concept .ab-copy{padding:20px 14px 18px 23px}
-  html body #concept .ab-copy p,html body #concept .ab-rows>li>span:not(.n){font-size:16px;line-height:23px}
+  #concept .ab-b{grid-template-columns:auto minmax(0,1fr) 110px}
+  html body #concept .ab-copy p,html body #concept .ab-copy>span{font-size:16px;line-height:23px}
   #concept .ab-mf{font-size:8px;gap:3px}#concept .ab-mf .ab-q{display:none}
 }
 @media (max-width:940px){
-  #concept .ab-row-grid{grid-template-columns:70px minmax(0,1fr)}
-  #concept .ab-cutline{left:70px}
+  #concept .ab-b{grid-template-columns:auto minmax(0,1fr)}
   #concept .ab-mini{display:none}
   #concept .ab-title{font-size:clamp(46px,5.8vw,64px)}
 }
 @media (max-width:760px){
   html body #concept .ab-group{display:flex;flex-direction:column;align-items:stretch;grid-template-columns:minmax(0,1fr)!important;row-gap:19px;column-gap:0;margin:0 0 40px}
-  #concept .ab-links,#concept .ab-junction,#concept .ab-port{display:none}
-  html body #concept .ab-title{font-size:clamp(52px,13.5vw,74px);max-width:none;width:100%;align-self:flex-start}
+  html body #concept .ab-title{font-size:clamp(52px,13.5vw,74px);max-width:none;width:100%}
   html body #concept .ab-rows{width:100%;min-width:0;grid-column:auto!important;gap:14px}
-  #concept .ab-row{min-height:0}
-  #concept .ab-row-grid{grid-template-columns:62px minmax(0,1fr)}
-  #concept .ab-cutline{left:62px;width:28px;background-size:28px 28px}
-  #concept .ab-slot{padding:12px 8px 12px 12px}
-  html body #concept .ab-num{font-size:40px}
-  #concept .ab-op{font-size:8px;line-height:12px;padding-top:16px}
-  #concept .ab-op u{display:none}
-  #concept .ab-copy{padding:19px 15px 20px 19px}
-  #concept .ab-k{font-size:11px;line-height:14px;letter-spacing:.045em}
-  html body #concept .ab-copy p,html body #concept .ab-rows>li>span:not(.n){font-size:16px;line-height:23px}
+  #concept .ab-b{grid-template-columns:auto minmax(0,1fr);padding:16px 14px 18px}
+  html body #concept .ab-num{font-size:40px;padding:2px 14px 0 0}
+  html body #concept .ab-copy{padding:2px 0 0 14px}
+  html body #concept .ab-copy p,html body #concept .ab-copy>span{font-size:16px;line-height:23px}
   .m-chain-meta{display:none!important}
 }
 }</style>
@@ -2527,38 +2497,17 @@ document.fonts.ready.then(()=>{
   <div class="sh"><h2 class="H ix-vh">About the course</h2></div>
   <div class="m2-open ab-group" data-lkey="m2">
     <h2 class="ab-title"><span>About</span><span>the</span><span>course</span></h2>
-<svg class="ab-links" aria-hidden="true"><path class="tail"/><path class="ab-w1 wire"/><path class="ab-w2 wire"/></svg><i class="ab-junction" aria-hidden="true"></i>    <div class="ab-rows">
-      <article class="ab-row"><div class="ab-row-grid"><div class="ab-slot"><span class="ab-num">01</span><span class="ab-op">lecture1 <u>COMP</u></span></div><i class="ab-cutline" aria-hidden="true"></i><div class="ab-copy"><span class="ab-k" aria-hidden="true">Overview</span><p>This course takes the idea of 202 AV Streaming further and turns the system into a media server for events and theatre.</p></div><div class="ab-mini"><span class="ab-th" data-t="01" data-g="0" data-a="0"><canvas aria-hidden="true"></canvas><b aria-hidden="true">01</b><small aria-hidden="true">ARCHITECTURE</small></span><div class="ab-mf"><span>33 MIN</span><i class="ab-q"><s></s></i></div></div></div><i class="ab-port" aria-hidden="true"></i></article>
-      <article class="ab-row"><div class="ab-row-grid"><div class="ab-slot"><span class="ab-num">02</span><span class="ab-op">audience1 <u>DAT</u></span></div><i class="ab-cutline" aria-hidden="true"></i><div class="ab-copy"><span class="ab-k" aria-hidden="true">Who it’s for</span><p>It is for TouchDesigner users who want to build their own media server without a large team or years of development.</p></div><div class="ab-mini"><span class="ab-th" data-t="02" data-g="5" data-a="0"><canvas aria-hidden="true"></canvas><b aria-hidden="true">101</b><small aria-hidden="true">PREREQUISITES</small></span><div class="ab-mf"><span>101 + 102</span><i class="ab-q"><s></s><s></s></i></div></div></div><i class="ab-port" aria-hidden="true"></i></article>
-    </div>
+    <div class="ab-rows"><article class="pn full ab-row" style="--c:var(--top)"><div class="ph"><span class="ab-t">Overview</span><span class="r">lecture1 <u>COMP</u></span></div><div class="ab-b"><span class="ab-num">01</span><div class="ab-copy"><p>This course takes the idea of 202 AV Streaming further and turns the system into a media server for events and theatre.</p></div><div class="ab-mini"><span class="ab-th" data-t="01" data-g="0" data-a="0"><canvas aria-hidden="true"></canvas><b aria-hidden="true">01</b><small aria-hidden="true">ARCHITECTURE</small></span><div class="ab-mf"><span>33 MIN</span><i class="ab-q"><s></s></i></div></div></div></article><article class="pn full ab-row" style="--c:var(--top)"><div class="ph"><span class="ab-t">Who it’s for</span><span class="r">audience1 <u>DAT</u></span></div><div class="ab-b"><span class="ab-num">02</span><div class="ab-copy"><p>It is for TouchDesigner users who want to build their own media server without a large team or years of development.</p></div><div class="ab-mini"><span class="ab-th" data-t="02" data-g="5" data-a="0"><canvas aria-hidden="true"></canvas><b aria-hidden="true">101</b><small aria-hidden="true">PREREQUISITES</small></span><div class="ab-mf"><span>101 + 102</span><i class="ab-q"><s></s><s></s></i></div></div></div></article></div>
   </div>
   <div class="ix-blk ab-group ab-aims">
     <h3 class="ab-title"><span>Course</span><span>aims</span></h3>
-<svg class="ab-links" aria-hidden="true"><path class="tail"/><path class="ab-w1 wire"/><path class="ab-w2 wire"/></svg><i class="ab-junction" aria-hidden="true"></i>    <ol class="dat ab-rows">
-      <li class="ab-row"><div class="ab-row-grid"><div class="ab-slot"><span class="ab-num">01</span><span class="ab-op">engine1 <u>DAT</u></span></div><i class="ab-cutline" aria-hidden="true"></i><div class="ab-copy"><span class="ab-k" aria-hidden="true">Course objective</span><p>To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</p></div><div class="ab-mini"><span class="ab-th" data-t="03" data-g="4" data-a="1"><canvas aria-hidden="true"></canvas><b aria-hidden="true">01</b><small aria-hidden="true">ENGINE / MODEL</small></span><div class="ab-mf"><span>M01 · MVC</span><i class="ab-q"><s></s></i></div></div></div><i class="ab-port" aria-hidden="true"></i></li>
-      <li class="ab-row"><div class="ab-row-grid"><div class="ab-slot"><span class="ab-num">02</span><span class="ab-op">skills1 <u>CHOP</u></span></div><i class="ab-cutline" aria-hidden="true"></i><div class="ab-copy"><span class="ab-k" aria-hidden="true">Practical skills</span><span>To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</span></div><div class="ab-mini"><span class="ab-th" data-t="04" data-g="7" data-a="1"><canvas aria-hidden="true"></canvas><b aria-hidden="true">02</b><small aria-hidden="true">LTC / GLSL</small></span><div class="ab-mf"><span>20 LESSONS · 11 H</span><i class="ab-q"><s></s><s></s><s></s></i></div></div></div><i class="ab-port" aria-hidden="true"></i></li>
-    </ol>
+    <ol class="dat ab-rows"><li class="pn full ab-row" style="--c:var(--top)"><div class="ph"><span class="ab-t">Course objective</span><span class="r">engine1 <u>DAT</u></span></div><div class="ab-b"><span class="ab-num">01</span><div class="ab-copy"><p>To provide an understanding of how to build a media server for events and theatre with the engine kept separate from its interface, so that the same model can be driven from sliders, OSC or other controllers.</p></div><div class="ab-mini"><span class="ab-th" data-t="03" data-g="4" data-a="1"><canvas aria-hidden="true"></canvas><b aria-hidden="true">01</b><small aria-hidden="true">ENGINE / MODEL</small></span><div class="ab-mf"><span>M01 · MVC</span><i class="ab-q"><s></s></i></div></div></div></li><li class="pn full ab-row" style="--c:var(--top)"><div class="ph"><span class="ab-t">Practical skills</span><span class="r">skills1 <u>CHOP</u></span></div><div class="ab-b"><span class="ab-num">02</span><div class="ab-copy"><p>To develop practical skills in building the blocks of a media server in TouchDesigner: a preloaded movie library with a clip browser and crossfades, interface controls, GLSL colour correction and effects, presets management using JSON, timecode cues, and output to several projectors for a live show.</p></div><div class="ab-mini"><span class="ab-th" data-t="04" data-g="7" data-a="1"><canvas aria-hidden="true"></canvas><b aria-hidden="true">02</b><small aria-hidden="true">LTC / GLSL</small></span><div class="ab-mf"><span>20 LESSONS · 11 H</span><i class="ab-q"><s></s><s></s><s></s></i></div></div></div></li></ol>
   </div><script data-about-wire>(()=>{
-const groups=[...document.querySelectorAll('#concept .ab-group')];
-const draw=g=>{
- if(matchMedia('(max-width:760px)').matches)return;
- const G=g.getBoundingClientRect(),J=g.querySelector('.ab-junction'),R=[...g.querySelectorAll(':scope>.ab-rows>.ab-row')],S=g.querySelector('.ab-links'),T=g.querySelector('.ab-title');
- if(!J||R.length!==2||!S)return;
- const jb=J.getBoundingClientRect(),jx=jb.left-G.left+jb.width/2,jy=(jb.top+jb.bottom)/2-G.top;
- const ys=R.map(e=>{const b=e.getBoundingClientRect();return {y:b.top+b.height/2-G.top,x:b.left-G.left}});
- S.setAttribute('viewBox',`0 0 ${G.width} ${G.height}`);
- const tail=g.querySelector('.ab-links .tail'),w1=g.querySelector('.ab-w1'),w2=g.querySelector('.ab-w2');
- const ty=G.height/2;
- tail.setAttribute('d',`M ${T.offsetWidth*.64} ${ty-34} L ${jx-18} ${jy-16} L ${jx} ${jy} M ${jx-18} ${jy+16} L ${T.offsetWidth*.64} ${ty+34}`);
- w1.setAttribute('d',`M ${jx} ${jy} C ${jx+22} ${jy} ${ys[0].x-28} ${ys[0].y} ${ys[0].x} ${ys[0].y}`);
- w2.setAttribute('d',`M ${jx} ${jy} C ${jx+22} ${jy} ${ys[1].x-28} ${ys[1].y} ${ys[1].x} ${ys[1].y}`);
-};
 const paint=()=>{document.querySelectorAll('#concept .ab-th[data-g]').forEach(e=>{const c=e.querySelector('canvas');if(window.H2TP&&c.clientWidth)window.H2TP.draw(c,e.dataset.a==='1')})};
-const all=()=>{groups.forEach(draw);paint()};
-requestAnimationFrame(all);if(document.fonts)document.fonts.ready.then(all);
-if(window.ResizeObserver)groups.forEach(g=>new ResizeObserver(all).observe(g));
-new IntersectionObserver((es,o)=>{if(es.some(e=>e.isIntersecting)){all();o.disconnect()}}).observe(document.querySelector('#concept'));
-let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(all,120)});
+requestAnimationFrame(paint);if(document.fonts)document.fonts.ready.then(paint);
+new IntersectionObserver((es,o)=>{if(es.some(e=>e.isIntersecting)){paint();o.disconnect()}}).observe(document.querySelector('#concept'));
+if(window.ResizeObserver)new ResizeObserver(paint).observe(document.querySelector('#concept .ab-rows'));
+let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(paint,120)});
 })()</script>
 <div class="ix-blk" data-lkey="m-chain"><h3 class="b3-h">Course modules</h3><i class="m-chain-lead" aria-hidden="true"></i><span class="m-chain-meta" aria-hidden="true">6 modules · 20 lessons · 11 h<i><s></s><s></s><s></s></i></span><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>Media Server Architecture (MVC Basics)</b><span class="ix-vh"> · </span><span class="d">33 min</span></li><li><span class="n" aria-hidden="true">02</span><b>Video Playback</b><span class="ix-vh"> · </span><span class="d">2 h 42 min</span></li><li><span class="n" aria-hidden="true">03</span><b>User Interfaces</b><span class="ix-vh"> · </span><span class="d">1 h 53 min</span></li><li><span class="n" aria-hidden="true">04</span><b>Color Grading; Image Processing ; GLSL</b><span class="ix-vh"> · </span><span class="d">2 h 5 min</span></li><li><span class="n" aria-hidden="true">05</span><b>Preset Management</b><span class="ix-vh"> · </span><span class="d">1 h 43 min</span></li><li><span class="n" aria-hidden="true">06</span><b>Timing and Synchronisation</b><span class="ix-vh"> · </span><span class="d">1 h 51 min</span></li></ol></div><nav class="ix-ov" aria-label="Lessons by module" style="--c:var(--top)"><script>document.addEventListener("DOMContentLoaded",()=>{if(!document.documentElement.classList.contains("x-lvl"))return;
 const lum=c=>{const m=c.match(/\d+(\.\d+)?/g);return m?(+m[0]*.3+ +m[1]*.59+ +m[2]*.11):255};const bgOf=e=>{for(;e;e=e.parentElement){const c=getComputedStyle(e).backgroundColor;if(c&&c!=="transparent"&&!/rgba\(0, 0, 0, 0\)/.test(c))return c}return "rgb(233,231,224)"};
