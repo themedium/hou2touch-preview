@@ -2589,8 +2589,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
     <div class="cd-col aud-yes pn full dk" style="--c:var(--dat)"><div class="ph"><span class="id">audience1</span><u>DAT</u><span class="r">/ match</span></div><h3 class="cd-h">For you if</h3>
       <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">Media engineers</b><span class="aud-dash"> — </span><span class="aud-t">You already work in TouchDesigner beyond the basics, and this course is for building a media server for events and theatre yourself, without a large team or years of development.</span></li><li><b class="aud-who">Interactive systems developers</b><span class="aud-dash"> — </span><span class="aud-t">The course starts from the TouchDesigner you already know and takes you through a server for events and theatre one block at a time, so you can build it yourself without a team behind you.</span></li></ul></div>
     </div>
-    <div class="cd-col aud-no"><h3 class="b3-h">Not for you if</h3>
-      <div class="cd-h mono"><span class="sq9" style="background:var(--mute)"></span>prerequisites &amp; not for you if</div>
+    <div class="cd-col aud-no"><div class="ph"><span class="id">prerequisites</span><u>DAT</u><span class="r">/ no match</span></div><h3 class="b3-h">Not for you if</h3>
       <ol class="dat"><li><span class="n">–</span><span>you do not meet the requirements in “Before you start”</span></li><li><span class="n">–</span><span>you have not taken <a class="u" href="/101">TouchDesigner 101: Extreme I</a>, <a class="u" href="/102">TouchDesigner 102: Extreme II</a> and don&#x27;t have equivalent experience</span></li></ol>
     </div>
   </div>
@@ -2598,7 +2597,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
 <div class="ix-blk" data-lkey="m-prereq"><h3 class="ix-h2">Before you start</h3>
 <p>Completion of TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, or an equivalent working knowledge of basic TOP and CHOP manipulation, GLSL basics, Table DAT basics, Timer CHOP basics, and CHOP Execute scripting.</p>
 <p class="pr-row"><span class="pr-l">Required courses</span><a class="u aud-c aud-c1" href="/101"><small>TouchDesigner</small> <b>101: Extreme I<i aria-hidden="true">↗</i></b></a><span class="ix-vh">, </span><a class="u aud-c aud-c2" href="/102"><small>TouchDesigner</small> <b>102: Extreme II<i aria-hidden="true">↗</i></b></a></p>
-<p class="pr-row"><span class="pr-t">Not taken them yet? Both are in the</span><a class="u aud-c aud-cb" href="/extreme"><small>TouchDesigner</small> <b>Extreme Bundle (EN)<i aria-hidden="true">↗</i></b></a><span class="ix-vh">.</span></p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
+<p class="pr-row"><span class="pr-t">Not taken them yet? Both are in the</span><a class="u aud-c aud-cb" href="/extreme"><small>TouchDesigner</small> <b>Extreme Bundle<i aria-hidden="true">↗</i></b></a><span class="ix-vh">.</span></p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
     <div class="ph"><div class="m-bar"><h3 class="b3-h">What you will be able to do</h3><i class="m-rule" aria-hidden="true"></i><span class="m-chain-meta" aria-hidden="true">4 outcomes<i><s></s><s></s><s></s></i></span></div></div>
     <ol class="out1"><li><span class="n">01</span><span>Design a media server in TouchDesigner that keeps the interface apart from the model, so the same model can be driven from sliders, OSC or other controllers, and generate a layer&#x27;s controls from a table with a Python script and save its settings as presets in JSON files.</span></li><li><span class="n">02</span><span>Build a movie player and a preloaded movie library with live camera inputs, timed crossfades between movies and a clickable movie browser with Render Pick, plus a self-contained custom slider that stays in sync with the model.</span></li><li><span class="n">03</span><span>Build real-time colour correction in a single GLSL shader, with a LUT browser and a switchable library of ported ShaderToy effects.</span></li><li><span class="n">04</span><span>Keep two machines in step with LTC timecode, drive reusable fades and A/B movie transitions from a cue table, and prepare venue output: several projectors in one window, keystone correction, and NDI between machines with a recorded backup.</span></li></ol>
   </div>
@@ -6773,6 +6772,16 @@ html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover,html body #audience [
 html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover b,html body #audience [data-lkey="m-prereq"] a.u.aud-c:focus-visible b{color:var(--fg)!important}
 html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover small,html body #audience [data-lkey="m-prereq"] a.u.aud-c:focus-visible small{color:var(--mute)!important}
 html body #audience [data-lkey="m-prereq"] a.u.aud-c::after{content:none!important}
+
+/* 12 · "not for you if": same mono header, outline only */
+html body #audience .aud-no>.ph{display:flex;align-items:center;gap:10px;height:56px;min-height:56px;padding:0 20px;border:1px solid var(--line2);border-radius:10px;background:transparent;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap}
+html body #audience .aud-no>.ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--dat);flex:none}
+html body #audience .aud-no>.ph .id{color:var(--fg)}
+html body #audience .aud-no>.ph u{color:var(--mute);text-decoration:none}
+html body #audience .aud-no>.ph .r{margin-left:auto;color:var(--top)}
+html body #audience .aud-no>.cd-h{display:none!important}
+html body #audience .aud-no>h3.b3-h{margin:26px 0 14px!important;padding:0!important;font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
+html body #audience .aud-no>h3::after{content:none!important}
 </style>
 </body>
 </html>
