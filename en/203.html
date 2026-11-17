@@ -6782,6 +6782,20 @@ html body #audience .aud-no>.ph .r{margin-left:auto;color:var(--top)}
 html body #audience .aud-no>.cd-h{display:none!important}
 html body #audience .aud-no>h3.b3-h{margin:26px 0 14px!important;padding:0!important;font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
 html body #audience .aud-no>h3::after{content:none!important}
+
+/* 13 · "not for you if" is the same plate, outline only, stretched to the same height */
+html body #audience .aud-yes,html body #audience .aud-no{align-self:stretch;margin-top:0!important}
+html body #audience .aud-no{position:relative;display:flex;flex-direction:column;border:1px solid var(--line2);border-radius:10px;background:transparent;padding:0}
+html body #audience .aud-no::before,html body #audience .aud-no::after{content:"";position:absolute;width:14px;height:14px;top:21px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--top);z-index:3}
+html body #audience .aud-no::before{left:-7px}
+html body #audience .aud-no::after{right:-7px}
+html body #audience .aud-no>.ph{border:0;border-bottom:1px solid var(--line2);border-radius:0;padding:0 30px;height:56px;min-height:56px;background:transparent}
+html body #audience .aud-no>h3.b3-h{margin:26px 0 0!important;padding:0 30px!important}
+html body #audience .aud-no>ol.dat{padding:14px 30px 26px;margin:0}
+html body #audience .aud-no>ol.dat>li:first-child{border-top:0;padding-top:0}
+html body #audience .aud-no>ol.dat>li:last-child{padding-bottom:0}
+
+@media (max-width:760px){html body #audience .aud-no{margin-top:20px!important}}
 </style>
 </body>
 </html>
