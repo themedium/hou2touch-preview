@@ -6744,7 +6744,7 @@ html body #audience .aud-yes{border:1px solid rgba(239,238,233,.16);border-radiu
 html body #audience .aud-yes::before,html body #audience .aud-yes::after{display:block;width:14px;height:14px;top:29px;border-radius:50%;background:#0b0b0c;box-shadow:inset 0 0 0 2px var(--top)}
 html body #audience .aud-yes::before{left:-7px}
 html body #audience .aud-yes::after{right:-7px}
-html body #audience .aud-yes>.cd-h{display:flex;align-items:center;gap:12px;margin:0!important;padding:0 30px!important;height:72px;border-bottom:1px solid var(--line);font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg);background:none}
+html body #audience .aud-yes>.cd-h{display:flex;align-items:center;gap:12px;margin:0!important;padding:0 30px!important;height:72px;border-bottom:1px solid var(--line);font-family:var(--disp)!important;font-weight:700!important;font-size:40px!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:var(--fg);background:none}
 html body #audience .aud-yes>.cd-h .sq9{display:inline-block!important;width:14px;height:14px;border-radius:2px;background:var(--comp)!important;flex:none;margin:0}
 html body #audience .aud-yes>.cd-h::after{content:"/ match";margin-left:auto;font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--top);text-transform:uppercase;white-space:nowrap}
 html body #audience .aud-yes>.ix-why{padding:24px 30px 28px;margin:0}
@@ -6761,7 +6761,7 @@ html body #audience .aud-yes>.ph::before{content:"";width:9px;height:9px;border-
 html body #audience .aud-yes>.ph .id{color:var(--fg);text-transform:none;letter-spacing:0}
 html body #audience .aud-yes>.ph u{color:var(--mute);text-decoration:none}
 html body #audience .aud-yes>.ph .r{margin-left:auto;color:var(--top)}
-html body #audience .aud-yes>.cd-h{display:block;margin:0!important;padding:26px 30px 0!important;background:none;font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
+html body #audience .aud-yes>.cd-h{display:block;margin:0!important;padding:26px 30px 0!important;background:none;font-family:var(--disp)!important;font-weight:700!important;font-size:40px!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
 html body #audience .aud-yes>.cd-h::after{content:none!important}
 html body #audience .aud-yes>.cd-h .sq9{display:none!important}
 html body #audience .aud-yes>.ix-why{padding:18px 30px 30px;margin:0}
@@ -6780,7 +6780,7 @@ html body #audience .aud-no>.ph .id{color:var(--fg)}
 html body #audience .aud-no>.ph u{color:var(--mute);text-decoration:none}
 html body #audience .aud-no>.ph .r{margin-left:auto;color:var(--top)}
 html body #audience .aud-no>.cd-h{display:none!important}
-html body #audience .aud-no>h3.b3-h{margin:26px 0 14px!important;padding:0!important;font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
+html body #audience .aud-no>h3.b3-h{margin:26px 0 14px!important;padding:0!important;font-family:var(--disp)!important;font-weight:700!important;font-size:40px!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
 html body #audience .aud-no>h3::after{content:none!important}
 
 /* 13 · "not for you if" is the same plate, outline only, stretched to the same height */
@@ -6798,10 +6798,16 @@ html body #audience .aud-no>ol.dat>li:last-child{padding-bottom:0}
 @media (max-width:760px){html body #audience .aud-no{margin-top:20px!important}}
 
 /* 14 · both audience plates: title block → divider → rows, identical paddings */
-html body #audience .aud-yes>.cd-h,html body #audience .aud-no>h3.b3-h{display:block;margin:0!important;padding:26px 30px 22px!important;font:700 40px/1 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
+html body #audience .aud-yes>.cd-h,html body #audience .aud-no>h3.b3-h{display:block;margin:0!important;padding:26px 30px 22px!important;font-family:var(--disp)!important;font-weight:700!important;font-size:40px!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:var(--fg)}
 html body #audience .aud-yes .ix-why,html body #audience .aud-no>ol.dat{margin:0;padding:16px 30px 26px;border-top:1px solid var(--line2)}
 html body #audience .aud-yes .ix-why ul.ix-l{border-top:0}
 html body #audience .aud-yes .ix-why li:first-child,html body #audience .aud-no ol.dat li:first-child{border-top:0;padding-top:0}
+
+/* 15 · hard alignment of both audience plates (site rules use !important, so do we) */
+html body #audience .aud-yes>.ph,html body #audience .aud-no>.ph{display:flex!important;align-items:center!important;height:56px!important;min-height:56px!important;padding:0 30px!important;border:0!important;border-bottom:1px solid var(--line2)!important;border-radius:0!important;background:transparent!important;font-family:var(--mono)!important;font-weight:500!important;font-size:12px!important;line-height:1.4!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--txt)!important;white-space:nowrap!important}
+html body #audience .aud-yes>h3.cd-h,html body #audience .aud-no>h3.b3-h{display:flex!important;align-items:center!important;height:74px!important;margin:0!important;padding:0 30px!important;font-family:var(--disp)!important;font-weight:700!important;font-size:32px!important;line-height:1!important;letter-spacing:0!important;text-transform:uppercase!important;color:var(--fg)!important;background:none!important}
+html body #audience .aud-yes>h3.cd-h::after,html body #audience .aud-no>h3::after{content:none!important}
+html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{margin:0!important;padding:16px 30px 26px!important;border-top:1px solid var(--line2)!important}
 </style>
 </body>
 </html>
