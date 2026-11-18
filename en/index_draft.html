@@ -2576,6 +2576,71 @@ a:focus-visible{outline:2px solid var(--c,var(--top));outline-offset:2px}
  .hs-sel{padding:12px}
 }
 }
+</style><style id="ix-hero2">
+/* шапка v2 — RU-эталон: index.html:169–201 (00 hero) */
+#ix .hero2{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000;display:block;isolation:isolate;
+  --fg:#efeee9;--fg8:rgba(239,238,233,.8);--txt:#cfcec9;--mute:#8f8e8a;--dim:#5a5956;
+  --line:rgba(239,238,233,.11);--line2:rgba(239,238,233,.22);--hou:#e5501e;--bg:#0b0b0c}
+#ix .hero2 .bgimg{position:absolute;inset:0;background:url(hero.webp) 78% 48%/cover no-repeat;opacity:.55;transition:opacity 1s}
+#ix .hero2 canvas{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;opacity:0;transition:opacity 1.2s}
+#ix .hero2::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(11,11,12,.7) 0%,rgba(11,11,12,.15) 25%,rgba(11,11,12,.12) 48%,rgba(11,11,12,.55) 66%,rgba(11,11,12,.82) 80%,rgba(11,11,12,.95) 100%)}
+#ix .hero2 .hb{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:56px}
+#ix .hero2 .hlogo{display:block;font:700 min(25.8vw,calc((100svh - 508px)*1.2))/.74 var(--disp);
+  letter-spacing:-.005em;white-space:nowrap;text-transform:uppercase;margin:0 0 0 -.034em;color:var(--fg);user-select:none}
+#ix .hero2 .hlogo .c{display:inline-block;overflow:hidden;vertical-align:top;padding-top:.14em;margin-top:-.14em}
+#ix .hero2 .hlogo .c span{display:inline-block;transform:translateY(120%);transition:transform 1.3s var(--ease);transition-delay:calc(var(--i)*55ms + 150ms);animation:h2hero-in 0s 2.5s forwards}
+.go #ix .hero2 .hlogo .c span{transform:none;animation:none}
+@keyframes h2hero-in{to{transform:none}}
+#ix .hero2 .hlogo .two{color:var(--hou)}
+#ix .hero2 .hf{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--gap);border-top:1px solid var(--line2);padding-top:28px}
+#ix .hero2 .lead{font:400 var(--fs-l)/28px var(--sans);letter-spacing:-.01em;max-width:40ch;text-wrap:pretty;color:var(--fg);margin:0;text-shadow:0 1px 24px rgba(0,0,0,.55)}
+#ix .hero2 .ctas{display:flex;gap:10px;margin-top:28px;align-items:center}
+#ix .hero2 .price{font:400 var(--fs-m)/1.4 var(--sans);color:var(--fg8);margin-top:14px;text-wrap:pretty}
+#ix .hero2 .fests{margin-top:8px;line-height:1.4;text-wrap:balance;color:var(--mute)}
+#ix .hero2 .btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line2)}
+#ix .hero2 .btn.pill{height:56px;padding:0 28px;border-radius:999px}
+#ix .hero2 .btn .ic{width:16px;height:16px}
+@media (prefers-reduced-motion:reduce){
+  #ix .hero2 .bgimg{opacity:0;transition:none}
+  #ix .hero2 canvas{opacity:1;transition:none}
+  #ix .hero2 .hlogo .c span{transform:none;transition:none;animation:none}
+}
+#ix .hero2.nogl .bgimg{opacity:.55!important}
+#ix .hero2.nogl canvas{display:none}
+@media (max-width:600px){
+  #ix .hero2{min-height:660px}
+  #ix .hero2::after{background:linear-gradient(180deg,rgba(11,11,12,.85) 0%,rgba(11,11,12,.3) 30%,rgba(11,11,12,.2) 55%,rgba(11,11,12,.95) 100%)}
+  #ix .hero2 .bgimg{background-position:60% 30%}
+  #ix .hero2 .hb{top:0;bottom:40px;display:flex;flex-direction:column;justify-content:flex-end}
+  #ix .hero2 .hlogo{position:absolute;left:-4px;top:37%;font-size:25.8vw;margin:0}
+  #ix .hero2 .hf{display:block;border:0;padding:0}
+  #ix .hero2 .lead{font-size:var(--fs-m);line-height:24px;text-shadow:0 2px 24px #000}
+  #ix .hero2 .ctas{flex-direction:column;align-items:stretch;margin-top:20px}
+  #ix .hero2 .ctas .btn{width:100%;height:52px}
+  #ix .hero2 .ctas .ghost{background:rgba(11,11,12,.6)}
+  #ix .hero2 .price{font-size:var(--fs-m);line-height:1.5;color:var(--txt);margin-top:12px}
+  #ix .hero2 .fests{margin-top:6px}
+}
+/* факты AT A GLANCE — под шапкой (в эталоне это строка .hm внутри шапки; здесь — своя полоса) */
+#ix .hfacts{position:relative;background:#000;color:var(--fg);padding:22px 0 26px;border-bottom:1px solid var(--line);
+  --fg:#efeee9;--txt:#cfcec9;--mute:#8f8e8a;--line:rgba(239,238,233,.11);--line2:rgba(239,238,233,.22)}
+#ix .hfacts .in{max-width:calc(1328px + 2*var(--pad));margin-inline:auto;padding:0 var(--pad)}
+#ix .hfacts .fh{margin:0 0 14px;color:var(--mute)}
+#ix .hfacts dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0}
+#ix .hfacts dl>div{padding:0 18px;border-left:1px solid var(--line2)}
+#ix .hfacts dl>div:first-child{padding-left:0;border-left:0}
+#ix .hfacts dt{font:500 var(--fs-xs)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+#ix .hfacts dd{margin:6px 0 0;font:400 var(--fs-m)/24px var(--sans);color:var(--fg);letter-spacing:0;text-transform:none}
+@media (max-width:980px) and (min-width:601px){
+  #ix .hfacts dl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}
+  #ix .hfacts dl>div:nth-child(n+4){display:none}
+}
+@media (max-width:600px){
+  #ix .hfacts dl{grid-template-columns:1fr 1fr;row-gap:16px}
+  #ix .hfacts dl>div{padding:0;border-left:0}
+  #ix .hfacts dl>div:nth-child(3){grid-column:1/-1}
+}
 </style><style>:root{--edge-img:url(data:image/png}</style>
 </head>
 
@@ -2584,20 +2649,30 @@ a:focus-visible{outline:2px solid var(--c,var(--top));outline-offset:2px}
 
 <svg class="ico" aria-hidden="true" focusable="false"><symbol id="h2t-i-r" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4"/></symbol><symbol id="h2t-i-l" viewBox="0 0 16 16"><path d="M14 8H3M7 4 3 8l4 4"/></symbol><symbol id="h2t-i-u" viewBox="0 0 16 16"><path d="M8 14V3M4 7l4-4 4 4"/></symbol><symbol id="h2t-i-d" viewBox="0 0 16 16"><path d="M8 2v11M4 9l4 4 4-4"/></symbol><symbol id="h2t-i-ne" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></symbol><symbol id="h2t-i-se" viewBox="0 0 16 16"><path d="M4 4l8 8M12 6v6H6"/></symbol><symbol id="h2t-i-p" viewBox="0 0 16 16"><path d="M4.5 3v10L13 8z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-v" viewBox="0 0 16 16"><path d="M4 6h8l-4 5z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol></svg>
 <main id="main" tabindex="-1">
-<div id="ix"><header class="hero long" id="top" style="--k:var(--top)" data-m="streams">
- <div class="band"><canvas></canvas><div class="ov" aria-hidden="true"><div class="tk"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-   <span class="lb tl" data-t="home COMP"></span><span class="lb tr fc" data-t="f 000000 · 60 fps"></span><span class="lb ret" data-t=""></span>
-   <span class="lb br k" data-t="● TOP · streams"></span></div>
-   <div class="ttl"><div class="num" aria-hidden="true"><span><em>H</em></span><span><em>2</em></span><span><em>T</em></span></div><h1 aria-label="Procedural graphics, TouchDesigner &amp; Houdini courses"><span>Procedural graphics</span></h1></div></div>
- <div class="wrap lock"><div class="tt"><p class="h1q">TouchDesigner &amp; Houdini courses</p><p class="lead">From first node networks to real-time media servers and procedural geometry. Every course is recorded, self-paced and open from day one.</p></div>
-   <div class="cta"><span class="pr"><span>€500</span> <span class="mono">Extreme I + II</span></span><a class="btn rec" href="#offer"><i></i>Choose a path</a><a class="btn ghost" href="#catalog">Browse 14 courses</a></div></div>
- <div class="wrap foot"><div class="fx"><div class="mono fh">At a glance</div><dl>
-   <div><dt>Courses<span class="vh">: </span></dt><dd>14 recorded courses</dd></div>
-   <div><dt>Paths<span class="vh">: </span></dt><dd>5 learning paths</dd></div>
-   <div><dt>Works<span class="vh">: </span></dt><dd>27 student works</dd></div>
-   <div><dt>Bundle<span class="vh">: </span></dt><dd>Extreme I + II — €500</dd></div>
-   <div><dt>Language<span class="vh">: </span></dt><dd>English</dd></div></dl></div></div>
-</header></div>
+<div id="ix"><header class="hero2" id="top">
+ <div class="bgimg" aria-hidden="true"></div>
+ <canvas aria-hidden="true"></canvas>
+ <div class="hb">
+  <div class="hlogo" role="img" aria-label="Hou2Touch"><span class="c"><span style="--i:0">H</span></span><span class="c"><span style="--i:1">O</span></span><span class="c"><span style="--i:2">U</span></span><span class="c"><span style="--i:3" class="two">2</span></span><span class="c"><span style="--i:4">T</span></span><span class="c"><span style="--i:5">O</span></span><span class="c"><span style="--i:6">U</span></span><span class="c"><span style="--i:7">C</span></span><span class="c"><span style="--i:8">H</span></span></div>
+  <div class="hf"><div>
+    <h1 class="lead">From first node networks to real-time media servers and procedural geometry — recorded, self-paced, open from day one.</h1>
+    <div class="ctas"><a class="btn pill rec" href="#offer">Choose a path <svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="btn pill ghost" href="#catalog">Browse 14 courses</a></div>
+    <p class="price">€500 · Extreme I + II · lifetime access</p>
+    <p class="fests mono">author performed at Berlin Atonal, Mutek and Ars Electronica</p>
+  </div></div>
+ </div>
+</header>
+<div class="hfacts"><div class="in">
+  <div class="fh mono">At a glance</div>
+  <dl>
+   <div><dt>Courses</dt><dd>14 recorded courses</dd></div>
+   <div><dt>Paths</dt><dd>5 learning paths</dd></div>
+   <div><dt>Works</dt><dd>27 student works</dd></div>
+   <div><dt>Bundle</dt><dd>Extreme I + II — €500</dd></div>
+   <div><dt>Language</dt><dd>English</dd></div>
+  </dl>
+</div></div>
+</div>
 <section id="catalog" class="sec"><div class="wrap">
   <div class="lbl mono"><b>02</b><span>Courses &amp; Learning Paths</span><i class="op" style="--c:var(--comp)">network1 <u>COMP</u></i></div>
   <div class="sh"><h2 class="H">14 Courses &amp; 5 Learning Paths</h2><p class="dek hs-lede">Explore all 14 courses across Foundations (100), Production (200), Shaders &amp; Code (300), and the Flagship Houdini + TouchDesigner track.</p></div>
@@ -2826,13 +2901,13 @@ a:focus-visible{outline:2px solid var(--c,var(--top));outline-offset:2px}
     </div>
   </div>
 </div></section>
-</main>
 <footer class="ft"><div class="wrap">
   <div class="ft2-a"><a href="#top" class="logo" aria-label="Hou2Touch — top"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" aria-hidden="true" viewBox="0 0 34 44" fill="none">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M9.22169 43.8293V39.7561H7.83401C7.42825 39.7561 7.13611 39.6748 6.95758 39.5122C6.79528 39.3496 6.71412 39.0813 6.71412 38.7073V34.122H9.19734V30.1464H6.71412V15.4504C6.8848 15.1999 7.02687 14.9856 7.29421 14.7536C7.82933 14.2892 8.2599 14.0706 8.97403 14.0706C9.6557 14.0706 10.1994 14.2983 10.6052 14.7536C11.0109 15.1926 11.2138 15.8024 11.2138 16.5828V21.9731H15.9855V18.5147L18.7001 18.5147C18.9245 19.2034 19.2383 19.8112 19.6416 20.2802C20.5667 21.3209 21.8246 21.8412 23.4151 21.8412C24.3403 21.8412 25.1599 21.6542 25.874 21.2802C26.5881 20.89 27.1481 20.3859 27.5538 19.768V21.9936H32.3499V8.03631H27.5538V15.3778C27.5538 16.1583 27.351 16.7762 26.9452 17.2314C26.5394 17.6705 25.9876 17.89 25.2897 17.89C24.6081 17.89 24.0562 17.6705 23.6343 17.2314C23.2822 16.8364 23.0829 16.3189 23.0363 15.679V13.5866L23.0366 13.5352H23.0363V13.1123L15.4772 13.1123C15.2562 12.5848 14.963 12.1157 14.5978 11.7048C13.6889 10.6479 12.4554 10.1194 10.8973 10.1194C9.95596 10.1194 9.1201 10.3145 8.38975 10.7048C7.85143 10.9867 7.18861 11.3379 6.71412 11.7584V0H1.91811V5.87552H1.9139V23.9243H1.91811V30.1464H0.238281V34.122H1.91811V38.6341C1.91811 42.0976 3.66285 43.8293 7.15234 43.8293H9.22169ZM20.1825 36.6557C20.1791 36.7613 20.1774 36.8679 20.1774 36.9756C20.1774 38.4065 20.4696 39.6504 21.0539 40.7073C21.6381 41.7642 22.4497 42.5772 23.4884 43.1463C24.5433 43.7155 25.7444 44 27.0915 44C28.8281 44 30.2888 43.5203 31.4736 42.561C32.6584 41.6016 33.4213 40.2764 33.7621 38.5854H28.6983C28.4224 39.4797 27.8543 39.9268 26.9941 39.9268C26.3936 39.9268 25.9148 39.6748 25.5577 39.1707C25.2169 38.6667 25.0465 37.9349 25.0465 36.9756C25.0465 36.0163 25.2169 35.2927 25.5577 34.8049C25.9148 34.3008 26.3936 34.0488 26.9941 34.0488C28.6983 34.0488 28.6983 35.721 28.6983 35.721H33.7621C33.7621 35.721 33.7621 33.2677 31.4736 31.4147C30.2888 30.4553 28.8281 29.9756 27.0915 29.9756C26.3236 29.9756 25.6032 30.0681 24.9302 30.253V26.8356H20.1825V36.6557ZM11.2432 30.1418H15.991V34.2513H11.2432V30.1418ZM11.2432 39.7447H15.991V43.824H11.2432V39.7447Z" fill="currentColor"></path>
 </svg></a> <a class="id" href="mailto:hello@hou2touch.com">hello@hou2touch.com</a> <a class="so" href="https://www.youtube.com/@StanislavGlazov">YouTube</a> <a class="so" href="https://www.instagram.com/hou2touch/">Instagram</a> <a class="so" href="https://x.com/hou2touch">X</a></div>
   <div class="ft2-b mono"><a href="../../en/impressum.html">Impressum</a><span class="cr">hou2touch © 2026</span></div>
 </div></footer>
+</main>
 <script>(()=>{const MOTIF={chladni:0,streams:1,wall:2,terrain:3,warp:4,frame:5,lissajous:6,beams:7,feedback:8,barcode:9,opart:10,fold:11,physarum:12,plotter:13,rings:14};
 const q=new URLSearchParams(location.search);const IX=document.getElementById('ix');
 const FINE=!(q.get('x')||'').split(',').includes('raw');if(FINE)IX.classList.add('fine');IX.classList.add('js');
@@ -3165,6 +3240,85 @@ document.fonts.ready.then(()=>{
  setTimeout(()=>scenes.forEach(sc=>sc.mask()),reduce?0:1650); // halo lands with the letters
 });
 
+})();</script>
+<script>(function(){
+ const H=document.getElementById('h2t'),hero=document.querySelector('.hero2');
+ if(H)H.classList.add('go');
+ if(!hero)return;
+ const cv=hero.querySelector('canvas');if(!cv)return;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;
+ const gl=cv.getContext('webgl',{antialias:false,alpha:false});
+ if(!gl){hero.classList.add('nogl');return}
+ const vs=`attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0,1);}`;
+ const fs=`precision highp float;varying vec2 v;uniform sampler2D T;uniform vec2 R,I,M;uniform float t,h,A,C,P,K,B,L,X,Y;
+  const float G=.9;
+  vec3 hs(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(vec3(p.x*p.y*p.z,p.x+p.y*p.z,p.x*p.y+p.z));}
+  float n(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);
+    return mix(mix(mix(hs(i).x,hs(i+vec3(1,0,0)).x,f.x),mix(hs(i+vec3(0,1,0)).x,hs(i+vec3(1,1,0)).x,f.x),f.y),
+               mix(mix(hs(i+vec3(0,0,1)).x,hs(i+vec3(1,0,1)).x,f.x),mix(hs(i+vec3(0,1,1)).x,hs(i+vec3(1,1,1)).x,f.x),f.y),f.z);}
+  float b2(vec2 a){a=floor(a);return fract(dot(a,vec2(.5,a.y*.75)));}
+  float b4(vec2 a){return b2(.5*a)*.25+b2(a);}
+  float b8(vec2 a){return b4(.5*a)*.25+b2(a);}
+  float pk(vec2 c){return fract(sin(dot(c,vec2(12.9898,78.233)))*43758.5453);}
+  float gate(vec2 c,float y){return step(.62*pk(c)+.38*(1.-y),K*1.0001);}
+  float vn(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(pk(vec2(i,3.1)),pk(vec2(i+1.,3.1)),f);}
+  float mk(vec2 p){float y=R.y-p.y;if(y>B+72.)return 1.;y+=16.*(.5*vn(p.x/61.)+.3*vn(p.x/19.)+.2*vn(p.x/7.)-.5);return smoothstep(B,B+28.+28.*vn(p.x/83.+5.),y);}
+  float lk(vec2 p){float y=R.y-p.y;if(y<L-72.)return 1.;y-=16.*(.5*vn(p.x/53.+9.)+.3*vn(p.x/17.+4.)+.2*vn(p.x/7.+2.)-.5);return 1.-smoothstep(L-28.-28.*vn(p.x/79.+1.),L,y);}
+  vec2 cov(vec2 uv){float ar=R.x/R.y,ir=I.x/I.y;vec2 s=ar>ir?vec2(1.,ir/ar):vec2(ar/ir,1.);vec2 c=(uv-vec2(X,-Y)-.5)*s+vec2(P,.48)+(vec2(.5)-vec2(P,.48))*s;c.y=1.-c.y;return c;}
+  void main(){
+    vec2 fc=gl_FragCoord.xy;
+    vec2 d=(fc-M*R)/R.y;float inl=step(length(d),.15*h);
+    float cell=mix(C,max(2.,floor(C*.5)),inl);
+    vec2 q=(floor(fc/cell)+.5)*cell,up=q/R;
+    float tt=t*.08;vec2 fl=vec2(n(vec3(up*vec2(R.x/R.y,1.)*2.2,tt)),n(vec3(up*vec2(R.x/R.y,1.)*2.2+7.3,tt)))-.5;
+    vec2 cu=cov(up);vec3 c=texture2D(T,cu+fl*(.012+A*.03)).rgb*step(0.,cu.y);
+    float l=dot(c,vec3(.299,.587,.114)),th=b4(fc/cell);
+    float on=step(th,clamp((l-.34)*2.+A*.2,0.,1.));
+    float m=lk(q);on*=step(pk(floor(fc/cell)+.5)*.9+.05,m);
+    vec3 col=clamp((mix(vec3(l),c,.72)-.02)*1.34,0.,1.)*vec3(1.12,.96,.93);
+    float cb=max(2.,floor(R.y/300.));vec2 qb=(floor(fc/cb)+.5)*cb;
+    vec2 cv2=cov(qb/R);vec3 cs=texture2D(T,cv2+fl*.012).rgb*step(0.,cv2.y);
+    float lb=clamp((dot(cs,vec3(.299,.587,.114))-.1)*2.+A*.18,0.,1.)*2.;
+    float bs=floor(lb),lev=bs+step(b8(fc/cb),lb-bs);
+    float mb=mk(qb)*lk(qb);lev*=step(pk(floor(fc/cb)+.5)*.9+.05,mb);
+    vec3 base=clamp((cs-.03)*1.3,0.,1.)*G*mix(.04,1.,mb);
+    vec3 bg=lev<.5?base*.8:(lev<1.5?base+vec3(.898,.314,.118)*.48:mix(base,vec3(.937,.933,.914),.75));
+    gl_FragColor=vec4(mix(bg*gate(floor(fc/cb),qb.y/R.y),col*1.06,on*gate(floor(fc/cell),q.y/R.y)),1.);
+  }`;
+ const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o};
+ let pr;try{pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr)}catch(e){hero.classList.add('nogl');return}
+ if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){hero.classList.add('nogl');return}
+ gl.useProgram(pr);
+ gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ const pl=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(pl);gl.vertexAttribPointer(pl,2,gl.FLOAT,false,0,0);
+ const U=n=>gl.getUniformLocation(pr,n),uR=U('R'),uI=U('I'),uM=U('M'),ut=U('t'),uh=U('h'),uA=U('A'),uC=U('C'),uP=U('P'),uK=U('K'),uB=U('B'),uL=U('L'),uX=U('X'),uY=U('Y');
+ let ok=false,W,Hh,tm=[.5,.5],cm=[.5,.5],hm=0,hh=0,t0=0;
+ const draw=(t,k)=>{gl.uniform2f(uM,cm[0],cm[1]);gl.uniform1f(ut,t);gl.uniform1f(uh,hh);gl.uniform1f(uA,0);gl.uniform1f(uK,k);gl.drawArrays(gl.TRIANGLE_STRIP,0,4)};
+ const ldE=hero.querySelector('.lead');
+ /* B — низ строки фактов в эталоне; в наброске факты под шапкой, поэтому маски верха нет (B = −1e4).
+    L — на ≤ 600 px тёмное поле под лидом и кнопками (как в RU), иначе 1e5 (маски нет). */
+ const size=()=>{W=cv.width=cv.clientWidth;Hh=cv.height=cv.clientHeight;gl.viewport(0,0,W,Hh);
+   gl.uniform2f(uR,W,Hh);gl.uniform1f(uC,Math.max(3,Math.round(Hh/170)));gl.uniform1f(uP,W<601?.6:.78);
+   gl.uniform1f(uB,-1e4);gl.uniform1f(uX,0);gl.uniform1f(uY,0);
+   gl.uniform1f(uL,W<601&&ldE?ldE.getBoundingClientRect().top-cv.getBoundingClientRect().top-12:1e5);
+   if(ok&&reduce)draw(0,1)};
+ addEventListener('resize',size);
+ const im=new Image(),bg=hero.querySelector('.bgimg');
+ const up=()=>{if(ok)return;const tx=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tx);
+   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+   try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im)}catch(e){hero.classList.add('nogl');return}
+   gl.uniform2f(uI,im.width,im.height);ok=true;t0=performance.now();size();
+   draw(0,reduce?1:0);if(bg)bg.style.opacity=0;cv.style.opacity=1};
+ im.crossOrigin='anonymous';im.src='hero.webp';
+ im.decode().then(up,()=>{if(im.complete&&im.naturalWidth)up();else im.onload=up});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{size()});
+ if(reduce)return;
+ if(fine){hero.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener('pointerleave',()=>hm=0)}
+ const tick=()=>{requestAnimationFrame(tick);if(!ok||document.hidden)return;
+   cm=[lerp(cm[0],tm[0],.1),lerp(cm[1],tm[1],.1)];hh=lerp(hh,hm,.08);
+   const k=clamp((performance.now()-t0)/800,0,1);draw((performance.now()-t0)/1000,1-Math.pow(1-k,2))};
+ requestAnimationFrame(tick);
 })();</script>
 <script>(function(){
  var sel=document.getElementById('enPathSel'),grid=document.getElementById('hsGrid'),cnt=document.getElementById('hsCount');
