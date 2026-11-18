@@ -1075,6 +1075,73 @@ html{scroll-padding-block:73px 46px}
 .fq-7{border-top:1px solid var(--line2);margin-top:4px}
 .fq-7>.mono{color:var(--hou)}
 </style>
+<style id="wave-look-css">
+/* ===== concept v8: numbered items in the page's own out1 language ===== */
+/* Owner decision 19.11: the #concept accent is 203's green, not the page's
+   --top (violet #8a63c9 on 201/206/207/302/304/305/101/102/205/204 and
+   modulardesign). 203 resolves it as --ab:var(--top) with --top:#65a30d — the
+   same colour, written literally here so the numbers 01/02, the ab-bar and the
+   connector stay green on every page. */
+#concept{--ab:#65a30d}
+#concept .sh{margin:0}
+#concept .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#concept .ab-g{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(32px,5vw,88px);align-items:start;margin:0 0 clamp(38px,4.6vw,68px);padding:0}
+/* 203's own vertical rhythm around the block (label gap + block bottom) */
+html body #concept .lbl{margin-bottom:var(--r-head)}
+html body #concept .ab-g{margin-bottom:clamp(40px,4.4vw,64px)}
+html:not(.x-old) body #concept .m2-open,html:not(.x-old) body #concept .ix-blk{padding-top:0;border-top:0;margin-top:0;max-width:none}
+/* left: the Bebas title with the same short violet rule as the other paper sections */
+#concept .ab-side{grid-column:1;align-self:start}
+#concept .ab-ttl{margin:0;font:700 clamp(56px,4.9vw,78px)/.86 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+#concept .ab-ttl span{display:block}
+#concept .ab-bar{display:block;width:46px;height:5px;margin-top:clamp(16px,1.8vw,24px);background:var(--ab)}
+/* right: numbered items — big violet number, connector, title, copy */
+html body #concept .ab-items{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);row-gap:0;margin:0;padding:0;list-style:none;max-width:none}
+html body #concept .ab-it{position:relative;margin:0;padding:clamp(20px,2vw,28px) clamp(0px,1vw,12px) 0 0;border:0;min-width:0}
+html body #concept .ab-it .n{position:relative;z-index:1;display:inline-block;margin:0 0 14px;padding:0 16px 0 0;background:var(--paper);font:700 clamp(52px,4.6vw,68px)/.82 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums}
+html body #concept .ab-it h3{margin:0 0 10px;font:500 clamp(18px,1.55vw,22px)/1.22 var(--sans);letter-spacing:-.02em;color:var(--fg);text-wrap:balance}
+html body #concept .ab-it p{margin:0;font:400 var(--fs-m)/24px var(--sans);letter-spacing:-.005em;color:var(--txt);max-width:38ch;text-wrap:pretty}
+@media (max-width:760px){html body #concept .ab-it p{max-width:none}}
+/* the connector: the same hairline + square node that links the columns further down */
+html body #concept .ab-it:not(:last-child)::before{content:"";position:absolute;z-index:0;left:0;right:calc(-1*var(--gap));top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:9px;transform:translateY(-4px);background:radial-gradient(circle at 4.5px 4.5px,var(--paper) 2.6px,var(--ab) 3px 4.5px,transparent 5px) right 2px top/9px 9px no-repeat,linear-gradient(var(--ab),var(--ab)) left center/calc(100% - 11px) 1.5px no-repeat}
+html body #concept .ab-it:last-child::before{content:"";position:absolute;z-index:0;left:0;right:0;top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:1.5px;transform:translateY(-.75px);background:linear-gradient(90deg,var(--ab),transparent)}
+/* the modules bar above the untouched modules patch — same bar as the other section heads */
+html:not(.x-old) body #concept .ix-blk[data-lkey="m-chain"]{position:relative;display:block;margin:0 0 clamp(20px,2.3vw,34px);padding:0;border:0;max-width:none}
+#concept .m-bar{display:flex;align-items:center;gap:0;min-width:0}
+html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40px,3.5vw,52px)/.86 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+#concept .m-rule{flex:1 1 auto;height:1px;margin:0 18px 0 0;background:var(--line2)}
+#concept .m-chain-meta{display:flex;align-items:center;gap:7px;margin-left:20px;font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+#concept .m-chain-meta i{display:inline-flex;gap:2px;margin-left:7px;font-style:normal}
+#concept .m-chain-meta s{display:block;width:8px;height:8px;background:var(--ab)}#concept .m-chain-meta s:nth-child(2){background:var(--ink)}
+/* a lead paragraph spanning both columns (101: «Another tutorial…») */
+html body #concept .ab-it.ab-wide{grid-column:1/-1;padding-right:0}
+html body #concept .ab-it.ab-wide::before{display:none}
+html body #concept .ab-it.ab-wide p{max-width:64ch}
+html body #concept .ab-it.ab-wide p+p{margin-top:12px}
+html body #concept .ab-it.ab-wide p b{font-weight:600;color:var(--ink)}
+@media (max-width:1180px){
+  #concept .ab-g{grid-template-columns:minmax(0,2.6fr) minmax(0,7.8fr);column-gap:48px}
+  html body #concept .ab-it{padding-right:0}
+}
+@media (max-width:940px){
+  #concept .ab-ttl{font-size:clamp(44px,5.4vw,60px)}
+  html body #concept .ab-it .n{font-size:clamp(44px,4.8vw,54px)}
+  html body #concept .ab-it:not(:last-child)::before{right:calc(-1*var(--gap))}
+}
+@media (max-width:760px){
+  html body #concept .ab-g{display:flex;flex-direction:column;align-items:stretch;grid-template-columns:minmax(0,1fr)!important;row-gap:18px;column-gap:0;margin:0 0 40px}
+  html body #concept .ab-ttl{font-size:clamp(50px,13vw,70px)}
+  #concept .ab-bar{width:38px;height:4px;margin-top:14px}
+  html body #concept .ab-items{grid-column:auto!important;grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
+  html body #concept .ab-it{padding:18px 0 0}
+  html body #concept .ab-it+.ab-it{padding-top:24px;margin-top:4px;border-top:1px solid var(--line)}
+  html body #concept .ab-it .n{font-size:var(--fs-4xl);margin-bottom:10px}
+  html body #concept .ab-it h3{font-size:var(--fs-xl);margin-bottom:8px}
+  html body #concept .ab-it p{font-size:var(--fs-m);line-height:24px}
+  html body #concept .ab-it::before{display:none!important}
+  #concept .m-rule,#concept .m-chain-meta{display:none}
+}
+</style>
 </head>
 <body>
 <div class="h2t f-fam f-lc f-print f-rev2 f-short" id="h2t" style="--k:var(--sop);--edge-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAYCAYAAADH2bwQAAAAOUlEQVR42mNgoBp4+fzBf+rohPGJNxFdB41MIEuSeEW0NQFuCkET8GEqmoAsQJoJ6DpxKiBoAi4MANqxYbA7Y3AmAAAAAElFTkSuQmCC)">
@@ -1110,11 +1177,12 @@ html{scroll-padding-block:73px 46px}
   </div>
 </header>
 <div class="paper pz"><section id="concept" class="sec" data-lkey="m1-about,m2" data-lmod="1,2"><div class="wrap">
-  <div class="lbl mono"><b>01</b> About the course<i class="op" style="--c:var(--comp)">concept1 <u>COMP</u></i></div>
-  <div class="sh"><h2 class="H">Хочу освоить Houdini и TouchDesigner, но не знаю, с чего начать</h2><div class="m2-open" data-lkey="m2">
-    <div><span class="mono">01 · the starting point</span><p>Вы дизайнер, фотограф, архитектор, музыкант или 3D-художник, но ни в Houdini, ни в TouchDesigner ещё не работали. Хотите освоить обе программы с нуля и работать в медиа и 3D-производстве, но непонятно, с чего начать и как их связать.</p></div>
-    <div style="--c:var(--sop)"><span class="mono">02 · what you build</span><p>После курса вы строите трёхмерные сцены и процедурный ландшафт, переносите сцену между программами и доводите её до готового кадра в рендере. Управляете изображением через звук и время, пишете на Python скрипты для TouchDesigner, собираете видеотеку на Replicator. В Houdini создаёте разрушения, частицы и дымовые поля, а из данных Azure Kinect строите чистую поверхность и скелет.</p></div>
-  </div></div>
+  <div class="lbl mono"><b>01</b><span>About the course</span><i class="op" style="--c:var(--ab)">concept1 <u>COMP</u></i></div>
+  <div class="sh"><h2 class="H ix-vh">About the course</h2></div>
+  <div class="m2-open ab-g" data-lkey="m2">
+    <div class="ab-side"><h2 class="ab-ttl"><span>About</span><span>the</span><span>course</span></h2><i class="ab-bar"></i></div>
+    <ol class="ab-items"><li class="ab-it"><span class="n">01</span><h3>the starting point</h3><p>Вы дизайнер, фотограф, архитектор, музыкант или 3D-художник, но ни в Houdini, ни в TouchDesigner ещё не работали. Хотите освоить обе программы с нуля и работать в медиа и 3D-производстве, но непонятно, с чего начать и как их связать.</p></li><li class="ab-it"><span class="n">02</span><h3>what you build</h3><p>После курса вы строите трёхмерные сцены и процедурный ландшафт, переносите сцену между программами и доводите её до готового кадра в рендере. Управляете изображением через звук и время, пишете на Python скрипты для TouchDesigner, собираете видеотеку на Replicator. В Houdini создаёте разрушения, частицы и дымовые поля, а из данных Azure Kinect строите чистую поверхность и скелет.</p></li></ol>
+  </div>
   <figure class="pn full chn rv" style="--c:var(--comp);margin-bottom:0">
     <div class="ph"><span class="id">/hou2touch_ru/chain1</span><span class="r">27 lessons in teaching order</span></div>
     <p class="chn-g mono dt"><b>Hou2Touch 1: Основы</b> · 13 lessons</p><div class="chn-b" style="--n:4"><a class="cn" href="#les-1" onclick="const d=document.getElementById('les-1');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson01</div><div class="cn-b"><span class="mono dt">2h 12m</span>Предобучение. О профессиях в компьютерной графике. Основы программирования</div></a><a class="cn" href="#les-5" onclick="const d=document.getElementById('les-5');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson05</div><div class="cn-b"><span class="mono dt">2h 23m</span>Обработка видео и изображений в Houdini и TouchDesigner</div></a><a class="cn" href="#les-9" onclick="const d=document.getElementById('les-9');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson09</div><div class="cn-b"><span class="mono dt">2h 12m</span>Анализ звука и саундреактивность в TouchDesigner и Houdini</div></a><a class="cn" href="#les-13" onclick="const d=document.getElementById('les-13');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson13</div><div class="cn-b"><span class="mono dt">1h 24m</span>Запись и обмен CHOP данными между Houdini и TouchDesigner</div></a></div><p class="chn-g mono dt"><b>Hou2Touch 2: Процедурное 3D и симуляции</b> · 14 lessons</p><div class="chn-b" style="--n:4"><a class="cn" href="#les-14" onclick="const d=document.getElementById('les-14');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson01</div><div class="cn-b"><span class="mono dt">1h 07m</span>Введение в SOP данные в TouchDesigner и Houdini</div></a><a class="cn" href="#les-18" onclick="const d=document.getElementById('les-18');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson05</div><div class="cn-b"><span class="mono dt">1h 55m</span>Построение интерфейса библиотеки видео при помощи Replicator</div></a><a class="cn" href="#les-23" onclick="const d=document.getElementById('les-23');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson10</div><div class="cn-b"><span class="mono dt">2h 18m</span>Рендер и композитинг в TouchDesigner с использованием GLSL; Создание материала в Substance Designer</div></a><a class="cn" href="#les-27" onclick="const d=document.getElementById('les-27');if(d)d.open=true;" style="--c:var(--sop);text-decoration:none"><span class="pt i"></span><span class="pt o"></span><div class="cn-h">lesson14</div><div class="cn-b"><span class="mono dt">1h 41m</span>Работа с данными Кинект в TouchDesigner и Houdini</div></a><a class="cn o" href="#book" style="--c:var(--sop)"><span class="pt i"></span><div class="cn-h">out1</div><div class="cn-b">→ enroll</div></a></div>
