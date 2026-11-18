@@ -79,7 +79,7 @@ body{background:var(--bg)}
 /* доступность: общий фокус — 2 px цветом текста секции (крем на тьме, чернила на бумаге); skip-link */
 .h2t :focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .h2t :focus:not(:focus-visible){outline:none}
-.h2t .skip{position:fixed;left:16px;top:-64px;z-index:120;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:top .25s var(--ease)}
+.h2t .skip{position:fixed;left:16px;top:-64px;z-index:120;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:top .25s var(--ease)}
 .h2t .skip:focus{top:16px}
 main:focus{outline:none}
 
@@ -99,14 +99,14 @@ main:focus{outline:none}
 
 .sec{position:relative;padding-top:var(--sec)}
 /* метка секции: NN · Раздел · [op NAME FAM] */
-.lbl{display:flex;gap:14px;align-items:center;margin-bottom:40px;white-space:nowrap;color:var(--mute)}
+.lbl{display:flex;gap:14px;align-items:center;margin-bottom:40px;white-space:nowrap;color:var(--mute);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .lbl b{color:var(--fg);font-weight:500}
 .lbl::after{content:"";flex:1;min-width:16px;height:1px;background:var(--line)}
-.op{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:#d9d8d3;font-style:normal;white-space:nowrap}
+.op{display:inline-flex;align-items:center;gap:8px;height:24px;padding:0 12px 0 8px;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:var(--txt);font-style:normal;white-space:nowrap}
 .op::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .op u{text-decoration:none;color:var(--mute)}
 /* на бумаге плашка оператора светло-серая (правка заказчика 29.09): текст чернилами, семейство — тёмно-серым (≥ 4,5:1 на #dcd9d1), квадрат семейства — цветом */
-.paper .op{background:#dcd9d1;color:var(--ink);box-shadow:none}.paper .op u{color:#56544f}.paper .dk .op{background:var(--bg2);color:#d9d8d3;box-shadow:inset 0 0 0 1px var(--line2)}.paper .dk .op u{color:var(--mute)}
+.paper .op{background:#dcd9d1;color:var(--ink);box-shadow:none}.paper .op u{color:#56544f}.paper .dk .op{background:var(--bg2);color:var(--txt);box-shadow:inset 0 0 0 1px var(--line2)}.paper .dk .op u{color:var(--mute)}
 @media (max-width:600px){.lbl{gap:10px;margin-bottom:28px}}
 
 /* H2: одна строка Bebas 88 + дек Inter Tight 20/28 крем 80 % (≤ 60 знаков) */
@@ -117,13 +117,13 @@ main:focus{outline:none}
 @media (max-width:600px){.H{font-size:56px;white-space:normal}.dek{font-size:16px;line-height:24px;margin-top:20px}}
 
 /* кнопки: .btn — вторичная (радиус 2, 48); .btn.pill — пилюля 56 (только «Выбрать курс»); .rec — оранжевая */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding:0 26px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .3s,box-shadow .3s,color .3s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:0 26px;background:var(--fg);color:var(--bg);font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .3s,box-shadow .3s,color .3s}
 @media (hover:hover){.btn:hover{background:var(--hv)}}
 .btn .ar{display:inline-block;transition:transform .4s var(--ease)}@media (hover:hover){.btn:hover .ar{transform:translateX(4px)}}
 .btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line2)}
 @media (hover:hover){.btn.ghost:hover{background:rgba(127,127,127,.08);box-shadow:inset 0 0 0 1px var(--fg)}}
 .btn.pill{height:56px;padding:0 28px;border-radius:999px}
-.btn.rec{background:var(--hou);color:#000}@media (hover:hover){.btn.rec:hover{background:#f0602d}}
+.btn.rec{background:var(--hou);color:#000}@media (hover:hover){.btn.rec:hover{background:var(--hou-hover)}}
 .btn.sm{height:44px;padding:0 20px}
 @media (max-width:600px){.btn.pill{height:52px;padding:0 20px}}
 
@@ -180,7 +180,7 @@ main:focus{outline:none}
 .ft2-a,.ft2-b{display:flex;flex-wrap:wrap;align-items:center;column-gap:28px}
 .ft2-a a:not(.logo){display:inline-flex;align-items:center;min-height:44px;font:400 16px/24px var(--sans);color:var(--txt);transition:color .3s}
 .ft2-a .so{margin-left:auto}
-.ft2-a a[href*="x.com"]{padding-inline:17px;margin-inline:-17px} /* r2 · R-2: «X» 10 → 44 px по ширине; поля −17 держат чернила и шаг 28 px на месте (у края — 1384) */
+.ft2-a a[href*="x.com"]{padding-inline:16px;margin-inline:-16px} /* r2 · R-2: «X» 10 → 44 px по ширине; поля −17 держат чернила и шаг 28 px на месте (у края — 1384) */
 .ft2-b{margin-top:16px;padding-top:4px;border-top:1px solid var(--line);column-gap:24px}
 .ft2-b a{display:inline-flex;align-items:center;min-height:44px;transition:color .3s}
 .ft2-b .cr{margin-left:auto}
@@ -211,11 +211,11 @@ main:focus{outline:none}
 .au-c{margin-top:22px;max-width:37em}
 .cv{list-style:none;border-top:1px solid var(--line2);margin-top:22px}
 .cv[hidden]{display:none}
-.cv li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;padding:12px 0;border-bottom:1px solid var(--line);animation:lpin .5s var(--ease) both}
+.cv li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:12px 0;border-bottom:1px solid var(--line);animation:lpin .5s var(--ease) both}
 .cv li .mono{padding-top:4px}
 .cv-b{margin-top:22px;align-self:flex-start}
 .au-t>.au-s{margin-top:auto}
-.marq{margin-top:var(--hgap);padding:14px 0;border-block:1px solid var(--line);white-space:nowrap;overflow:hidden;user-select:none}
+.marq{margin-top:var(--hgap);padding:16px 0;border-block:1px solid var(--line);white-space:nowrap;overflow:hidden;user-select:none}
 .marq-t{display:inline-flex;will-change:transform}
 .marq-t span,.marq-t em{font:700 40px/1 var(--disp);text-transform:uppercase;padding-right:.3em;font-style:normal}
 .marq-t em{color:var(--mute)}
@@ -236,7 +236,7 @@ main:focus{outline:none}
 .wt img,.wt canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .wt img{object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .5s var(--ease),transform .8s var(--ease)}
 .wt canvas{image-rendering:pixelated;transition:opacity .35s var(--ease)}
-.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:#efeee9;opacity:0;transition:opacity .3s;text-shadow:0 1px 6px #000}
+.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:var(--fg);opacity:0;transition:opacity .3s;text-shadow:0 1px 6px #000}
 @media (hover:hover) and (pointer:fine){.wt:hover canvas{opacity:0}.wt:hover img{transform:scale(1.04)}.wt:hover i{opacity:1}}
 .wt:focus-visible canvas{opacity:0}
 .wt:focus-visible i{opacity:1}
@@ -286,7 +286,7 @@ main:focus{outline:none}
 .qa-nv .mono{margin-left:10px}
 @media (max-width:980px) and (min-width:601px){.qa-s{padding:28px 24px}}
 @media (max-width:600px){.qa-c{margin:-8px 0 14px}.qa-c button{font-size:28px;min-height:44px}.qa-c button::after{padding-left:8px}.qa-b{display:block}.qa-l{display:flex;gap:8px;padding:14px 14px 2px;border-right:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.qa-l::-webkit-scrollbar{display:none}.qa-r{display:block;flex:none;width:44px;min-height:44px;height:44px;padding:2px;border:0;border-radius:50%;background:none!important;box-shadow:none!important}.qa-r>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.qa-r img{filter:grayscale(1) contrast(1.05) brightness(.8)}.qa-r[aria-selected=true] img{filter:grayscale(1) contrast(1.05)}.qa-r[aria-selected=true] .av{box-shadow:0 0 0 2px var(--fg)}.qa-s{padding:16px 14px 14px}.qa-q blockquote{font-size:20px;line-height:28px;letter-spacing:-.01em}.qa-q figcaption{margin-top:14px}.qa-nv{padding-top:16px}}
-.sheet{--bg:#efeee9;--bg2:#e4e2dc;--fg:var(--ink);--fg8:rgba(11,11,12,.8);--txt:#2b2a28;--mute:#56544f;--dim:#7a7872;--line:rgba(11,11,12,.13);--line2:rgba(11,11,12,.26);--pnb:#efeee9;--hv:#2c2c2f;color:var(--fg);border-color:#efeee9}
+.sheet{--bg:#efeee9;--bg2:#e4e2dc;--fg:var(--ink);--fg8:rgba(11,11,12,.8);--txt:#2b2a28;--mute:#56544f;--dim:#7a7872;--line:rgba(11,11,12,.13);--line2:rgba(11,11,12,.26);--pnb:#efeee9;--hv:#2c2c2f;color:var(--fg);border-color:var(--fg)}
 .sheet .qa-r[aria-selected=true]{background:rgba(11,11,12,.05)}
 .sheet .qa-r .av{background:#d9d6ce}
 @media (prefers-reduced-motion:reduce){.fq-l details[open] .fq-a,.anim,.mp-p .mp-b.anim,.pri-t.nx,.cv li{animation:none}}
@@ -374,7 +374,7 @@ main:focus{outline:none}
 @media (max-width:1060px){.fnav{grid-template-columns:1fr auto}.fnav .fam{display:none}.fnav .mb{display:inline-flex}}
 @media (max-width:600px){.h2t .fnav .back{display:none}.fnav .c2 .only-d{display:none}.fnav .end{gap:8px}}
 /* меню: курсы семьи крупно (Bebas 40), ниже — разделы страницы */
-.fmnu{position:fixed;inset:0;z-index:59;background:#0b0b0c;display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
+.fmnu{position:fixed;inset:0;z-index:59;background:var(--ink);display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
 .fmnu.on{opacity:1;pointer-events:auto}
 .fmnu .mono.h{margin-bottom:10px}
 .fmnu ul{list-style:none;border-top:1px solid var(--line2)}
@@ -391,7 +391,7 @@ main:focus{outline:none}
 .rt{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--pgap)}
 .rt>li{display:flex}
 .rc{display:flex;flex-direction:column;width:100%;transition:border-color var(--t-sel) var(--e-sel),background var(--t-sel) var(--e-sel)}
-.rc>.ph{box-shadow:inset 0 3px var(--c);border-radius:5px 5px 0 0}.rc>.ph::before{background:var(--comp)}
+.rc>.ph{box-shadow:inset 0 3px var(--c);border-radius:var(--card-r) var(--card-r) 0 0}.rc>.ph::before{background:var(--comp)}
 .rc .rc-b{display:flex;flex-direction:column;gap:10px;padding:16px 14px 16px;flex:1}
 .rc .rc-n{font:700 40px/.9 var(--disp);text-transform:uppercase;letter-spacing:.005em}
 .rc .rc-n small{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.06em;color:var(--mute);margin-bottom:8px}
@@ -406,7 +406,7 @@ main:focus{outline:none}
 @media (max-width:1180px){.rt{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){ /* CT-15: лента со снапом, текущий первым */
   .fstrip{padding-bottom:72px}
-  .rt{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--pad));padding:0 var(--pad) 6px;scroll-padding-inline:var(--pad);scrollbar-width:none}
+  .rt{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:0;padding:0 var(--pad) 6px;scroll-padding-inline:var(--pad);scrollbar-width:none}
   .rt::-webkit-scrollbar{display:none}
   .rt>li{flex:0 0 78vw;scroll-snap-align:start}.rt>li.cur{order:-1}
   .rc .rc-n{font-size:40px}.rc .rc-b{padding:12px 14px 14px}
@@ -418,7 +418,7 @@ main:focus{outline:none}
 /* ---------- переходы между страницами семьи (CM-06): навбар стоит, имя курса «перепечатывается» маской cook 440 мс ---------- */
 @view-transition{navigation:auto}
 .hlogo{view-transition-name:hname}
-.hero .hm{view-transition-name:hfacts}
+
 ::view-transition-group(fnav),::view-transition-new(fnav){animation:none}::view-transition-old(fnav){animation:none;opacity:0} /* оболочка не мигает: сразу новая (текущий курс) */
 ::view-transition-old(hname){animation:.18s var(--e-sel) both vt-out}
 ::view-transition-new(hname){-webkit-mask-size:32px 32px;mask-size:32px 32px;animation:var(--t-cook) both cook}
@@ -442,9 +442,9 @@ html{scroll-padding-block:73px 46px}
 @media (max-width:980px){html{scroll-padding-block:73px 12px}}
 /* «Войти» (12.10, продажи): ссылка в кабинет GetCourse — в навбаре до 1060 px, ниже — в меню */
 .fnav .lgn{color:var(--txt);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:12px 6px;white-space:nowrap;text-decoration:none}
-@media (hover:hover){.fnav .lgn:hover{color:var(--fg);text-decoration:underline;text-underline-offset:4px}}
+@media (hover:hover){.fnav .lgn:hover{color:var(--fg);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}}
 @media (max-width:1060px){.fnav .lgn{display:none}}
-.fmnu .lgn-m{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--txt);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.fmnu .lgn-m{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--txt);font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 
 
 /* f-rev2 · «switch1» (консилиум REV 02.10.2026, review/school/awwwards/rev/PLAN.md + FIX1.md): отзывы — кремовые листы-ноды. Основной text1 DAT:
@@ -541,7 +541,7 @@ html{scroll-padding-block:73px 46px}
 
 /* ---------- switch1: управление над окном (← ▶ таймлайн счёт →), окно на 2 строки (≤760 — на 1) постоянной высоты ---------- */
 .h2t .rx-ctl{display:grid;grid-template-columns:44px 44px minmax(0,1fr) auto 44px;grid-template-areas:"p y ru k n";align-items:center;column-gap:8px;padding:10px 14px;border-top:1px solid var(--rx-ln)}
-.h2t .rx-b{position:relative;display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:2px;background:transparent;
+.h2t .rx-b{position:relative;display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:transparent;
   box-shadow:inset 0 0 0 1px var(--rx-ln2);color:var(--rx-ink);font:inherit;cursor:pointer;opacity:1;
   transition:box-shadow 160ms var(--rx-es),background-color 160ms var(--rx-es),transform 60ms linear}
 @media (hover:hover){.h2t .rx-b:hover{box-shadow:inset 0 0 0 1px var(--rx-ink);opacity:1}}
@@ -630,10 +630,10 @@ html{scroll-padding-block:73px 46px}
   .h2t .rx-main{--rx-vh0:427px}.h2t .rx-set{--rx-vh0:317px}
   /* вынос: мета строкой над цитатой; портрет — в подписи 56 × 70 слева от имени, как в ячейках (FIX1-3, CS-2). Левое поле 28 px —
      висячая « (≈ 17 px при 34 px) не упирается в край листа (FIX1-4, S-04 типографа) */
-  .h2t .rx-f{grid-template-columns:56px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:14px;padding:22px 18px 26px 28px}
+  .h2t .rx-f{grid-template-columns:56px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:16px;padding:24px 20px 28px 28px}
   .h2t .rx-fm{display:contents}
   .h2t .rx-no{grid-column:1/3;grid-row:1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-bottom:18px}
-  .h2t .rx-fp{grid-column:1;grid-row:3;align-self:start;width:56px;max-width:none;margin-top:22px}
+  .h2t .rx-fp{grid-column:1;grid-row:3;align-self:start;width:56px;max-width:none;margin-top:24px}
   .h2t .rx-fq{grid-column:1/3;grid-row:2;max-width:none}
   /* кегли 390: самая крупная ячейка (26) не крупнее самого мелкого выноса (26) (FIX1-5, CS-3) */
   .h2t .rx-fq[data-t=l]{--fs:34px;--lh:1.04;--ls:-.03em}.h2t .rx-fq[data-t=m]{--fs:30px;--lh:1.08;--ls:-.022em}.h2t .rx-fq[data-t=s]{--fs:26px;--lh:1.12;--ls:-.015em}
@@ -688,7 +688,7 @@ html{scroll-padding-block:73px 46px}
    Шкала главной: 88 · 56 · 40 · 28 · 20 · 16; mono 12, кнопки 13. Вне шкалы — имя курса в шапке.
    Тон: бумага (шапка → о курсе → для кого → автор) · шов Байера · тьма (паспорт → программа → работы → отзывы)
    · лист тарифов с пиксельными краями · тьма (вопросы → курсы семьи). Финала «ДУМАЙ ПРОЦЕДУРНО» у страниц курса нет — он у главной и флагмана. */
-.f-fam .pn.km>.ph{box-shadow:inset 0 3px var(--c);border-radius:5px 5px 0 0}
+.f-fam .pn.km>.ph{box-shadow:inset 0 3px var(--c);border-radius:var(--card-r) var(--card-r) 0 0}
 .f-fam .pn.km>.ph::before{background:var(--comp)}
 .dat{list-style:none}
 .dat>li{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:baseline;min-height:48px;padding:12px 0;border-bottom:1px solid var(--line);font:400 16px/24px var(--sans);color:var(--fg)}
@@ -713,9 +713,9 @@ html{scroll-padding-block:73px 46px}
 .ck .hx-lab.in{-webkit-mask-size:32px 32px;mask-size:32px 32px;animation:cook .44s both}
 .hero.nogl .hv{background:radial-gradient(circle,rgba(11,11,12,.55) 1.1px,transparent 1.5px) 0 0/7px 7px;-webkit-mask:radial-gradient(60% 55% at 68% 52%,#000,transparent);mask:radial-gradient(60% 55% at 68% 52%,#000,transparent)}
 .hv::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(233,231,224,.9) 0%,rgba(233,231,224,0) 20%,rgba(233,231,224,0) 58%,rgba(233,231,224,.94) 86%)}
-.hero .hm{position:absolute;z-index:2;left:var(--pad);right:var(--pad);top:96px;display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:var(--gap);padding:14px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line)}
-.hero .hm>div{line-height:24px;min-width:0}
-.hero .hm b{display:block;font:400 16px/24px var(--sans);color:#2b2a28;margin-top:4px;letter-spacing:0;text-transform:none}
+
+
+.hero .hm b{display:block;font:400 16px/24px var(--sans);color:var(--txt);margin-top:4px;letter-spacing:0;text-transform:none}
 .hero .hb{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:48px}
 /* имя курса — ступень HOU2TOUCH главной (25,8vw); длинное сжимается по ЧЕРНИЛАМ строки (--wem — ширина чернил в em, --lsb — левый выступ первой буквы; замер шрифта на сборке) */
 .hlogo{font:700 min(25.8vw,calc((100vw - 2*var(--pad))/var(--wem,3.6)),calc((100svh - 508px)*1.2))/.74 var(--disp);font-family:"H2T Bebas","H2T Logo FB","H2T Logo FB2",sans-serif;letter-spacing:.008em;white-space:nowrap;text-transform:uppercase;margin-left:calc(-1em*var(--lsb,.034));user-select:none;display:flex;align-items:flex-end}
@@ -755,8 +755,8 @@ html{scroll-padding-block:73px 46px}
   .hf-l,.hero .hr{grid-column:1/-1}
   .hero .hr{margin-top:22px;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 28px}
   .hero .hr .offer{margin-top:0}
-  .hero .hm-m{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px var(--gap);margin-top:26px;padding:12px 0;border-block:1px solid var(--line);grid-column:1/-1}
-  .hero .hm-m b{display:block;font:400 16px/24px var(--sans);color:#2b2a28;margin-top:2px;letter-spacing:0;text-transform:none}
+  .hero .hm-m{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px var(--gap);margin-top:24px;padding:12px 0;border-block:1px solid var(--line);grid-column:1/-1}
+  .hero .hm-m b{display:block;font:400 16px/24px var(--sans);color:var(--txt);margin-top:2px;letter-spacing:0;text-transform:none}
 }
 @media (max-width:600px){
   .hv{height:clamp(300px,44svh,400px)}
@@ -768,8 +768,8 @@ html{scroll-padding-block:73px 46px}
   .hero .hr{margin-top:22px;align-items:stretch}
   .hero .ctas{flex-direction:column;align-items:stretch}
   .hero .ctas .btn{width:100%;height:52px}
-  .hero .hm-m{display:grid;grid-template-columns:1fr 1fr;gap:12px var(--gap);margin-top:22px;padding:12px 0;border-block:1px solid var(--line)}
-  .hero .hm-m b{display:block;font:400 16px/24px var(--sans);color:#2b2a28;margin-top:2px;letter-spacing:0;text-transform:none}
+  .hero .hm-m{display:grid;grid-template-columns:1fr 1fr;gap:12px var(--gap);margin-top:20px;padding:12px 0;border-block:1px solid var(--line)}
+  .hero .hm-m b{display:block;font:400 16px/24px var(--sans);color:var(--txt);margin-top:2px;letter-spacing:0;text-transform:none}
 }
 
 /* ---------- 01 о курсе: цепочка частей как сеть нод → out1 (провод нейтральный, порт — цветом семейства) ---------- */
@@ -791,7 +791,7 @@ html{scroll-padding-block:73px 46px}
 .cn.o>.cn-b{font:500 12px/1.4 var(--mono);color:var(--mute)}
 @media (max-width:1100px){.chn-b{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 44px}.cn:nth-child(2n)::after,.cn:last-child::after{display:none}.cn.o{grid-column:1/-1;justify-self:start}}
 @media (max-width:600px){.chn-b{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}.chn-g{padding:16px 16px 0}.cn::after{display:none!important}.cn .pt{display:none}.cn.o{min-width:0;grid-column:1/-1;justify-self:stretch}
-  .cn>.cn-b{padding:10px 10px 12px;font-size:15px;line-height:20px}}   /* SC-13 (финал 02.10): 2 колонки вместо столбца на два экрана */
+  .cn>.cn-b{padding:10px 10px 12px;font-size:var(--fs-m);line-height:24px}}   /* SC-13 (финал 02.10): 2 колонки вместо столбца на два экрана */
 
 /* ---------- 02 для кого: одна фраза описания + «что вы освоите» крупно (outputs1 DAT) ---------- */
 .out1{counter-reset:o;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);border-top:1px solid var(--line2)}
@@ -811,13 +811,13 @@ html{scroll-padding-block:73px 46px}
 .chs{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:var(--pgap)}
 .ch .cv0{display:flex;align-items:baseline;gap:10px;padding:18px 16px 0}
 .ch .cv0 b{font:700 88px/.86 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
-.ch svg.cw{display:block;width:calc(100% - 32px);height:56px;margin:14px 16px 10px;overflow:visible}
+.ch svg.cw{display:block;width:calc(100% - 32px);height:56px;margin:16px 16px 12px;overflow:visible}
 .ch svg.cw path{fill:none;stroke:var(--c);stroke-width:1.5;vector-effect:non-scaling-stroke}
 .ch svg.cw line{stroke:var(--line2);stroke-width:1;vector-effect:non-scaling-stroke}
 .ch .p{padding:0 16px 16px;min-height:64px}
 @media (max-width:980px){.chs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.chs{grid-template-columns:1fr}.ch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}.ch>.ph,.ch>.pf,.ch>.p{grid-column:1/-1}
-  .ch .cv0{padding:14px 14px 0}.ch .cv0 b{font-size:56px}.ch svg.cw{width:calc(100% - 14px);height:36px;margin:14px 14px 0 0}.ch .p{min-height:0;padding:10px 14px 12px}}
+  .ch .cv0{padding:16px 16px 0}.ch .cv0 b{font-size:var(--fs-5xl)}.ch svg.cw{width:calc(100% - 14px);height:36px;margin:16px 16px 0 0}.ch .p{min-height:0;padding:12px 16px 12px}}
 
 /* ---------- 05 программа: части строками — ключ и название части (Inter 20/600) в 4 колонках, темы DAT — в 8 ---------- */
 .pgm{overflow:hidden}
@@ -925,9 +925,9 @@ html{scroll-padding-block:73px 46px}
     --A:92px;--B:26px;--C:0px;--D:0px;--ta:min(var(--d),var(--A));--tb:clamp(0px,calc(var(--d) - var(--A)),var(--B));
     --tc:clamp(0px,calc(var(--d) - var(--A) - var(--B)),var(--C));--td:clamp(0px,calc(var(--d) - var(--A) - var(--B) - var(--C)),var(--D))}
   .x-bold.f-short .hero{--sw:var(--swb)!important}
-  .f-short .hero .hm{top:calc(96px - var(--ta)*.130435 - var(--td)*.285714);padding-block:calc(14px - var(--tb)*.153846)}
-  .f-short .hero .hm>div{line-height:calc(24px - var(--tb)*.153846)}
-  .f-short .hero .hm b{margin-top:calc(4px - var(--tb)*.076923)}
+  
+  
+  
   .f-short .hero .hb{bottom:calc(48px - var(--ta)*.086957)}
   .f-short .hlogo{font-size:min(25.8vw,calc((100vw - 2*var(--pad))/var(--wem,3.6)),calc((var(--vh) - 508px + min(var(--d),var(--A) + var(--B) + var(--C) + var(--D)))*1.2));
     margin-bottom:calc(var(--ta)*-.173913 - var(--td)*.214286)}
@@ -965,9 +965,9 @@ html{scroll-padding-block:73px 46px}
 :is(.cc,.rc):hover .cc-vw-bg{opacity:.68;filter:grayscale(0) contrast(1.05) blur(0);transform:scale(1.02)}
 .cc-vw::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,12,.90) 0%,rgba(11,11,12,.38) 55%,rgba(11,11,12,.78) 100%);z-index:1}
 .cc-vw-meta{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px;min-width:0}
-.cc-vw-meta .mono{font-size:11px;color:rgba(239,238,233,.65);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cc-vw-meta b{font:700 28px/.9 var(--disp);color:#efeee9;letter-spacing:.02em;text-transform:uppercase}
-.cc-vw-box{position:relative;z-index:2;width:76px;height:76px;flex:none;border-radius:3px;overflow:hidden;border:1px solid rgba(239,238,233,.28);box-shadow:0 6px 18px rgba(0,0,0,.45),inset 0 2px 0 var(--c);background:#0b0b0c}
+.cc-vw-meta .mono{color:var(--mute);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-vw-meta b{font:700 28px/.9 var(--disp);color:var(--fg);letter-spacing:.02em;text-transform:uppercase}
+.cc-vw-box{position:relative;z-index:2;width:76px;height:76px;flex:none;border-radius:3px;overflow:hidden;border:1px solid rgba(239,238,233,.28);box-shadow:0 6px 18px rgba(0,0,0,.45),inset 0 2px 0 var(--c);background:var(--ink)}
 .cc-vw-box img{width:100%;height:100%;object-fit:cover;display:block}
 .rc .rc-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rc .rc-n small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:17px}
@@ -984,7 +984,7 @@ html{scroll-padding-block:73px 46px}
 .m2-open{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:28px;padding-top:22px;border-top:1px solid var(--line2)}
 @media (max-width:980px){.m2-open{grid-template-columns:1fr}}
 .m2-open>div{display:flex;flex-direction:column;gap:8px}
-.m2-open .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.m2-open .mono{font-size:var(--fs-xs);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
 .m2-open p{font:400 18px/26px var(--sans);color:var(--fg);margin:0;letter-spacing:-.01em}
 
 @media (min-width:1101px){
@@ -1003,16 +1003,16 @@ html{scroll-padding-block:73px 46px}
 .cd-col .dat{padding:0}
 .cd-col .dat>li:last-child{border-bottom:0}
 
-.roles-wall{margin:0 0 28px;padding:20px 0;border-block:1px solid var(--line2);font:700 clamp(44px,5.2vw,72px)/.9 var(--disp);text-transform:uppercase;color:var(--fg);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;align-items:baseline}
+.roles-wall{margin:0 0 28px;padding:20px 0;border-block:1px solid var(--line2);font:700 clamp(44px,5.2vw,72px)/.9 var(--disp);text-transform:uppercase;color:var(--fg);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;align-items:baseline}
 .roles-wall span{display:inline-flex;align-items:baseline;gap:6px}
 .roles-wall sup{font:500 12px/1 var(--mono);color:var(--mute);letter-spacing:.04em}
 .out1>li{padding-right:28px}
-#audience .pn.lite{margin-bottom:40px}
+
 
 .career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:24px}
 @media (max-width:980px){.career-grid{grid-template-columns:1fr}}
 .career-card{padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
-.career-card .mono{font-size:11px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.career-card .mono{font-size:var(--fs-xs);color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
 .career-card p{font:400 16px/24px var(--sans);color:var(--fg);margin:0}
 
 @media (min-width:981px){
@@ -1026,7 +1026,7 @@ html{scroll-padding-block:73px 46px}
 .spec-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pgap);margin-top:var(--pgap)}
 @media (max-width:980px){.spec-cells{grid-template-columns:1fr}}
 .spec-cell{padding:14px 16px;border-radius:4px;background:rgba(239,238,233,.025);border:1px solid var(--line);box-shadow:none}
-.spec-cell .mono{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
+.spec-cell .mono{font-size:var(--fs-xs);color:var(--mute);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
 .spec-cell b{font:600 15px/21px var(--sans);color:var(--fg);display:block}
 
 .pgd2{border-top:1px solid var(--line2)}
@@ -1082,7 +1082,7 @@ html{scroll-padding-block:73px 46px}
 <style id="ix-page">@layer page{
 .ix-blk{margin-top:28px}.ix-blk .dat{margin-top:12px}
 .ix-blk p{font:400 17px/1.55 var(--sans);max-width:70ch;margin:0 0 .7em}
-.ix-k{font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.ix-k{font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
 .ix-why{margin-top:18px;padding:18px 20px;border-left:2px solid var(--c,var(--top));background:rgba(11,11,12,.04)}
 .ix-why p{font:400 16px/1.55 var(--sans)}
 .ix-l{list-style:none;margin:10px 0 0;padding:0}.ix-l li{padding:10px 0;border-top:1px solid var(--line)}
@@ -1091,7 +1091,7 @@ html{scroll-padding-block:73px 46px}
 .ix-rvs{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--gap)}
 .ix-rv{padding:28px}.ix-rv blockquote{margin:0}.ix-rv blockquote p{font:400 22px/1.3 var(--sans);letter-spacing:-.02em}
 .ix-rv blockquote p::before{content:"“"}.ix-rv blockquote p::after{content:"”"}
-.ix-rv figcaption{margin-top:14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ix-rv figcaption{margin-top:14px;font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ix-ask{margin-top:28px;padding:22px}
 
 .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -1101,7 +1101,7 @@ html{scroll-padding-block:73px 46px}
 .ix-buywrap{max-width:560px;margin:0 auto}
 .ix-buy2 .lbl,#after .lbl,#reviews .lbl,#course .lbl,#program .lbl{margin-bottom:clamp(24px,3vw,40px)}
 .ix-buycard{opacity:1}
-.ix-buycap{display:block;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ix-buycap{display:block;font:500 12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ix-buycap strong,.ix-buycap b{font-weight:500}
 
 /* net: operator network */
@@ -1117,14 +1117,14 @@ html{scroll-padding-block:73px 46px}
 .ix-patch[data-m="0"] .ipt-m[data-m="0"],.ix-patch[data-m="1"] .ipt-m[data-m="1"],.ix-patch[data-m="2"] .ipt-m[data-m="2"],.ix-patch[data-m="3"] .ipt-m[data-m="3"],.ix-patch[data-m="4"] .ipt-m[data-m="4"],.ix-patch[data-m="5"] .ipt-m[data-m="5"],.ix-patch[data-m="6"] .ipt-m[data-m="6"],.ix-patch[data-m="7"] .ipt-m[data-m="7"],.ix-patch[data-m="8"] .ipt-m[data-m="8"],.ix-patch[data-m="9"] .ipt-m[data-m="9"],.ix-patch[data-m="10"] .ipt-m[data-m="10"]{opacity:1}
 .ipt-h{display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:5px;align-items:baseline;padding:12px 0 14px;border-top:1px solid var(--ink,#0b0b0c);min-height:104px;align-content:start}
 .ipt-h b{font:700 clamp(26px,2.2vw,34px)/.9 var(--disp);color:var(--ink,#0b0b0c);letter-spacing:.01em}
-.ipt-h i{font:500 13px/1 var(--mono);font-style:normal;color:var(--ink,#0b0b0c)}
+.ipt-h i{font:500 var(--fs-xs)/1 var(--mono);font-style:normal;color:var(--ink,#0b0b0c)}
 .ipt-h .d{grid-column:1/-1;font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--mute)}
 .ipt-h .nm{grid-column:1/-1;font:500 13px/1.3 var(--sans);color:var(--ink,#0b0b0c);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ipt-box{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:6px;padding:10px;border:1px dashed var(--line2,rgba(11,11,12,.3));border-radius:14px;flex:1;align-content:end}
-.ipt-t{position:relative;display:block;aspect-ratio:1;border-radius:7px;background:#141416;overflow:hidden;text-decoration:none;box-shadow:2px 3px 0 rgba(11,11,12,.14);transition:box-shadow .15s,transform .15s}
+.ipt-t{position:relative;display:block;aspect-ratio:1;border-radius:var(--card-r);background:#141416;overflow:hidden;text-decoration:none;box-shadow:2px 3px 0 rgba(11,11,12,.14);transition:box-shadow .15s,transform .15s}
 .ipt-box.r1 .ipt-t{aspect-ratio:1/2.09}
 .ipt-t canvas{position:absolute;inset:0;width:100%;height:100%}
-.ipt-t b{position:absolute;left:8px;top:7px;font:700 clamp(20px,1.8vw,30px)/1 var(--disp);color:#efeee9;paint-order:stroke;-webkit-text-stroke:0;text-shadow:0 0 4px #141416,0 0 2px #141416}
+.ipt-t b{position:absolute;left:8px;top:7px;font:700 clamp(20px,1.8vw,30px)/1 var(--disp);color:var(--fg);paint-order:stroke;-webkit-text-stroke:0;text-shadow:0 0 4px #141416,0 0 2px #141416}
 html body .ipt-t,html body .ipt-t b{text-decoration:none}
 .ipt-t:hover{box-shadow:0 0 0 2px var(--c),2px 3px 0 rgba(11,11,12,.14)}.ipt-t:focus-visible{box-shadow:0 0 0 2px var(--c),2px 3px 0 rgba(11,11,12,.14);outline:2px solid var(--c);outline-offset:2px}
 .ipt-plug{position:absolute;left:50%;bottom:-58px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--paper,#e9e7e0);border:1px solid var(--ink,#0b0b0c);z-index:1}
@@ -1135,14 +1135,14 @@ html body .ipt-t,html body .ipt-t b{text-decoration:none}
 .ipt-leg{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:6px}
 .ipt-lg{display:flex;align-items:center;gap:8px}.ipt-lg b{font:700 14px/1 var(--disp);color:var(--ink,#0b0b0c)}
 .ipt-lg i{display:flex;gap:2px}.ipt-lg s{display:block;width:9px;height:12px;background:var(--c)}.ipt-lg.alt s{background:var(--ink,#0b0b0c)}
-.ipt-tip{position:absolute;left:0;top:0;z-index:7;max-width:260px;padding:6px 9px;background:#e9e7e0;color:var(--ink,#0b0b0c);border:1px solid var(--ink,#0b0b0c);font:500 12px/1.35 var(--mono);pointer-events:none;opacity:0;transition:opacity .12s}
+.ipt-tip{position:absolute;left:0;top:0;z-index:7;max-width:260px;padding:6px 9px;background:var(--paper);color:var(--ink,#0b0b0c);border:1px solid var(--ink,#0b0b0c);font:500 12px/1.35 var(--mono);pointer-events:none;opacity:0;transition:opacity .12s}
 .ipt-tip.on{opacity:1}
 @media (max-width:900px){
 .ipt-mods{display:block;padding-bottom:0}.ipt-mods::after{display:none}
 .ipt-m{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:12px;align-items:start;padding:12px 0;border-top:1px solid var(--ink,#0b0b0c)}
-.ipt-h{border-top:0;padding:0;min-height:0}.ipt-h .nm{display:none}.ipt-h b{font-size:26px}.ipt-h i{font-size:13px}
+.ipt-h{border-top:0;padding:0;min-height:0}.ipt-h .nm{display:none}.ipt-h b{font-size:var(--fs-xl)}.ipt-h i{font-size:var(--fs-xs)}
 .ipt-box,.ipt-box.r1{grid-template-columns:repeat(6,minmax(0,1fr));padding:0;border:0;gap:4px}
-.ipt-box.r1 .ipt-t{aspect-ratio:1;height:auto}.ipt-t{border-radius:4px}.ipt-t b{font-size:16px;left:5px;top:4px}
+.ipt-box.r1 .ipt-t{aspect-ratio:1;height:auto}.ipt-t{border-radius:var(--card-r)}.ipt-t b{font-size:16px;left:5px;top:4px}
 .ipt-plug{display:none}
 
 }
@@ -1169,11 +1169,11 @@ html body .ix-patch{display:block}
 .ipt-hd b{font:700 clamp(120px,11vw,190px)/.76 var(--disp);color:var(--ink,#0b0b0c);letter-spacing:0}
 .ipt-hd div{display:grid;gap:10px;padding-bottom:4px}
 .ipt-hd span:first-child{font:500 clamp(24px,2.223vw,32px)/1 var(--sans);letter-spacing:-.03em;color:var(--ink,#0b0b0c)}
-.ipt-hd span:last-child{font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ipt-hd span:last-child{font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ipt-wave{display:block;width:100%;height:clamp(150px,15vw,240px)}
 .ipt-mods{margin-top:clamp(18px,2vw,30px)}
 .ipt-t.acc{box-shadow:2px 3px 0 rgba(11,11,12,.14)}
-@media (max-width:900px){.ipt-top{grid-template-columns:1fr;row-gap:12px}.ipt-wave{height:72px}.ipt-hd b{font-size:96px}}
+@media (max-width:900px){.ipt-top{grid-template-columns:1fr;row-gap:12px}.ipt-wave{height:72px}.ipt-hd b{font-size:var(--fs-6xl)}}
 /* patch v3b */
 .ipt-h .nm{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
 .ipt-box{align-content:stretch}
@@ -1199,7 +1199,7 @@ linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient
 linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,
 linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat}
 .ipt-m:not(:first-child) .ipt-h::before{content:"";position:absolute;left:calc(-.5*var(--g));top:0;bottom:30px;width:1px;background:var(--line2,rgba(11,11,12,.22))}
-.ipt-t{border-radius:6px}
+.ipt-t{border-radius:var(--card-r)}
 @media (max-width:1200px){.ipt-box,.ipt-box.r1{background:none}.ipt-m:not(:first-child) .ipt-h::before{display:none}.ipt-h{background:none;padding:0}}
 @media (max-width:900px){.ipt-q s{width:4px;height:7px}}
 /* patch v5 (ref 4) */
@@ -1235,15 +1235,15 @@ linear-gradient(var(--l),var(--l)) 100% 0/var(--k) 1px no-repeat,linear-gradient
 linear-gradient(var(--l),var(--l)) 0 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 0 100%/1px var(--k) no-repeat,
 linear-gradient(var(--l),var(--l)) 100% 100%/var(--k) 1px no-repeat,linear-gradient(var(--l),var(--l)) 100% 100%/1px var(--k) no-repeat,rgba(239,238,233,.025)!important}
 html body #book .book-1col .book-pay>.ix-pay.ix-h3,html body #book .book-pay>.ix-pay.ix-h3{font:700 32px/1 "H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif!important;letter-spacing:.01em;text-transform:uppercase;text-decoration:none;color:var(--ink,#0b0b0c);border-bottom:0;padding-bottom:12px}
-html body .pn.lite{margin-top:clamp(56px,6vw,96px)}
+
 /* harmony pass 2 (16.11) */
 html body .pn.lite.ix-rv{margin-top:0}
 html body .pn.lite{margin-top:0}html body .pn.lite[data-lkey="m4"]{margin-top:clamp(56px,6vw,96px)}
 html body .ix-rvs{padding-top:clamp(8px,1vw,16px)}html body .pn.lite.ix-rv{padding-left:0;padding-right:clamp(0px,2vw,32px)}
 html body ol.out1 li>span:not(.n){font-size:clamp(18px,1.45vw,20px);line-height:1.4;letter-spacing:-.01em}
-html body .cta .btn.rec{background:rgb(229,80,30)!important;color:#0b0b0c!important;border-color:rgb(229,80,30)!important}
+html body .cta .btn.rec{background:var(--hou)!important;color:var(--ink)!important;border-color:var(--hou)!important}
 html body .btn.rec{color:var(--ink,#0b0b0c)}
-html body .cta .btn.rec i,html body .cta .btn.rec::before{background:#0b0b0c!important}
+html body .cta .btn.rec i,html body .cta .btn.rec::before{background:var(--ink)!important}
 html body .btn.ghost.cv-b{border-radius:999px;padding-left:22px;padding-right:22px}
 html body #ix .hero .foot dl{display:grid;width:100%;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;column-gap:0}
 #ix .hero .foot dl>div{grid-row:auto;grid-column:auto;align-self:start;padding:0 18px!important;border-left:1px solid var(--line2,rgba(11,11,12,.22))!important;margin:0}
@@ -1256,10 +1256,10 @@ html body #ix .cta .btn.rec::after{content:"→";margin-left:10px;font-family:va
 html body #ix .hero .ttl .num{font-size:var(--ttl);line-height:.8;letter-spacing:0}
 /* ===== x-lvl: next level (16.11) ===== */
 
-html.x-lvl body .sec h2.H{font-size:clamp(84px,7.4vw,124px)!important;line-height:.84!important;letter-spacing:.002em!important}
+html.x-lvl body .sec h2.H{font-size:clamp(84px,7.4vw,124px);line-height:.84;letter-spacing:.002em}
 html.x-lvl body .sec .sh{margin-bottom:clamp(36px,3.6vw,60px)}
 .lvl-strip{display:inline-flex;gap:3px;margin-right:16px;vertical-align:middle;transform:translateY(-1px)}
-html body .lvl-strip .ipt-t{display:block;width:24px;height:24px;aspect-ratio:auto;border-radius:3px;box-shadow:none;outline:1px solid rgba(239,238,233,.14)}
+html body .lvl-strip .ipt-t{display:block;width:24px;height:24px;aspect-ratio:auto;border-radius:2px;box-shadow:none;outline:1px solid rgba(239,238,233,.14)}
 html body .lvl-strip .ipt-t b,html body .lvl-strip .ipt-t small{display:none!important}
 html body .ix-blk ol.dat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:var(--gut,24px);max-width:none;width:100%}html body .ix-blk ol.dat li{max-width:56ch}
 html body .ix-blk{max-width:none}
@@ -1372,14 +1372,14 @@ html body [data-lkey="m-prereq"]>p.pr-row+p.pr-row{margin-top:24px;grid-row:3}
 html body [data-lkey="m-prereq"]>p.pr-row:first-of-type,html body [data-lkey="m-prereq"]>h3+p+p.pr-row{grid-row:2}
 html body .pr-l{flex:0 0 100%;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 html body .pr-t{font:400 16px/24px var(--sans)}
-html body [data-lkey="m-prereq"] a.u:not(.aud-c){display:inline-flex;align-items:center;min-height:40px;margin:0;padding:0 16px;border:1px solid var(--ink,#0b0b0c);border-radius:999px;font:500 16px/1 var(--sans);letter-spacing:-.01em;line-height:1;color:var(--ink,#0b0b0c);text-decoration:none;white-space:nowrap;background:transparent;transition:background .15s,color .15s}
+html body [data-lkey="m-prereq"] a.u:not(.aud-c){display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 16px;border:1px solid var(--ink,#0b0b0c);border-radius:999px;font:500 16px/1 var(--sans);letter-spacing:-.01em;line-height:1;color:var(--ink,#0b0b0c);text-decoration:none;white-space:nowrap;background:transparent;transition:background .15s,color .15s}
 html body [data-lkey="m-prereq"] a.u::after{content:"→";margin-left:10px;font:500 12px/1 var(--mono)}
 html body [data-lkey="m-prereq"] a.u:not(.aud-c):hover,html body [data-lkey="m-prereq"] a.u:not(.aud-c):focus-visible{background:var(--ink,#0b0b0c)!important;color:var(--paper,#e9e7e0)!important}
 @media (max-width:900px){
 html body [data-lkey="m-prereq"]{display:block}
 html body [data-lkey="m-prereq"]>p:not(.pr-row){max-width:none}
 html body [data-lkey="m-prereq"]>p.pr-row{margin-top:24px}
-html body [data-lkey="m-prereq"] a.u:not(.aud-c){min-height:44px}
+
 }
 /* ===== plates with an operator header — DEFAULT since 16.11 (owner chose «плашки + паспорт»): programme, FAQ, reviews window, passport. Kill switch: ?x=flat. The 2 px ghost button + shadow-free patch tiles stay a preview: ?x=pl ===== */
 html.x-flat .ix-plh,html.x-flat .ix-opn{display:none!important}
@@ -1396,7 +1396,7 @@ html:not(.x-flat) .ix-prog>details.ix-mod{padding-inline:clamp(16px,2vw,28px)}
 html:not(.x-flat) .ix-prog>details.ix-mod:first-of-type{border-top:0}
 html:not(.x-flat) .ix-prog>details.ix-mod:last-of-type{border-bottom:0}
 html:not(.x-flat) .ix-rvs{--c:var(--dat);grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:0;background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border-radius:6px;overflow:hidden;padding:0}
-html:not(.x-flat) .ix-rvs>.ix-plh{grid-column:1/-1;background:rgba(11,11,12,.04);border-bottom-color:rgba(11,11,12,.14);color:#2b2a28}
+html:not(.x-flat) .ix-rvs>.ix-plh{grid-column:1/-1;background:rgba(11,11,12,.04);border-bottom-color:rgba(11,11,12,.14);color:var(--txt)}
 html:not(.x-flat) .ix-rvs>.ix-plh u,html:not(.x-flat) .ix-rvs>.ix-plh .r{color:#5a5853}
 html:not(.x-flat) .ix-rvs figure.ix-rv{padding:40px clamp(20px,3vw,48px);margin:0;border:0}
 html:not(.x-flat) .ix-rvs figure.ix-rv+figure.ix-rv{border-left:1px solid rgba(11,11,12,.14)}
@@ -1440,10 +1440,10 @@ html.x-pl body .ipt-t{box-shadow:none!important}
 .ix-mxm .mt{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 @media (max-width:760px){.ix-mxm{display:block;margin-top:16px}.ix-mods{display:none}}
 /* ---- a11y + scale pass 16.11 (external critique) ---- */
-#ix,.pz,.paper{--mute:#5a5853}
+#ix,.pz,.paper{--mute:#67655f}
 
 .ix-path .ix-ar{--c:#a3e635}
-.ix-note,.ix-mods .d,.ix-mm,#ix .foot dt,.cc-vw-meta .mono,#ix .foot .fh,.ix-k strong,.ix-kick,.ix-pm,.ix-buycap,.pf,.pf b,.pf span,#book .book-pay>.ix-pay{font-size:12px!important}
+html body .ix-note,html body .ix-mods .d,html body .ix-mm,html body #ix .foot dt,html body .cc-vw-meta .mono,html body #ix .foot .fh,html body .ix-k strong,html body .ix-kick,html body .ix-pm,html body .ix-buycap,html body .pf,html body .pf b,html body .pf span,html body #book .book-pay>.ix-pay{font-size:var(--fs-xs)}
 .tier .ix-note,.tier .tp .ix-note{font-size:12px}
 .m2-open p,.ix-ls p,.au-c,.ix-why p,.ix-blk p,.dek,#book .book-pay>p{max-width:34em}
 .ix-ls p:not(.ix-lt),.fq-a p,.ix-why p,.ix-blk p,.dat li,#book .book-pay>p{font-size:16px;line-height:24px}
@@ -1451,7 +1451,7 @@ html.x-pl body .ipt-t{box-shadow:none!important}
 .ix-buycard .tn{font-size:56px}
 #ix .foot .ix-ps{display:block}
 @media (max-width:760px){[data-lkey="m-prereq"] a{min-height:44px;display:inline-flex;align-items:center;padding:0 16px;margin:4px 2px}}
-html body #ix .hero,html body .pz,html body .paper{--mute:#5a5853}
+html body #ix .hero,html body .pz,html body .paper{--mute:#67655f}
 html body small.ix-note,html body .tier .tp small.ix-note{font-size:12px}
 html body .ix-blk .ix-h2,html body .ix-after-in .ix-ahc .H{font-size:32px;line-height:1}
 html body a.ix-path .ix-pm,html body a.ix-path .ix-pm span{font-size:12px}
@@ -1461,7 +1461,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 
 /* ---- details pass 16.11 ---- */
 .ix-buy2{padding-top:160px;padding-bottom:0}
-.ix-after-in{margin-top:clamp(56px,6vw,96px)}
+
 .ix-after-in .ix-ahc .H{font:700 clamp(24px,2.2vw,32px)/1 var(--disp)}
 .ix-after-in .ix-ahc+.ix-ahc{padding-right:6px!important}
 .ix-path .ix-ar{margin-right:2px}
@@ -1469,12 +1469,12 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 .ix-blk>.dat{max-width:calc(72ch + 52px)}
 .ix-why p{font-size:16px!important}
 #author .au-bio-grid>p:nth-child(n+2){font-size:16px}
-.ix-ls p:not(.ix-lt){font-size:15px}
+.ix-ls p:not(.ix-lt){font-size:var(--fs-m)}
 .ix-blk p,.ix-blk .dat li,#book .book-pay>ul li{font-size:16px!important}
 .ix-prog summary h3{font-size:clamp(24px,2.2vw,32px)}
 .ix-blk .b3-h,.ix-blk .ix-h2,.cd-col>.b3-h{font-size:clamp(24px,2.2vw,32px)}
-#ix .lock .cta .btn{height:56px;font-size:13px;padding:0 28px}
-.ix-buy2 .ix-buycard .tb>a.btn{height:64px;font-size:13px}
+#ix .lock .cta .btn{height:56px;font-size:var(--fs-xs);padding:0 28px}
+.ix-buy2 .ix-buycard .tb>a.btn{height:64px;font-size:var(--fs-xs)}
 #ix .foot .fh{margin-bottom:18px!important}
 .ix-buycap{color:var(--mute)}
 /* ---- enroll v4: the price card as a full-width ticket ---- */
@@ -1496,12 +1496,12 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 .ix-mods li{display:flex;flex-direction:column;gap:10px;min-height:150px;padding:20px 22px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
 .ix-mods .n{font:700 44px/.8 var(--disp);color:var(--top)}
 .ix-mods b{font:500 19px/1.2 var(--sans);letter-spacing:-.015em}
-.ix-mods .d{margin-top:auto;font:500 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.ix-mods .d{margin-top:auto;font:500 12px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
 @media (max-width:980px){.ix-mods{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.ix-mods{grid-template-columns:1fr}.ix-mods li{min-height:0}}
 [data-lkey="m-prereq"] a{display:inline-block;padding:3px 12px;margin:2px 2px;border:1px solid currentColor;border-radius:999px;text-decoration:none;font-weight:500;white-space:nowrap}
 [data-lkey="m-prereq"] a:not(.aud-c):hover{background:var(--top);border-color:var(--top);color:#fff}
-#ix .foot dd{font-size:15px;line-height:21px}
+#ix .foot dd{font-size:var(--fs-m);line-height:24px}
 #ix .hero .foot .fx{grid-column:1/-1;width:auto;max-width:none}
 #ix .hero .foot dl{grid-template-columns:auto auto minmax(0,3fr) minmax(0,1fr) minmax(0,1fr)}
 @media (max-width:640px){#ix .hero .foot dl{grid-template-columns:1fr 1fr}}
@@ -1520,7 +1520,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 .ix-mods b{margin-top:38px;font:500 17px/1.2 var(--sans)}
 .ix-mods .d{margin-top:8px}
 @media (max-width:980px){.ix-mods{grid-template-columns:1fr;padding-left:28px}.ix-mods::before{left:5px;right:auto;top:6px;bottom:6px;width:1px;height:auto}
- .ix-mods li{display:grid;grid-template-columns:52px 1fr;column-gap:12px;padding:0 0 22px}.ix-mods li::before{left:-28px;top:12px}.ix-mods .n{grid-row:1/3;font-size:34px}.ix-mods b{margin-top:2px}.ix-mods .d{grid-column:2}}
+ .ix-mods li{display:grid;grid-template-columns:52px 1fr;column-gap:12px;padding:0 0 22px}.ix-mods li::before{left:-28px;top:12px}.ix-mods .n{grid-row:1/3;font-size:var(--fs-3xl)}.ix-mods b{margin-top:2px}.ix-mods .d{grid-column:2}}
 .m2-open{grid-template-columns:5fr 7fr}
 .m2-open .mono{font:700 32px/.85 var(--disp);color:var(--top);letter-spacing:0}
 @media (max-width:980px){.m2-open{grid-template-columns:1fr}}
@@ -1542,7 +1542,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 #book .book-pay>.ix-wyg{grid-row:1;margin:0;padding-top:24px;font:700 clamp(24px,2.2vw,34px)/1 var(--disp);text-transform:uppercase}
 #book .book-pay>ul{grid-row:2;align-self:start}
 #book .book-pay>ul li{font:400 18px/1.4 var(--sans);padding:14px 0}
-#book .book-pay>.ix-pay{grid-column:2;grid-row:3;align-self:end;margin:0;padding-top:28px;padding-left:clamp(24px,3.4vw,56px);border-left:1px solid var(--line2);box-shadow:inset 0 1px 0 var(--line2);font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+#book .book-pay>.ix-pay{grid-column:2;grid-row:3;align-self:end;margin:0;padding-top:16px;padding-left:clamp(24px,3.4vw,56px);border-left:1px solid var(--line2);box-shadow:inset 0 1px 0 var(--line2);font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
 #book .book-pay>p{grid-column:2;font:400 14px/1.55 var(--sans);max-width:62ch;margin:0;padding:8px 0 0 clamp(24px,3.4vw,56px);border-left:1px solid var(--line2);color:var(--mute)}
 #book .book-pay>p:nth-of-type(1){grid-row:4}#book .book-pay>p:nth-of-type(2){grid-row:5;align-self:stretch;padding-bottom:4px}#book .book-pay>p:nth-of-type(1){align-self:start}
 #book .book-pay>ul{grid-row:2}
@@ -1552,7 +1552,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 #author .au-bio-grid{display:grid;grid-template-columns:1fr;max-width:64ch;column-gap:clamp(24px,3vw,48px);row-gap:32px;columns:auto;counter-reset:au}
 #author .au-bio-grid>p{margin:0;max-width:none}
 #author .au-bio-grid>p:first-child{grid-column:1/-1;font:400 clamp(16px,1.25vw,18px)/1.6 var(--sans);max-width:64ch;color:var(--fg)}
-#author .au-bio-grid>p:nth-child(n+2){counter-increment:au;border-top:1px solid var(--line2);padding-top:18px;font:400 16px/1.6 var(--sans);color:var(--txt);display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:8px}
+#author .au-bio-grid>p:nth-child(n+2){counter-increment:au;border-top:1px solid var(--line2);padding-top:16px;font:400 16px/1.6 var(--sans);color:var(--txt);display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:8px}
 #author .au-bio-grid>p:nth-child(n+2)::before{content:counter(au,decimal-leading-zero);display:block;grid-row:1/99;font:700 34px/.9 var(--disp);color:var(--top)}
 }
 @media (max-width:760px){#author .au-bio-grid>p:nth-child(n+2){border-top:1px solid var(--line2);padding-top:14px;margin-top:18px!important}}
@@ -1567,12 +1567,12 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 #book .book-pay{counter-reset:pay}
 #book .book-pay>p{counter-increment:pay;display:grid;grid-template-columns:44px minmax(0,1fr);padding:12px 0!important;border-top:1px solid var(--line2);font:400 16px/1.55 var(--sans);color:var(--txt);max-width:none}
 #book .book-pay>p:last-of-type{border-bottom:1px solid var(--line2)}
-#book .book-pay>p::before{content:counter(pay,decimal-leading-zero);font:500 11px/1.9 var(--mono);color:var(--mute)}
+#book .book-pay>p::before{content:counter(pay,decimal-leading-zero);font:500 12px/1.9 var(--mono);color:var(--mute)}
 }
 /* ---- after + how ---- */
 .ix-ahg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,72px);align-items:start}
 .ix-ahc .H{margin-bottom:22px}
-.ix-kick{font:500 11px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:0 0 12px}
+.ix-kick{font:500 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:0 0 12px}
 .ix-path{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px 24px;padding:26px 26px 24px;border:1px solid var(--line2);border-top:2px solid var(--c);border-radius:6px;background:var(--pnb);text-decoration:none;color:inherit;transition:border-color .3s,transform .4s var(--ease,ease)}
 .ix-path b{grid-column:1;font:700 clamp(30px,3vw,48px)/.92 var(--disp);letter-spacing:.005em;text-transform:uppercase}
 .ix-path .ix-pm{grid-column:1;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
@@ -1589,7 +1589,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 .ix-kick{margin:0 0 10px}
 .ix-path{border:0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);border-radius:0;background:none;padding:18px 0;gap:4px 20px}
 .ix-path b{font:500 clamp(20px,1.7vw,26px)/1.15 var(--sans);letter-spacing:-.02em;text-transform:none}
-.ix-path .ix-pm{font-size:11px}
+.ix-path .ix-pm{font-size:var(--fs-xs)}
 .ix-path .ix-ar{width:44px;height:44px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;font-size:18px}
 .ix-path:hover .ix-ar{background:var(--c);border-color:var(--c);color:var(--bg,#0b0b0c);transform:none!important}
 .ix-path:hover b{color:var(--c)}
@@ -1598,10 +1598,10 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 @media (max-width:980px){.ix-ahc{padding:28px 0!important}.ix-ahc+.ix-ahc{border-left:0;border-top:1px solid var(--line2)}}
 /* ---- FWA pass 16.11 ---- */
 .ix-note{display:inline-block;font:500 10px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.55;vertical-align:middle;margin-left:.5em;white-space:nowrap}
-.tier .ix-note,.tier .tp .ix-note{display:block;margin:10px 0 0;font-size:10px}
+.tier .ix-note,.tier .tp .ix-note{display:block;margin:10px 0 0;font-size:var(--fs-xs)}
 .ix-blk .b3-h,.ix-blk .ix-h2,.cd-col>.b3-h{font:700 clamp(22px,2vw,30px)/.95 var(--disp);letter-spacing:.01em;text-transform:uppercase;margin:0 0 14px}
 .ix-blk{margin-top:44px;padding-top:18px;border-top:1px solid var(--line2)}
-.ix-k strong{font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+.ix-k strong{font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
 
 .ix-slot{padding-top:0;padding-bottom:0}
 .ix-slot .ix-ph{aspect-ratio:auto;height:84px;border-radius:6px}
@@ -1629,22 +1629,22 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 @media (max-width:980px){.ix-prog summary{grid-template-columns:56px minmax(0,1fr) 20px!important}.ix-prog summary .ix-mm{grid-column:2;grid-row:2}.ix-lss{padding-left:0!important}.ix-ls{grid-template-columns:1fr}.ix-ls p:not(.ix-lt){grid-column:1}.ix-ls .ix-lt+p{grid-row:auto}}.ix-prog details:last-child{border-bottom:1px solid var(--line2)}
 .ix-prog summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px minmax(0,1fr) auto 24px;gap:16px;align-items:baseline;padding:22px 0}
 .ix-prog summary::-webkit-details-marker{display:none}
-.ix-prog summary .n{color:var(--c);font-size:11px}
+.ix-prog summary .n{color:var(--c);font-size:var(--fs-xs)}
 .ix-prog summary h3{margin:0;font:500 clamp(19px,1.8vw,26px)/1.15 var(--sans);letter-spacing:-.02em}
-.ix-mm{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.ix-mm{font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .ix-pl{position:relative;width:14px;height:14px;align-self:center}.ix-pl::before,.ix-pl::after{content:"";position:absolute;left:0;top:6.5px;width:14px;height:1px;background:currentColor;transition:transform .4s}
 .ix-pl::after{transform:rotate(90deg)}details[open]>summary .ix-pl::after{transform:none}
 .ix-lss{padding:0 0 22px 60px}.ix-ls{padding:14px 0;border-top:1px solid var(--line)}
 .ix-lt{font:600 16px/1.35 var(--sans);margin:0 0 6px}.ix-ls p{font:400 15px/1.55 var(--sans);max-width:72ch;margin:0 0 6px}
 @media (max-width:640px){.ix-prog summary{grid-template-columns:32px minmax(0,1fr) 20px}.ix-mm{grid-column:2;grid-row:2}.ix-lss{padding-left:0}}
 /* ===== P1 tokens (16.11): near-duplicate values merged (owner: «делай как считаешь нужным»). Rules that come from the shared template are overridden here — same selector, later in the source ===== */
-:root{--bg2:#141416;--fg8:#cfcec9}
+:root{--bg2:#141416}
 .op:not(.paper .op){color:var(--txt)}
 .cc-vw{background:var(--ink)}
 .por{background:var(--ink)}
 .cc-vw-box{border-radius:2px;border-color:var(--line2);box-shadow:inset 0 2px 0 var(--c)}
-.cc-vw-meta .mono{color:var(--mute)}
-.cc-vw-meta b{font-size:26px;letter-spacing:.01em}
+
+.cc-vw-meta b{font-size:var(--fs-xl);letter-spacing:.01em}
 .f-fam .pn.km>.ph,.rc>.ph{border-radius:6px 6px 0 0}
 .H,.au-n,.rc .rc-n,.tier .tn,.fin-h{letter-spacing:0}
 .pr-t{letter-spacing:-.01em}
@@ -1652,7 +1652,7 @@ html body .ix-buy2 .ix-buycard .tn{font-size:56px}
 .out1>li>.n{letter-spacing:0}
 .tier .tn>span:not(.ix-vh){font-size:32px!important}
 .btn.ghost.cv-b{height:44px}
-@media (max-width:600px){.au-s b,.marq-t span,.marq-t em{font-size:26px}#book .tier .tn>span:not(.ix-vh){font-size:26px!important}html body #fmnu .btn.pill,html body #book .tier .btn.pill{height:56px}}
+@media (max-width:600px){.au-s b,.marq-t span,.marq-t em{font-size:var(--fs-xl)}#book .tier .tn>span:not(.ix-vh){font-size:var(--fs-xl)!important}html body #fmnu .btn.pill,html body #book .tier .btn.pill{height:56px}}
 /* ===== audience block v3 (17.11): wireframe layout in the site's language — editorial type on hairlines, ONE dark operator
    plate ("for you if"), the course path and the outcomes drawn as wires with nodes. ===== */
 #audience{--aud:var(--top);--aud-g:clamp(16px,1.7vw,24px);--aud-row:clamp(48px,5.2vw,80px)}
@@ -1705,7 +1705,7 @@ html body #audience .aud-no ol.dat>li>.n{display:block;grid-column:1;width:28px;
 #audience .ix-blk .pr-l{grid-column:7/11}
 #audience .ix-blk .pr-t{grid-column:11/13}
 #audience .ix-blk .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-html body #audience .ix-blk a.aud-c{grid-row:2;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:0;margin:0;padding:26px 0 0;border:0;border-radius:0;background:none;color:var(--fg);font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:normal}
+html body #audience .ix-blk a.aud-c{grid-row:2;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:0;margin:0;padding:26px 0 0;border:0;border-radius:0;background:none;color:var(--fg);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:normal}
 #audience .ix-blk a.aud-c::after{content:none}
 #audience .ix-blk a.aud-c small{font:inherit;color:var(--mute)}
 #audience .ix-blk a.aud-c b{font:700 clamp(22px,1.95vw,30px)/.95 var(--disp);letter-spacing:0;color:var(--fg);text-wrap:balance}
@@ -1718,7 +1718,7 @@ html body #audience .ix-blk a.aud-c{grid-row:2;position:relative;display:flex;fl
 #audience .ix-blk a.aud-c1 small::after{content:"";position:absolute;left:13px;top:5px;width:calc(100% + var(--aud-g) - 15px);height:1.5px;background:var(--aud)}
 #audience .ix-blk a.aud-c2 small::after{content:"";position:absolute;left:13px;top:5px;width:calc(100% + var(--aud-g) - 15px);height:1.5px;background:repeating-linear-gradient(90deg,var(--aud) 0 4px,transparent 4px 9px);opacity:.7}
 #audience .ix-blk a.aud-cb::before{background:var(--aud)}
-@media (hover:hover){#audience .ix-blk a.aud-c:hover b{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}}
+@media (hover:hover){#audience .ix-blk a.aud-c:hover b{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}}
 
 /* outcomes: bracket label + rule, then four numbered steps on one wire */
 #audience .pn.lite[data-lkey="m4"]{margin:var(--aud-row) 0 0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
@@ -1730,7 +1730,7 @@ html body #audience .pn.lite[data-lkey="m4"]>.ph h3{margin:0;font:700 clamp(15px
 html body #audience .pn.lite[data-lkey="m4"]>.ph::after{content:"";display:block;flex:1 1 auto;height:8px;background:linear-gradient(var(--line2),var(--line2)) left center/calc(100% - 64px) 1px no-repeat,linear-gradient(var(--aud),var(--aud)) right 0 center/8px 8px no-repeat,linear-gradient(var(--aud),var(--aud)) right 20px center/8px 8px no-repeat,linear-gradient(var(--aud),var(--aud)) right 40px center/8px 8px no-repeat}
 #audience ol.out1{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--aud-g);row-gap:44px;margin:0;padding:0;border:0;box-shadow:none;max-width:none}
 html body #audience ol.out1>li:nth-child(n){position:relative;display:block;margin:0;padding:0 clamp(0px,1vw,12px) 0 0;border:0;font:400 clamp(14px,1.05vw,15px)/1.6 var(--sans);color:var(--txt);max-width:none}
-html body #audience ol.out1>li>.n{position:relative;z-index:1;display:inline-block;width:auto;margin:0 0 18px;padding:0 14px 0 0;background:var(--bg);border:0;font:700 clamp(56px,5.2vw,80px)/.82 var(--disp);letter-spacing:0;color:var(--aud)}
+html body #audience ol.out1>li>.n{position:relative;z-index:1;display:inline-block;width:auto;margin:0 0 20px;padding:0 16px 0 0;background:var(--bg);border:0;font:700 clamp(56px,5.2vw,80px)/.82 var(--disp);letter-spacing:0;color:var(--aud)}
 html body #audience ol.out1>li>span:not(.n){display:block;margin:0;padding:0;font:inherit;color:inherit;max-width:34ch}
 /* the wire: from each numeral to the next one, a node at the end */
 #audience ol.out1>li:not(:last-child)::before{content:"";position:absolute;left:0;right:calc(-1*var(--aud-g));top:calc(clamp(56px,5.2vw,80px)*.41 - 1px);height:9px;transform:translateY(-4px);background:radial-gradient(circle at 4.5px 4.5px,var(--bg) 2.6px,var(--aud) 3px 4.5px,transparent 5px) right 2px top/9px 9px no-repeat,linear-gradient(var(--aud),var(--aud)) left center/calc(100% - 11px) 1.5px no-repeat}
@@ -1754,7 +1754,7 @@ html body #audience .ix-blk a.aud-c{grid-row:3}
 }
 @media (max-width:760px){
 #audience .sh .H{grid-column:1/-1}
-#audience .aud-dith{grid-column:1/-1;height:56px;margin-top:18px}
+#audience .aud-dith{grid-column:1/-1;height:56px;margin-top:20px}
 #audience .ix-blk a.aud-c2 small::after{content:none}
 #audience .roles-wall{grid-template-columns:1fr}
 #audience .roles-wall span+span{border-top:1px solid var(--line2)}
@@ -1775,7 +1775,7 @@ html body #audience .pn.lite[data-lkey="m4"]>.ph::after{flex:0 0 52px;background
 #audience .aud-yes::before,#audience .aud-yes::after{top:39px}
 #audience ol.out1{grid-template-columns:minmax(0,1fr);row-gap:0}
 html body #audience ol.out1>li:nth-child(n){display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:14px;padding:0 0 32px}
-html body #audience ol.out1>li>.n{margin:0;padding:0 0 10px;font-size:52px;background:var(--bg)}
+html body #audience ol.out1>li>.n{margin:0;padding:0 0 10px;font-size:var(--fs-5xl);background:var(--bg)}
 #audience ol.out1>li:nth-child(n)::before{content:"";left:22px;right:auto;top:52px;bottom:0;width:1.5px;height:auto;transform:none;background:var(--aud)}
 #audience ol.out1>li:last-child::before{background:linear-gradient(var(--aud),transparent)}
 }
@@ -1830,8 +1830,8 @@ html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40p
   html body #concept .ab-it{padding:18px 0 0}
   html body #concept .ab-it+.ab-it{padding-top:24px;margin-top:4px;border-top:1px solid var(--line)}
   html body #concept .ab-it .n{font-size:42px;margin-bottom:10px}
-  html body #concept .ab-it h3{font-size:17px;margin-bottom:8px}
-  html body #concept .ab-it p{font-size:15px;line-height:23px}
+  html body #concept .ab-it h3{font-size:var(--fs-xl);margin-bottom:8px}
+  html body #concept .ab-it p{font-size:var(--fs-m);line-height:24px}
   html body #concept .ab-it::before{display:none!important}
   #concept .m-rule,#concept .m-chain-meta{display:none}
 }
@@ -1857,8 +1857,8 @@ html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40p
 @media (max-width:600px){#out{contain-intrinsic-block-size:auto 738px}}
 /* r2 · D: перемер 1440 / 390 — #author 390 (C2-08, портрет во всю колонку), #out 390 (T2-04), f-faq2: #faq ≥981 и #reviews 390 */
 
-.fgl{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:20px;padding:0 5px;border-radius:2px;background:rgba(239,238,233,.14);color:var(--fg);font:500 12px/20px var(--mono);letter-spacing:.04em}
-.en .fgl{position:absolute;top:6px;right:6px;min-width:20px;height:18px;line-height:18px;padding:0 4px}
+.fgl{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:24px;padding:0 5px;border-radius:2px;background:rgba(239,238,233,.14);color:var(--fg);font:500 12px/24px var(--mono);letter-spacing:.04em}
+.en .fgl{position:absolute;top:6px;right:6px;min-width:20px;height:24px;line-height:24px;padding:0 4px}
 .fin{margin-top:88px;padding-top:56px;border-top:1px solid var(--line);text-align:center}
 .fin-h{margin-top:8px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.005em;white-space:nowrap}
 .fin-h span{display:block}
@@ -1873,7 +1873,7 @@ html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40p
 .fx a .pz{font:700 40px/1 var(--disp);white-space:nowrap}
 .fx a .ar{font:400 20px/1 var(--sans);transition:transform .4s var(--ease)}
 @media (hover:hover){.fx a:hover .ar{transform:translateX(4px)}}
-.fx a.on{background:var(--fg);color:#0b0b0c;box-shadow:none}
+.fx a.on{background:var(--fg);color:var(--ink);box-shadow:none}
 .fx a.on .mono{color:#55544f}
 
 .enl{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:960px;min-height:64px;margin:40px auto 0;padding:14px 18px;border:1px solid var(--line);border-radius:6px;text-align:left;transition:border-color .3s,background .3s}
@@ -1941,7 +1941,7 @@ section[tabindex="-1"]:focus{outline:none}
 .tbar{display:none}
 @media (max-width:980px){
 .tlb{display:none}
-.tbar{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom,0px));background:#0b0b0c;border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s var(--ease)}
+.tbar{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom,0px));background:var(--ink);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s var(--ease)}
 .tbar.on{transform:none}
 .tbar .mono b{color:var(--fg);font-weight:500}
 .tbar .mono{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -2068,7 +2068,7 @@ addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeou
 <main id="main" tabindex="-1">
 <style id="ix-hero">@layer page{@font-face{font-family:"H2T Bebas";src:url(../fonts/h2t-bebas.woff2) format("woff2");font-weight:700;font-display:block}
 #ix{
-  --paper:#e9e7e0;--ink:#0b0b0c;--txt:#2b2a28;--mute:#6d6b65;--dim:#9a988f;
+  --paper:#e9e7e0;--ink:#0b0b0c;--txt:#2b2a28;--mute:#67655f;--dim:#9a988f;
   --line:rgba(11,11,12,.12);--line2:rgba(11,11,12,.28);--hou:#e5501e;
   --sop:#3d7fd6;--top:#65a30d;--chop:#45a654;--dat:#c34f9a;
   --disp:"H2T Bebas",Impact,sans-serif;--sans:"Inter Tight",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
@@ -2081,7 +2081,7 @@ addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeou
   --ease:cubic-bezier(.19,1,.22,1);
 }
 #ix *{box-sizing:border-box;margin:0;padding:0}
-#ix .mono{font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+#ix .mono{font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase}
 #ix .hero{--k:var(--top);position:relative;background:var(--paper);min-height:max(760px,100svh);max-height:1080px;display:grid;
   grid-template-rows:auto auto auto 1fr auto;overflow:hidden;isolation:isolate}
 #ix .hero+.hero{margin-top:2px}
@@ -2189,9 +2189,9 @@ addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeou
 #ix .band .ttl{bottom:clamp(24px,4.2vh,52px)}
 #ix .foot{align-items:end;row-gap:18px}
 #ix .foot .fx{grid-column:1/10;display:block;color:var(--mute)}
-#ix .foot .fh{font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+#ix .foot .fh{font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
 #ix .foot dl{display:grid;grid-template-columns:1fr 1fr 2.4fr 1fr 1fr;column-gap:clamp(14px,1.8vw,28px)}
-#ix .foot dt{font:500 11px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+#ix .foot dt{font:500 12px/16px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
 #ix .foot dd{font:400 14px/20px var(--sans);color:var(--txt);margin-top:4px}
 #ix .foot .cta{grid-column:10/13;justify-self:end;display:flex;align-items:center;gap:14px}
 #ix .foot .pr{font:500 26px/1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
@@ -2249,7 +2249,7 @@ addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeou
    <div class="ttl"><div class="num" aria-hidden="true"><span><em>2</em></span><span><em>0</em></span><span><em>3</em></span></div><h1 aria-label="TouchDesigner 203: Developing Media Server"><span>Developing Media Server</span></h1></div></div>
  <div class="wrap lock"><div class="tt"><p class="h1q">A media server for my custom brief looks far too complex to build</p><p class="lead">For events or theatre you need playback you can rely on, cues and outputs to several screens. Building that yourself looks like a task for a seasoned engineer, and it&#x27;s hard to see where to begin. It is simpler than it looks, and it doesn&#x27;t take that high a technical level.</p></div>
    <div class="cta"><span class="pr"><span data-h2t="price" data-slug="/203">€525</span></span><a class="btn rec" href="#buy-5193851" data-offer="5193851" onclick="if(window.ltAddToBasket){ltAddToBasket(5193851);return false;}"><i></i>Enroll</a></div></div>
- <div class="wrap foot"><div class="fx"><div class="mono fh">Course facts</div><dl><div class="ix-tech"><dt>Structure<span class="vh">: </span></dt><dd>6 modules, 20 lessons</dd></div><div class="ix-tech"><dt>Video<span class="vh">: </span></dt><dd>11 h in total</dd></div><div class="ix-tech"><dt>Pace<span class="vh">: </span></dt><dd><span class="ix-ps">self-paced;</span> <span class="ix-ps">every lesson is open from the first day;</span> <span class="ix-ps">access for 730 days;</span> <span class="ix-ps">on top of the video: practice</span> </dd></div><div class="ix-tech"><dt>Language<span class="vh">: </span></dt><dd>English</dd></div><div class="ix-tech"><dt>Level<span class="vh">: </span></dt><dd>Intermediate</dd></div></dl></div></div>
+ <div class="wrap foot"><div class="fx"><div class="mono fh">Course facts</div><dl><div class="ix-tech"><dt>Structure<span class="vh">: </span></dt><dd>6 modules, 20 lessons</dd></div><div class="ix-tech"><dt>Video<span class="vh">: </span></dt><dd>11 h in total</dd></div><div class="ix-tech"><dt>Pace<span class="vh">: </span></dt><dd><span class="ix-ps">self-paced;</span> <span class="ix-ps">from day one;</span> <span class="ix-ps">730 days;</span> <span class="ix-ps">practice</span> </dd></div><div class="ix-tech"><dt>Language<span class="vh">: </span></dt><dd>English</dd></div><div class="ix-tech"><dt>Level<span class="vh">: </span></dt><dd>Intermediate</dd></div></dl></div></div>
 </header></div>
 <script>(()=>{const MOTIF={chladni:0,streams:1,wall:2,terrain:3,warp:4,frame:5,lissajous:6,beams:7,feedback:8,barcode:9,opart:10,fold:11,physarum:12,plotter:13,rings:14};
 const q=new URLSearchParams(location.search);const IX=document.getElementById('ix');
@@ -2691,8 +2691,8 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   </div>
   </div></section></div>
 <div class="seam" aria-hidden="true"></div>
-<section id="program" class="sec" data-lkey="m5"><div class="wrap"><div class="lbl mono"><b>03</b><span class="ix-vh"> Programme</span><i class="op" style="--c:var(--top)">program1 <u>TOP</u></i></div><div class="sh"><h2 class="H">Programme</h2></div><div class="ix-prog" style="--c:var(--top)"><div class="ph ix-plh" aria-hidden="true">program1 <u>TOP</u><span class="r"><span class="ix-pm">6 modules · </span>20 lessons · 11 h</span></div><details class="ix-mod" id="pm-01" open><summary><span class="n mono">01</span><h3>Media Server Architecture (MVC Basics)</h3><span class="mono ix-mm">1 video · 33 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 1. MVC Media Server Controls</b> · 33 min</p><p>In this lesson we split a TouchDesigner media server into an interface and a model, so the same model can be driven by sliders, OSC or web data. Then we control a parameter with a channel named after its path, and use it to switch one slider between two movie players.</p></div></div></details><details class="ix-mod" id="pm-02"><summary><span class="n mono">02</span><h3>Video Playback</h3><span class="mono ix-mm">6 videos · 2 h 42 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 2. Interactive Movie Playback Control</b> · 28 min</p><p>In this lesson we learn how TouchDesigner chooses which movie frame to show, and build a movie player that starts, restarts and loops on a button press. First we compare exports with expressions, look at frame rate and the three play modes, and separate event triggers from continuously changing data. Timer callbacks are previewed.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 3. Building a bidirectional movie playback slider</b> · 40 min</p><p>In this lesson we build a movie player whose progress slider follows the playing movie and, when you drag it, takes control of the playback. Before that we look at what Python and GLSL are used for in TouchDesigner, how the Execute operators react to events, and how a script can update a Timer&#x27;s length when the movie changes.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 4. Connecting video cameras and streams; Kinect hand-raise movie trigger</b> · 19 min</p><p>In this lesson we bring live video into a project and use a body gesture to control a movie. We connect a webcam, a Canon camera through a local web stream, an iPhone over NDI and a Kinect Azure, then turn a raised left hand into a trigger that restarts the movie, answering a chat question.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 5. Procedural Movie Library Management</b> · 27 min</p><p>In this lesson we prepare a movie library that sits in graphics memory before a performance. We list the movies of a folder, compare direct wires with Select operators for modular components, and use a Replicator to create one preloaded movie loader per file, then check the preload and memory use.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 6. Building a movie library browser with playback</b> · 30 min</p><p>In this lesson we build a clip browser for the preloaded movie library. A table of each movie&#x27;s name, length, rate, audio and resolution is shown in a selectable Simple Lister, and the selected row sets the timer length, plays that movie and sends it to the output. The interface stays separate from playback, so another control can replace it.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 7. Crossfading selected movies; Building a 2D texture array</b> · 18 min</p><p>In this lesson we add a smooth crossfade to the movie library: the old movie stays as the previous one and fades out under a timer, with the fade bent into a curve. We also wire every generated movie into a GLSL Multi TOP prepared as a 2D texture array. A chat question about blending is answered.</p></div></div></details><details class="ix-mod" id="pm-03"><summary><span class="n mono">03</span><h3>User Interfaces</h3><span class="mono ix-mm">3 videos · 1 h 53 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 8. Building an instanced video browser with Render Pick</b> · 44 min</p><p>In this lesson we build a clickable movie browser from rendered 3D geometry. First we store resolution and paths in project-wide variables, then draw one instanced button per movie, each with its own video thumbnail. Render Pick turns a click into a movie choice and marks the selected button.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 9. Building lightweight interfaces with panels and custom parameters</b> · 26 min</p><p>In this lesson we choose how to build a fast, usable interface for a media server. We compare custom parameters, panels, the built-in button and slider, and ready-made widgets, including how each recalls preset values, and look at an interface kept separate from the engine.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 10. Caching slider visuals with Cache TOP; Building a standalone slider</b> · 43 min</p><p>In this lesson we build a custom slider that works on its own: it keeps its range, default and reset, syncs with a parameter both ways, and maps values to the preset range. Its indicator is drawn from cached images, so it costs almost no processing. We end by walking through a blend between two movies.</p></div></div></details><details class="ix-mod" id="pm-04"><summary><span class="n mono">04</span><h3>Color Grading; Image Processing ; GLSL</h3><span class="mono ix-mm">4 videos · 2 h 5 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 11. Building a LUT browser with before-and-after comparison</b> · 31 min</p><p>In this lesson we learn how TouchDesigner corrects colour and build a tool for trying LUT looks on video. After a tour of the colour nodes and an explanation of what a LUT is, we make a list of LUT files that applies the chosen look, with a before-and-after slider and the LUT name shown on the picture.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 12. Building a GLSL color-correction shader; Generating UV patterns</b> · 28 min</p><p>In this lesson we move colour correction into a single GLSL TOP, so it stays fast as the setup grows. We learn how a pixel shader works and generate ramps and stripes from UV coordinates, then build gamma, brightness and contrast as one function with adjustable controls and separate gamma for red, green and blue.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 13. Building HSV and YIQ saturation with temperature correction; Prototype multi-pass GLSL effects</b> · 30 min</p><p>In this lesson we extend the GLSL colour corrector with saturation and colour temperature. We build saturation in HSV, see why it differs from OpenColorIO, and switch to the YIQ model, which matches it and adds a temperature control. Then we outline how several passes chain correction and ShaderToy effects in one node.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 14. Converting ShaderToy effects to GLSL TOPs; Building a selectable shader library</b> · 37 min</p><p>In this lesson we port ShaderToy image effects into TouchDesigner and turn them into a library you can switch between. We replace ShaderToy&#x27;s mouse, resolution and image inputs, add wet and size controls, and convert four effects the same way. Then one shader node loads any effect by name from a menu.</p></div></div></details><details class="ix-mod" id="pm-05"><summary><span class="n mono">05</span><h3>Preset Management</h3><span class="mono ix-mm">3 videos · 1 h 43 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 15. Generating custom parameters from a control table</b> · 29 min</p><p>In this lesson we generate the controls of a component with a Python script instead of building them by hand in the editor. We describe colour controls in a table, turn each label into a valid parameter name, and create every control with its range, clamping and default. We start by packing the layer into a base component.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 16. Building a dictionary-based preset manager</b> · 50 min</p><p>In this lesson we prepare the layer for saving presets and start a preset manager. We add a transform page bound to the layer, then compare keeping presets in tables with Python dictionaries stored inside a node. We build a manager that captures all controls, or one chosen page, as a named dictionary.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 17. Saving and loading parameter presets as JSON</b> · 24 min</p><p>In this lesson we make presets last outside the project: the manager saves a preset to a JSON file named after the preset and the time, then loads a chosen file. Each saved value is applied back to the layer&#x27;s controls by looking the control up by its name.</p></div></div></details><details class="ix-mod" id="pm-06"><summary><span class="n mono">06</span><h3>Timing and Synchronisation</h3><span class="mono ix-mm">3 videos · 1 h 51 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 18. Converting LTC timecode to frames with Script CHOP</b> · 37 min</p><p>In this lesson we see how TouchDesigner handles time and how to keep two machines in step. We make a repeating trigger, send LTC timecode from one TouchDesigner instance to another, and start a Script CHOP that turns the received timecode into a frame count for a cue table.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 19. Cueing and Segmented Playback</b> · 45 min</p><p>In this lesson we finish the cue tool: a script reads the cue table and gives every cue its start and end pulses, elapsed frames, progress and active segment. We compare it with the timer&#x27;s segments mode, then build a scene asset whose movie and title fades are driven by that progress.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 20. Multi-projector output with Layout TOP and keystoning; Movie crossfades</b> · 28 min</p><p>In this lesson we finish the media server with a smoother A/B transition between two movies. Then we look at taking it to a show: keeping the interface apart from processing, sending video between machines with NDI, mapping output for several projectors, and locking a project or component before it goes to a client.</p></div></div></details></div><div class="ix-after-in" data-lkey="m-after" style="--c:var(--top)"><div class="ix-ahg"><div class="ix-ahc"><h3 class="H">After this course</h3><p class="ix-kick">Bundles and learning paths with this course</p></div><div class="ix-ahc"><a class="ix-path" href="me.html"><b>Learning Path: Media Engineer</b><span class="ix-pm"> — <span data-h2t="price" data-slug="/me">€1,301</span> · 45 h</span><i class="ix-ar" aria-hidden="true">→</i></a></div></div></div></div></section>
-<section id="course" class="sec" data-lkey="m7"><div class="wrap"><div class="lbl mono"><b>04</b> Course facts &amp; format<i class="op" style="--c:var(--comp)">passport1 <u>COMP</u></i></div><div class="sh"><h2 class="H">How the course works</h2><p class="dek" style="max-width:66ch">The course is recorded and you take it at your own pace.</p><p class="dek" style="max-width:66ch">Every lesson is open from the first day. We recommend taking one lesson a week: it keeps a steady rhythm.</p></div><div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--top);--d:0"><div class="ph" aria-hidden="true"><span class="ix-opn">hours1 <u>CHOP</u></span><span class="r ix-opn">0 — 11 h</span></div><div class="cv0" aria-hidden="true"><b>11</b><span class="mono">h in total</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H2.4 V23.0 H9.6 V56 H14.4 V28.0 H21.6 V56 H26.4 V16.0 H33.6 V56 H38.4 V37.0 H45.6 V56 H50.4 V29.0 H57.6 V56 H62.4 V26.0 H69.6 V56 H74.4 V38.0 H81.6 V56 H86.4 V12.0 H93.6 V56 H98.4 V30.0 H105.6 V56 H110.4 V13.0 H117.6 V56 H122.4 V25.0 H129.6 V56 H134.4 V28.0 H141.6 V56 H146.4 V26.0 H153.6 V56 H158.4 V19.0 H165.6 V56 H170.4 V27.0 H177.6 V56 H182.4 V6.0 H189.6 V56 H194.4 V32.0 H201.6 V56 H206.4 V19.0 H213.6 V56 H218.4 V11.0 H225.6 V56 H230.4 V28.0 H237.6 V56 H240"/></svg><p class="p">11 h in total</p></div><div class="pn ch rv" style="--c:var(--top);--d:1"><div class="ph" aria-hidden="true"><span class="ix-opn">lessons1 <u>CHOP</u></span><span class="r ix-opn">step · 0 → 20</span></div><div class="cv0" aria-hidden="true"><b>20</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V53.5 H12.0 V51.0 H24.0 V48.5 H36.0 V46.0 H48.0 V43.5 H60.0 V41.0 H72.0 V38.5 H84.0 V36.0 H96.0 V33.5 H108.0 V31.0 H120.0 V28.5 H132.0 V26.0 H144.0 V23.5 H156.0 V21.0 H168.0 V18.5 H180.0 V16.0 H192.0 V13.5 H204.0 V11.0 H216.0 V8.5 H228.0 V6.0 H240"/></svg><p class="p">6 modules, 20 lessons</p></div><div class="pn ch rv" style="--c:var(--top);--d:2"><div class="ph" aria-hidden="true"><span class="ix-opn">days1 <u>CHOP</u></span><span class="r ix-opn">hold · 730 d</span></div><div class="cv0" aria-hidden="true"><b>730</b><span class="mono">days</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H12 V6 H228 V56 H240"/></svg><p class="p">self-paced; every lesson is open from the first day</p></div></div></div></section>
+<section id="program" class="sec" data-lkey="m5"><div class="wrap"><div class="lbl mono"><b>03</b><span class="ix-vh"> Programme</span><i class="op" style="--c:var(--top)">program1 <u>TOP</u></i></div><div class="sh"><h2 class="H">Programme</h2></div><div class="ix-prog" style="--c:var(--top)"><div class="ph ix-plh" aria-hidden="true">program1 <u>TOP</u><span class="r"><span class="ix-pm">6 modules · </span>20 lessons · 11 h</span></div><details class="ix-mod" id="pm-01" open><summary><span class="n mono">01</span><h3>Media Server Architecture (MVC Basics)</h3><span class="mono ix-mm">1 video · 33 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 1. MVC Media Server Controls</b> · 33 min</p><p>In this lesson we split a TouchDesigner media server into an interface and a model, so the same model can be driven by sliders, OSC or web data. Then we control a parameter with a channel named after its path, and use it to switch one slider between two movie players.</p></div></div></details><details class="ix-mod" id="pm-02"><summary><span class="n mono">02</span><h3>Video Playback</h3><span class="mono ix-mm">6 videos · 2 h 42 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 2. Interactive Movie Playback Control</b> · 28 min</p><p>In this lesson we learn how TouchDesigner chooses which movie frame to show, and build a movie player that starts, restarts and loops on a button press. First we compare exports with expressions, look at frame rate and the three play modes, and separate event triggers from continuously changing data. Timer callbacks are previewed.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 3. Building a bidirectional movie playback slider</b> · 40 min</p><p>In this lesson we build a movie player whose progress slider follows the playing movie and, when you drag it, takes control of the playback. Before that we look at what Python and GLSL are used for in TouchDesigner, how the Execute operators react to events, and how a script can update a Timer&#x27;s length when the movie changes.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 4. Connecting video cameras and streams; Kinect hand-raise movie trigger</b> · 19 min</p><p>In this lesson we bring live video into a project and use a body gesture to control a movie. We connect a webcam, a Canon camera through a local web stream, an iPhone over NDI and a Kinect Azure, then turn a raised left hand into a trigger that restarts the movie, answering a chat question.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 5. Procedural Movie Library Management</b> · 27 min</p><p>In this lesson we prepare a movie library that sits in graphics memory before a performance. We list the movies of a folder, compare direct wires with Select operators for modular components, and use a Replicator to create one preloaded movie loader per file, then check the preload and memory use.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 6. Building a movie library browser with playback</b> · 30 min</p><p>In this lesson we build a clip browser for the preloaded movie library. A table of each movie&#x27;s name, length, rate, audio and resolution is shown in a selectable Simple Lister, and the selected row sets the timer length, plays that movie and sends it to the output. The interface stays separate from playback, so another control can replace it.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 7. Crossfading selected movies; Building a 2D texture array</b> · 18 min</p><p>In this lesson we add a smooth crossfade to the movie library: the old movie stays as the previous one and fades out under a timer, with the fade bent into a curve. We also wire every generated movie into a GLSL Multi TOP prepared as a 2D texture array. A chat question about blending is answered.</p></div></div></details><details class="ix-mod" id="pm-03"><summary><span class="n mono">03</span><h3>User Interfaces</h3><span class="mono ix-mm">3 videos · 1 h 53 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 8. Building an instanced video browser with Render Pick</b> · 44 min</p><p>In this lesson we build a clickable movie browser from rendered 3D geometry. First we store resolution and paths in project-wide variables, then draw one instanced button per movie, each with its own video thumbnail. Render Pick turns a click into a movie choice and marks the selected button.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 9. Building lightweight interfaces with panels and custom parameters</b> · 26 min</p><p>In this lesson we choose how to build a fast, usable interface for a media server. We compare custom parameters, panels, the built-in button and slider, and ready-made widgets, including how each recalls preset values, and look at an interface kept separate from the engine.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 10. Caching slider visuals with Cache TOP; Building a standalone slider</b> · 43 min</p><p>In this lesson we build a custom slider that works on its own: it keeps its range, default and reset, syncs with a parameter both ways, and maps values to the preset range. Its indicator is drawn from cached images, so it costs almost no processing. We end by walking through a blend between two movies.</p></div></div></details><details class="ix-mod" id="pm-04"><summary><span class="n mono">04</span><h3>Color Grading; Image Processing ; GLSL</h3><span class="mono ix-mm">4 videos · 2 h 5 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 11. Building a LUT browser with before-and-after comparison</b> · 31 min</p><p>In this lesson we learn how TouchDesigner corrects colour and build a tool for trying LUT looks on video. After a tour of the colour nodes and an explanation of what a LUT is, we make a list of LUT files that applies the chosen look, with a before-and-after slider and the LUT name shown on the picture.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 12. Building a GLSL color-correction shader; Generating UV patterns</b> · 28 min</p><p>In this lesson we move colour correction into a single GLSL TOP, so it stays fast as the setup grows. We learn how a pixel shader works and generate ramps and stripes from UV coordinates, then build gamma, brightness and contrast as one function with adjustable controls and separate gamma for red, green and blue.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 13. Building HSV and YIQ saturation with temperature correction; Prototype multi-pass GLSL effects</b> · 30 min</p><p>In this lesson we extend the GLSL colour corrector with saturation and colour temperature. We build saturation in HSV, see why it differs from OpenColorIO, and switch to the YIQ model, which matches it and adds a temperature control. Then we outline how several passes chain correction and ShaderToy effects in one node.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 14. Converting ShaderToy effects to GLSL TOPs; Building a selectable shader library</b> · 37 min</p><p>In this lesson we port ShaderToy image effects into TouchDesigner and turn them into a library you can switch between. We replace ShaderToy&#x27;s mouse, resolution and image inputs, add wet and size controls, and convert four effects the same way. Then one shader node loads any effect by name from a menu.</p></div></div></details><details class="ix-mod" id="pm-05"><summary><span class="n mono">05</span><h3>Preset Management</h3><span class="mono ix-mm">3 videos · 1 h 43 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 15. Generating custom parameters from a control table</b> · 29 min</p><p>In this lesson we generate the controls of a component with a Python script instead of building them by hand in the editor. We describe colour controls in a table, turn each label into a valid parameter name, and create every control with its range, clamping and default. We start by packing the layer into a base component.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 16. Building a dictionary-based preset manager</b> · 50 min</p><p>In this lesson we prepare the layer for saving presets and start a preset manager. We add a transform page bound to the layer, then compare keeping presets in tables with Python dictionaries stored inside a node. We build a manager that captures all controls, or one chosen page, as a named dictionary.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 17. Saving and loading parameter presets as JSON</b> · 24 min</p><p>In this lesson we make presets last outside the project: the manager saves a preset to a JSON file named after the preset and the time, then loads a chosen file. Each saved value is applied back to the layer&#x27;s controls by looking the control up by its name.</p></div></div></details><details class="ix-mod" id="pm-06"><summary><span class="n mono">06</span><h3>Timing and Synchronisation</h3><span class="mono ix-mm">3 videos · 1 h 51 min</span><i class="ix-pl"></i></summary><div class="ix-lss"><div class="ix-ls"><p class="ix-lt"><b>Lesson 18. Converting LTC timecode to frames with Script CHOP</b> · 37 min</p><p>In this lesson we see how TouchDesigner handles time and how to keep two machines in step. We make a repeating trigger, send LTC timecode from one TouchDesigner instance to another, and start a Script CHOP that turns the received timecode into a frame count for a cue table.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 19. Cueing and Segmented Playback</b> · 45 min</p><p>In this lesson we finish the cue tool: a script reads the cue table and gives every cue its start and end pulses, elapsed frames, progress and active segment. We compare it with the timer&#x27;s segments mode, then build a scene asset whose movie and title fades are driven by that progress.</p></div><div class="ix-ls"><p class="ix-lt"><b>Lesson 20. Multi-projector output with Layout TOP and keystoning; Movie crossfades</b> · 28 min</p><p>In this lesson we finish the media server with a smoother A/B transition between two movies. Then we look at taking it to a show: keeping the interface apart from processing, sending video between machines with NDI, mapping output for several projectors, and locking a project or component before it goes to a client.</p></div></div></details></div><div class="ix-after-in" data-lkey="m-after" style="--c:var(--top)"><div class="ix-ahg"><div class="ix-ahc"><h3 class="H">After this course</h3><p class="ix-kick">Bundles and learning paths with this course</p></div><div class="ix-ahc"><div class="ix-paths"><a class="ix-path" href="me.html"><b>Learning Path: Media Engineer</b><span class="ix-pm"> — <span data-h2t="price" data-slug="/me">€1,301</span> · 45 h</span><i class="ix-ar" aria-hidden="true">→</i></a></div></div></div></div></div></section>
+<section id="course" class="sec" data-lkey="m7"><div class="wrap"><div class="lbl mono"><b>04</b> Course facts &amp; format<i class="op" style="--c:var(--comp)">passport1 <u>COMP</u></i></div><div class="sh"><h2 class="H">How the course works</h2><p class="dek" style="max-width:66ch">The course is recorded and you take it at your own pace.</p><p class="dek" style="max-width:66ch">Every lesson is open from the first day. We recommend taking one lesson a week: it keeps a steady rhythm.</p></div><div class="chs" style="--n:3"><div class="pn ch rv" style="--c:var(--top);--d:0"><div class="ph" aria-hidden="true"><span class="ix-opn">hours1 <u>CHOP</u></span><span class="r ix-opn">0 — 11 h</span></div><div class="cv0" aria-hidden="true"><b>11</b><span class="mono">h in total</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H2.4 V23.0 H9.6 V56 H14.4 V28.0 H21.6 V56 H26.4 V16.0 H33.6 V56 H38.4 V37.0 H45.6 V56 H50.4 V29.0 H57.6 V56 H62.4 V26.0 H69.6 V56 H74.4 V38.0 H81.6 V56 H86.4 V12.0 H93.6 V56 H98.4 V30.0 H105.6 V56 H110.4 V13.0 H117.6 V56 H122.4 V25.0 H129.6 V56 H134.4 V28.0 H141.6 V56 H146.4 V26.0 H153.6 V56 H158.4 V19.0 H165.6 V56 H170.4 V27.0 H177.6 V56 H182.4 V6.0 H189.6 V56 H194.4 V32.0 H201.6 V56 H206.4 V19.0 H213.6 V56 H218.4 V11.0 H225.6 V56 H230.4 V28.0 H237.6 V56 H240"/></svg><p class="p">11 h in total</p></div><div class="pn ch rv" style="--c:var(--top);--d:1"><div class="ph" aria-hidden="true"><span class="ix-opn">lessons1 <u>CHOP</u></span><span class="r ix-opn">step · 0 → 20</span></div><div class="cv0" aria-hidden="true"><b>20</b><span class="mono">lessons</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H0.0 V53.5 H12.0 V51.0 H24.0 V48.5 H36.0 V46.0 H48.0 V43.5 H60.0 V41.0 H72.0 V38.5 H84.0 V36.0 H96.0 V33.5 H108.0 V31.0 H120.0 V28.5 H132.0 V26.0 H144.0 V23.5 H156.0 V21.0 H168.0 V18.5 H180.0 V16.0 H192.0 V13.5 H204.0 V11.0 H216.0 V8.5 H228.0 V6.0 H240"/></svg><p class="p">6 modules, 20 lessons</p></div><div class="pn ch rv" style="--c:var(--top);--d:2"><div class="ph" aria-hidden="true"><span class="ix-opn">days1 <u>CHOP</u></span><span class="r ix-opn">hold · 730 d</span></div><div class="cv0" aria-hidden="true"><b>730</b><span class="mono">days</span></div><svg class="cw" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="55" x2="240" y2="55"/><path d="M0 56 H12 V6 H228 V56 H240"/></svg><p class="p">self-paced; from day one</p></div></div></div></section>
 <section id="works" class="sec ix-slot" data-lkey="m-works" aria-hidden="true"><div class="wrap"><div class="ix-ph"></div></div></section>
 <section id="book" class="sec paper tf" data-lkey="m11,m11-payment,m14"><div class="edge t" aria-hidden="true"></div><div class="wrap">
   <div class="lbl mono"><b>05</b> Pricing &amp; payment<i class="op" style="--c:var(--dat)">book1 <u>DAT</u></i></div>
@@ -2822,7 +2822,7 @@ const QUOTES=[];
 const QNOTE={"Phelan Kane": "now Head of Education at Hou2Touch", "c": "cities of students & studios", "r": "random order on every visit"};
 const WORKS=Array.from({length:27});
 /* ↓ вынуто of school/src/template.html: печать полутоном и дизером, автор, марка фестивалей, стена, reviewы */
-const PRN={ink:"#151920",org:[229,95,49],pap:[233,231,224]};
+const PRN=(()=>{const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim(),r=h=>h.replace('#','').match(/../g).map(x=>parseInt(x,16));return{ink:g('--ink'),org:r(g('--hou')),pap:r(g('--paper'))}})();
 const pad2=i=>String(i+1).padStart(2,"0");
 const IC=(n,c)=>`<svg class="${c||"ic"}" aria-hidden="true"><use href="#h2t-i-${n}"/></svg>`,ARR=`<svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg>`;
 function htSample(img,bw,bh,dm,o){o=o||{};const d=Math.min(devicePixelRatio||1,dm||2),W=Math.max(1,Math.round(bw*d)),Hh=Math.max(1,Math.round(bh*d)),ps=o.pos||[.5,.5];
@@ -5985,7 +5985,7 @@ if(/^(a1|k1)$/.test(XV2)){const st=document.createElement("style");st.textConten
   "@media (min-width:1061px){.h2t:is(.x-a1,.x-k1) .hv::after{background:linear-gradient(180deg,rgba(233,231,224,.9) 0%,rgba(233,231,224,0) 20%,rgba(233,231,224,0) 84%,rgba(233,231,224,.94) 97%)}}"+
   "@media (max-width:1060px){.h2t:is(.x-a1,.x-k1) .hv::after{background:linear-gradient(180deg,rgba(233,231,224,.92) 0%,rgba(233,231,224,0) 14%,rgba(233,231,224,0) 84%,rgba(233,231,224,1) 100%)}}";
   document.head.appendChild(st)}
-const HC="#b3122e";   /* кармин — цвет сцены кристалла и узла */
+const HC=(getComputedStyle(document.documentElement).getPropertyValue('--carmin')||'#b3122e').trim();   /* кармин — цвет сцены кристалла и узла */
 function heroX(v,cv,gl){
   if(XV2==="old")return heroXB(v,cv,gl);
   const BD=(XQ==="up"||UP2?"#define UP 1\n":"")+(UP2?"#define UP2 1\n":"")+(BUN?"#define BUN 1\n":"")+   /* UP — ?x=up (26.10): общая печать линейки Extreme, см. проход печати */
@@ -6775,9 +6775,9 @@ tlGeo();onScroll();
 <style id="pp-unify">
 /* ===== pp-unify: one native plate language for the paper blocks before Programme ===== */
 /* 0 · spacing system: one air scale for the whole page, full-bleed container */
-:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px);--r-sub:clamp(16px,1.6vw,24px)}
+:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px);--r-sub:clamp(16px,1.6vw,24px);--fs-2xs:11px;--fs-xs:12px;--fs-s:14px;--fs-m:16px;--fs-l:20px;--fs-xl:24px;--fs-2xl:28px;--fs-3xl:32px;--fs-4xl:40px;--fs-5xl:56px;--fs-6xl:88px;--lh-tight:1.15;--lh-body:1.5;--card-r:6px;--chip-h:24px;--carmin:#b3122e;--hou-hover:#f0602d}
 html body .ipt-wave{height:clamp(120px,11vw,170px)}
-html body .wrap{max-width:none}
+html body .wrap{max-width:calc(1328px + 2*var(--pad));margin-inline:auto}
 html body .sec{padding-top:var(--r-air)}
 html body .paper.pz{padding-bottom:var(--r-air)}
 html body .lbl{margin-bottom:var(--r-head)}
@@ -6793,7 +6793,7 @@ html body .sec .sh .H::after,html body #author .au-n::after{content:"";display:b
 html body #audience .sh{align-items:start}
 
 /* 3 · mono meta scale matches the concept block everywhere in the paper area */
-html body #audience .roles-wall sup,html body #audience .lbl,html body #audience .pr-l,html body #audience .pr-t{font-size:11px;letter-spacing:.06em}
+html body #audience .roles-wall sup,html body #audience .lbl,html body #audience .pr-l,html body #audience .pr-t{font-size:var(--fs-xs);letter-spacing:.06em}
 
 /* 5 · one expand affordance: the circled + of the FAQ, also in Programme */
 html body #program .ix-prog summary .ix-pl{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);flex:none}
@@ -6819,7 +6819,7 @@ html body #audience .pn.lite[data-lkey="m4"]>.ph h3::before,html body #audience 
 
 /* 8 · "for you if" plate follows the tier plate: 10 px radius, accent top edge, ports, header divider */
 html body #audience .aud-yes{border:1px solid rgba(239,238,233,.16);border-radius:10px;background:linear-gradient(180deg,#161618,#0f0f11);box-shadow:inset 0 2px 0 var(--top),0 30px 60px -36px rgba(11,11,12,.55);padding:0}
-html body #audience .aud-yes::before,html body #audience .aud-yes::after{display:block;width:14px;height:14px;top:29px;border-radius:50%;background:#0b0b0c;box-shadow:inset 0 0 0 2px var(--top)}
+html body #audience .aud-yes::before,html body #audience .aud-yes::after{display:block;width:14px;height:14px;top:29px;border-radius:50%;background:var(--ink);box-shadow:inset 0 0 0 2px var(--top)}
 html body #audience .aud-yes::before{left:-7px}
 html body #audience .aud-yes::after{right:-7px}
 html body #audience .aud-yes>.cd-h{display:flex;align-items:center;gap:12px;margin:0!important;padding:0 30px!important;height:72px;border-bottom:1px solid var(--line);font-family:var(--disp)!important;font-weight:700!important;font-size:40px!important;line-height:1!important;letter-spacing:0;text-transform:uppercase;color:var(--fg);background:none}
@@ -6843,7 +6843,7 @@ html body #audience .aud-yes>.cd-h{display:block;margin:0!important;padding:26px
 html body #audience .aud-yes>.cd-h::after{content:none!important}
 html body #audience .aud-yes>.cd-h .sq9{display:none!important}
 html body #audience .aud-yes>.ix-why{padding:18px 30px 30px;margin:0}
-html body #audience .aud-yes::before,html body #audience .aud-yes::after{width:14px;height:14px;top:21px;border-radius:50%;background:#0b0b0c;box-shadow:inset 0 0 0 2px var(--top)}
+html body #audience .aud-yes::before,html body #audience .aud-yes::after{width:14px;height:14px;top:21px;border-radius:50%;background:var(--ink);box-shadow:inset 0 0 0 2px var(--top)}
 
 /* 11 · required-course links: no pill paint on hover (id-scoped so it always wins) */
 html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover{background:transparent!important;background-color:transparent!important;color:var(--fg)!important}
@@ -6882,14 +6882,14 @@ html body #audience .aud-yes .ix-why ul.ix-l{border-top:0}
 html body #audience .aud-yes .ix-why li:first-child,html body #audience .aud-no ol.dat li:first-child{border-top:0;padding-top:0}
 
 /* 15 · hard alignment of both audience plates (site rules use !important, so do we) */
-html body #audience .aud-yes>.ph,html body #audience .aud-no>.ph{display:flex!important;align-items:center!important;height:56px!important;min-height:56px!important;padding:0 30px!important;border:0!important;border-bottom:1px solid var(--line2)!important;border-radius:0!important;background:transparent!important;font-family:var(--mono)!important;font-weight:500!important;font-size:12px!important;line-height:1.4!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--txt)!important;white-space:nowrap!important}
+html body #audience .aud-yes>.ph,html body #audience .aud-no>.ph{display:flex!important;align-items:center!important;height:56px!important;min-height:56px!important;padding:0 30px!important;border:0!important;border-bottom:1px solid var(--line);border-radius:0!important;background:transparent!important;font-family:var(--mono)!important;font-weight:500!important;font-size:12px!important;line-height:1.4!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--txt)!important;white-space:nowrap!important}
 html body #audience .aud-yes>h3.cd-h,html body #audience .aud-no>h3.b3-h{display:flex!important;align-items:center!important;height:74px!important;margin:0!important;padding:0 30px!important;font-family:var(--disp)!important;font-weight:700!important;font-size:32px!important;line-height:1!important;letter-spacing:0!important;text-transform:uppercase!important;color:var(--fg)!important;background:none!important}
 html body #audience .aud-yes>h3.cd-h::after,html body #audience .aud-no>h3::after{content:none!important}
 html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{margin:0!important;padding:16px 30px 26px!important;border-top:1px solid var(--line2)!important}
 
 /* 16 · bottom strip of both audience plates — same as the tier plate footer */
 html body #audience .aud-yes{display:flex;flex-direction:column}
-html body #audience .aud-yes>.pf,html body #audience .aud-no>.pf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:14px 30px;border-top:1px solid var(--line2);font-family:var(--mono);font-weight:500;font-size:11px;line-height:1;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+html body #audience .aud-yes>.pf,html body #audience .aud-no>.pf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:14px 30px;border-top:1px solid var(--line2);font-family:var(--mono);font-weight:500;font-size:var(--fs-xs);line-height:1;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 html body #audience .aud-yes>.pf .id,html body #audience .aud-no>.pf .id{color:var(--mute)}
 html body #audience .aud-yes>.ix-why,html body #audience .aud-no>ol.dat{padding-bottom:22px!important}
 
@@ -6898,7 +6898,7 @@ html body #book .tier .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:1
 html body #book .tier .buy-x a.u{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
 
 /* 18 · pink as the third accent: "does not fit" and quotes (lime = fits/index, orange = buy) */
-:root{--pink:#c34f9a}
+:root{--pink:var(--dat)}
 html body #audience .aud-no::before,html body #audience .aud-no::after{box-shadow:inset 0 0 0 2px var(--pink)}
 html body #audience .aud-no>.ph .r{color:var(--pink)}
 html body #audience .aud-no ol.dat>li>.n{box-shadow:inset 0 0 0 1px rgba(195,79,154,.55)}
@@ -6916,10 +6916,10 @@ html body #author .au-s>div{display:flex;flex-direction:column;padding:16px 18px
 html body #author .au-s>div+div{border-left:1px solid var(--line);padding-left:18px}
 html body #author .au-s .au-last b{order:-1}
 html body #author .au-s b{display:block;font:700 40px/0.9 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
-html body #author .au-s .mono{display:block;margin-top:10px;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+html body #author .au-s .mono{display:block;margin-top:10px;font:500 12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 html body #author .au-cr{display:grid;grid-template-columns:1fr 1fr;gap:18px clamp(24px,3vw,48px);margin-top:28px;border-top:1px solid var(--line2);padding-top:22px}
 html body #author .au-cr p{margin:0;font:400 16px/1.6 var(--sans);color:var(--txt);max-width:34em}
-html body #author .au-cr b{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+html body #author .au-cr b{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
 html body #author .au-pj{margin-top:40px}
 html body #author .au-pj .H{font-size:clamp(26px,2.6vw,36px)}
 html body #author .au-pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);margin-top:18px}
@@ -6960,14 +6960,16 @@ html body #audience .sh::after{content:none}
 
 /* Wave A (18.11.2026, решение владельца): works slot hidden until the student selection is inserted */
 html body #works{display:none}
+/* Wave B: learning-path wrapper grid (в 202/301 уже был l9-paths) */
+.ix-paths{display:grid;gap:18px}
 </style>
 
 <style id="marq-fix">/* бегущая строка фестивалей: своя бумага, стандартный зазор до био, две линии */
 html body .marq-gap{background:var(--paper,#e9e7e0);padding-top:var(--r-block,clamp(28px,3.2vw,48px))}
-html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border-block:1px solid var(--ink,#0b0b0c);margin:0;padding:14px 0}
+html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border-block:1px solid var(--ink,#0b0b0c);margin:0;padding:16px 0}
 html body #fests .marq-t span,html body #fests .marq-t em{color:var(--ink,#0b0b0c)}
 html body #fests .marq-t em{background:var(--comp,#9a9a96)}
-html body .marq-gap .wrap{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
+html body .marq-gap .wrap{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0 var(--pad)}
 html body .marq-gap .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
 <style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
