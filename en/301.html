@@ -1953,16 +1953,38 @@ html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 (()=>{const P=4,INK="#0b0b0c",PAD=.06;
 const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
 const bay=(x,y)=>B[(x&3)+4*(y&3)]/16;
-/* --- ДЕКА: четыре синусоиды, нарисованные короткими штрихами вниз от линии --- */
-const waves=(nx,ny)=>{const out=[];
- const W=[[.30,2.6,0.0,.58,2],[.24,1.7,1.2,.46,2],[.34,3.4,2.5,.52,2],[.18,1.15,3.6,.50,1]];
- for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0, x=(u-.5)*2;
-  const fade=Math.min(1,u/.08)*Math.min(1,(1-u)/.08);
-  for(const [A,L,ph,c0,tk] of W){
-   const y=c0+A*Math.sin(2*Math.PI*x/L+ph);
-   const cy0=Math.round((1-y)*(ny-1));
-   for(let k=0;k<tk;k++){const cy=cy0+k; if(cy<0||cy>=ny)continue;
-    if(bay(cx,cy)<(.75-.35*k)*fade) out.push([cx,cy]);}}}
+/* --- ДЕКА: две переплетающиеся ленты (коса) + пунктирные контуры + метки --- */
+const deck=(nx,ny)=>{const out=[],AMP=.20,LAM=1.30,TH=.13,PW=1.8,TAPER=.09,MOD=.25;
+ /* две ленты в противофазе: плотность максимальна на осевой линии и гаснет к краям */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.9+.6);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.3+Math.PI*1.2);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1); let v=0;
+   for(const [ph,amp,th,mod] of [[0,AMP,TH,m1],[Math.PI,AMP*.9,TH*.85,m2]]){
+    const yc=.5+amp*Math.sin(2*Math.PI*u/LAM+ph);
+    const d=1-Math.abs(y-yc)/th;
+    if(d>0){const p=Math.pow(d,PW)*mod; if(p>v)v=p;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* пунктирные контурные кривые, огибающие косу сверху и снизу */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const [ph,off] of [[.4,.36],[Math.PI+.4,-.36]]){
+   const yc=.5+off*Math.sin(2*Math.PI*u/1.15+ph);
+   const cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);}}
+ /* регистрационные метки: пунктирная вертикаль с квадратом-рамкой на концах */
+ const vline=cu=>{const cx=Math.round(cu*(nx-1));
+  for(let cy=2;cy<ny-3;cy+=2) out.push([cx,cy]);
+  for(const top of [1,ny-4]) for(const [a,b] of [[0,0],[1,0],[2,0],[0,1],[2,1],[0,2],[1,2],[2,2]]){
+   const x=cx-1+a, y=top-1+b; if(x>=0&&x<nx&&y>=0&&y<ny) out.push([x,y]);}};
+ vline(.21); vline(.75);
+ /* кресты-опорные точки */
+ const cross=(cu,cv)=>{const cx=Math.round(cu*(nx-1)), cy=Math.round(cv*(ny-1));
+  for(const k of [-1,0,1]){
+   if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+   if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}};
+ cross(.34,.14); cross(.70,.86);
  return out};
 /* --- ШАПКА: две эллиптические орбиты под углом ±0.42, вписаны по bbox --- */
 const orbits=(nx,ny)=>{const a=[],N=2500;
@@ -1979,7 +2001,7 @@ const orbits=(nx,ny)=>{const a=[],N=2500;
   const cy=Math.round((1-PAD-(p[1]-y0)/h*(1-2*PAD))*(ny-1));   /* y вверх */
   if(cx>=0&&cy>=0&&cx<nx&&cy<ny) out.push([cx,cy]);}
  return out};
-const FN={deck:waves,aud:orbits};
+const FN={deck,aud:orbits};
 const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
  const D=Math.min(2.5,window.devicePixelRatio||1);
  cv.width=Math.round(w*D);cv.height=Math.round(h*D);
