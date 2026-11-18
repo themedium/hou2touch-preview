@@ -6942,10 +6942,10 @@ html body .buy-x a{color:var(--fg);text-decoration:underline;text-underline-offs
 /* bundle note sits under the Enroll button in the final buy block */
 html body .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-height:20px;color:var(--txt);max-width:46ch}
 
-/* audience: divider under the heading is cut on the right — it stops at column 1/5,
-   the same length as the dividers below (roles list), and does not run under the cards */
-html body #audience .sh{border-bottom:0;position:relative}
-html body #audience .sh::after{content:"";position:absolute;left:0;bottom:0;height:1px;background:var(--line2);width:calc((100% - 11*var(--aud-g))/12*4 + 3*var(--aud-g))}
+/* audience: divider under the heading keeps its full length (1px, whole wrap);
+   air after it is bigger so the cards sit lower than the line */
+html body #audience .sh{border-bottom:1px solid var(--line2);padding-bottom:clamp(40px,4vw,56px)}
+html body #audience .sh::after{content:none}
 </style>
 
 <style id="marq-fix">/* бегущая строка фестивалей: своя бумага, стандартный зазор до био, две линии */
