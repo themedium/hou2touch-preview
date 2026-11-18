@@ -1990,22 +1990,35 @@ const deck=(nx,ny)=>{const out=[],AMP=.20,LAM=1.30,TH=.13,PW=1.8,TAPER=.09,MOD=.
    if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}};
  cross(.34,.14); cross(.70,.86);
  return out};
-/* --- ШАПКА: две эллиптические орбиты под углом ±0.42, вписаны по bbox --- */
-const orbits=(nx,ny)=>{const a=[],N=2500;
- [[.42,1.0],[-.42,.78]].forEach(([rot,rr])=>{
-  const cr=Math.cos(rot), sr=Math.sin(rot);
-  for(let i=0;i<N;i++){const th=i/N*2*Math.PI;
-   const x=rr*Math.cos(th), y=rr*Math.sin(th)*.46;
-   a.push([x*cr-y*sr, x*sr+y*cr]);}});
- let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
- for(const p of a){if(p[0]<x0)x0=p[0];if(p[0]>x1)x1=p[0];if(p[1]<y0)y0=p[1];if(p[1]>y1)y1=p[1];}
- const w=x1-x0||1, h=y1-y0||1, out=[];
- for(const p of a){
-  const cx=Math.round((PAD+(p[0]-x0)/w*(1-2*PAD))*(nx-1));
-  const cy=Math.round((1-PAD-(p[1]-y0)/h*(1-2*PAD))*(ny-1));   /* y вверх */
-  if(cx>=0&&cy>=0&&cx<nx&&cy<ny) out.push([cx,cy]);}
+/* --- ШАПКА «Who this course is for»: две ленты сходятся в одну --- */
+const audience=(nx,ny)=>{const out=[],AMP=.30,TH=.10,PW=2.0,TAPER=.10,MOD=.22;
+ /* две ленты расходятся слева и сходятся в одну к правому краю;
+    плотность, как и в деке, максимальна на осевой и гаснет дизером b4 */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const gap=AMP*Math.pow(1-u,1.15);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.7+.4);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.1+Math.PI);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1); let v=0;
+   for(const [sgn,mod] of [[1,m1],[-1,m2]]){
+    const yc=.5+sgn*gap;
+    const d=1-Math.abs(y-yc)/TH;
+    if(d>0){const pr=Math.pow(d,PW)*mod; if(pr>v)v=pr;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* пунктирные контуры, огибающие схождение сверху и снизу */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const sgn of [1,-1]){
+   const yc=.5+sgn*(AMP*Math.pow(1-u,1.15)+.16);
+   const cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);}}
+ /* крест-опора в точке схождения */
+ const cx=Math.round(.93*(nx-1)), cy=Math.round(.5*(ny-1));
+ for(const k of [-1,0,1]){
+  if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+  if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}
  return out};
-const FN={deck,aud:orbits};
+const FN={deck,aud:audience};
 const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
  const D=Math.min(2.5,window.devicePixelRatio||1);
  cv.width=Math.round(w*D);cv.height=Math.round(h*D);
