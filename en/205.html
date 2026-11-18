@@ -1934,10 +1934,84 @@ html body #author .au-pc figcaption b{color:var(--fg);font-weight:600}
 /* bundle note under the buy button */
 html body #book .tier .buy-x,html body #buy .tier .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:var(--fs-s);line-height:20px;color:var(--txt);max-width:46ch}
 html body #book .tier .buy-x a.u,html body #buy .tier .buy-x a.u{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+/* P1 (18.11): ссылки в тексте не подчёркнуты и не синие от UA. Правило живёт В СЛОЕ
+   page: страницы объявляют `@layer tpl,page`, и неслоёное правило 0,0,1 перебило бы
+   ВСЁ (слои решают раньше специфичности) — в слое же оно бьёт только UA-default и
+   tpl-базу, а намеренные `.u`, `.fq-a a`, `.buy-x a.u` (0,1,x) остаются. */
+@layer page{a{text-decoration:none;color:inherit}a:visited{color:inherit}}
+/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
+html body #out .enl b{color:var(--fg)}
+/* P2 (18.11): на 390px дефолтный SVG без CSS = 300x150 (чёрный треугольник).
+   Копия правила 203 + обобщение на стрелки внутри ссылок/кнопок (футер, .rt-n, .tbar),
+   где 203 тоже течёт; иконочные правила сильнее по специфичности и не страдают. */
+html body #buy svg.ar,html body #buy svg.ic,html body #reviews svg.ar,html body #reviews svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+html body a svg.ar,html body a svg.ic,html body button svg.ar,html body button svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
+   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
+   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
 </style>
 <style id="family-ink">/* #family: цвета тёмной темы (у секции нет своих) */
 html body #family{color:var(--fg)}html body #family .H{color:var(--fg)}html body #family a.pn.rc{color:var(--fg)}html body #family .rc .rc-n small{color:var(--mute)}html body #family .rc .rc-d{color:var(--txt)}</style>
 <style id="marq-fix">html body #author .marq-gap .marq{margin-top:0}</style>
+<style id="wave-look-css">
+/* ===== concept v8: numbered items in the page's own out1 language ===== */
+#concept{--ab:var(--top)}
+#concept .sh{margin:0}
+#concept .ix-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#concept .ab-g{position:relative;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(32px,5vw,88px);align-items:start;margin:0 0 clamp(38px,4.6vw,68px);padding:0}
+html:not(.x-old) body #concept .m2-open,html:not(.x-old) body #concept .ix-blk{padding-top:0;border-top:0;margin-top:0;max-width:none}
+/* left: the Bebas title with the same short violet rule as the other paper sections */
+#concept .ab-side{grid-column:1;align-self:start}
+#concept .ab-ttl{margin:0;font:700 clamp(56px,4.9vw,78px)/.86 var(--disp);letter-spacing:0;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+#concept .ab-ttl span{display:block}
+#concept .ab-bar{display:block;width:46px;height:5px;margin-top:clamp(16px,1.8vw,24px);background:var(--ab)}
+/* right: numbered items — big violet number, connector, title, copy */
+html body #concept .ab-items{grid-column:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);row-gap:0;margin:0;padding:0;list-style:none;max-width:none}
+html body #concept .ab-it{position:relative;margin:0;padding:clamp(20px,2vw,28px) clamp(0px,1vw,12px) 0 0;border:0;min-width:0}
+html body #concept .ab-it .n{position:relative;z-index:1;display:inline-block;margin:0 0 14px;padding:0 16px 0 0;background:var(--paper);font:700 clamp(52px,4.6vw,68px)/.82 var(--disp);letter-spacing:0;color:var(--ab);font-variant-numeric:tabular-nums}
+html body #concept .ab-it h3{margin:0 0 10px;font:500 clamp(18px,1.55vw,22px)/1.22 var(--sans);letter-spacing:-.02em;color:var(--fg);text-wrap:balance}
+html body #concept .ab-it p{margin:0;font:400 var(--fs-m)/24px var(--sans);letter-spacing:-.005em;color:var(--txt);max-width:38ch;text-wrap:pretty}
+@media (max-width:760px){html body #concept .ab-it p{max-width:none}}
+/* the connector: the same hairline + square node that links the columns further down */
+html body #concept .ab-it:not(:last-child)::before{content:"";position:absolute;z-index:0;left:0;right:calc(-1*var(--gap));top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:9px;transform:translateY(-4px);background:radial-gradient(circle at 4.5px 4.5px,var(--paper) 2.6px,var(--ab) 3px 4.5px,transparent 5px) right 2px top/9px 9px no-repeat,linear-gradient(var(--ab),var(--ab)) left center/calc(100% - 11px) 1.5px no-repeat}
+html body #concept .ab-it:last-child::before{content:"";position:absolute;z-index:0;left:0;right:0;top:calc(clamp(20px,2vw,28px) + clamp(52px,4.6vw,68px)*.41 - 1px);height:1.5px;transform:translateY(-.75px);background:linear-gradient(90deg,var(--ab),transparent)}
+/* the modules bar above the untouched modules patch — same bar as the other section heads */
+html:not(.x-old) body #concept .ix-blk[data-lkey="m-chain"]{position:relative;display:block;margin:0 0 clamp(20px,2.3vw,34px);padding:0;border:0;max-width:none}
+#concept .m-bar{display:flex;align-items:center;gap:0;min-width:0}
+html body #concept .m-bar>h3.b3-h{margin:0 20px 0 0!important;font:700 clamp(40px,3.5vw,52px)/.86 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+#concept .m-rule{flex:1 1 auto;height:1px;margin:0 18px 0 0;background:var(--line2)}
+#concept .m-chain-meta{display:flex;align-items:center;gap:7px;margin-left:20px;font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+#concept .m-chain-meta i{display:inline-flex;gap:2px;margin-left:7px;font-style:normal}
+#concept .m-chain-meta s{display:block;width:8px;height:8px;background:var(--ab)}#concept .m-chain-meta s:nth-child(2){background:var(--ink)}
+/* a lead paragraph spanning both columns (101: «Another tutorial…») */
+html body #concept .ab-it.ab-wide{grid-column:1/-1;padding-right:0}
+html body #concept .ab-it.ab-wide::before{display:none}
+html body #concept .ab-it.ab-wide p{max-width:64ch}
+html body #concept .ab-it.ab-wide p+p{margin-top:12px}
+html body #concept .ab-it.ab-wide p b{font-weight:600;color:var(--ink)}
+@media (max-width:1180px){
+  #concept .ab-g{grid-template-columns:minmax(0,2.6fr) minmax(0,7.8fr);column-gap:48px}
+  html body #concept .ab-it{padding-right:0}
+}
+@media (max-width:940px){
+  #concept .ab-ttl{font-size:clamp(44px,5.4vw,60px)}
+  html body #concept .ab-it .n{font-size:clamp(44px,4.8vw,54px)}
+  html body #concept .ab-it:not(:last-child)::before{right:calc(-1*var(--gap))}
+}
+@media (max-width:760px){
+  html body #concept .ab-g{display:flex;flex-direction:column;align-items:stretch;grid-template-columns:minmax(0,1fr)!important;row-gap:18px;column-gap:0;margin:0 0 40px}
+  html body #concept .ab-ttl{font-size:clamp(50px,13vw,70px)}
+  #concept .ab-bar{width:38px;height:4px;margin-top:14px}
+  html body #concept .ab-items{grid-column:auto!important;grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
+  html body #concept .ab-it{padding:18px 0 0}
+  html body #concept .ab-it+.ab-it{padding-top:24px;margin-top:4px;border-top:1px solid var(--line)}
+  html body #concept .ab-it .n{font-size:var(--fs-4xl);margin-bottom:10px}
+  html body #concept .ab-it h3{font-size:var(--fs-xl);margin-bottom:8px}
+  html body #concept .ab-it p{font-size:var(--fs-m);line-height:24px}
+  html body #concept .ab-it::before{display:none!important}
+  #concept .m-rule,#concept .m-chain-meta{display:none}
+}
+</style>
 </head>
 <body>
 <div class="h2t f-fam f-lc f-print f-rev2 f-short" id="h2t" style="--k:var(--top);--edge-img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAYCAYAAADH2bwQAAAAOUlEQVR42mNgoBp4+fzBf+rohPGJNxFdB41MIEuSeEW0NQFuCkET8GEqmoAsQJoJ6DpxKiBoAi4MANqxYbA7Y3AmAAAAAElFTkSuQmCC)">
@@ -2132,7 +2206,7 @@ html body #family{color:var(--fg)}html body #family .H{color:var(--fg)}html body
 #ix .meta .a{grid-column:1/13}}
 #ix .hero{min-height:auto;height:auto;max-height:none;padding-top:var(--ix-navh,52px)}
 }</style>
-<div id="ix"><header class="hero" id="top" style="--k:var(--top)" data-m="feedback" data-lkey="m1,m15">
+<div id="ix"><header class="hero long" id="top" style="--k:var(--top)" data-m="feedback" data-lkey="m1,m15">
  <div class="band"><canvas></canvas><div class="ov" aria-hidden="true"><div class="tk"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
    <span class="lb tl" data-t="srv205 COMP"></span><span class="lb tr fc" data-t="f 000000 · 60 fps"></span><span class="lb ret" data-t=""></span>
    <span class="lb br k" data-t="● TOP · feedback"></span></div>
@@ -2476,11 +2550,11 @@ document.fonts.ready.then(()=>{
 })();</script>
 <div class="paper pz"><section id="concept" class="sec" data-lkey="m1-about,m2" data-lmod="1,2"><div class="wrap">
   <div class="lbl mono"><b>01</b><span class="ix-vh"> About the course</span><i class="op" style="--c:var(--comp)">concept1 <u>COMP</u></i></div>
-  <div class="sh"><h2 class="H">About the course</h2><div class="m2-open" data-lkey="m2">
-    <div><span class="mono">01</span><p>This course is for VJs who already work in Resolume, Modul8 or VDMX and have hit the limits of a fixed tool. You build your own VJ tool in TouchDesigner, block by block: video players, a movie bin with crossfades and drag and drop, sound analysis, signal routing, a GLSL effects selector, a custom interface and a step sequencer with presets and a Premiere EDL cue player.</p></div>
-    <div style="--c:var(--top)"><span class="mono">02</span><p>You connect it to Resolume and control Resolume from TouchDesigner, so your current setup stays in use. The course ends with a walkthrough of my automatic VJ system, built for a 17-hour club night: clock dividers and sound analysis switch layers and effects, so it can carry a long night on its own without repetition.</p></div>
-  </div></div>
-  <div class="ix-blk"><h3 class="ix-k"><strong>Course aims</strong></h3><ol class="dat"><li><span class="n">01</span><span>To provide an understanding of how a VJ system in TouchDesigner is built from swappable blocks, how sound analysis and clock dividers drive its visuals, and how such a system can carry a long night on its own.</span></li><li><span class="n">02</span><span>To develop practical skills in building a VJ tool in TouchDesigner: a movie bin, a sound analyser and signal router, GLSL effects, a custom UI, a step sequencer with presets and EDL cueing, and in connecting it to Resolume over OSC.</span></li></ol></div><div class="ix-blk" data-lkey="m-chain"><h3 class="b3-h">Course modules</h3><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>TouchDesigner foundations</b><span class="ix-vh"> · </span><span class="d" data-t="3 h 4 min"></span></li><li><span class="n" aria-hidden="true">02</span><b>Sound-Reactive Systems</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 14 min"></span></li><li><span class="n" aria-hidden="true">03</span><b>Media Playback &amp; Movie Bin</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 24 min"></span></li><li><span class="n" aria-hidden="true">04</span><b>System &amp; UI</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 7 min"></span></li><li><span class="n" aria-hidden="true">05</span><b>Sequencing &amp; EDL</b><span class="ix-vh"> · </span><span class="d" data-t="3 h 4 min"></span></li></ol></div><nav class="ix-ov" aria-label="Lessons by module" style="--c:var(--top)"><script>document.addEventListener("DOMContentLoaded",()=>{if(!document.documentElement.classList.contains("x-lvl"))return;
+  <div class="m2-open ab-g" data-lkey="m2">
+    <div class="ab-side"><h2 class="ab-ttl"><span>About the course</span></h2><i class="ab-bar"></i></div>
+    <ol class="ab-items"><li class="ab-it"><span class="n">01</span><p>This course is for VJs who already work in Resolume, Modul8 or VDMX and have hit the limits of a fixed tool. You build your own VJ tool in TouchDesigner, block by block: video players, a movie bin with crossfades and drag and drop, sound analysis, signal routing, a GLSL effects selector, a custom interface and a step sequencer with presets and a Premiere EDL cue player.</p></li><li class="ab-it"><span class="n">02</span><p>You connect it to Resolume and control Resolume from TouchDesigner, so your current setup stays in use. The course ends with a walkthrough of my automatic VJ system, built for a 17-hour club night: clock dividers and sound analysis switch layers and effects, so it can carry a long night on its own without repetition.</p></li></ol>
+  </div>
+  <div class="ix-blk ab-g ab-aims"><div class="ab-side"><h3 class="ab-ttl"><span>Course aims</span></h3><i class="ab-bar"></i></div><ol class="ab-items"><li class="ab-it"><span class="n">01</span><p>To provide an understanding of how a VJ system in TouchDesigner is built from swappable blocks, how sound analysis and clock dividers drive its visuals, and how such a system can carry a long night on its own.</p></li><li class="ab-it"><span class="n">02</span><p>To develop practical skills in building a VJ tool in TouchDesigner: a movie bin, a sound analyser and signal router, GLSL effects, a custom UI, a step sequencer with presets and EDL cueing, and in connecting it to Resolume over OSC.</p></li></ol></div><div class="ix-blk" data-lkey="m-chain"><div class="m-bar"><h3 class="b3-h">Course modules</h3><i class="m-rule" aria-hidden="true"></i></div><ol class="ix-mods"><li><span class="n" aria-hidden="true">01</span><b>TouchDesigner foundations</b><span class="ix-vh"> · </span><span class="d" data-t="3 h 4 min"></span></li><li><span class="n" aria-hidden="true">02</span><b>Sound-Reactive Systems</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 14 min"></span></li><li><span class="n" aria-hidden="true">03</span><b>Media Playback &amp; Movie Bin</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 24 min"></span></li><li><span class="n" aria-hidden="true">04</span><b>System &amp; UI</b><span class="ix-vh"> · </span><span class="d" data-t="2 h 7 min"></span></li><li><span class="n" aria-hidden="true">05</span><b>Sequencing &amp; EDL</b><span class="ix-vh"> · </span><span class="d" data-t="3 h 4 min"></span></li></ol></div><nav class="ix-ov" aria-label="Lessons by module" style="--c:var(--top)"><script>document.addEventListener("DOMContentLoaded",()=>{if(!document.documentElement.classList.contains("x-lvl"))return;
 const lum=c=>{const m=c.match(/\d+(\.\d+)?/g);return m?(+m[0]*.3+ +m[1]*.59+ +m[2]*.11):255};const bgOf=e=>{for(;e;e=e.parentElement){const c=getComputedStyle(e).backgroundColor;if(c&&c!=="transparent"&&!/rgba\(0, 0, 0, 0\)/.test(c))return c}return "rgb(233,231,224)"};
 /* background grid removed by owner 16.11 */
 
