@@ -6952,8 +6952,9 @@ html body .buy-x a{color:var(--fg);text-decoration:underline;text-underline-offs
 html body .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-height:20px;color:var(--txt);max-width:46ch}
 
 /* audience: divider under the heading keeps its full length (1px, whole wrap);
-   air after it is bigger so the cards sit lower than the line */
-html body #audience .sh{border-bottom:1px solid var(--line2);padding-bottom:clamp(40px,4vw,56px)}
+   the air AFTER the line is margin-bottom of .sh — padding sits above the border
+   and would only push the line itself down onto the cards */
+html body #audience .sh{border-bottom:1px solid var(--line2);margin-bottom:clamp(40px,4vw,56px);padding-bottom:clamp(24px,2.6vw,36px)}
 html body #audience .sh::after{content:none}
 </style>
 
