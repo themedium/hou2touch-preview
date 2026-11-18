@@ -833,7 +833,7 @@ html{scroll-padding-block:73px 46px}
 @media (max-width:600px){.pgr>li{padding:20px 14px 14px}.pgr .grp{padding:14px}}
 
 /* ---------- тарифы (book1 DAT): лист бумаги с пиксельными краями, ₽ одного кегля с цифрами, запись — оранжевая пилюля ---------- */
-.sec.tf{--edge:96px;padding-top:calc(var(--edge) + 72px);padding-bottom:calc(var(--edge) + 88px);margin-top:var(--sec)}
+.sec.tf{--edge:96px;padding-top:calc(var(--edge) + var(--r-air));padding-bottom:calc(var(--edge) + var(--r-air));margin-top:var(--r-air)}
 .tf>.edge{position:absolute;left:0;right:0;height:var(--edge);pointer-events:none;background:var(--edge-img) 0 0/32px 96px repeat-x,#0b0b0c;image-rendering:pixelated}
 .tf>.edge.t{top:0}.tf>.edge.b{bottom:0;transform:scaleY(-1)}
 .tf-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:var(--pgap);align-items:stretch}
@@ -857,7 +857,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .tf-n a{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-block:-12px;color:var(--fg)}
 @media (max-width:1180px){.tf-g.two .tf-i{grid-column:1/-1;order:2;margin-top:12px}.tf-g.two .tf-c{grid-column:1/-1}}
 @media (max-width:980px){.tf-g .tf-i,.tf-g .tf-c{grid-column:1/-1}.tf-c{grid-template-columns:1fr!important;max-width:560px}.tf-i{order:2;margin-top:12px}}
-@media (max-width:600px){.sec.tf{--edge:64px;padding-top:calc(var(--edge) + 40px);padding-bottom:calc(var(--edge) + 56px);margin-top:96px}.tf>.edge{background-size:24px 64px,auto}.tier .tn{font-size:40px}.tier .tp b{font-size:64px}.tier .tb{padding:18px 16px}.tf-q{font-size:20px;line-height:28px}}
+@media (max-width:600px){.sec.tf{--edge:64px;padding-top:calc(var(--edge) + var(--r-air));padding-bottom:calc(var(--edge) + var(--r-air));margin-top:var(--r-air)}.tf>.edge{background-size:24px 64px,auto}.tier .tn{font-size:40px}.tier .tp b{font-size:64px}.tier .tb{padding:18px 16px}.tf-q{font-size:20px;line-height:28px}}
 /* пакет: «один курс или два» — три карточки тарифа (финал 02.10, SC-08): Extreme I · Extreme II · I + II (тёмная, шире, единственная оранжевая кнопка);
    строки «Разница» нет; на ≤980 — столбцом, пакет первым */
 @media (min-width:1281px){.tf3{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr)!important}}
@@ -1122,7 +1122,7 @@ html{scroll-padding-block:73px 46px}
 .ipt-t canvas{position:absolute;inset:0;width:100%;height:100%}
 .ipt-t b{position:absolute;left:8px;top:7px;font:700 clamp(20px,1.8vw,30px)/1 var(--disp);color:#efeee9;paint-order:stroke;-webkit-text-stroke:0;text-shadow:0 0 4px #141416,0 0 2px #141416}
 html body .ipt-t,html body .ipt-t b{text-decoration:none}
-.ipt-t:hover,.ipt-t:focus-visible{box-shadow:0 0 0 2px var(--c),2px 3px 0 rgba(11,11,12,.14);outline:none}
+.ipt-t:hover{box-shadow:0 0 0 2px var(--c),2px 3px 0 rgba(11,11,12,.14)}.ipt-t:focus-visible{box-shadow:0 0 0 2px var(--c),2px 3px 0 rgba(11,11,12,.14);outline:2px solid var(--c);outline-offset:2px}
 .ipt-plug{position:absolute;left:50%;bottom:-58px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--paper,#e9e7e0);border:1px solid var(--ink,#0b0b0c);z-index:1}
 .ipt-plug::before{content:"";position:absolute;left:50%;bottom:100%;width:1px;height:28px;background:var(--ink,#0b0b0c)}
 .ipt-plug::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink,#0b0b0c)}
@@ -1332,8 +1332,8 @@ html body .ix-why li>b,html body #program p.ix-lt,html body #program .ix-ls p.ix
 /* theme changes: equal air on both sides of the pixel band */
 html:not(.x-old) body .paper.pz{padding-bottom:var(--r-air)}
 html:not(.x-old) body .seam+.sec{padding-top:var(--r-air)}
-html:not(.x-old) body .sec.tf{margin-top:var(--r-air);padding-top:calc(var(--edge) + var(--r-air));padding-bottom:calc(var(--edge) + var(--r-air))}
-html:not(.x-old) body .sec.tf+.sec{padding-top:var(--r-air)}
+
+
 /* same theme: one gap (section padding-top), no extra tails */
 html:not(.x-old) body .fstrip{padding-bottom:0}
 html:not(.x-old) body .ix-buy2{padding-top:var(--sec)}
@@ -2122,7 +2122,7 @@ addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeou
   clip-path:inset(-.4em -.2em -.15em -.2em);text-wrap:balance}
 #ix .band .ttl :is(h1,#ix h2)>span{display:block}
 #ix.fine .band .lb{color:var(--mute);background:var(--paper);padding:3px 7px}
-#ix.fine .band .lb u{color:var(--dim)}
+#ix.fine .band .lb u{color:var(--mute)}
 #ix.fine .band .lb.k{color:var(--k)}
 #ix .band .lb.ret{display:none}
 #ix.fine .band .lb.ret{display:block;color:var(--ink);white-space:nowrap}
@@ -6766,7 +6766,7 @@ tlGeo();onScroll();
 <style id="pp-unify">
 /* ===== pp-unify: one native plate language for the paper blocks before Programme ===== */
 /* 0 · spacing system: one air scale for the whole page, full-bleed container */
-:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px)}
+:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px);--r-sub:clamp(16px,1.6vw,24px)}
 html body .ipt-wave{height:clamp(120px,11vw,170px)}
 html body .wrap{max-width:none}
 html body .sec{padding-top:var(--r-air)}
@@ -6821,8 +6821,8 @@ html body #audience .aud-yes>.ix-why li:first-child{padding-top:0}
 html body #audience .aud-yes>.ix-why li:last-child{padding-bottom:0;border-bottom:0}
 
 /* 9 · required-course links: the pill hover must not repaint the big link (was making it unreadable) */
-html body [data-lkey="m-prereq"] a.aud-c:hover,html body [data-lkey="m-prereq"] a.aud-c:focus-visible{background:none!important;color:var(--fg)!important;box-shadow:none!important}
-html body [data-lkey="m-prereq"] a.aud-c:hover small,html body [data-lkey="m-prereq"] a.aud-c:focus-visible small{color:var(--mute)!important}
+html body [data-lkey="m-prereq"] a.aud-c:hover{background:none!important;color:var(--fg)!important;box-shadow:none!important}
+html body [data-lkey="m-prereq"] a.aud-c:hover small{color:var(--mute)!important}
 
 /* 10 · "for you if": standard mono plate header, big title in the body (like tier1) */
 html body #audience .aud-yes>.ph{display:flex;align-items:center;gap:10px;height:56px;min-height:56px;padding:0 30px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap}
@@ -6837,9 +6837,9 @@ html body #audience .aud-yes>.ix-why{padding:18px 30px 30px;margin:0}
 html body #audience .aud-yes::before,html body #audience .aud-yes::after{width:14px;height:14px;top:21px;border-radius:50%;background:#0b0b0c;box-shadow:inset 0 0 0 2px var(--top)}
 
 /* 11 · required-course links: no pill paint on hover (id-scoped so it always wins) */
-html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover,html body #audience [data-lkey="m-prereq"] a.u.aud-c:focus-visible{background:transparent!important;background-color:transparent!important;color:var(--fg)!important}
-html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover b,html body #audience [data-lkey="m-prereq"] a.u.aud-c:focus-visible b{color:var(--fg)!important}
-html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover small,html body #audience [data-lkey="m-prereq"] a.u.aud-c:focus-visible small{color:var(--mute)!important}
+html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover{background:transparent!important;background-color:transparent!important;color:var(--fg)!important}
+html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover b{color:var(--fg)!important}
+html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover small{color:var(--mute)!important}
 html body #audience [data-lkey="m-prereq"] a.u.aud-c::after{content:none!important}
 
 /* 12 · "not for you if": same mono header, outline only */
@@ -6947,6 +6947,10 @@ html body .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-hei
    and would only push the line itself down onto the cards */
 html body #audience .sh{border-bottom:1px solid var(--line2);margin-bottom:clamp(40px,4vw,56px);padding-bottom:clamp(24px,2.6vw,36px)}
 html body #audience .sh::after{content:none}
+
+
+/* Wave A (18.11.2026, решение владельца): works slot hidden until the student selection is inserted */
+html body #works{display:none}
 </style>
 
 <style id="marq-fix">/* бегущая строка фестивалей: своя бумага, стандартный зазор до био, две линии */
