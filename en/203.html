@@ -1962,37 +1962,46 @@ html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 
 
 
-<script id="pix-3d">/* декор: плоские кривые из точек 4 px; x вправо, y вверх, без перспективы */
+
+
+<script id="pix-3d">/* декор: плоская графика из точек 4 px; x вправо, y вверх, без перспективы */
 (()=>{const P=4,INK="#0b0b0c",PAD=.06;
-/* --- ДЕКА: эллиптическая спираль, 3.4 витка, растянута по x --- */
-const spiral=()=>{const a=[],T=3.4,N=5000,AR=2.9;
- for(let i=0;i<N;i++){const t=i/(N-1), th=t*T*2*Math.PI, r=.05+.95*t;
-  a.push([r*Math.cos(th)*AR, r*Math.sin(th)]);}
- return a};
-/* --- ШАПКА: две эллиптические орбиты под углом ±0.42 --- */
-const orbits=()=>{const a=[],N=2500;
+const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+const bay=(x,y)=>B[(x&3)+4*(y&3)]/16;
+/* --- ДЕКА: четыре синусоиды, нарисованные короткими штрихами вниз от линии --- */
+const waves=(nx,ny)=>{const out=[];
+ const W=[[.30,2.6,0.0,.58,2],[.24,1.7,1.2,.46,2],[.34,3.4,2.5,.52,2],[.18,1.15,3.6,.50,1]];
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0, x=(u-.5)*2;
+  const fade=Math.min(1,u/.08)*Math.min(1,(1-u)/.08);
+  for(const [A,L,ph,c0,tk] of W){
+   const y=c0+A*Math.sin(2*Math.PI*x/L+ph);
+   const cy0=Math.round((1-y)*(ny-1));
+   for(let k=0;k<tk;k++){const cy=cy0+k; if(cy<0||cy>=ny)continue;
+    if(bay(cx,cy)<(.75-.35*k)*fade) out.push([cx,cy]);}}}
+ return out};
+/* --- ШАПКА: две эллиптические орбиты под углом ±0.42, вписаны по bbox --- */
+const orbits=(nx,ny)=>{const a=[],N=2500;
  [[.42,1.0],[-.42,.78]].forEach(([rot,rr])=>{
   const cr=Math.cos(rot), sr=Math.sin(rot);
   for(let i=0;i<N;i++){const th=i/N*2*Math.PI;
    const x=rr*Math.cos(th), y=rr*Math.sin(th)*.46;
    a.push([x*cr-y*sr, x*sr+y*cr]);}});
- return a};
-const FN={deck:spiral,aud:orbits};
-/* вписать точки в блок по bounding box с полями PAD */
-const fit=(a)=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+ let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
  for(const p of a){if(p[0]<x0)x0=p[0];if(p[0]>x1)x1=p[0];if(p[1]<y0)y0=p[1];if(p[1]>y1)y1=p[1];}
- const w=x1-x0||1, h=y1-y0||1;
- return a.map(p=>[(p[0]-x0)/w, (p[1]-y0)/h]);};
+ const w=x1-x0||1, h=y1-y0||1, out=[];
+ for(const p of a){
+  const cx=Math.round((PAD+(p[0]-x0)/w*(1-2*PAD))*(nx-1));
+  const cy=Math.round((1-PAD-(p[1]-y0)/h*(1-2*PAD))*(ny-1));   /* y вверх */
+  if(cx>=0&&cy>=0&&cx<nx&&cy<ny) out.push([cx,cy]);}
+ return out};
+const FN={deck:waves,aud:orbits};
 const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
  const D=Math.min(2.5,window.devicePixelRatio||1);
  cv.width=Math.round(w*D);cv.height=Math.round(h*D);
  const g=cv.getContext("2d");g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,w,h);g.fillStyle=INK;
  const nx=Math.ceil(w/P), ny=Math.ceil(h/P);
- const pts=fit((FN[cv.dataset.d3]||FN.aud)());
  const seen=new Set();
- for(const [u,v] of pts){
-  const cx=Math.round((PAD+u*(1-2*PAD))*(nx-1));
-  const cy=Math.round((1-PAD-v*(1-2*PAD))*(ny-1));   /* y вверх */
+ for(const [cx,cy] of (FN[cv.dataset["3d"]]||FN.aud)(nx,ny)){   /* data-3d → dataset["3d"] */
   if(cx<0||cy<0||cx>=nx||cy>=ny)continue;
   const k=cy*nx+cx; if(seen.has(k))continue; seen.add(k);
   g.fillRect(cx*P,cy*P,P,P);}
@@ -2697,9 +2706,10 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
       <div class="au-cr"><p><b>Shown at:</b> Berlin Atonal · Ars Electronica · Mutek Montreal · Barbican · Berghain · Fête des Lumières Lyon · Unsound · Sonar Istanbul · L.E.V.</p><p><b>Worked with:</b> Maxim Didenko · Berlin Ballet Company · Dasha Rush · Robert Lippok · Whitevoid</p><p><b>Companies and clients:</b> Scanline · Trixter · SILA SVETA · Hyundai</p><p><b>Taught at:</b> SAE Institute · Scream School · British Higher School of Art and Design · LPM Rome</p></div><div class="au-pj"><h3 class="H">Selected projects</h3><div class="au-pg"><figure class="au-pc"><img loading="eager" src="img/projects/a-techno-ballet-odyssey.jpg" alt="A Techno Ballet Odyssey" decoding="async"><figcaption class="mono"><b>A Techno Ballet Odyssey</b> · 2024</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/asmodeus.jpg" alt="Asmodeus" decoding="async"><figcaption class="mono"><b>Asmodeus</b> · 2018</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/tekst.jpg" alt="Tekst" decoding="async"><figcaption class="mono"><b>Tekst</b> · 2018</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/black-russian.jpg" alt="Black Russian" decoding="async"><figcaption class="mono"><b>Black Russian</b> · 2016</figcaption></figure></div></div>
       <p class="au-s"><span><b>28</b> <span class="mono">years in CGI &amp; real-time art</span></span><span class="ix-sep"> · </span><span><b>2,000+</b> <span class="mono">students</span></span><span class="ix-sep"> · </span><span><span class="mono">teaching since</span> <b>2001</b></span></p>
     </div>
-  </div></div></div>
-<div class="marq-gap"><div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
+  </div></div><div class="marq-gap"><div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
   <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div></div>
+  </div>
+
 <div class="edge b" aria-hidden="true"></div></section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="lbl mono"><b>08</b> Reviews<i class="op" style="--c:var(--dat)">text1 <u>DAT</u></i></div><div class="ix-rvs"><div class="ph ix-plh" aria-hidden="true">text1 <u>DAT</u><span class="r">2 reviews</span></div></div></div><script>document.addEventListener("DOMContentLoaded",function(){var D=window.REV2,box=document.querySelector("#reviews .ix-rvs");if(!D||!D.items||!box)return;
 D.items.forEach(function(x){var f=document.createElement("figure");f.className="pn lite ix-rv";f.style.setProperty("--c","var(--top)");
@@ -6903,15 +6913,16 @@ html body .buy-x a{color:var(--fg);text-decoration:underline;text-underline-offs
 html body .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:14px;line-height:20px;color:var(--txt);max-width:46ch}
 </style>
 
-<style id="marq-fix">/* бегущая строка фестивалей: своя бумага + зазор до био */
-html body .marq-gap{background:var(--paper,#e9e7e0);padding-top:56px}
-@media(max-width:760px){html body .marq-gap{padding-top:40px}}
-html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border:0;margin:0;padding:14px 0}
+<style id="marq-fix">/* бегущая строка фестивалей: своя бумага, стандартный зазор до био, две линии */
+html body .marq-gap{background:var(--paper,#e9e7e0);padding-top:var(--r-block,clamp(28px,3.2vw,48px))}
+html body #fests{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);border-block:1px solid var(--ink,#0b0b0c);margin:0;padding:14px 0}
 html body #fests .marq-t span,html body #fests .marq-t em{color:var(--ink,#0b0b0c)}
 html body #fests .marq-t em{background:var(--comp,#9a9a96)}
-html body .marq-w{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
-html body .marq-w .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
+html body .marq-gap .wrap{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
+html body .marq-gap .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
+
+
 
 
 
