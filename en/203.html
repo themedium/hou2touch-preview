@@ -1953,17 +1953,6 @@ html body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 @media (prefers-reduced-motion:reduce){.tlb,.tbar,.tls button{transition:none}}
 @media print{.tlb,.tbar{display:none!important}}
 }</style>
-
-
-
-
-
-
-
-
-
-
-
 <script id="pix-3d">/* декор: плоская графика из точек 4 px; x вправо, y вверх, без перспективы */
 (()=>{const P=4,INK="#0b0b0c",PAD=.06;
 const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
@@ -2704,7 +2693,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
       <p class="au-r"><span>Media artist, technical director, founder of Hou2Touch</span></p>
       <div class="au-bio-grid" data-lkey="m8"><p class="p au-c">Stanislav started in computer graphics in 1998 with commercials and music videos, and has been teaching since 2001: Maya at RealTime School in Moscow and at SAE Institute in Munich, Houdini at Scream School, CG Event and the British Higher School of Art and Design (2008–2012). In 2009 he launched his own Houdini school, houdini-howto.com, and in 2014 he began teaching TouchDesigner. He was a character and VFX technical director on animated features at Caligari Film, Trixter and Scanline, working on rigging, cloth and hair pipelines, simulation and Maya API development. In 2010 he built the Houdini infographics pipeline for Kommersant TV, then moved into real-time visuals: video mapping at SILA SVETA and Visuals.108 (2011–2013) and, from 2013 to 2019, his own studio Licht.Pfad. He made the first Hou2Touch course in 2020 and built the school as a team in 2022. More than 2,000 people have studied with him.</p><p class="p au-c">He built the media servers for three productions by Maxim Didenko: the immersive Black Russian (2016), the live interactive show Asmodeus (2018) and Tekst (2018, Yermolova Theatre), and the media server and live visuals for A Techno Ballet Odyssey by the Berlin Ballet Company at Kraftwerk Berlin (2024).</p><p class="p au-c">Large-format installations: the Iceberg video-mapping installation (2020), the panoramic Junction (2021–2023, shown at Sonar Istanbul 2024).</p></div>
       <div class="au-cr"><p><b>Shown at:</b> Berlin Atonal · Ars Electronica · Mutek Montreal · Barbican · Berghain · Fête des Lumières Lyon · Unsound · Sonar Istanbul · L.E.V.</p><p><b>Worked with:</b> Maxim Didenko · Berlin Ballet Company · Dasha Rush · Robert Lippok · Whitevoid</p><p><b>Companies and clients:</b> Scanline · Trixter · SILA SVETA · Hyundai</p><p><b>Taught at:</b> SAE Institute · Scream School · British Higher School of Art and Design · LPM Rome</p></div><div class="au-pj"><h3 class="H">Selected projects</h3><div class="au-pg"><figure class="au-pc"><img loading="eager" src="img/projects/a-techno-ballet-odyssey.jpg" alt="A Techno Ballet Odyssey" decoding="async"><figcaption class="mono"><b>A Techno Ballet Odyssey</b> · 2024</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/asmodeus.jpg" alt="Asmodeus" decoding="async"><figcaption class="mono"><b>Asmodeus</b> · 2018</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/tekst.jpg" alt="Tekst" decoding="async"><figcaption class="mono"><b>Tekst</b> · 2018</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/black-russian.jpg" alt="Black Russian" decoding="async"><figcaption class="mono"><b>Black Russian</b> · 2016</figcaption></figure></div></div>
-      <p class="au-s"><span><b>28</b> <span class="mono">years in CGI &amp; real-time art</span></span><span class="ix-sep"> · </span><span><b>2,000+</b> <span class="mono">students</span></span><span class="ix-sep"> · </span><span><span class="mono">teaching since</span> <b>2001</b></span></p>
+      <div class="au-s"><div><b>28</b><span class="mono">years in CGI &amp; real-time art</span></div><div><b>2,000+</b><span class="mono">students</span></div><div class="au-last"><span class="mono">teaching since</span><b>2001</b></div></div>
     </div>
   </div><div class="marq-gap"><div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
   <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div></div></div>
@@ -6873,11 +6862,13 @@ html body #reviews .ix-rvs figure.ix-rv::before,html body #reviews .ix-rvs figur
 .ix-patch .ipt-h>i::before,.ix-patch .ipt-pl>i[data-t]::before{content:attr(data-t)}
 .ix-patch .ipt-h>span.d::before{content:attr(data-t)}
 .ix-patch .ipt-t>b::before,.ix-patch .ipt-t>small::before{content:attr(data-t)}
-/* teacher: one stats line, credit lines, selected projects */
-html body #author .au-s{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 2px;border-block:1px solid var(--line2);padding:14px 0;margin-top:22px}
-html body #author .au-s b{display:inline;font:700 30px/1 var(--disp);font-variant-numeric:tabular-nums}
-html body #author .au-s .mono{display:inline;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-html body #author .au-s .ix-sep{color:var(--mute);padding:0 10px}
+/* teacher: passport stats strip — число сверху, подпись капсом снизу, линейки как в референсе */
+html body #author .au-s{margin-top:22px;border-block:1px solid var(--line2)}
+html body #author .au-s>div{display:flex;flex-direction:column;padding:16px 18px 18px 0;min-width:0}
+html body #author .au-s>div+div{border-left:1px solid var(--line);padding-left:18px}
+html body #author .au-s .au-last b{order:-1}
+html body #author .au-s b{display:block;font:700 40px/0.9 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
+html body #author .au-s .mono{display:block;margin-top:10px;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 html body #author .au-cr{display:grid;grid-template-columns:1fr 1fr;gap:18px clamp(24px,3vw,48px);margin-top:28px;border-top:1px solid var(--line2);padding-top:22px}
 html body #author .au-cr p{margin:0;font:400 16px/1.6 var(--sans);color:var(--txt);max-width:34em}
 html body #author .au-cr b{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
@@ -6921,15 +6912,6 @@ html body #fests .marq-t em{background:var(--comp,#9a9a96)}
 html body .marq-gap .wrap{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
 html body .marq-gap .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
-
-
-
-
-
-
-
-
-
 <style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}

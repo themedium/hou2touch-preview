@@ -2685,11 +2685,10 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
       <p class="au-r"><span>Media artist, technical director, founder of Hou2Touch</span></p>
       <div class="au-bio-grid" data-lkey="m8"><p class="p au-c">Stanislav started in computer graphics in 1998 with commercials and music videos, and has been teaching since 2001: Maya at RealTime School in Moscow and at SAE Institute in Munich, Houdini at Scream School, CG Event and the British Higher School of Art and Design (2008–2012). In 2009 he launched his own Houdini school, houdini-howto.com, and in 2014 he began teaching TouchDesigner. He was a character and VFX technical director on animated features at Caligari Film, Trixter and Scanline, working on rigging, cloth and hair pipelines, simulation and Maya API development. In 2010 he built the Houdini infographics pipeline for Kommersant TV, then moved into real-time visuals: video mapping at SILA SVETA and Visuals.108 (2011–2013) and, from 2013 to 2019, his own studio Licht.Pfad. He made the first Hou2Touch course in 2020 and built the school as a team in 2022. More than 2,000 people have studied with him.</p><p class="p au-c">He has taught 2D GLSL procedural graphics since 2019 (LPM Rome) and wrote the Hou2Touch GLSL and SOP-on-GPU courses.</p><p class="p au-c">Houdini runs through his work: the terrain of Defrag (2019), the Kinect→TouchDesigner→Houdini pipeline of the Drop it music video (2020), the Iceberg installation (2020). He presented this practice at Derivative: the talk «Houdini and TouchDesigner in artistic work» and the workshop «Procedural pipeline for CG Artist» (2021).</p></div>
       <div class="au-cr"><p><b>Shown at:</b> Berlin Atonal · Ars Electronica · Mutek Montreal · Barbican · Berghain · Fête des Lumières Lyon · Unsound · Sonar Istanbul · L.E.V.</p><p><b>Worked with:</b> Maxim Didenko · Berlin Ballet Company · Dasha Rush · Robert Lippok · Whitevoid</p><p><b>Companies and clients:</b> Scanline · Trixter · SILA SVETA · Hyundai</p><p><b>Taught at:</b> SAE Institute · Scream School · British Higher School of Art and Design · LPM Rome</p></div><div class="au-pj"><h3 class="H">Selected projects</h3><div class="au-pg" style="grid-template-columns:repeat(1,minmax(0,300px))"><figure class="au-pc"><img loading="eager" src="img/projects/molotki.jpg" alt="I need a sense" decoding="async"><figcaption class="mono"><b>I need a sense</b> · 2019</figcaption></figure></div></div>
-      <p class="au-s"><span><b>28</b> <span class="mono">years in CGI &amp; real-time art</span></span><span class="ix-sep"> · </span><span><b>2,000+</b> <span class="mono">students</span></span><span class="ix-sep"> · </span><span><span class="mono">teaching since</span> <b>2001</b></span></p>
+      <div class="au-s"><div><b>28</b><span class="mono">years in CGI &amp; real-time art</span></div><div><b>2,000+</b><span class="mono">students</span></div><div class="au-last"><span class="mono">teaching since</span><b>2001</b></div></div>
     </div>
   </div><div class="marq-gap"><div class="marq" id="fests" aria-label="Festivals &amp; venues"><div class="marq-t" id="festT"></div></div>
-  <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div></div>
-  </div>
+  <div class="wrap"><p class="mono marq-c">selected festivals &amp; venues</p></div></div></div>
   
 <div class="edge b" aria-hidden="true"></div></section>
 <section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="lbl mono"><b>08</b> Reviews<i class="op" style="--c:var(--dat)">text1 <u>DAT</u></i></div><div class="ix-rvs"><div class="ph ix-plh" aria-hidden="true">text1 <u>DAT</u><span class="r">2 reviews</span></div></div></div><script>document.addEventListener("DOMContentLoaded",function(){var D=window.REV2,box=document.querySelector("#reviews .ix-rvs");if(!D||!D.items||!box)return;
@@ -6854,11 +6853,13 @@ html body #reviews .ix-rvs figure.ix-rv::before,html body #reviews .ix-rvs figur
 .ix-patch .ipt-h>i::before,.ix-patch .ipt-pl>i[data-t]::before{content:attr(data-t)}
 .ix-patch .ipt-h>span.d::before{content:attr(data-t)}
 .ix-patch .ipt-t>b::before,.ix-patch .ipt-t>small::before{content:attr(data-t)}
-/* teacher: one stats line, credit lines, selected projects */
-html body #author .au-s{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 2px;border-block:1px solid var(--line2);padding:14px 0;margin-top:22px}
-html body #author .au-s b{display:inline;font:700 30px/1 var(--disp);font-variant-numeric:tabular-nums}
-html body #author .au-s .mono{display:inline;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-html body #author .au-s .ix-sep{color:var(--mute);padding:0 10px}
+/* teacher: passport stats strip — число сверху, подпись капсом снизу, линейки как в референсе */
+html body #author .au-s{margin-top:22px;border-block:1px solid var(--line2)}
+html body #author .au-s>div{display:flex;flex-direction:column;padding:16px 18px 18px 0;min-width:0}
+html body #author .au-s>div+div{border-left:1px solid var(--line);padding-left:18px}
+html body #author .au-s .au-last b{order:-1}
+html body #author .au-s b{display:block;font:700 40px/0.9 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
+html body #author .au-s .mono{display:block;margin-top:10px;font:500 11px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 html body #author .au-cr{display:grid;grid-template-columns:1fr 1fr;gap:18px clamp(24px,3vw,48px);margin-top:28px;border-top:1px solid var(--line2);padding-top:22px}
 html body #author .au-cr p{margin:0;font:400 16px/1.6 var(--sans);color:var(--txt);max-width:34em}
 html body #author .au-cr b{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
@@ -6902,15 +6903,6 @@ html body #fests .marq-t em{background:var(--comp,#9a9a96)}
 html body .marq-gap .wrap{background:var(--paper,#e9e7e0);color:var(--ink,#0b0b0c);margin:0;padding:0}
 html body .marq-gap .marq-c{color:var(--mute,#7a7a76);padding-block:10px 0}
 </style>
-
-
-
-
-
-
-
-
-
 <style id="l9-paths">.ix-paths{display:grid;gap:18px}</style><style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
