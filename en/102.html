@@ -1375,7 +1375,7 @@ html body .pr-l{flex:0 0 100%;font:500 var(--fs-xs)/1.4 var(--mono);letter-spaci
 html body .pr-t{font:400 var(--fs-m)/24px var(--sans)}
 html body [data-lkey="m-prereq"] a.u{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 16px;border:1px solid var(--ink);border-radius:999px;font:500 var(--fs-m)/1 var(--sans);letter-spacing:-.01em;line-height:1;color:var(--ink);text-decoration:none;white-space:nowrap;background:transparent;transition:background .15s,color .15s}
 html body [data-lkey="m-prereq"] a.u::after{content:"→";margin-left:10px;font:500 var(--fs-xs)/1 var(--mono)}
-html body [data-lkey="m-prereq"] a.u:hover,html body [data-lkey="m-prereq"] a.u:focus-visible{background:var(--ink)!important;color:var(--paper)!important}
+html body [data-lkey="m-prereq"] a.u:not(.aud-c):hover,html body [data-lkey="m-prereq"] a.u:not(.aud-c):focus-visible{background:var(--ink)!important;color:var(--paper)!important}
 @media (max-width:900px){
 html body [data-lkey="m-prereq"]{display:block}
 html body [data-lkey="m-prereq"]>p:not(.pr-row){max-width:none}
@@ -7171,9 +7171,9 @@ html body #audience .aud-yes>.cd-h .sq9{display:none}
 html body #audience .aud-yes>.ix-why{padding:18px 30px 30px;margin:0}
 html body #audience .aud-yes::before{width:14px;height:14px;top:21px;border-radius:50%;background:var(--ink);box-shadow:inset 0 0 0 2px var(--top)}
 html body #audience .aud-yes::after{width:14px;height:14px;top:21px;border-radius:50%;background:var(--ink);box-shadow:inset 0 0 0 2px var(--top)}
-/* 11 · required-course links: no pill paint on hover (id-scoped so it always wins) */ html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover{background:transparent;background-color:transparent;color:var(--fg)}
-html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover b{color:var(--fg)}
-html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover small{color:var(--mute)}
+/* 11 · required-course links: no pill paint on hover (id-scoped so it always wins) */ html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover{background:transparent!important;background-color:transparent!important;color:var(--fg)!important}
+html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover b{color:var(--fg)!important}
+html body #audience [data-lkey="m-prereq"] a.u.aud-c:hover small{color:var(--mute)!important}
 html body #audience [data-lkey="m-prereq"] a.u.aud-c::after{content:none}
 outline only */ html body #audience .aud-no>.ph{display:flex;align-items:center;gap:10px;height:56px;min-height:56px;padding:0 16px;border:1px solid var(--line2);border-radius:10px;background:transparent;font:500 var(--fs-xs)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap}
 html body #audience .aud-no>.ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--dat);flex:none}
