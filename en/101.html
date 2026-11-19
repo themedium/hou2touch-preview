@@ -2591,9 +2591,35 @@ void main(){
 function rgb(css){const e=document.createElement('i');e.style.color=css;document.body.appendChild(e);const v=getComputedStyle(e).color.match(/\d+/g).slice(0,3).map(x=>x/255);e.remove();return v}
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const scenes=[];
+function band2D(cv,s){ /* Windows/no-GPU: статичный растр вместо пустой полосы; один кадр, без цикла */
+  try{
+    var r=cv.getBoundingClientRect(); if(r.width<10||r.height<10)return;
+    var x=cv.getContext('2d');
+    if(!x){var nc=document.createElement('canvas');nc.className=cv.className;nc.style.cssText=cv.style.cssText;
+      for(var a=0;a<cv.attributes.length;a++){var at=cv.attributes[a];if(at.name!=='width'&&at.name!=='height')nc.setAttribute(at.name,at.value);}
+      cv.parentNode.replaceChild(nc,cv);cv=nc;x=cv.getContext('2d');if(!x)return;}
+    var DP=Math.min(2,window.devicePixelRatio||1),CL=4;
+    cv.width=Math.max(1,Math.round(r.width/CL*DP)); cv.height=Math.max(1,Math.round(r.height/CL*DP));
+    var cs=getComputedStyle(s);
+    var k=(cs.getPropertyValue('--k')||'#65a30d').trim(),pp=(cs.getPropertyValue('--paper')||'#e9e7e0').trim();
+    if(k[0]!=='#'||k.length<7)k='#65a30d'; if(pp[0]!=='#'||pp.length<7)pp='#e9e7e0';
+    var seed=0,mq=((s.dataset&&(s.dataset.m||s.dataset.slug))||'')+'|'+(s.id||'')+'|'+Array.prototype.indexOf.call(document.querySelectorAll('#ix .hero'),s);
+    for(var i=0;i<mq.length;i++)seed=(seed*31+mq.charCodeAt(i))>>>0;
+    var rnd=function(){seed=(seed+0x6D2B79F5)>>>0;var t=seed;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;};
+    var img=x.getImageData(0,0,cv.width,cv.height),d=img.data;
+    var kr=parseInt(k.slice(1,3),16),kg=parseInt(k.slice(3,5),16),kb=parseInt(k.slice(5,7),16);
+    var pr=parseInt(pp.slice(1,3),16),pg=parseInt(pp.slice(3,5),16),pb=parseInt(pp.slice(5,7),16);
+    var W=cv.width;
+    for(var y=0;y<cv.height;y++){var w=0.5+0.5*Math.sin(y*0.12+seed%7);
+      for(var xi=0;xi<W;xi++){var o=(y*W+xi)*4;var on=rnd()<(0.30+0.16*w);
+        d[o]=on?kr:pr; d[o+1]=on?kg:pg; d[o+2]=on?kb:pb; d[o+3]=255;}}
+    x.putImageData(img,0,0);
+    cv.style.imageRendering='pixelated';
+  }catch(e){}
+}
 for(const s of document.querySelectorAll('#ix .hero')){
  const cv=s.querySelector('canvas');const gl=cv.getContext('webgl',{antialias:false,preserveDrawingBuffer:true});
- if(!gl)continue;gl.getExtension('OES_standard_derivatives');
+ if(!gl){band2D(cv,s);continue;}gl.getExtension('OES_standard_derivatives');
  const sh=(t,src)=>{const o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o};
  const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);gl.useProgram(pr);
  const bf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
@@ -2649,7 +2675,7 @@ function draw(sc,now){
 }
 let __hid=document.hidden;document.addEventListener("visibilitychange",()=>{const h=document.hidden;if(__hid&&!h&&!reduce)requestAnimationFrame(loop);__hid=h});
 function loop(now){if(__hid)return;for(const sc of scenes)if(sc.vis)draw(sc,now);if(!reduce)requestAnimationFrame(loop)}
-document.fonts.ready.then(()=>{
+Promise.race([document.fonts.ready,new Promise(function(r){setTimeout(r,2500);})]).then(()=>{
  requestAnimationFrame(loop);
  requestAnimationFrame(()=>document.querySelectorAll('#ix .hero').forEach(s=>s.classList.add('in')));
  setTimeout(()=>scenes.forEach(sc=>sc.mask()),reduce?0:1650); // halo lands with the letters
