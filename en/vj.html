@@ -53,7 +53,7 @@
   --fg:#efeee9; --fg8:rgba(239,238,233,.8); --txt:#cfcec9; --mute:#8f8e8a; --dim:#5a5956;
   --line:rgba(239,238,233,.11); --line2:rgba(239,238,233,.22);
   --hou:#e5501e; --td:#7fe7ff;
-  --sop:#3d7fd6; --top:##65a30d; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
+  --sop:#3d7fd6; --top:#65a30d; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
   --pad:clamp(16px,3.9vw,56px); --gap:clamp(10px,1.4vw,20px);
   --sec:160px; --hgap:56px; --pgap:24px;
   --pnb:linear-gradient(180deg,#141416,#111113); --hv:#fff;
@@ -462,7 +462,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx-g{display:grid;gap:32px;min-width:0}
 /* ---------- лист ---------- */
 .h2t .rx{--rx-ink:#0b0b0c;--rx-cr:#efeee9;--rx-txt:#2b2a28;--rx-mu:#56544f;--rx-ln:rgba(11,11,12,.13);--rx-ln2:rgba(11,11,12,.45);--rx-tk:rgba(11,11,12,.28);
-  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:##65a30d;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
+  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:#65a30d;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
   --rx-sans:var(--sans,"Inter Tight",system-ui,sans-serif);--rx-mono:var(--mono,"JetBrains Mono",ui-monospace,monospace);
   --rx-es:cubic-bezier(.2,0,0,1);--rx-em:cubic-bezier(.22,1,.36,1);--rx-ease:var(--ease,cubic-bezier(.19,1,.22,1));--fg:#0b0b0c;
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
@@ -1078,7 +1078,7 @@ html{scroll-padding-block:73px 46px}
 <style id="wave-look-css">
 /* ===== concept v8: numbered items in the page's own out1 language ===== */
 /* Owner decision 19.11: the #concept accent is 203's green, not the page's
-   --top (violet ##65a30d on 201/206/207/302/304/305/101/102/205/204 and
+   --top (violet #65a30d on 201/206/207/302/304/305/101/102/205/204 and
    modulardesign). 203 resolves it as --ab:var(--top) with --top:#65a30d — the
    same colour, written literally here so the numbers 01/02, the ab-bar and the
    connector stay green on every page. */
@@ -2137,7 +2137,7 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
 <script>
 (function(){
 const {R,H,$,$$,reduce,fine,clamp,lerp,ease,MOTION,LOOP,onView,reveal,lock,digits,nav,blocks,fit}=H2TF;
-const COURSE={"slug": "vj", "fam": "##65a30d", "motif": 3, "seed": 0, "px": 0.6, "pxm": 0.5, "n1": 4, "n2": 4, "u5m": 2, "defx": "up19"};
+const COURSE={"slug": "vj", "fam": "#65a30d", "motif": 3, "seed": 0, "px": 0.6, "pxm": 0.5, "n1": 4, "n2": 4, "u5m": 2, "defx": "up19"};
 /* флаги-классы на #h2t (f-fam f-lc f-print — как на главной; f-short — невысокое окно, 11.10); откат = убрать класс; предпросмотр — ?off=fam,lc,print,short */
 (function(){try{const q=new URLSearchParams(location.search);(q.get("off")||"").split(/[,\s]+/).forEach(v=>{if(/^(fam|lc|print|short)$/.test(v))H.classList.remove("f-"+v)})}catch(_){}})();
 const FL=v=>H.classList.contains("f-"+v);
