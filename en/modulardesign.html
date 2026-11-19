@@ -57,7 +57,7 @@ Your TouchDesigner projects grow into one tangled network. Finding things takes 
   --fg:#efeee9; --fg8:rgba(239,238,233,.8); --txt:#cfcec9; --mute:#8f8e8a; --dim:#5a5956;
   --line:rgba(239,238,233,.11); --line2:rgba(239,238,233,.22);
   --hou:#e5501e; --td:#7fe7ff;
-  --sop:#3d7fd6; --top:#8a63c9; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
+  --sop:#3d7fd6; --top:##65a30d; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
   --pad:clamp(16px,3.9vw,56px); --gap:clamp(10px,1.4vw,20px);
   --sec:160px; --hgap:56px; --pgap:24px;
   --pnb:linear-gradient(180deg,#141416,#111113); --hv:#fff;
@@ -466,7 +466,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx-g{display:grid;gap:32px;min-width:0}
 /* ---------- лист ---------- */
 .h2t .rx{--rx-ink:#0b0b0c;--rx-cr:#efeee9;--rx-txt:#2b2a28;--rx-mu:#56544f;--rx-ln:rgba(11,11,12,.13);--rx-ln2:rgba(11,11,12,.45);--rx-tk:rgba(11,11,12,.28);
-  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:#8a63c9;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
+  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:##65a30d;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
   --rx-sans:var(--sans,"Inter Tight",system-ui,sans-serif);--rx-mono:var(--mono,"JetBrains Mono",ui-monospace,monospace);
   --rx-es:cubic-bezier(.2,0,0,1);--rx-em:cubic-bezier(.22,1,.36,1);--rx-ease:var(--ease,cubic-bezier(.19,1,.22,1));--fg:#0b0b0c;
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
@@ -1109,7 +1109,7 @@ html{scroll-padding-block:73px 46px}
 @keyframes inwf{to{stroke-dashoffset:-40}}
 
 /* patch (ref 16.11) */
-.ix-patch{display:none;position:relative;--cc:var(--c,#8a63c9)}
+.ix-patch{display:none;position:relative;--cc:var(--c,##65a30d)}
 .ipt-mods{display:grid;column-gap:clamp(14px,2vw,30px);margin-top:18px;position:relative;padding-bottom:58px}
 .ipt-mods::after{content:"";position:absolute;left:0;right:0;bottom:16px;height:1px;background:var(--ink)}
 .ipt-m{display:flex;flex-direction:column;min-width:0;position:relative;transition:opacity .2s}
@@ -1906,7 +1906,7 @@ html.x-about #concept .m2-open .mono{color:var(--chop)}
 <style id="wave-look-css">
 /* ===== concept v8: numbered items in the page's own out1 language ===== */
 /* Owner decision 19.11: the #concept accent is 203's green, not the page's
-   --top (violet #8a63c9 on 201/206/207/302/304/305/101/102/205/204 and
+   --top (violet ##65a30d on 201/206/207/302/304/305/101/102/205/204 and
    modulardesign). 203 resolves it as --ab:var(--top) with --top:#65a30d — the
    same colour, written literally here so the numbers 01/02, the ab-bar and the
    connector stay green on every page. */
@@ -2104,8 +2104,8 @@ html body #works{display:none}
 #ix{
   --paper:#e9e7e0;--ink:#0b0b0c;--txt:#2b2a28;--mute:#67655f;--dim:#9a988f;
   --line:rgba(11,11,12,.12);--line2:rgba(11,11,12,.28);--hou:#e5501e;
-  --sop:#3d7fd6;--top:#8a63c9;--chop:#45a654;--dat:#c34f9a;
-  --disp:"H2T Bebas",Impact,sans-serif;--sans:"Inter Tight",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  --sop:#3d7fd6;--top:##65a30d;--chop:#45a654;--dat:#c34f9a;
+  --disp:"H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif;--sans:"Inter Tight","H2T Sans FB","H2T Sans FB2",system-ui,sans-serif;--mono:"JetBrains Mono","H2T Mono FB","H2T Mono FB2",ui-monospace,monospace;
   /* grid */
   --pad:clamp(16px,3.9vw,56px);--gut:clamp(12px,1.4vw,20px);
   /* type scale (fluid, 390 → 1440 → 1920) */
@@ -2276,6 +2276,15 @@ html body #works{display:none}
 #ix .meta .a{grid-column:1/13}}
 #ix .hero{min-height:auto;height:auto;max-height:none;padding-top:var(--ix-navh,52px)}
 }</style>
+<style id="winhdr">/* win headers: calibrated metric fallback (Arial local, no Google) */
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:100 300;size-adjust:105.94%;ascent-override:97.87%;descent-override:24.44%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:400;size-adjust:103.66%;ascent-override:100.02%;descent-override:24.98%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:500;size-adjust:104.93%;ascent-override:98.81%;descent-override:24.68%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:600 900;size-adjust:100.30%;ascent-override:103.37%;descent-override:25.82%;line-gap-override:0%}
+#ix{--sans:"Inter Tight","IX Sans","H2T Sans FB","H2T Sans FB2",system-ui,sans-serif}
+/* low window (1366x768 @150% -> 512px): H1 above the fold */
+@media (max-height:720px){#ix .hero{min-height:max(420px,100svh);max-height:none}}
+</style>
 <div id="ix"><header class="hero long" id="top" style="--k:var(--top)" data-m="warp" data-lkey="m1,m15">
  <div class="band"><canvas></canvas><div class="ov" aria-hidden="true"><div class="tk"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
    <span class="lb tl" data-t="srvmodulardesign COMP"></span><span class="lb tr fc" data-t="f 000000 · 60 fps"></span><span class="lb ret" data-t=""></span>
@@ -2583,7 +2592,7 @@ for(const s of document.querySelectorAll('#ix .hero')){
   sc.bx=[(L-br.left)/br.width,(Tt-br.top)/br.height,(Rr-br.left)/br.width,(B-br.top)/br.height];
   x.restore();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,mk);sc.ht=1;};
  sc.mask=sc_mask;sc.mk=mk;
- const size=()=>{const r=cv.getBoundingClientRect();sc.W=r.width;sc.H=r.height;cv.width=Math.max(1,Math.round(r.width/CELL));cv.height=Math.max(1,Math.round(r.height/CELL));gl.viewport(0,0,cv.width,cv.height);if(sc.ht&&sc_mask)sc_mask()};
+ const size=()=>{const r=cv.getBoundingClientRect();sc.W=r.width;sc.H=r.height;const DP=Math.min(2,window.devicePixelRatio||1);cv.width=Math.max(1,Math.round(r.width/CELL*DP));cv.height=Math.max(1,Math.round(r.height/CELL*DP));gl.viewport(0,0,cv.width,cv.height);if(sc.ht&&sc_mask)sc_mask()};
  size();new ResizeObserver(size).observe(cv);
  const band=s.querySelector('.band');
  band.addEventListener('pointermove',e=>{const r=band.getBoundingClientRect();sc.p=[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height];sc.pat=1});
@@ -2610,7 +2619,8 @@ function draw(sc,now){
  gl.drawArrays(gl.TRIANGLES,0,3);
  if(sc.fc)sc.fc.dataset.t='f '+String(Math.floor(t*60)).padStart(6,'0')+' · 60 fps';
 }
-function loop(now){for(const sc of scenes)if(sc.vis)draw(sc,now);if(!reduce)requestAnimationFrame(loop)}
+let __hid=document.hidden;document.addEventListener("visibilitychange",()=>{const h=document.hidden;if(__hid&&!h&&!reduce)requestAnimationFrame(loop);__hid=h});
+function loop(now){if(__hid)return;for(const sc of scenes)if(sc.vis)draw(sc,now);if(!reduce)requestAnimationFrame(loop)}
 document.fonts.ready.then(()=>{
  requestAnimationFrame(loop);
  requestAnimationFrame(()=>document.querySelectorAll('#ix .hero').forEach(s=>s.classList.add('in')));
@@ -2674,7 +2684,7 @@ const L=[
 (g,w,h,R,A,D)=>{const n=Math.round(18+30*A),b=R()*.4;for(let i=0;i<n;i++){const t=i/n;g.beginPath();g.moveTo(-w*.1,h*1.05);g.bezierCurveTo(w*(.2+b*.3),h*(1.1-t*.3),w*(.45-b*.2),h*(.8-t*1.3),w*1.1,h*(1.1-t*1.4));g.stroke()}},
 (g,w,h,R,A,D)=>{const fl=R()<.5;for(let y=0;y<h;y+=D)for(let x=0;x<w;x+=D){const d=((fl?w-x:x)/w*.75+(1-y/h)*.55)*A;if(R()<d*d)g.fillRect(x,y,D*1.1,D*1.1)}}];
 const draw=(cv,hot)=>{const t=cv.parentNode,w0=cv.clientWidth,h0=cv.clientHeight;if(!w0||!h0)return;const D=devicePixelRatio||1,w=Math.round(w0*D),h=Math.round(h0*D);cv.width=w;cv.height=h;
-const g=cv.getContext("2d"),n=+t.dataset.t.slice(0,2),R=rng(n*7919+13),A=+t.dataset.a||1,pc=(getComputedStyle(r).getPropertyValue("--cc")||"#8a63c9").trim();
+const g=cv.getContext("2d"),n=+t.dataset.t.slice(0,2),R=rng(n*7919+13),A=+t.dataset.a||1,pc=(getComputedStyle(r).getPropertyValue("--cc")||"##65a30d").trim();
 g.clearRect(0,0,w,h);let col="#e9e7e0";if(hot)col=pc;else if(t.classList.contains("acc")){const gr=g.createLinearGradient(0,h,w,0);gr.addColorStop(0,"#e9e7e0");gr.addColorStop(.55,pc);gr.addColorStop(1,pc);col=gr}
 const hx=hot||t.classList.contains("acc")?pc:"#e9e7e0";g.__c=[parseInt(hx.slice(1,3),16),parseInt(hx.slice(3,5),16),parseInt(hx.slice(5,7),16)];
 g.strokeStyle=col;g.fillStyle=col;g.lineWidth=Math.max(1.1,1.05*D);g.lineCap="round";L[+t.dataset.g%L.length](g,w,h,R,A,D)};
@@ -2718,7 +2728,7 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
 <div class="ix-blk" data-lkey="m-prereq"><h3 class="ix-h2">Before you start</h3>
 <p>Completion of TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II, or an equivalent working knowledge of basic 3D geometry workflows, basic 3D rendering, CHOP and TOP signal flow, basic audio concepts, and Container layout controls.</p>
 <p class="pr-row"><span class="pr-l">Prerequisites:</span><a class="u aud-c aud-c1" href="/101"><small>TouchDesigner</small> <b>101: Extreme I<i aria-hidden="true">↗</i></b></a><span class="ix-vh">, </span><a class="u aud-c aud-c2" href="/102"><small>TouchDesigner</small> <b>102: Extreme II<i aria-hidden="true">↗</i></b></a></p>
-<p class="pr-row"><span class="pr-t">Not taken them yet? Both are in the</span><a class="u aud-c aud-cb" href="/extreme"><small>TouchDesigner</small> <b>Extreme Bundle (EN)<i aria-hidden="true">↗</i></b></a><span class="ix-vh">.</span></p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
+<p class="pr-row"><span class="pr-t">Not taken them yet? Both are in the</span><a class="u aud-c aud-cb" href="/extreme"><small>TouchDesigner</small> <b>Extreme Bundle<i aria-hidden="true">↗</i></b></a><span class="ix-vh">.</span></p></div><div class="pn lite rv" style="--c:var(--dat);margin-bottom:24px" data-lkey="m4">
     <div class="ph"><div class="m-bar"><h3 class="b3-h">What you will be able to do</h3><i class="m-rule" aria-hidden="true"></i><span class="m-chain-meta" aria-hidden="true">4 outcomes<i><s></s><s></s><s></s><s></s></i></span></div></div>
     <ol class="out1"><li><span class="n">01</span><span>Refactor a VJ patch into functional modules with stable references, centralised shared resources and a generated control interface</span></li><li><span class="n">02</span><span>Construct GPU-instanced grids from a single mesh with layout and variation controls, driven by image or movie input through a prepared component</span></li><li><span class="n">03</span><span>Configure PBR materials, texture maps and HDRI environment lighting on a prepared scene to control surface response</span></li><li><span class="n">04</span><span>Compare audio-spectrum and sequenced trigger sources as visual timing, with trigger envelopes shaped for beat-synchronised parameters</span></li></ol>
   </div>
@@ -2793,14 +2803,14 @@ f.appendChild(bq);f.appendChild(fc);box.appendChild(f);});});</script></section>
         <h3 class="tn">Modular Design</h3>
         <div class="tp"><b>[price — author]</b><p>Access to all video recordings for 730 days</p></div>
         <ul class="tl"><li>Access to all video recordings for 730 days</li><li>The project files used in the lessons</li></ul>
-        <a class="btn pill rec" href="#buy">Enroll <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><p class="buy-x">Not taken TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II yet? Both are in the <a class="u" href="/extreme">TouchDesigner Extreme Bundle (EN)</a>.</p>
+        <a class="btn pill rec" href="#buy">Enroll <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><p class="buy-x">Not taken TouchDesigner 101: Extreme I and TouchDesigner 102: Extreme II yet? Both are in the <a class="u" href="/extreme">TouchDesigner Extreme Bundle</a>.</p>
       </div>
       <div class="pf ix-buycap"><b>Modular Design</b> — [price — author] · Enroll</div>
     </article></div></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>10</b> Courses<i class="op" style="--c:var(--dat)">route1 <u>DAT</u></i></div>
   <div class="sh"><h2 class="H">Learning Paths &amp; Courses</h2><p class="dek">Related courses and learning paths.</p></div>
-  <ol class="rt"><li class="cur"><div class="pn rc" aria-current="page" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">modular_roy</span><span class="r">current</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/roy.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">modular design</span><b>/MODULARDESIGN</b></div><div class="cc-vw-box"><img src="img/covers/roy.png" alt="Modular Design" loading="lazy" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner</small></div><span class="ix-vh"> </span><span>Modular Design</span></div><p class="rc-d">Learn to build modular TouchDesigner systems: refactor VJ patches, instance grids, and drive PBR-lit scenes with audio triggers.</p><p class="rc-m mono">4.7 h video · <b>in /course</b></p></div></div></li><li class=""><a class="pn rc" href="205.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">vj205</span><span class="r">intermediate</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/205.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">vj system</span><b>/205</b></div><div class="cc-vw-box"><img src="img/covers/205.png" alt="VJTool" loading="lazy" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner · Resolume</small></div><span class="ix-vh"> </span><span><span style="font-size:.64em;color:var(--c);margin-right:.14em">205</span><span class="ix-vh"> </span>VJTool</span></div><p class="rc-d">Build your own sound-reactive VJ tool in TouchDesigner, with a movie bin, GLSL effects and a step sequencer, that also controls Resolume.</p><p class="rc-m mono">13 h video · <b><span data-h2t="price" data-slug="/205">€600</span></b></p></div></a></li><li class=""><a class="pn rc" href="301.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">glsl301</span><span class="r">advanced</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/301.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">shaders</span><b>/301</b></div><div class="cc-vw-box"><img src="img/covers/301.png" alt="2D GLSL" loading="lazy" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner</small></div><span class="ix-vh"> </span><span><span style="font-size:.64em;color:var(--c);margin-right:.14em">301</span><span class="ix-vh"> </span>2D GLSL</span></div><p class="rc-d">Write GLSL fragment shaders in TouchDesigner for procedural patterns, colour correction, stylised effects, feedback and Shadertoy ports.</p><p class="rc-m mono">6.9 h video · <b><span data-h2t="price" data-slug="/301">€340</span></b></p></div></a></li><li class=""><a class="pn rc" href="vj.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">path_vj1</span><span class="r">path</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/vj.png" alt="" loading="lazy" decoding="async"><div class="cc-vw-meta"><span class="mono">learning path</span><b>/VJ</b></div><div class="cc-vw-box"><img src="img/covers/vj.png" alt="VJing Path" loading="lazy" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner · Ableton Live +2</small></div><span class="ix-vh"> </span><span>VJing Path</span></div><p class="rc-d"></p><p class="rc-m mono">43 h video · <b><span data-h2t="price" data-slug="/vj">€1,217</span></b></p></div></a></li></ol>
+  <ol class="rt"><li class="cur"><div class="pn rc" aria-current="page" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">modular_roy</span><span class="r">current</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/roy.png" alt="" decoding="async"><div class="cc-vw-meta"><span class="mono">modular design</span><b>/MODULARDESIGN</b></div><div class="cc-vw-box"><img src="img/covers/roy.png" alt="Modular Design" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner</small></div><span class="ix-vh"> </span><span>Modular Design</span></div><p class="rc-d">Learn to build modular TouchDesigner systems: refactor VJ patches, instance grids, and drive PBR-lit scenes with audio triggers.</p><p class="rc-m mono">4.7 h video · <b>in /course</b></p></div></div></li><li class=""><a class="pn rc" href="205.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">vj205</span><span class="r">intermediate</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/205.png" alt="" decoding="async"><div class="cc-vw-meta"><span class="mono">vj system</span><b>/205</b></div><div class="cc-vw-box"><img src="img/covers/205.png" alt="VJTool" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner · Resolume</small></div><span class="ix-vh"> </span><span><span style="font-size:.64em;color:var(--c);margin-right:.14em">205</span><span class="ix-vh"> </span>VJTool</span></div><p class="rc-d">Build your own sound-reactive VJ tool in TouchDesigner, with a movie bin, GLSL effects and a step sequencer, that also controls Resolume.</p><p class="rc-m mono">13 h video · <b><span data-h2t="price" data-slug="/205">€600</span></b></p></div></a></li><li class=""><a class="pn rc" href="301.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">glsl301</span><span class="r">advanced</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/301.png" alt="" decoding="async"><div class="cc-vw-meta"><span class="mono">shaders</span><b>/301</b></div><div class="cc-vw-box"><img src="img/covers/301.png" alt="2D GLSL" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner</small></div><span class="ix-vh"> </span><span><span style="font-size:.64em;color:var(--c);margin-right:.14em">301</span><span class="ix-vh"> </span>2D GLSL</span></div><p class="rc-d">Write GLSL fragment shaders in TouchDesigner for procedural patterns, colour correction, stylised effects, feedback and Shadertoy ports.</p><p class="rc-m mono">6.9 h video · <b><span data-h2t="price" data-slug="/301">€340</span></b></p></div></a></li><li class=""><a class="pn rc" href="vj.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">path_vj1</span><span class="r">path</span></div><div class="cc-vw rc-vw"><img class="cc-vw-bg" src="img/covers/vj.png" alt="" decoding="async"><div class="cc-vw-meta"><span class="mono">learning path</span><b>/VJ</b></div><div class="cc-vw-box"><img src="img/covers/vj.png" alt="VJing Path" decoding="async"></div></div><div class="rc-b"><div class="rc-n"><div><small>TouchDesigner · Ableton Live +2</small></div><span class="ix-vh"> </span><span>VJing Path</span></div><p class="rc-d"></p><p class="rc-m mono">43 h video · <b><span data-h2t="price" data-slug="/vj">€1,217</span></b></p></div></a></li></ol>
   <div class="mono rt-n"><div style="display:contents"><a href="extreme.html">TouchDesigner Extreme Bundle — <b><span data-h2t="price" data-slug="/extreme">€500</span></b> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div> <div style="display:contents"><a href="index.html#courses"><svg class="ar" aria-hidden="true"><use href="#h2t-i-l"/></svg> all courses &amp; paths</a></div></div>
 </div></section>
 <section id="out" class="sec" data-lkey="brand-out"><div class="wrap"><div class="fin" id="contacts"><h2 class="fin-h"><span class="a">Think</span> <span class="b" id="finR">procedural</span></h2><div class="fx" id="fx" aria-live="polite"></div><a class="enl" href="index.html#courses"><span class="fgl">11</span><b>All courses</b><span class="mono id">hou2touch.com ↑</span></a></div></div></section>
@@ -3577,7 +3587,7 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
 <script>
 (function(){
 const {R,H,$,$$,reduce,fine,clamp,lerp,ease,MOTION,LOOP,onView,reveal,lock,digits,nav,blocks,fit}=H2TF;
-const COURSE={"slug": "modulardesign", "fam": "#8a63c9", "motif": 3, "seed": 0, "px": 0.62, "pxm": 0.5, "n1": 4, "n2": 3, "u5m": 2, "defx": "up18"};
+const COURSE={"slug": "modulardesign", "fam": "##65a30d", "motif": 3, "seed": 0, "px": 0.62, "pxm": 0.5, "n1": 4, "n2": 3, "u5m": 2, "defx": "up18"};
 /* флаги-классы на #h2t (f-fam f-lc f-print — как на главной; f-short — невысокое окно, 11.10); откат = убрать класс; предпросмотр — ?off=fam,lc,print,short */
 (function(){try{const q=new URLSearchParams(location.search);(q.get("off")||"").split(/[,\s]+/).forEach(v=>{if(/^(fam|lc|print|short)$/.test(v))H.classList.remove("f-"+v)})}catch(_){}})();
 const FL=v=>H.classList.contains("f-"+v);
