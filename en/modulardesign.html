@@ -91,6 +91,7 @@ main:focus{outline:none}
 .mono{font:500 var(--fs-xs)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mono b{color:var(--fg);font-weight:500}
 .wrap{max-width:1680px;margin:0 auto;padding-inline:var(--pad)}
+html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:auto}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:600px){.only-d{display:none!important}}
