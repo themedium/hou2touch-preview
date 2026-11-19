@@ -79,6 +79,7 @@ body{background:var(--bg)}
 /* доступность: общий фокус — 2 px цветом текста секции (крем на тьме, чернила на бумаге); skip-link */
 .h2t :focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .h2t :focus:not(:focus-visible){outline:none}
+html body a.skip{color:var(--bg)!important}
 .h2t .skip{position:fixed;left:16px;top:-64px;z-index:120;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:top .25s var(--ease)}
 .h2t .skip:focus{top:16px}
 main:focus{outline:none}

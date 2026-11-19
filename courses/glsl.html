@@ -75,6 +75,7 @@ body{background:var(--bg)}
 /* доступность: общий фокус — 2 px цветом текста секции (крем на тьме, чернила на бумаге); skip-link */
 .h2t :focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .h2t :focus:not(:focus-visible){outline:none}
+html body a.skip{color:var(--bg)!important}
 .h2t .skip{position:fixed;left:16px;top:-64px;z-index:120;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:top .25s var(--ease)}
 .h2t .skip:focus{top:16px}
 main:focus{outline:none}
@@ -87,6 +88,7 @@ main:focus{outline:none}
 .mono{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mono b{color:var(--fg);font-weight:500}
 .wrap{max-width:1680px;margin:0 auto;padding-inline:var(--pad)}
+html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:auto}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:600px){.only-d{display:none!important}}
@@ -98,7 +100,7 @@ main:focus{outline:none}
 .lbl{display:flex;gap:14px;align-items:center;margin-bottom:40px;white-space:nowrap;color:var(--mute)}
 .lbl b{color:var(--fg);font-weight:500}
 .lbl::after{content:"";flex:1;min-width:16px;height:1px;background:var(--line)}
-.op{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:#d9d8d3;font-style:normal;white-space:nowrap}
+.op{display:inline-flex;align-items:center;gap:8px;height:24px;padding:0 12px 0 8px;letter-spacing:.06em;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:#d9d8d3;font-style:normal;white-space:nowrap}
 .op::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .op u{text-decoration:none;color:var(--mute)}
 /* на бумаге плашка оператора светло-серая (правка заказчика 29.09): текст чернилами, семейство — тёмно-серым (≥ 4,5:1 на #dcd9d1), квадрат семейства — цветом */
@@ -125,7 +127,7 @@ main:focus{outline:none}
 
 /* хром панелей: .pn = средний (шапка .ph + подвал .pf); .pn.full = полный (+ порты, флаги .fl); .pn.lite = лёгкий (линия-заголовок) */
 .pn{position:relative;border:1px solid var(--line2);border-radius:6px;background:var(--pnb)}
-.pn>.ph{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap;min-width:0}
+.pn>.ph{display:flex;align-items:center;gap:10px;padding:calc(10px) 16px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap;min-width:0}
 .pn>.ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .pn>.ph u{text-decoration:none;color:var(--mute)}
 .pn>.ph .r{margin-left:auto;color:var(--mute);overflow:hidden;text-overflow:ellipsis}
@@ -134,7 +136,7 @@ main:focus{outline:none}
 .pn>.ph .r+.fl{margin-left:10px}
 .pn>.ph .fl b{width:16px;height:16px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);font:500 12px/16px var(--mono);text-align:center;color:var(--mute)}
 .pn>.ph .fl b.on{background:var(--td);color:#000;box-shadow:none}
-.pn>.pf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 14px;border-top:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.pn>.pf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;border-top:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .pn>.pf>*{overflow:hidden;text-overflow:ellipsis}
 .pn>.pf a,.pn>.pf button{display:inline-flex;align-items:center;min-height:44px;margin-block:-12px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--fg);transition:opacity .3s}
 @media (hover:hover){.pn>.pf a:hover,.pn>.pf button:hover{opacity:.7}}
@@ -145,7 +147,7 @@ main:focus{outline:none}
 @media (max-width:600px){.pn>.ph .fl{display:none}}
 
 /* тег семейства, квадратная кнопка */
-.tag{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:2px;font:500 12px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;box-shadow:inset 0 0 0 1px var(--line2);color:var(--txt);white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;box-shadow:inset 0 0 0 1px var(--line2);color:var(--txt);white-space:nowrap}
 .tag::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .tag.key{color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}.tag.key::before{background:var(--fg)}
 .kk{display:flex;flex-wrap:wrap;gap:6px}
@@ -474,7 +476,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx :focus:not(:focus-visible){outline:none}
 .h2t .rx-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 /* шапка и подвал: служебный mono строчными, +.02em */
-.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:10px 14px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.02em;white-space:nowrap}
+.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:calc(10px) 16px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.06em;white-space:nowrap}
 .h2t .rx-ph{border-bottom:1px solid var(--rx-ln);color:var(--rx-txt)}
 .h2t .rx-ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rx-dat);flex:none}
 .h2t .rx-ph .rx-r,.h2t .rx-pf .rx-r{margin-left:auto;color:var(--rx-mu);overflow:hidden;text-overflow:ellipsis}

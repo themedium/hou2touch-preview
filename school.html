@@ -85,6 +85,7 @@ body{background:var(--bg)}
 /* доступность: общий фокус — 2 px цветом текста секции (крем на тьме, чернила на бумаге); skip-link */
 .h2t :focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .h2t :focus:not(:focus-visible){outline:none}
+html body a.skip{color:var(--bg)!important}
 .h2t .skip{position:fixed;left:16px;top:-64px;z-index:120;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:2px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:top .25s var(--ease)}
 .h2t .skip:focus{top:16px}
 main:focus{outline:none}
@@ -97,6 +98,7 @@ main:focus{outline:none}
 .mono{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mono b{color:var(--fg);font-weight:500}
 .wrap{max-width:1680px;margin:0 auto;padding-inline:var(--pad)}
+html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:auto}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:600px){.only-d{display:none!important}}
@@ -120,7 +122,7 @@ main:focus{outline:none}
 .lbl{display:flex;gap:14px;align-items:center;margin-bottom:40px;white-space:nowrap;color:var(--mute)}
 .lbl b{color:var(--fg);font-weight:500}
 .lbl::after{content:"";flex:1;min-width:16px;height:1px;background:var(--line)}
-.op{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:#d9d8d3;font-style:normal;white-space:nowrap}
+.op{display:inline-flex;align-items:center;gap:8px;height:24px;padding:0 12px 0 8px;letter-spacing:.06em;border-radius:2px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line2);color:#d9d8d3;font-style:normal;white-space:nowrap}
 .op::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .op u{text-decoration:none;color:var(--mute)}
 /* на бумаге плашка оператора светло-серая (правка заказчика 29.09): текст чернилами, семейство — тёмно-серым (≥ 4,5:1 на #dcd9d1), квадрат семейства — цветом */
@@ -147,7 +149,7 @@ main:focus{outline:none}
 
 /* хром панелей: .pn = средний (шапка .ph + подвал .pf); .pn.full = полный (+ порты, флаги .fl); .pn.lite = лёгкий (линия-заголовок) */
 .pn{position:relative;border:1px solid var(--line2);border-radius:6px;background:var(--pnb)}
-.pn>.ph{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap;min-width:0}
+.pn>.ph{display:flex;align-items:center;gap:10px;padding:calc(10px) 16px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap;min-width:0}
 .pn>.ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .pn>.ph u{text-decoration:none;color:var(--mute)}
 .pn>.ph .r{margin-left:auto;color:var(--mute);overflow:hidden;text-overflow:ellipsis}
@@ -156,7 +158,7 @@ main:focus{outline:none}
 .pn>.ph .r+.fl{margin-left:10px}
 .pn>.ph .fl b{width:16px;height:16px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);font:500 12px/16px var(--mono);text-align:center;color:var(--mute)}
 .pn>.ph .fl b.on{background:var(--td);color:#000;box-shadow:none}
-.pn>.pf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 14px;border-top:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.pn>.pf{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;border-top:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .pn>.pf>*{overflow:hidden;text-overflow:ellipsis}
 .pn>.pf a,.pn>.pf button{display:inline-flex;align-items:center;min-height:44px;margin-block:-12px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--fg);transition:opacity .3s}
 @media (hover:hover){.pn>.pf a:hover,.pn>.pf button:hover{opacity:.7}}
@@ -167,7 +169,7 @@ main:focus{outline:none}
 @media (max-width:600px){.pn>.ph .fl{display:none}}
 
 /* тег семейства, квадратная кнопка */
-.tag{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:2px;font:500 12px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;box-shadow:inset 0 0 0 1px var(--line2);color:var(--txt);white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;box-shadow:inset 0 0 0 1px var(--line2);color:var(--txt);white-space:nowrap}
 .tag::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .tag.key{color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}.tag.key::before{background:var(--fg)}
 .kk{display:flex;flex-wrap:wrap;gap:6px}
@@ -189,7 +191,7 @@ main:focus{outline:none}
 .nav:not(.stuck):not(.mo){--fg:var(--ink);--txt:#2b2a28;--line:rgba(11,11,12,.14);--line2:rgba(11,11,12,.32);--mute:#67655f;--fg8:rgba(11,11,12,.8)}
 .nav:not(.stuck):not(.mo) ul a.on{background:rgba(11,11,12,.06)}@media (hover:hover){.nav:not(.stuck):not(.mo) ul a:hover{background:rgba(11,11,12,.06)}}
 /* мобильное меню */
-.mnu{position:fixed;inset:0;z-index:59;background:rgba(11,11,12,.97);display:flex;flex-direction:column;justify-content:space-between;padding:88px var(--pad) 28px;opacity:0;pointer-events:none;transition:opacity .35s}
+.mnu{position:fixed;inset:0;z-index:59;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:88px var(--pad) 28px;opacity:0;pointer-events:none;transition:opacity .35s}
 .mnu.on{opacity:1;pointer-events:auto}
 .mnu ul{list-style:none;border-top:1px solid var(--line2)}
 .mnu li a{display:flex;justify-content:space-between;align-items:center;min-height:56px;border-bottom:1px solid var(--line);font:700 40px/.9 var(--disp);text-transform:uppercase}
@@ -442,7 +444,7 @@ main:focus{outline:none}
 .mp-en b{font:600 16px/1.25 var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mp-en .ens{display:flex;gap:3px;flex-wrap:wrap;max-width:110px}
 .mp-en .ens i{width:9px;height:9px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(239,238,233,.35)}
-.fgl{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:20px;padding:0 5px;border-radius:2px;background:rgba(239,238,233,.14);color:var(--fg);font:500 12px/20px var(--mono);letter-spacing:.04em}
+.fgl{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:24px;padding:0 5px;border-radius:2px;background:rgba(239,238,233,.14);color:var(--fg);font:500 12px/24px var(--mono);letter-spacing:.06em}
 /* маршрут: остальное приглушено фоном (не opacity текста ниже порога) */
 .nw.rt .mn:not(.rt):not(.io){background:#131316}.nw.rt .mn:not(.rt):not(.io)::before{opacity:.3}.nw.rt .mn:not(.rt):not(.io) b{color:var(--txt)}
 .nw.rt .mp-bx:not(.rt),.nw.rt .mp-h2t:not(.rt){border-color:var(--line)}
@@ -477,7 +479,7 @@ main:focus{outline:none}
 .ni-en .gg{display:grid;grid-template-columns:repeat(var(--k),minmax(0,1fr));gap:6px}
 .en{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-height:56px;padding:7px 8px 7px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(239,238,233,.16);background:rgba(23,23,26,.85);text-align:left;color:var(--fg);transition:box-shadow .3s,background .3s}
 .en b{font:400 16px/20px var(--sans);color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.en .fgl{position:absolute;top:6px;right:6px;min-width:20px;height:18px;line-height:18px;padding:0 4px}
+.en .fgl{position:absolute;top:3px;right:6px;min-width:20px;height:24px;line-height:24px;padding:0 4px}
 @media (hover:hover){.en:hover{box-shadow:inset 0 0 0 1.5px var(--fg);background:#1c1c20}}
 .ni-ap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .ap-n{display:flex;flex-direction:column;gap:6px;min-width:0;text-align:left;color:var(--txt);transition:color .3s}
@@ -893,7 +895,7 @@ main:focus{outline:none}
 .rtag{display:none}
 .f-nodup .cc.best.gr{box-shadow:none;border-color:var(--line2)}
 .f-nodup .cc.pick,.f-nodup .cc.best.gr.pick{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.f-nodup .cc.pick .rtag{display:inline-flex;align-items:center;height:20px;margin-left:auto;padding:0 7px;border-radius:2px;background:var(--ink);color:#efeee9}
+.f-nodup .cc.pick .rtag{display:inline-flex;align-items:center;height:24px;margin-left:auto;padding:0 7px;border-radius:2px;background:var(--ink);color:#efeee9;font:500 12px/24px var(--mono)}
 .f-nodup .cc.pick .rtag+.r{margin-left:10px}
 .f-nodup .cc .cc-go .btn{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line2)}
 .f-nodup .cc.pick .cc-go .btn{background:var(--ink);color:#efeee9;box-shadow:none}@media (hover:hover){.f-nodup .cc.pick .cc-go .btn:hover{background:#2c2c2f}}
@@ -960,7 +962,7 @@ main:focus{outline:none}
 .f-demo .mp-h2t{transform-origin:50% 0;transition:transform .6s cubic-bezier(.22,1,.36,1),border-color .3s,opacity .4s} /* метка — в просвете 24 px между рядами нод (высота 20), рост COMP — вниз */
 .f-demo .nw.peek .mp-h2t.demo{transform:scale(1.03)}
 .f-demo .mp-h2t.demo{border-color:var(--fg);box-shadow:0 0 0 4px rgba(11,11,12,.07)}
-.f-demo .mp-h2t.demo::after{content:"клик — внутрь ↘";position:absolute;right:12px;top:-22px;height:20px;padding:0 8px;border-radius:2px;background:var(--ink);color:#efeee9;font:500 12px/20px var(--mono);letter-spacing:.06em;text-transform:uppercase;animation:lpin .4s var(--ease)}
+.f-demo .mp-h2t.demo::after{content:"клик — внутрь ↘";position:absolute;right:12px;top:-24px;height:24px;padding:0 8px;border-radius:2px;background:var(--ink);color:#efeee9;font:500 12px/24px var(--mono);letter-spacing:.06em;text-transform:uppercase;animation:lpin .4s var(--ease)}
 .f-demo .mp-h2t.demo .mn{box-shadow:inset 0 0 0 1.5px var(--fg)}
 .f-demo button.mn:not(.io)::after,.f-demo .mp-hh::after{content:"↘";position:absolute;right:8px;top:8px;font:400 16px/1 var(--sans);color:currentColor;opacity:0;transition:opacity .25s}
 .f-demo .mp-hh{position:relative}.f-demo .mp-hh::after{right:0;top:50%;margin-top:-8px}
@@ -1365,7 +1367,7 @@ main:focus{outline:none}
 .ck #sops .sp-c.nx .sp-b{-webkit-mask-size:32px 32px;mask-size:32px 32px;animation:cook .44s both;animation-delay:var(--cd,0ms)} /* смена окна — печать видимых нод, как в switch1 */
 #sops .sp-b{display:flex;flex-direction:column;width:100%;padding:0;text-align:left;color:var(--fg);background:#0e0e10;border:1px solid var(--line2);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .3s}
 #sops .sp-b:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-#sops .sp-ph{display:flex;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.04em;color:var(--txt);white-space:nowrap}
+#sops .sp-ph{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;color:var(--txt);white-space:nowrap}
 #sops .sp-ph::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--sop);flex:none}
 #sops .sp-ph u{text-decoration:none;color:var(--mute)}
 #sops .sp-ph .r{margin-left:auto;color:var(--mute);font-variant-numeric:tabular-nums}
@@ -1389,7 +1391,7 @@ main:focus{outline:none}
   #sops .sp-tl i::before{height:6px}#sops .sp-tl i:is(:nth-of-type(1),:nth-of-type(5),:nth-of-type(9),:nth-of-type(13),:nth-of-type(17))::before{height:10px} /* A-04: как деления отзывов */
   #sops .sp-t{gap:10px;padding:12px;scroll-padding-inline:12px}
   #sops .sp-c{flex-basis:calc((100% - 20px)/2.15)}
-  #sops .sp-ph{padding:8px;gap:6px;letter-spacing:.02em}#sops .sp-ph u{display:none}
+  #sops .sp-ph{padding:8px 16px;gap:6px;letter-spacing:.06em}#sops .sp-ph u{display:none}
   #sops .sp-fr{margin:8px 8px 0}#sops .sp-pl{left:8px;bottom:8px;width:36px;height:36px}#sops .sp-pl svg{width:12px;height:12px}
   #sops .sp-n{margin:8px 8px 12px;font-size:14px;line-height:19px;-webkit-line-clamp:4}
   #sops .pf{flex-wrap:wrap;white-space:normal;row-gap:4px}
@@ -1445,7 +1447,7 @@ main:focus{outline:none}
   /* M-5: фокус-рамка — чернилами 2 px внутри ячейки (на утопленной #cfccc4 ≈ 12 : 1, на вкладке #f4f2ec ≈ 18 : 1; было currentColor #56544f) */
   .f-net3 .n3-q button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
   /* M-3: профиль по умолчанию — метка на самой вкладке, пока выбор не сделан рукой (route1 тоже пишет «по умолчанию») */
-  .f-net3 .n3-df{grid-area:d;justify-self:start;align-self:center;margin-left:12px;height:20px;padding:0 7px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);font:500 12px/20px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+  .f-net3 .n3-df{grid-area:d;justify-self:start;align-self:center;margin-left:12px;height:24px;padding:0 7px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);font:500 12px/24px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
   .f-net3 .n3-in.df .n3-q button[aria-checked=true] .n3-df{display:block}
   /* route1 DAT — пристыкован к вкладке: пояснение и шаги цепочкой (7 колонок) · «дальше · карточка» и «Записаться ↓» (5 колонок) */
   .f-net3 .n3-r{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);margin:0 -1px;border-top:1px solid var(--line2);background:#f4f2ec;border-radius:0 0 5px 5px}
@@ -1476,7 +1478,7 @@ main:focus{outline:none}
   @media (hover:hover){.f-net3 .n3-r .rsl.ch>li>button:hover{border-color:var(--fg)}}
   /* карточки — ноды: три в ряд на любой ширине ≥ 901; провода между «Ты» и карточками — 56 px */
   .f-net3 .n3 .cs{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:56px}
-  .f-net3 .n3-dv{position:relative;display:inline-flex;align-items:center;gap:6px;flex:none;height:26px;margin:-5px -6px -5px 12px;padding:0 8px 0 10px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);color:var(--fg);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:background .12s cubic-bezier(.2,0,0,1),color .12s cubic-bezier(.2,0,0,1),box-shadow .12s cubic-bezier(.2,0,0,1)}
+  .f-net3 .n3-dv{position:relative;display:inline-flex;align-items:center;gap:6px;flex:none;height:24px;margin:-4px -6px -4px 12px;padding:0 8px 0 10px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);color:var(--fg);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:background .12s cubic-bezier(.2,0,0,1),color .12s cubic-bezier(.2,0,0,1),box-shadow .12s cubic-bezier(.2,0,0,1)}
   .f-net3 .n3-dv::after{content:"";position:absolute;inset:-9px -4px}
   .f-net3 .n3-dv .ic{width:14px;height:14px}
   @media (hover:hover){.f-net3 .n3-dv:hover{background:var(--ink);color:#efeee9;box-shadow:none}}
@@ -1629,7 +1631,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
 .h2t .rx :focus:not(:focus-visible){outline:none}
 .h2t .rx-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 /* шапка и подвал: служебный mono строчными, +.02em */
-.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:10px 14px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.02em;white-space:nowrap}
+.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:calc(10px) 16px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.06em;white-space:nowrap}
 .h2t .rx-ph{border-bottom:1px solid var(--rx-ln);color:var(--rx-txt)}
 .h2t .rx-ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rx-dat);flex:none}
 .h2t .rx-ph .rx-r,.h2t .rx-pf .rx-r{margin-left:auto;color:var(--rx-mu);overflow:hidden;text-overflow:ellipsis}
@@ -1970,7 +1972,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
     </div>
   <div class="mp gr">
     <div class="pn full mp-n rv" style="--c:var(--comp)">
-      <div class="ph"><span class="id" id="mpPath" data-f="lc" data-v0="network1 &lt;u&gt;COMP&lt;/u&gt;">/h2t1/network1</span><span class="r id" id="mpR" data-f="lc" data-v0="/hou2touch · 4 active · 17 bypass">4 active · 17 bypass</span><span class="fl"><b class="on">D</b><b>V</b><b>B</b></span></div>
+      <div class="ph"><span class="id" id="mpPath" data-f="lc" data-v0="network1 &lt;u&gt;COMP&lt;/u&gt;">/h2t1/network1</span><span class="r id" id="mpR" data-f="lc" data-v0="/hou2touch · 4 active · 19 bypass">4 active · 19 bypass</span><span class="fl"><b class="on">D</b><b>V</b><b>B</b></span></div>
       <div class="nw" id="nw">
         <div class="nw-o" id="nwO">
           <svg class="mp-w" id="mpW" aria-hidden="true"></svg>
@@ -1999,7 +2001,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
             </div>
             <button class="mn io out" type="button" data-n="out"><span class="mono">out1</span><b>Проекты</b><span class="mono">6 областей</span><span class="pi"></span></button>
           </div>
-          <button class="mp-en" type="button" data-n="en" id="mpEn"><span class="mono id">courses_en</span><b>17 курсов на английском</b><span class="ens" id="mpEns" aria-hidden="true"></span><span class="fgl">EN</span><span class="pi"></span></button>
+          <button class="mp-en" type="button" data-n="en" id="mpEn"><span class="mono id">courses_en</span><b>19 курсов на английском</b><span class="ens" id="mpEns" aria-hidden="true"></span><span class="fgl">EN</span><span class="pi"></span></button>
         </div>
         <div class="nw-i" id="nwI" hidden></div>
       </div>
@@ -2023,7 +2025,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
         <li class="bn mono">или отдельный путь</li>
         <li><button class="mr" type="button" data-n="h2t" style="--c:var(--k-h2t)" aria-expanded="false"><span><b>Hou2Touch</b><span class="mono">hou2touch1 · флагман<span class="only-d"> · Houdini + TD</span></span></span><span class="sq" aria-hidden="true">+</span></button></li>
         <li><button class="mr out" type="button" data-n="out" style="--c:var(--fg)" aria-expanded="false"><span><b>Проекты</b><span class="mono">out1 · 6 областей</span></span><span class="sq" aria-hidden="true">+</span></button></li>
-        <li><button class="mr enr" type="button" data-n="en" style="--c:var(--comp)" aria-expanded="false"><span><b>Курсы на английском</b><span class="mono">courses_en · 17 · bypass</span></span><span class="sq" aria-hidden="true">+</span></button></li>
+        <li><button class="mr enr" type="button" data-n="en" style="--c:var(--comp)" aria-expanded="false"><span><b>Курсы на английском</b><span class="mono">courses_en · 19 · bypass</span></span><span class="sq" aria-hidden="true">+</span></button></li>
       </ol>
       <div class="pf"><span>каталог 28.09.2026</span><span>/hou2touch</span></div>
     </div>
@@ -2064,7 +2066,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
   </div>
   <!-- AD-1: courses_en — bypass-строка на 12 колонок под тремя карточками; раскрывается ящиком .n3-x; out1 — только при ?off=apps (Р1) -->
   <div class="n3-b" id="n3B">
-    <button class="n3-en" type="button" data-x="en" aria-expanded="false" aria-controls="n3X"><span class="mono id">courses_en <u>COMP</u></span><span class="n3-et"><span class="mono">bypass ·</span> <b>17 курсов на английском</b></span><span class="ens" id="n3Ens" aria-hidden="true"></span><span class="n3-eb mono"><span class="et">раскрыть</span><span class="sq" aria-hidden="true">+</span></span></button>
+    <button class="n3-en" type="button" data-x="en" aria-expanded="false" aria-controls="n3X"><span class="mono id">courses_en <u>COMP</u></span><span class="n3-et"><span class="mono">bypass ·</span> <b>19 курсов на английском</b></span><span class="ens" id="n3Ens" aria-hidden="true"></span><span class="n3-eb mono"><span class="et">раскрыть</span><span class="sq" aria-hidden="true">+</span></span></button>
     <button class="n3-out" type="button" data-x="out" aria-expanded="false" aria-controls="n3X"><span class="mono">out1 <u>TOP</u></span><b>Проекты</b><span class="mono dsc">6 областей применения · где это работает</span><span class="sq" aria-hidden="true">+</span></button>
   </div>
   <div class="pn n3-x gr" id="n3X" hidden></div>
@@ -2206,7 +2208,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
   <div class="fin" id="contacts">
     <h2 class="fin-h"><span class="a">Думай</span> <span class="b" id="finR">процедурно</span></h2>
     <div class="fx" id="fx" aria-live="polite"></div>
-    <a class="enl" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="fgl">EN</span><b>Hou2Touch на английском <span>— 17 курсов и учебные пути</span></b><span class="mono id">hou2touch.com <svg class="ic" aria-hidden="true"><use href="#h2t-i-ne"/></svg></span></a>
+    <a class="enl" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="fgl">EN</span><b>Hou2Touch на английском <span>— 19 курсов и учебные пути</span></b><span class="mono id">hou2touch.com <svg class="ic" aria-hidden="true"><use href="#h2t-i-ne"/></svg></span></a>
   </div>
 </div></section>
 </main>
@@ -2471,7 +2473,7 @@ const tpSkip=n=>!n.parentNode||n.parentNode.closest("script,style,svg,.tlb,#trai
    Bebas и Mono — U+202F как есть. Шрифт узнаём по вычисленному стилю родителя: статичный текст — один проход ниже, новый — tpNode (MutationObserver) */
 /* F-04: шрифт узла — по правилам CSS шаблона (сборка кладёт их в FSEL: d — Bebas, m — Mono, s — Inter) через matches() по предкам, с кешем;
    getComputedStyle на каждом узле в простое каждый раз пересчитывал стили (LOOP меняет их каждый кадр). Неразобранный селектор — запасной путь getComputedStyle */
-const NI="\u2006\u2060",FSEL={"d": ".H,.mnu li a,.hlogo,.au-n,.au-s b,.marq-t span,.marq-t em,.pri-t,.mn.io b,.mp-hh b,.ni-m b,.mp-p .tt,.pr b,.mpm .in-m>b,.cc-n,.qa-c button,.fin-h,.fx a .pz,.seam p,.fx .fx2 a .pz,.f-net3 .n3-in>.ph .ty,.f-net3 .n3-out>b", "m": ".h2t .skip,.mono,.btn,.pn>.ph,.pn>.ph .fl b,.pn>.pf,.tag,.mnu li a i,.h2t .snd,.fgl,.mp-p .tt small,.mpd .ens span b,.cc-n small,.wt i,.vp .x,.nav .lgn,.cc-pk,.f-aurec .au-k .k-l,.f-aurec .au-k figcaption .k-c,#sops .sp-k,#sops .sp-tl i b,#sops .sp-ph,.f-net3 .n3-df,.f-net3 .n3-dv,.f-net3 .n3-en .n3-eb .sq", "s": ".h2t,.dek,.p,.sq,.hero .hm b,.hero h1,.hero .lead,.hero .offer,.au-r,.mn b,.inp button,.mp-en b,.ni-go b,.ni-go .ar,.en b,.ap-n b,.mp-p .rt-t,.kv dd,.rsl button b,.rsl button .ar,.pr s,.mp-p .nt,.mp-p .tr b,.mr b,.mpd .prt li,.mpd .why,.mpd .aps figcaption,.mpd .ens span,.cc-t dd,.cc-p .nt,.seg button,.qa-r b,.qa-q blockquote,.qa-nv .btn,.vc figcaption b,.eps-l button b,.eps-l button .ar,.vp .pf .x2,.fq-l summary,.fx a b,.fx a .ar,.enl b,.ft-a p,.f-mstack .mbar b,.fx .fx2 b,.pr .pfx,.pz .pfx,.f-faq2 #reviews .pf .qa-nv button,.f-faq2 .fq-7,.f-apps .apl b,.f-apps .apl p,.f-aurec .au-k blockquote,.f-aurec .au-k figcaption .k-n,.h2t .sp-ht,.h2t .sp-h>span,#sops .sp-n,.f-net3 .n3-q button,.f-net3 .n3-r .nt2,.f-net3 .n3-ch>li b,.f-net3 .n3-nx b,.f-net3 .n3-md>div b,.f-net3 .n3-en .n3-et b"},FFC=new WeakMap(),
+const NI="\u2006\u2060",FSEL={"d": ".H,.mnu li a,.hlogo,.au-n,.au-s b,.marq-t span,.marq-t em,.pri-t,.mn.io b,.mp-hh b,.ni-m b,.mp-p .tt,.pr b,.mpm .in-m>b,.cc-n,.qa-c button,.fin-h,.fx a .pz,.seam p,.fx .fx2 a .pz,.f-net3 .n3-in>.ph .ty,.f-net3 .n3-out>b", "m": ".h2t .skip,.mono,.btn,.pn>.ph,.pn>.ph .fl b,.pn>.pf,.tag,.mnu li a i,.h2t .snd,.fgl,.mp-p .tt small,.mpd .ens span b,.cc-n small,.wt i,.vp .x,.f-nodup .cc.pick .rtag,.nav .lgn,.cc-pk,.f-aurec .au-k .k-l,.f-aurec .au-k figcaption .k-c,#sops .sp-k,#sops .sp-tl i b,#sops .sp-ph,.f-net3 .n3-df,.f-net3 .n3-dv,.f-net3 .n3-en .n3-eb .sq", "s": ".h2t,.dek,.p,.sq,.hero .hm b,.hero h1,.hero .lead,.hero .offer,.au-r,.mn b,.inp button,.mp-en b,.ni-go b,.ni-go .ar,.en b,.ap-n b,.mp-p .rt-t,.kv dd,.rsl button b,.rsl button .ar,.pr s,.mp-p .nt,.mp-p .tr b,.mr b,.mpd .prt li,.mpd .why,.mpd .aps figcaption,.mpd .ens span,.cc-t dd,.cc-p .nt,.seg button,.qa-r b,.qa-q blockquote,.qa-nv .btn,.vc figcaption b,.eps-l button b,.eps-l button .ar,.vp .pf .x2,.fq-l summary,.fx a b,.fx a .ar,.enl b,.ft-a p,.f-mstack .mbar b,.fx .fx2 b,.pr .pfx,.pz .pfx,.f-faq2 #reviews .pf .qa-nv button,.f-faq2 .fq-7,.f-apps .apl b,.f-apps .apl p,.f-aurec .au-k blockquote,.f-aurec .au-k figcaption .k-n,.h2t .sp-ht,.h2t .sp-h>span,#sops .sp-n,.f-net3 .n3-q button,.f-net3 .n3-r .nt2,.f-net3 .n3-ch>li b,.f-net3 .n3-nx b,.f-net3 .n3-md>div b,.f-net3 .n3-en .n3-et b"},FFC=new WeakMap(),
   ffam=p=>{let f=FFC.get(p);if(f!==undefined)return f;
     if(FSEL)try{for(let a=p;a&&a.nodeType===1;a=a.parentElement){const c=FFC.get(a);if(c!==undefined){f=c;break}
       if(FSEL.d&&a.matches(FSEL.d)){f="H2T Bebas";break}if(FSEL.m&&a.matches(FSEL.m)){f="JetBrains Mono";break}if(FSEL.s&&a.matches(FSEL.s)){f="Inter Tight";break}}}catch(_){f=undefined}
@@ -2667,7 +2669,7 @@ const SOPS={pl:"PLu5d0FltTJ_V22Snp-HldqITLyfwZQOGn",total:"2 ч 56 мин",v:
 /* 05 отзывы: пометки к подписям (решение заказчика 29.09 по crit_joint.md, п. 5) */
 const QNOTE={"Phelan Kane":"сейчас — руководитель обучения Hou2Touch"};
 
-const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "флагман", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "флагман", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "флагман", "p": []}];
+const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "HOUDINI_101", "c": "HOUDINI", "s": "Houdini 103: Extreme", "t": "Houdini 103: Extreme", "g": "основы", "p": []}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "ROY", "c": "ROY", "s": "ROY", "t": "ROY", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "флагман", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "флагман", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "флагман", "p": []}];
 /* F2: адреса курсов семьи (BASE stand) — school/assemble.py ← family/family.py */
 const HREF={"h2t": "index.html", "ex1": "courses/extreme1.html", "ex2": "courses/extreme2.html", "bundle": "courses/extreme-bundle.html", "glsl": "courses/glsl.html"},HREFD={"h2t": "index.html", "ex1": "courses/extreme1.html", "ex2": "courses/extreme2.html", "bundle": "courses/extreme-bundle.html", "glsl": "courses/glsl.html"};
 
@@ -3016,13 +3018,13 @@ function MAP_N3(){
     cd.querySelector(".n3-dv").setAttribute("aria-expanded","false");subs.forEach(f=>f());subs=[];cd.classList.remove("dv");cur="";
     if(L){if(reduce||silent)L.remove();else{L.classList.remove("nx");L.classList.add("out");setTimeout(()=>L.remove(),190)}}
     const b=back;back=null;if(focus&&b&&inside)b.focus({preventScroll:true})}
-  /* ящик под bypass-строкой: courses_en — 17 курсов списком; out1 — 6 областей (только ?off=apps) */
+  /* ящик под bypass-строкой: courses_en — 19 курсов списком; out1 — 6 областей (только ?off=apps) */
   function outX(){return `<div class="ph">out1 <u>TOP</u><span class="r">6 выходов · где это работает</span><button class="x" type="button" data-xc>свернуть ${IC("x")}</button></div>
     <div class="n3-xb"><div class="ni-ap">${APPS.map((a,i)=>`<button class="ap-n${i?"":" on"}" type="button" data-ap="${i}" aria-pressed="${i?"false":"true"}"><span class="plt"><img alt="" crossorigin="anonymous" decoding="async" src="${IMG("app"+(i+1))}"><canvas aria-hidden="true"></canvas></span><span class="mono">render${i+1} <u>TOP</u></span><b>${a[0]}</b></button>`).join("")}</div>
     <div class="n3-xf"><p class="p apd" id="apD" aria-live="polite">${APPS[0][1]}</p><a class="btn ghost" href="#works">Работы студентов <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></div></div>`}
   function enX(){return `<div class="ph">courses_en <u>COMP</u><span class="r">bypass · каталог 28.09.2026</span><button class="x" type="button" data-xc>свернуть ${IC("x")}</button></div>
     <div class="n3-xb"><div class="ni-en">${GR.map(g=>{const kk=g.it.length<=3?1:g.it.length<=4?2:3;return `<div class="g"><span class="mono">${g.g} · ${g.it.length}</span><div class="gg" style="--k:${kk}">${g.it.map(e=>`<a class="en" href="https://hou2touch.com" target="_blank" rel="noopener" title="${e.t}"><span class="mono">${e.c}</span><b>${e.s}</b><i class="fgl">B</i></a>`).join("")}</div></div>`}).join("")}</div>
-    <div class="n3-xf"><p class="p">Остальные курсы Hou2Touch — на&nbsp;английском: 17 курсов. В&nbsp;русской сети они стоят в&nbsp;режиме bypass: они есть, но&nbsp;проходить их нужно на&nbsp;английском.</p><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a></div></div>`}
+    <div class="n3-xf"><p class="p">Остальные курсы Hou2Touch — на&nbsp;английском: 19 курсов. В&nbsp;русской сети они стоят в&nbsp;режиме bypass: они есть, но&nbsp;проходить их нужно на&nbsp;английском.</p><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a></div></div>`}
   const xmark=k=>B.querySelectorAll("[data-x]").forEach(b=>{const on=b.dataset.x===k;b.setAttribute("aria-expanded",on);b.querySelector(".sq").textContent=on?"−":"+";const t=b.querySelector(".et");if(t)t.textContent=on?"свернуть":"раскрыть"});
   function xOpen(k,from){if(xo===k){xClose(1);return}if(cur)up(0,1);xo=k;xback=from||B.querySelector(`[data-x="${k}"]`);
     X.innerHTML=k==="en"?enX():outX();X.style.setProperty("--c",k==="en"?"var(--comp)":"var(--top)");X.hidden=false;
@@ -3062,7 +3064,7 @@ function MAP_N3(){
     if(RU[k]){const c=RU[k],card=k==="ex2"||k==="ex1"?"c-ex":k==="glsl"?"c-glsl":"c-h2t";
       return `<span class="mono">внутри ${c.op} · ${c.m[1][1]}</span><ol class="prt" style="margin-top:8px">${c.parts.map(p=>`<li>${p}</li>`).join("")}</ol>${r.n===k?`<div class="why">${r.why}</div>`:""}${NOP?recA(k):`<a class="btn ghost" href="#${card}"${card==="c-ex"?` data-x="${k==="ex2"?2:0}"`:""}>Цена и&nbsp;тарифы <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a>`}`}
     if(k==="out")return `<span class="mono">out1 · где это работает</span><div class="aps" style="margin-top:10px">${APPS.map((a,i)=>`<figure><span class="plt"><img alt="" loading="lazy" decoding="async" src="${IMG("app"+(i+1))}"></span><figcaption><b>${a[0]}</b>${a[1]}</figcaption></figure>`).join("")}</div><a class="btn ghost" href="#works">Работы студентов <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a>`;
-    return `<span class="mono">courses_en · 17 курсов · bypass</span><div class="ens" style="margin-top:10px">${EN.map(e=>`<span><b>${e.c}</b>${e.s}</span>`).join("")}</div><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a>`}
+    return `<span class="mono">courses_en · 19 курсов · bypass</span><div class="ens" style="margin-top:10px">${EN.map(e=>`<span><b>${e.c}</b>${e.s}</span>`).join("")}</div><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a>`}
   function openM(k){const row=mrows.find(r=>r.dataset.n===k);if(!row)return;
     mrows.forEach(r=>{const on=r===row;r.setAttribute("aria-expanded",on);r.querySelector(".sq").textContent=on?"−":"+"});
     mpD.innerHTML=mbody(k);mpD.hidden=false;row.parentNode.after(mpD);mpD.classList.remove("anim");void mpD.offsetWidth;mpD.classList.add("anim")}
@@ -3152,7 +3154,7 @@ const MAP=FL("net3")?MAP_N3():(function(){
       ${NOP?"":prB(c.p,c.o&&!c.tiers?c.o:"")}<p class="nt${NOP?" rec":""}">${c.note}</p>
       <div class="go">${NOP?recA(k):`<a class="btn" href="${HREF[k]}#book">Тарифы и&nbsp;запись <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>`}</div></div><div class="pf"><span>${IC("r")} ${c.u.replace("https://","")}</span><span>${r.n===k?"маршрут "+pad2(route):"самообучение"}</span></div>`}
   function enPanel(){P.style.setProperty("--c",FAM.COMP);P.classList.remove("fs");const paths=[...new Set(EN.flatMap(e=>e.p))];
-    return head("courses_en","COMP","bypass · en",1)+`<div class="mp-b"><div class="kk"><span class="tag">EN</span><span class="tag">bypass</span></div><h3 class="tt"><small>hou2touch.com</small>Hou2Touch EN</h3><p class="p d">Остальные курсы Hou2Touch — на&nbsp;английском: 17 курсов. В&nbsp;русской сети они стоят в&nbsp;режиме bypass: они есть, но&nbsp;проходить их нужно на&nbsp;английском.</p>${paths.length?kv([["учебные пути",paths.join(", ")]]):""}
+    return head("courses_en","COMP","bypass · en",1)+`<div class="mp-b"><div class="kk"><span class="tag">EN</span><span class="tag">bypass</span></div><h3 class="tt"><small>hou2touch.com</small>Hou2Touch EN</h3><p class="p d">Остальные курсы Hou2Touch — на&nbsp;английском: 19 курсов. В&nbsp;русской сети они стоят в&nbsp;режиме bypass: они есть, но&nbsp;проходить их нужно на&nbsp;английском.</p>${paths.length?kv([["учебные пути",paths.join(", ")]]):""}
       <div class="go" style="margin-top:auto;padding-top:20px"><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a></div></div><div class="pf"><span>каталог 28.09.2026</span><span>en</span></div>`}
   function outPanel(){P.style.setProperty("--c",FAM.TOP);P.classList.remove("fs");
     return head("out1","TOP","6 выходов")+`<div class="mp-b"><span class="mono">выход сети</span><h3 class="tt"><small>где это работает</small>Проекты</h3>
@@ -3173,7 +3175,7 @@ const MAP=FL("net3")?MAP_N3():(function(){
   if(FL("apps"))delete NEXT.glsl; // f-apps: GLSL — последняя нода сети
   const OPS={ex1:"extreme1",ex2:"extreme2",glsl:"glsl1",h2t:"hou2touch1",en:"courses_en",out:"out1"};
   function inner(k){
-    const meta={ex1:"7,5 ч видео · в своём темпе",ex2:"10 ч видео · отдельно или пакетом",glsl:"4 части · 11,5 ч видео · в своём темпе",h2t:"2 модуля · 25 уроков",en:"17 курсов · bypass",out:"6 выходов"}[k];
+    const meta={ex1:"7,5 ч видео · в своём темпе",ex2:"10 ч видео · отдельно или пакетом",glsl:"4 части · 11,5 ч видео · в своём темпе",h2t:"2 модуля · 25 уроков",en:"19 курсов · bypass",out:"6 выходов"}[k];
     let b="";
     if(RU[k]&&k!=="h2t"){const c=RU[k];
       b=`<div class="ni-ch" style="--c:${FAM[c.fam]}"><span class="nio mono">in</span>${c.parts.map((p,i)=>`<i class="cn"></i><div class="mn" style="--c:${FAM[c.fam]}"><span class="mono">part${i+1}</span><b>${p}</b><span class="mm mono"><i>часть ${roman[i]}</i></span><span class="pi"></span><span class="po"></span></div>`).join("")}<i class="cn"></i><span class="nio mono">out</span></div>
@@ -3230,7 +3232,7 @@ const MAP=FL("net3")?MAP_N3():(function(){
     if(RU[k]){const c=RU[k],card=k==="ex2"||k==="ex1"?"c-ex":k==="glsl"?"c-glsl":"c-h2t";
       return `<span class="mono">внутри ${c.op} · ${c.m[1][1]}</span><ol class="prt" style="margin-top:8px">${c.parts.map(p=>`<li>${p}</li>`).join("")}</ol>${r.n===k?`<div class="why">${r.why}</div>`:""}${NOP?recA(k):`<a class="btn ghost" href="#${card}"${card==="c-ex"?` data-x="${k==="ex2"?2:0}"`:""}>Цена и&nbsp;тарифы <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a>`}`}
     if(k==="out")return `<span class="mono">out1 · где это работает</span><div class="aps" style="margin-top:10px">${APPS.map((a,i)=>`<figure><span class="plt"><img alt="" loading="lazy" decoding="async" src="${IMG("app"+(i+1))}"></span><figcaption><b>${a[0]}</b>${a[1]}</figcaption></figure>`).join("")}</div><a class="btn ghost" href="#works">Работы студентов <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a>`;
-    return `<span class="mono">courses_en · 17 курсов · bypass</span><div class="ens" style="margin-top:10px">${EN.map(e=>`<span><b>${e.c}</b>${e.s}</span>`).join("")}</div><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a>`}
+    return `<span class="mono">courses_en · 19 курсов · bypass</span><div class="ens" style="margin-top:10px">${EN.map(e=>`<span><b>${e.c}</b>${e.s}</span>`).join("")}</div><a class="btn ghost" href="https://hou2touch.com" target="_blank" rel="noopener"><span class="id">hou2touch.com</span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg></a>`}
   function openM(k){const row=mrows.find(r=>r.dataset.n===k);if(!row)return;
     mrows.forEach(r=>{const on=r===row;r.setAttribute("aria-expanded",on);r.querySelector(".sq").textContent=on?"−":"+"});
     mpD.innerHTML=mbody(k);mpD.hidden=false;row.parentNode.after(mpD);mpD.classList.remove("anim");void mpD.offsetWidth;mpD.classList.add("anim")}
