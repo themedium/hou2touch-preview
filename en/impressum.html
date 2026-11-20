@@ -1755,7 +1755,8 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
       await document.fonts.ready;
@@ -4182,7 +4183,7 @@ const U2J=(()=>{let top=0,bot=1e5,ty=[-1,-1],ver=1,g5=null,mx=-1,my=-1,smx=-1,sm
           aw=xc;[-.22,-.07,.08,.24].forEach((a,i)=>{const o=[Math.cos(a),Math.sin(a)];kc.set([xc,ln[0],xc,ln[0]],i*4);kc.set([xc,ln[0],o[0],o[1]],16+i*4);pq[i]=cy(ln[0]+o[1]/o[0]*(bus-xc))})}
         else if(U5M===3){xb=-.04*W;tau=0;X0=xc;aw=hb5*.3;ln[0]=pq[0]=(tS+bS)/2}   /* GLSL — полоса треугольников по середине полосы (справа от имени — свободное поле), полувысота .3 полосы; клин — вершиной на её оси за левым краем */
         g5={xc,capT,base,nL:st?W+1:nL,nR:st?W+1:nR,ln,fl,X0,Lu,amp,xb,tau,aw,kc,pq,bus,port:st?7:9,scl:st?-1:nL,st}};ver++},
-    frame(gl,p,t){if(!UP2||!p)return;const tt=reduce&&!window.__h2tRec?0:t,b=Math.floor(tt/2),e=1-Math.pow(1-Math.min(1,(tt-b*2)/.45),3),a=hp(b-1),c=hp(b),L=n=>gl.getUniformLocation(p,n);   /* шаг раз в такт, ease-out .45 с */
+    frame(gl,p,t){if(!UP2||!p)return;const tt=t,b=Math.floor(tt/2),e=1-Math.pow(1-Math.min(1,(tt-b*2)/.45),3),a=hp(b-1),c=hp(b),L=n=>gl.getUniformLocation(p,n);   /* шаг раз в такт, ease-out .45 с */  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
       gl.useProgram(p);gl.uniform4f(L("QP"),lerp(a[0],c[0],e),lerp(a[1],c[1],e),top,bot);gl.uniform1f(L("QT"),tt);
       if(UP5&&g5){const A=new Float32Array(32),B=new Float32Array(32);if(!g5.st)U5P.forEach((s,i)=>{const r=s[4]*Math.PI/180;A.set([s[0],s[1],s[2],s[3]],i*4);B.set([Math.cos(r),Math.sin(r),s[5],0],i*4)});
         gl.uniform4fv(L("KA"),A);gl.uniform4fv(L("KB"),B);gl.uniform4f(L("QZ"),g5.xc,g5.capT,g5.base,g5.nR);gl.uniform4f(L("QL"),g5.ln[0],g5.ln[1],g5.ln[2],g5.ln[3]);
@@ -4383,7 +4384,7 @@ setTimeout(function(){
   const UBm=(fn,n,...a)=>[PB,PB2].forEach(p=>{if(!p)return;gl.useProgram(p);gl[fn](gl.getUniformLocation(p,n),...a)});   /* юниформ — в обе программы печати */
   UBm("uniform3f","F",f3[0],f3[1],f3[2]);UBm("uniform1i","T",0);UBm("uniform3fv","PXC",H2TF.PIXBG.color(COURSE.fam));
   let W=1,Hh=1,QW=1,QH=1,hm=0,hh=0,tm=[.5,.5],cm=[.5,.5],t0=performance.now(),fr=0;
-  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen||reduce)t0-=1e4;
+  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen)t0-=1e4;  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
   try{sessionStorage.setItem("h2t-ink-"+COURSE.slug,"1")}catch(_){}
   const draw=(t,k)=>{U2J.frame(gl,PB2||PB,t);if(!UP6){gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.viewport(0,0,QW,QH);gl.useProgram(PA);gl.uniform1f(UA("t"),t);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
     gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,W,Hh);gl.bindTexture(gl.TEXTURE_2D,tex);
@@ -4402,8 +4403,8 @@ setTimeout(function(){
     gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,tex,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);
     gl.useProgram(PA);gl.uniform2f(UA("R"),W,Hh);gl.uniform2f(UA("Q"),QW,QH);gl.uniform1f(UA("P"),stk.matches?(COURSE.pxm||.5):COURSE.px||.64);
     UBm("uniform2f","R",W,Hh);UBm("uniform1f","C",Math.max(3,Math.round(Hh/170)));UBm("uniform1f","PXT",H2TF.PIXBG.textY(cv));setB();draw(lt,lk)};   /* кадр сразу — без пустого/растянутого */
-  let lt=0,lk=reduce?1:0;const refit=fit(cv,size);if(R.fonts&&R.fonts.ready)R.fonts.ready.then(refit);
-  cv.classList.add("on");if(reduce){draw(0,1);return}
+  let lt=0,lk=0;const refit=fit(cv,size);if(R.fonts&&R.fonts.ready)R.fonts.ready.then(refit);  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+  cv.classList.add("on");  /* волна heroanim: WebGL-шапка курса анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add((t,dt)=>{const a=ease(.1,dt);cm=[lerp(cm[0],tm[0],a),lerp(cm[1],tm[1],a)];hh=lerp(hh,hm,ease(.08,dt));
     const k=clamp((performance.now()-t0)/800,0,1);if(k>=1&&hh<.01&&(++fr&1))return; /* в покое — каждый второй кадр (дрейф t*.07 медленный) */

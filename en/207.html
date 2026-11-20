@@ -2660,7 +2660,7 @@ for(const s of document.querySelectorAll('#ix .hero')){
  scenes.push(sc);
 }
 function draw(sc,now){
- const {gl,u}=sc;const t=(reduce?6.0:(now-sc.t0)/1000)*(FINE?.72:1);
+ const {gl,u}=sc;const t=(6.0+(now-sc.t0)/1000)*(FINE?.72:1);  /* волна heroanim: полоса идёт по реальному времени, старт с удачной фазы 6.0 (решение владельца 20.11.2026) */
  sc.pa+=(sc.pat-sc.pa)*.08;
  gl.uniform2f(u.R,sc.cv.width,sc.cv.height);gl.uniform1f(u.T,t);gl.uniform1i(u.M,sc.m);gl.uniform3fv(u.K,sc.k);
  gl.uniform2f(u.P,sc.p[0],sc.p[1]);gl.uniform1f(u.PA,sc.pa);gl.uniform1i(u.TX,0);gl.uniform1f(u.HT,sc.ht);gl.uniform1f(u.FN,FINE?1:0); gl.uniform4fv(u.BX,sc.bx);
@@ -2678,8 +2678,8 @@ function draw(sc,now){
  gl.drawArrays(gl.TRIANGLES,0,3);
  if(sc.fc)sc.fc.dataset.t='f '+String(Math.floor(t*60)).padStart(6,'0')+' · 60 fps';
 }
-let __hid=document.hidden;document.addEventListener("visibilitychange",()=>{const h=document.hidden;if(__hid&&!h&&!reduce)requestAnimationFrame(loop);__hid=h});
-function loop(now){if(__hid)return;for(const sc of scenes)if(sc.vis)draw(sc,now);if(!reduce)requestAnimationFrame(loop)}
+let __hid=document.hidden;document.addEventListener("visibilitychange",()=>{const h=document.hidden;if(__hid&&!h)requestAnimationFrame(loop);__hid=h});  /* волна heroanim: rAF перезапускается и при выключенной анимации (решение влательца 20.11.2026) */
+function loop(now){if(__hid)return;for(const sc of scenes)if(sc.vis)draw(sc,now);requestAnimationFrame(loop)}  /* волна heroanim: цикл полосы ВСЕГДА — иначе рисуется ровно один кадр (решение владельца 20.11.2026) */
 Promise.race([document.fonts.ready,new Promise(function(r){setTimeout(r,2500);})]).then(()=>{
  requestAnimationFrame(loop);
  requestAnimationFrame(()=>document.querySelectorAll('#ix .hero').forEach(s=>s.classList.add('in')));
@@ -3618,7 +3618,8 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
       await document.fonts.ready;
@@ -6045,7 +6046,7 @@ const U2J=(()=>{let top=0,bot=1e5,ty=[-1,-1],ver=1,g5=null,mx=-1,my=-1,smx=-1,sm
           aw=xc;[-.22,-.07,.08,.24].forEach((a,i)=>{const o=[Math.cos(a),Math.sin(a)];kc.set([xc,ln[0],xc,ln[0]],i*4);kc.set([xc,ln[0],o[0],o[1]],16+i*4);pq[i]=cy(ln[0]+o[1]/o[0]*(bus-xc))})}
         else if(U5M===3){xb=-.04*W;tau=0;X0=xc;aw=hb5*.3;ln[0]=pq[0]=(tS+bS)/2}   /* GLSL — полоса треугольников по середине полосы (справа от имени — свободное поле), полувысота .3 полосы; клин — вершиной на её оси за левым краем */
         g5={xc,capT,base,nL:st?W+1:nL,nR:st?W+1:nR,ln,fl,X0,Lu,amp,xb,tau,aw,kc,pq,bus,port:st?7:9,scl:st?-1:nL,st}};ver++},
-    frame(gl,p,t){if(!UP2||!p)return;const tt=reduce&&!window.__h2tRec?0:t,b=Math.floor(tt/2),e=1-Math.pow(1-Math.min(1,(tt-b*2)/.45),3),a=hp(b-1),c=hp(b),L=n=>gl.getUniformLocation(p,n);   /* шаг раз в такт, ease-out .45 с */
+    frame(gl,p,t){if(!UP2||!p)return;const tt=t,b=Math.floor(tt/2),e=1-Math.pow(1-Math.min(1,(tt-b*2)/.45),3),a=hp(b-1),c=hp(b),L=n=>gl.getUniformLocation(p,n);   /* шаг раз в такт, ease-out .45 с */  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
       gl.useProgram(p);gl.uniform4f(L("QP"),lerp(a[0],c[0],e),lerp(a[1],c[1],e),top,bot);gl.uniform1f(L("QT"),tt);
       if(UP5&&g5){const A=new Float32Array(32),B=new Float32Array(32);if(!g5.st)U5P.forEach((s,i)=>{const r=s[4]*Math.PI/180;A.set([s[0],s[1],s[2],s[3]],i*4);B.set([Math.cos(r),Math.sin(r),s[5],0],i*4)});
         gl.uniform4fv(L("KA"),A);gl.uniform4fv(L("KB"),B);gl.uniform4f(L("QZ"),g5.xc,g5.capT,g5.base,g5.nR);gl.uniform4f(L("QL"),g5.ln[0],g5.ln[1],g5.ln[2],g5.ln[3]);
@@ -6476,11 +6477,11 @@ ${U2G}
         if(HY){FW=Math.ceil(W/8);FH=Math.ceil(Hh/8);TFx.size(FW,FH);ftT=-9;   /* текстура поля пересоздана — пересчитать в ближайшем кадре */gl.useProgram(PF);gl.uniform2f(U(PF,"R"),W,Hh);
           for(const q of[PB,PBr,PBm,P0]){gl.useProgram(q);gl.uniform2f(U(q,"TFS"),FW*8,FH*8)}}   /* пиксельный фон — у гибрида */
         U3(PL);gl.uniform2f(U(PL,"R"),W,Hh);gl.uniform3f(U(PL,"F"),f3[0],f3[1],f3[2]);gl.uniform1f(U(PL,"RW"),Math.min(1,Math.max(.8,Hh/900)))},
-      mv(t){return !reduce&&((t%6)+6)%6>=4.35},   /* идёт переезд (4,4 → 6 с цикла, с запасом в кадр) */
+      mv(t){return ((t%6)+6)%6>=4.35},   /* идёт переезд (4,4 → 6 с цикла, с запасом в кадр) */  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
       draw(t,k){
         if(UP5){into(null,W,Hh);U2J.frame(gl,P0,t);gl.useProgram(P0);gl.uniform1f(U(P0,"K"),k);gl.uniform1f(U(P0,"B"),Bv);full(P0);return}
         /* конвейер шагает: переезд 1,6 с (плавно), стоянка 4,4 с; reduced-motion — стоянка */
-        const cyc=6,f=reduce?0:((t%cyc)+cyc)%cyc,ph=f<cyc-1.6?0:sstep(0,1,(f-(cyc-1.6))/1.6);
+        const cyc=6,f=((t%cyc)+cyc)%cyc,ph=f<cyc-1.6?0:sstep(0,1,(f-(cyc-1.6))/1.6);  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
         const M=mul(rx(-.95+(cm[1]-.5)*.5*hh),ry(t*.32+(cm[0]-.5)*.9*hh)),MT=tr3(M);
         gl.useProgram(PA);gl.uniform1f(U(PA,"PH"),ph);gl.uniform1f(U(PA,"t"),t);gl.uniformMatrix3fv(U(PA,"MT"),false,cm3(MT));gl.uniformMatrix3fv(U(PA,"MV"),false,cm3(M));
         const s0=Math.floor(BX[0]/4),s1=Math.max(0,Math.floor(BX[1]/4));gl.enable(gl.SCISSOR_TEST);gl.scissor(s0,s1,QW-s0,Math.ceil(BX[3]/4)-s1+1); /* вне рамки FBO — нули с создания */
@@ -6586,15 +6587,15 @@ ${U2G}
   const draw=(t,k)=>V.draw(t,k);
   window.__h2tHero=draw; /* замер цены кадра (courses/perf.mjs gpu) — все проходы варианта */
   const setB=()=>{Bv=hmE&&hmE.offsetParent?hmE.getBoundingClientRect().bottom-cv.getBoundingClientRect().top+12:stk.matches?40:-1e4;U2J.size(cv)};   /* сложенная шапка: фон гаснет под навбаром */
-  const T0=reduce?14:0; /* reduced-motion: один кадр с удачной фазой */
+  const T0=0; /* reduced-motion: один кадр с удачной фазой */  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
   /* ресайз — H2TF.fit (ResizeObserver): раскладка, FBO и юниформы пересчитываются, и кадр рисуется сразу — без кадра со старой геометрией */
-  let lt=T0,lk=reduce?1:0;
+  let lt=T0,lk=0;  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
   const size=()=>{W=cv.width=cv.clientWidth;Hh=cv.height=cv.clientHeight;QW=Math.max(1,Math.ceil(W/4));QH=Math.max(1,Math.ceil(Hh/4));Pc=motifP();setB();V.size();draw(lt,lk)};
   const refit=fit(cv,size);if(R.fonts){if(R.fonts.ready)R.fonts.ready.then(refit);R.fonts.addEventListener&&R.fonts.addEventListener("loadingdone",refit)}addEventListener("load",refit);
   stk.addEventListener&&stk.addEventListener("change",refit);
-  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen||reduce)t0-=1e4;
+  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen)t0-=1e4;  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
   try{sessionStorage.setItem("h2t-ink-"+COURSE.slug,"1")}catch(_){}
-  cv.classList.add("on");if(reduce){draw(T0,1);return}
+  cv.classList.add("on");  /* волна heroanim: WebGL-шапка курса анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add((t,dt)=>{const a=ease(.1,dt);cm=[lerp(cm[0],tm[0],a),lerp(cm[1],tm[1],a)];hh=lerp(hh,hm,ease(.06,dt));
     const k=clamp((performance.now()-t0)/800,0,1);
@@ -6788,7 +6789,7 @@ setTimeout(function(){
   const UBm=(fn,n,...a)=>[PB,PB2].forEach(p=>{if(!p)return;gl.useProgram(p);gl[fn](gl.getUniformLocation(p,n),...a)});   /* юниформ — в обе программы печати */
   UBm("uniform3f","F",f3[0],f3[1],f3[2]);UBm("uniform1i","T",0);UBm("uniform3fv","PXC",H2TF.PIXBG.color(COURSE.fam));
   let W=1,Hh=1,QW=1,QH=1,hm=0,hh=0,tm=[.5,.5],cm=[.5,.5],t0=performance.now(),fr=0;
-  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen||reduce)t0-=1e4;
+  const seen=(()=>{try{return sessionStorage.getItem("h2t-ink-"+COURSE.slug)}catch(_){return null}})();if(seen)t0-=1e4;  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
   try{sessionStorage.setItem("h2t-ink-"+COURSE.slug,"1")}catch(_){}
   const draw=(t,k)=>{U2J.frame(gl,PB2||PB,t);if(!UP6){gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.viewport(0,0,QW,QH);gl.useProgram(PA);gl.uniform1f(UA("t"),t);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);}
     gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,W,Hh);gl.bindTexture(gl.TEXTURE_2D,tex);
@@ -6807,8 +6808,8 @@ setTimeout(function(){
     gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,tex,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);
     gl.useProgram(PA);gl.uniform2f(UA("R"),W,Hh);gl.uniform2f(UA("Q"),QW,QH);gl.uniform1f(UA("P"),stk.matches?(COURSE.pxm||.5):COURSE.px||.64);
     UBm("uniform2f","R",W,Hh);UBm("uniform1f","C",Math.max(3,Math.round(Hh/170)));UBm("uniform1f","PXT",H2TF.PIXBG.textY(cv));setB();draw(lt,lk)};   /* кадр сразу — без пустого/растянутого */
-  let lt=0,lk=reduce?1:0;const refit=fit(cv,size);if(R.fonts&&R.fonts.ready)R.fonts.ready.then(refit);
-  cv.classList.add("on");if(reduce){draw(0,1);return}
+  let lt=0,lk=0;const refit=fit(cv,size);if(R.fonts&&R.fonts.ready)R.fonts.ready.then(refit);  /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+  cv.classList.add("on");  /* волна heroanim: WebGL-шапка курса анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add((t,dt)=>{const a=ease(.1,dt);cm=[lerp(cm[0],tm[0],a),lerp(cm[1],tm[1],a)];hh=lerp(hh,hm,ease(.08,dt));
     const k=clamp((performance.now()-t0)/800,0,1);if(k>=1&&hh<.01&&(++fr&1))return; /* в покое — каждый второй кадр (дрейф t*.07 медленный) */

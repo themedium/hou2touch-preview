@@ -2402,7 +2402,8 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
       await document.fonts.ready;
@@ -3160,7 +3161,7 @@ setTimeout(function(){
     gl.uniform2f(uI,im.width,im.height);ok=true;t0=performance.now();setX();setB();
     draw(0,reduce||!XC?1:0);$("#heroBg").style.opacity=0;cv.style.opacity=1}; // reduced-motion — этот кадр и есть шапка (перерисовка — только при ресайзе и шрифтах)
   im.src=HERO_TEX;im.decode().then(up,()=>{if(im.complete&&im.naturalWidth)up();else im.onload=up});
-  if(reduce)return;
+  /* волна heroanim: ink-шапка анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add(t=>{if(!ok)return;cm=[lerp(cm[0],tm[0],.1),lerp(cm[1],tm[1],.1)];hh=lerp(hh,hm,.08);
     const k=XC?clamp((performance.now()-t0)/800,0,1):1;draw(t,1-Math.pow(1-k,2))},hero);

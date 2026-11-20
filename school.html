@@ -2403,7 +2403,8 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
       await document.fonts.ready;
@@ -3710,12 +3711,12 @@ setTimeout(function(){
   const up=()=>{if(ok)return;const tx=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tx);
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
     try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im)}catch(e){hero.classList.add("nogl");return}
-    gl.uniform2f(uI,im.width,im.height);ok=true;t0=performance.now()-(seen||reduce?1e4:0);
+    gl.uniform2f(uI,im.width,im.height);ok=true;t0=performance.now()-(seen?1e4:0);  /* волна heroanim: ink-шапка анимируется всегда (решение владельца 20.11.2026) */
     try{sessionStorage.setItem("h2t-ink","1")}catch(_){}
-    if(reduce){draw(0,1);cv.classList.add("on");return}
+    /* волна heroanim: ink-шапка анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
     draw(0,seen?1:0);cv.classList.add("on")};
   im.src=HERO_TEX;im.decode().then(up,()=>{if(im.complete&&im.naturalWidth)up();else im.onload=up});
-  if(reduce)return;
+  /* волна heroanim: ink-шапка анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add((t,dt)=>{if(!ok)return;const e1=ease(.1,dt);cm=[lerp(cm[0],tm[0],e1),lerp(cm[1],tm[1],e1)];hh=lerp(hh,hm,ease(.08,dt)); // 11.10: на 120 Гц — как на 60
     const k=clamp((performance.now()-t0)/800,0,1);if(k>=1&&hh<.01&&AU.lvl<.001&&(++fr%3))return; // 10.10: покой — каждый третий кадр (курсы — каждый второй)
