@@ -1833,6 +1833,33 @@ html.x-about #concept .m2-open .mono{color:var(--chop)}
    page — слой бьёт специфику, и display:block из tpl не действовал. На курсах
    инертно: класс ix-rv-car есть только на learning-path страницах. */
 html:not(.x-flat) .ix-rv-car .ix-rvs{display:block}
+/* ---- отзывы: карусель (2 карточки в ряд на десктопе, 1 на мобильных), scroll-snap ---- */
+html:not(.x-flat) .ix-rv-car .ix-rvs{display:block}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack{display:grid;grid-auto-flow:column;grid-auto-columns:50%;grid-template-rows:1fr auto;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+html:not(.x-flat) .ix-rv-car .ix-rvplate{position:relative}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv{display:flex;flex-direction:column;grid-row:auto;grid-template-rows:none;row-gap:0;scroll-snap-align:start}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv blockquote{flex:1 1 auto;margin-bottom:20px}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv figcaption{margin-top:auto;border-top:1px solid rgba(11,11,12,.14);padding-top:14px}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv+figure.ix-rv{border-left:0;border-top:0}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:1px solid rgba(11,11,12,.14)}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child{border-right:0}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child:nth-child(odd){grid-column:span 2}
+@media (max-width:1023px){
+html:not(.x-flat) .ix-rv-car .ix-rvtrack{grid-auto-columns:100%}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:0}
+}
+html:not(.x-flat) .ix-rv-car .ix-rvnav{position:absolute;inset:0;display:block;padding:0;pointer-events:none}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;pointer-events:auto;width:44px;height:44px;padding:0;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;background:var(--plate,var(--white));font:400 var(--fs-m)/1 var(--sans);color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:16px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:16px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn:hover{background:var(--dat,#111);border-color:var(--dat,#111);color:var(--bg)}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn:focus-visible{outline:2px solid var(--dat,#111);outline-offset:2px}
+@media (max-width:1023px){
+html:not(.x-flat) .ix-rv-car .ix-rvbtn{width:40px;height:40px;font-size:var(--fs-m)}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:10px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
+}
+@media (prefers-reduced-motion:reduce){html:not(.x-flat) .ix-rv-car .ix-rvtrack{scroll-behavior:auto}html:not(.x-flat) .ix-rv-car .ix-rvbtn{transition:none}}
 }</style><style id="ix-path">@layer tpl{
 /* ---- Course modules: на LP видны ТАЙЛЫ (div.ix-patch со страницы курса),
    список ol.ix-mods остаётся скрытым (общий CSS страниц его прячет:
@@ -1869,33 +1896,6 @@ html:not(.x-flat) .ix-prog>.ix-cgrp>details.ix-mod{padding-inline:clamp(16px,2vw
 html:not(.x-flat) .ix-prog>.ix-cgrp>details.ix-mod:first-of-type{border-top:0}
 html:not(.x-flat) .ix-modlist{list-style:none;margin:0;padding:0}
 html:not(.x-flat) .ix-modlist>li{list-style:none}
-/* ---- отзывы: карусель (2 карточки в ряд на десктопе, 1 на мобильных), scroll-snap ---- */
-html:not(.x-flat) .ix-rv-car .ix-rvs{display:block}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack{display:grid;grid-auto-flow:column;grid-auto-columns:50%;grid-template-rows:1fr auto;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
-html:not(.x-flat) .ix-rv-car .ix-rvplate{position:relative}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv{display:flex;flex-direction:column;grid-row:auto;grid-template-rows:none;row-gap:0;scroll-snap-align:start}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv blockquote{flex:1 1 auto;margin-bottom:20px}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv figcaption{margin-top:auto;border-top:1px solid rgba(11,11,12,.14);padding-top:14px}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv+figure.ix-rv{border-left:0;border-top:0}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:1px solid rgba(11,11,12,.14)}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child{border-right:0}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child:nth-child(odd){grid-column:span 2}
-@media (max-width:1023px){
-html:not(.x-flat) .ix-rv-car .ix-rvtrack{grid-auto-columns:100%}
-html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:0}
-}
-html:not(.x-flat) .ix-rv-car .ix-rvnav{position:absolute;inset:0;display:block;padding:0;pointer-events:none}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;pointer-events:auto;width:44px;height:44px;padding:0;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;background:var(--plate,var(--white));font:400 var(--fs-m)/1 var(--sans);color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:16px}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:16px}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn:hover{background:var(--dat,#111);border-color:var(--dat,#111);color:var(--bg)}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn:focus-visible{outline:2px solid var(--dat,#111);outline-offset:2px}
-@media (max-width:1023px){
-html:not(.x-flat) .ix-rv-car .ix-rvbtn{width:40px;height:40px;font-size:var(--fs-m)}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:10px}
-html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
-}
-@media (prefers-reduced-motion:reduce){html:not(.x-flat) .ix-rv-car .ix-rvtrack{scroll-behavior:auto}html:not(.x-flat) .ix-rv-car .ix-rvbtn{transition:none}}
 }</style>
 <style id="ix-mx">@layer page{/* ---------- 06 что вы будете изучать: патч-матрица 13 × 6 ---------- */
 .mx{--mxw:clamp(360px,39vw,560px)}
@@ -3186,9 +3186,9 @@ document.fonts.ready.then(()=>{
       <div class="tb">
         <span class="mono tk">TouchDesigner · Ableton Live · Substance Designer · набор</span>
         <h3 class="tn"><span style="font-size:.62em;color:var(--chop);margin-right:.14em">101+102</span><span class="ix-vh"> </span>Extreme I+II</h3>
-        <div class="tp"><b>27 600 ₽</b><p><b>27 600 ₽</b></p></div>
+        <div class="tp"><b>27 600 ₽</b></div>
         <ul class="tl"><li>Доступ ко всем видеозаписям на 730 дней</li><li>Файлы проектов, которые используются в уроках</li></ul>
-        <a class="btn pill rec" href="#buy-8947555" data-offer="8947555" onclick="if(window.ltAddToBasket){ltAddToBasket(8947555);return false;}">Записаться — 27 600 ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
+        <a class="btn pill rec" href="#buy-8947555" data-offer="8947555" onclick="if(window.ltAddToBasket){ltAddToBasket(8947555);return false;}">Записаться <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
       </div>
       <div class="pf"><span class="id">→ hou2touch.com/ru/extreme-bundle</span><span>в своём темпе</span></div>
     </article>
@@ -3247,11 +3247,11 @@ document.fonts.ready.then(()=>{
       <div class="tb">
         <span class="mono tk">TouchDesigner · Ableton Live · Substance Designer · набор</span>
         <h3 class="tn"><span style="font-size:.62em;color:var(--chop);margin-right:.14em">101+102</span><span class="ix-vh"> </span>Extreme I+II</h3>
-        <div class="tp"><b>27 600 ₽</b><p><b>27 600 ₽</b></p></div>
+        <div class="tp"><b>27 600 ₽</b></div>
         <ul class="tl"><li>Доступ ко всем видеозаписям на 730 дней</li><li>Файлы проектов, которые используются в уроках</li></ul>
-        <a class="btn pill rec" href="#buy-8947555" data-offer="8947555" onclick="if(window.ltAddToBasket){ltAddToBasket(8947555);return false;}">Записаться — 27 600 ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
+        <a class="btn pill rec" href="#buy-8947555" data-offer="8947555" onclick="if(window.ltAddToBasket){ltAddToBasket(8947555);return false;}">Записаться <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
       </div>
-      <div class="pf ix-buycap"><b>TouchDesigner Extreme Bundle (RU)</b> — 27 600 ₽ · Записаться</div>
+      <div class="pf ix-buycap"><b>TouchDesigner Extreme Bundle (RU)</b> · Записаться</div>
     </article></div></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>10</b> Курсы<i class="op" style="--c:var(--dat)">route1 <u>DAT</u></i></div>

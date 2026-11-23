@@ -1837,6 +1837,33 @@ html.x-about #concept .m2-open .mono{color:var(--chop)}
    page — слой бьёт специфику, и display:block из tpl не действовал. На курсах
    инертно: класс ix-rv-car есть только на learning-path страницах. */
 html:not(.x-flat) .ix-rv-car .ix-rvs{display:block}
+/* ---- отзывы: карусель (2 карточки в ряд на десктопе, 1 на мобильных), scroll-snap ---- */
+html:not(.x-flat) .ix-rv-car .ix-rvs{display:block}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack{display:grid;grid-auto-flow:column;grid-auto-columns:50%;grid-template-rows:1fr auto;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+html:not(.x-flat) .ix-rv-car .ix-rvplate{position:relative}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv{display:flex;flex-direction:column;grid-row:auto;grid-template-rows:none;row-gap:0;scroll-snap-align:start}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv blockquote{flex:1 1 auto;margin-bottom:20px}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv figcaption{margin-top:auto;border-top:1px solid rgba(11,11,12,.14);padding-top:14px}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv+figure.ix-rv{border-left:0;border-top:0}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:1px solid rgba(11,11,12,.14)}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child{border-right:0}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:last-child:nth-child(odd){grid-column:span 2}
+@media (max-width:1023px){
+html:not(.x-flat) .ix-rv-car .ix-rvtrack{grid-auto-columns:100%}
+html:not(.x-flat) .ix-rv-car .ix-rvtrack>figure.ix-rv:nth-child(odd){border-right:0}
+}
+html:not(.x-flat) .ix-rv-car .ix-rvnav{position:absolute;inset:0;display:block;padding:0;pointer-events:none}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;pointer-events:auto;width:44px;height:44px;padding:0;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;background:var(--plate,var(--white));font:400 var(--fs-m)/1 var(--sans);color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:16px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:16px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn:hover{background:var(--dat,#111);border-color:var(--dat,#111);color:var(--bg)}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn:focus-visible{outline:2px solid var(--dat,#111);outline-offset:2px}
+@media (max-width:1023px){
+html:not(.x-flat) .ix-rv-car .ix-rvbtn{width:40px;height:40px;font-size:var(--fs-m)}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="-1"]{left:10px}
+html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
+}
+@media (prefers-reduced-motion:reduce){html:not(.x-flat) .ix-rv-car .ix-rvtrack{scroll-behavior:auto}html:not(.x-flat) .ix-rv-car .ix-rvbtn{transition:none}}
 }</style>
 <style id="ix-mx">@layer page{/* ---------- 06 что вы будете изучать: патч-матрица 13 × 6 ---------- */
 .mx{--mxw:clamp(360px,39vw,560px)}
@@ -3127,9 +3154,9 @@ document.fonts.ready.then(()=>{
       <div class="tb">
         <span class="mono tk">TouchDesigner · Houdini · hou2touch 1</span>
         <h3 class="tn"><span style="font-size:.62em;color:var(--sop);margin-right:.14em">01</span><span class="ix-vh"> </span>Основы</h3>
-        <div class="tp"><b>34 400 ₽</b><p><b>34 400 ₽</b></p></div>
+        <div class="tp"><b>34 400 ₽</b></div>
         <ul class="tl"><li>Доступ ко всем видеозаписям на 730 дней</li><li>Файлы проектов, которые используются в уроках</li><li>Доступ к студенческому чату в Telegram</li></ul>
-        <a class="btn pill rec" href="#buy-8947471" data-offer="8947471" onclick="if(window.ltAddToBasket){ltAddToBasket(8947471);return false;}">Записаться — 34 400 ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
+        <a class="btn pill rec" href="#buy-8947471" data-offer="8947471" onclick="if(window.ltAddToBasket){ltAddToBasket(8947471);return false;}">Записаться <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
       </div>
       <div class="pf"><span class="id">→ hou2touch.com/ru/course/1-foundations</span><span>в своём темпе</span></div>
     </article>
@@ -3182,7 +3209,7 @@ document.fonts.ready.then(()=>{
   <div class="wrap"><p class="mono marq-c">фестивали и&nbsp;площадки из&nbsp;биографии</p></div></div></div>
   
 <div class="edge b" aria-hidden="true"></div></section>
-<section id="reviews" class="sec" data-lkey="m-reviews"><div class="wrap"><div class="lbl mono"><b>08</b> Отзывы<i class="op" style="--c:var(--dat)">text1 <u>DAT</u></i></div><div class="ix-rvs"><div class="ph ix-plh" aria-hidden="true">text1 <u>DAT</u><span class="r">6 отзывов</span></div><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Я вот однажды открыла, что-то потыкала, потупила. Потом через год Стас пояснил, что нода похожа на класс, вся эта шняга с ООП, и случился инсайт - нодовая архитектура в гудини нужна для тех, кого пугает скрипт. Ручками потыкал, что-то поменял и нормально</blockquote><figcaption class="mono"><b>10.07.2021</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Я тоже присоединяюсь, курс лучшее что со мной произошло в этой жизни и стало следствием продвижения по карьере, всем знакомым горячо рекомендую, спасибо за то, что делитесь знаниями и делаете это так четко!</blockquote><figcaption class="mono"><b>16.06.2025</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Но я очень новенький человек в индустрии, у меня так-то и из пожеланий довольно приземленные наблюдения основательно how2touch
+<section id="reviews" class="sec ix-rv-car" data-lkey="m-reviews"><div class="wrap"><div class="lbl mono"><b>08</b> Отзывы<i class="op" style="--c:var(--dat)">text1 <u>DAT</u></i></div><div class="ix-rvs"><div class="ph ix-plh" aria-hidden="true">text1 <u>DAT</u><span class="r">6 отзывов</span></div><div class="ix-rvplate"><div class="ix-rvtrack" tabindex="0" role="group" aria-label="Student reviews"><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Я вот однажды открыла, что-то потыкала, потупила. Потом через год Стас пояснил, что нода похожа на класс, вся эта шняга с ООП, и случился инсайт - нодовая архитектура в гудини нужна для тех, кого пугает скрипт. Ручками потыкал, что-то поменял и нормально</blockquote><figcaption class="mono"><b>10.07.2021</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Я тоже присоединяюсь, курс лучшее что со мной произошло в этой жизни и стало следствием продвижения по карьере, всем знакомым горячо рекомендую, спасибо за то, что делитесь знаниями и делаете это так четко!</blockquote><figcaption class="mono"><b>16.06.2025</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Но я очень новенький человек в индустрии, у меня так-то и из пожеланий довольно приземленные наблюдения основательно how2touch
 И учитывая, что я прошел только 5 блоков курса (часть которые прям очень базовые, что я за пол года узнал и выучил сам, но не отменяет их ценность) у меня только хвалебные отзывы к подаче и глубине материала</blockquote><figcaption class="mono"><b>21.08.2024</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Отмечу, что очень много нового все же и полезного даже в том, что изучил сам) и на то что изучил получил  взгляд с другого ракурса, чтоб не показалось, что я обесцениваю) 
 Нахожу курс очень полезным и приступаю к каждому уроку с удовольствием и предвкушением</blockquote><figcaption class="mono"><b>21.08.2024</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Привет всем, хочу немного похвастаться участием в первом своем крупном проекте - делал часть графики для mts true tech day. Курс очень помог решать задачи сознательно, а не методом тыка и просмотром туторов (без этого не обошлось тоже, но по минимуму). Плюс база по гудини тоже пригодилась. Прикладываю видосы как выглядел интро ролик над которым больше всего трудилась команда и мейн сцена под интро, полную запись трансляции можно посмотреть на сайте эвента, если кому-то вдруг интересно станет. Большое спасибо за крепкий фундамент, Станислав!</blockquote><figcaption class="mono"><b>07.06.2025</b></figcaption></figure><figure class="pn lite rv ix-rv" style="--c:var(--sop)"><blockquote>Благодарю Станислава и всех причастных за создание такого курса!)
 
@@ -3198,17 +3225,17 @@ document.fonts.ready.then(()=>{
 
 Собрал скромный ролик по итогу — https://youtu.be/7TOsJF0u8nE , inst - https://www.instagram.com/mityazen/
 
-Спасибо за курс и всех благ)</blockquote><figcaption class="mono"><b>16.11.2024</b></figcaption></figure></div></div></section>
+Спасибо за курс и всех благ)</blockquote><figcaption class="mono"><b>16.11.2024</b></figcaption></figure></div><div class="ix-rvnav"><button type="button" class="ix-rvbtn" data-d="-1" aria-label="Previous reviews"><span aria-hidden="true">&#8592;</span></button><button type="button" class="ix-rvbtn" data-d="1" aria-label="Next reviews"><span aria-hidden="true">&#8594;</span></button></div></div><script>(function(){var t=document.querySelector("#reviews .ix-rvtrack");if(!t)return;var f=t.querySelector("figure.ix-rv");if(!f)return;function step(){return f.getBoundingClientRect().width;}function anim(){return window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";}function go(d){t.scrollBy({left:d*step(),behavior:anim()});}t.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){go(1);e.preventDefault();}else if(e.key==="ArrowLeft"){go(-1);e.preventDefault();}});var b=t.parentNode.querySelectorAll(".ix-rvbtn");for(var i=0;i<b.length;i++){b[i].addEventListener("click",function(e){go(parseInt(this.getAttribute("data-d"),10));e.preventDefault();});}})();</script></div></div></section>
 <section id="buy" class="sec ix-buy2" data-lkey="m-buy"><div class="wrap"><div class="lbl mono"><b>09</b> Записаться<i class="op" style="--c:var(--chop)">enroll1 <u>CHOP</u></i></div><div class="ix-buywrap"><article class="pn full tier km dk rv ix-buycard" style="--c:var(--k);--d:0;margin:0" data-lkey="m11">
       <div class="ph">tier1<span class="r">в своём темпе</span></div>
       <div class="tb">
         <span class="mono tk">TouchDesigner · Houdini · hou2touch 1</span>
         <h3 class="tn"><span style="font-size:.62em;color:var(--sop);margin-right:.14em">01</span><span class="ix-vh"> </span>Основы</h3>
-        <div class="tp"><b>34 400 ₽</b><p><b>34 400 ₽</b></p></div>
+        <div class="tp"><b>34 400 ₽</b></div>
         <ul class="tl"><li>Доступ ко всем видеозаписям на 730 дней</li><li>Файлы проектов, которые используются в уроках</li><li>Доступ к студенческому чату в Telegram</li></ul>
-        <a class="btn pill rec" href="#buy-8947471" data-offer="8947471" onclick="if(window.ltAddToBasket){ltAddToBasket(8947471);return false;}">Записаться — 34 400 ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
+        <a class="btn pill rec" href="#buy-8947471" data-offer="8947471" onclick="if(window.ltAddToBasket){ltAddToBasket(8947471);return false;}">Записаться <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
       </div>
-      <div class="pf ix-buycap"><b>Hou2Touch 1: Основы</b> — 34 400 ₽ · Записаться</div>
+      <div class="pf ix-buycap"><b>Hou2Touch 1: Основы</b> · Записаться</div>
     </article></div></div></section>
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>10</b> Курсы<i class="op" style="--c:var(--dat)">route1 <u>DAT</u></i></div>
