@@ -2138,15 +2138,7 @@ html body footer.ft{color:var(--fg)}html body footer.ft a.logo{color:var(--fg)}h
 @media(max-width:760px){html body footer.ft .ft2-a .logo{margin-left:0}html body footer.ft .ft2-a a[href*="x.com"]{padding-inline:0;margin-inline:0}}
 @media(max-width:600px){html body footer.ft .ft2-a{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:0}html body footer.ft .ft2-a .logo{flex:none}html body footer.ft .ft2-a .id{flex:1 0 100%}html body footer.ft .ft2-a .so{margin-left:0}}
 </style>
-<style id="winhdr">/* win headers: calibrated metric fallback (Arial local, no Google) */
-@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:100 300;size-adjust:101.98%;ascent-override:97.87%;descent-override:24.44%;line-gap-override:0%}
-@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:400;size-adjust:99.79%;ascent-override:100.02%;descent-override:24.98%;line-gap-override:0%}
-@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:500;size-adjust:101.01%;ascent-override:98.81%;descent-override:24.68%;line-gap-override:0%}
-@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:600 900;size-adjust:96.55%;ascent-override:103.37%;descent-override:25.82%;line-gap-override:0%}
-#ix{--sans:"Inter Tight","IX Sans","H2T Sans FB","H2T Sans FB2",system-ui,sans-serif}
-/* low window (1366x768 @150% -> 512px): H1 above the fold */
-@media (max-height:720px){#ix .hero{min-height:max(420px,100svh);max-height:none}}
-</style><style id="pp-unify">
+<style id="pp-unify">
 /* ===== pp-unify: one native plate language for the paper blocks before Programme ===== */
 /* 0 · spacing system: one air scale for the whole page, full-bleed container */
 :root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2.2vw,32px);--r-sub:clamp(16px,1.6vw,24px);--fs-2xs:11px;--fs-xs:12px;--fs-s:14px;--fs-m:16px;--fs-l:20px;--fs-xl:24px;--fs-2xl:28px;--fs-3xl:32px;--fs-4xl:40px;--fs-5xl:56px;--fs-6xl:88px;--fs-7xl:112px;--lh-tight:1.15;--lh-body:1.5;--card-r:6px;--chip-h:24px;--carmin:#b3122e;--hou-hover:#f0602d}
@@ -2368,7 +2360,7 @@ html body .ipt-wave{image-rendering:pixelated}
   --paper:#e9e7e0;--ink:#0b0b0c;--txt:#2b2a28;--mute:#67655f;--dim:#9a988f;
   --line:rgba(11,11,12,.12);--line2:rgba(11,11,12,.28);--hou:#e5501e;
   --sop:#3d7fd6;--top:#65a30d;--chop:#45a654;--dat:#c34f9a;
-  --disp:"H2T Bebas",Impact,sans-serif;--sans:"Inter Tight",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+  --disp:"H2T Bebas","H2T Bebas FB","H2T Bebas FB2",sans-serif;--sans:"Inter Tight","H2T Sans FB","H2T Sans FB2",system-ui,sans-serif;--mono:"JetBrains Mono","H2T Mono FB","H2T Mono FB2",ui-monospace,monospace;
   /* grid */
   --pad:clamp(16px,3.9vw,56px);--gut:clamp(12px,1.4vw,20px);
   /* type scale (fluid, 390 → 1440 → 1920) */
@@ -2539,16 +2531,25 @@ html body .ipt-wave{image-rendering:pixelated}
 #ix .meta .a{grid-column:1/13}}
 #ix .hero{min-height:auto;height:auto;max-height:none;padding-top:var(--ix-navh,52px)}
 }</style>
-<div id="ix"><header class="hero long" id="top" style="--k:var(--top)" data-m="warp" data-lkey="m1,m15">
+<style id="winhdr">/* win headers: calibrated metric fallback (Arial local, no Google) */
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:100 300;size-adjust:101.98%;ascent-override:97.87%;descent-override:24.44%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:400;size-adjust:99.79%;ascent-override:100.02%;descent-override:24.98%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:500;size-adjust:101.01%;ascent-override:98.81%;descent-override:24.68%;line-gap-override:0%}
+@font-face{font-family:"IX Sans";src:local("Arial"),local("ArialMT");font-weight:600 900;size-adjust:96.55%;ascent-override:103.37%;descent-override:25.82%;line-gap-override:0%}
+#ix{--sans:"Inter Tight","IX Sans","H2T Sans FB","H2T Sans FB2",system-ui,sans-serif}
+/* low window (1366x768 @150% -> 512px): H1 above the fold */
+@media (max-height:720px){#ix .hero{min-height:max(420px,100svh);max-height:none}}
+</style>
+<div id="ix"><header class="hero long" id="top" style="--k:var(--chop)" data-m="light" data-lkey="m1,m15">
  <div class="band"><canvas></canvas><div class="ov" aria-hidden="true"><div class="tk"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
    <span class="lb tl" data-t="srvlight COMP"></span><span class="lb tr fc" data-t="f 000000 · 60 fps"></span><span class="lb ret" data-t=""></span>
-   <span class="lb br k" data-t="● TOP · warp"></span></div>
+   <span class="lb br k" data-t="● CHOP · light"></span></div>
    <div class="ttl"><div class="num" aria-hidden="true"><span><em>l</em></span><span><em>i</em></span><span><em>g</em></span><span><em>h</em></span><span><em>t</em></span></div><h1 aria-label="Light Production Learning Path"><span>Light Production Learning Path</span></h1></div></div>
  <div class="wrap lock"><div class="tt"><p class="h1q">I want to build the whole show, not just one part of it</p><p class="lead">You work with light at events and want lights, lasers and media to run as one show. First the idea has to become a concept with budget, safety and roles on site, then a real-time system has to tie it all together. Both look like separate professions.</p></div>
    <div class="cta"><span class="pr"><span data-h2t="price" data-slug="/light">€1,880</span></span><a class="btn rec" href="#buy-8947554" data-offer="8947554" onclick="if(window.ltAddToBasket){ltAddToBasket(8947554);return false;}"><i></i>Enroll</a></div></div>
  <div class="wrap foot"><div class="fx"><div class="mono fh">Course facts</div><dl><div class="ix-tech"><dt>Structure<span class="vh">: </span></dt><dd>4 levels, 35 modules, 104 lessons</dd></div><div class="ix-tech"><dt>Video<span class="vh">: </span></dt><dd>64 h in total</dd></div><div class="ix-tech"><dt>Pace<span class="vh">: </span></dt><dd>Weekly · all on request</dd></div><div class="ix-tech"><dt>Access<span class="vh">: </span></dt><dd>2 years</dd></div><div class="ix-tech"><dt>Language<span class="vh">: </span></dt><dd>English</dd></div><div class="ix-tech"><dt>Level<span class="vh">: </span></dt><dd>Beginner to intermediate</dd></div></dl></div></div>
 </header></div>
-<script>(()=>{const MOTIF={chladni:0,streams:1,wall:2,terrain:3,warp:4,frame:5,lissajous:6,beams:7,feedback:8,barcode:9,opart:10,fold:11,physarum:12,plotter:13,rings:14,swarm13:15,moire:16,rack:17,shader:18,storyboard:19,channels:20,atlas:21};
+<script>(()=>{const MOTIF={chladni:0,streams:1,wall:2,terrain:3,warp:4,frame:5,lissajous:6,beams:7,feedback:8,barcode:9,opart:10,fold:11,physarum:12,plotter:13,rings:14,swarm13:15,moire:16,rack:17,shader:18,storyboard:19,channels:20,atlas:21,bundle:22,foundations:23,procedural3d:24,interactive:25,path3d:26,light:27,avperf:28};
 const q=new URLSearchParams(location.search);const IX=document.getElementById('ix');
 const FINE=!(q.get('x')||'').split(',').includes('raw');if(FINE)IX.classList.add('fine');IX.classList.add('js');
 /* ---------- generative engine: one technique, five motifs ---------- */
@@ -2787,7 +2788,137 @@ vec2 motif(vec2 uv,float asp,float t){
   else{ink=boid*.85;col=(vein>.1?1.:0.)*step(.02,ink);}
   return vec2(ink,col);
  }
- if(M==4){ // warp — domain-warped fbm, posterised into dithered tone steps (явный блок; раньше жил как fallback)
+ if(M==22){ // bundle — two tracks of one signal, converging into a single line
+  float ink=0.,col=0.;
+  float conv=smoothstep(.05,.78,uv.x);
+  for(int i=0;i<2;i++){
+   float fi=float(i);
+   float sgn=fi*2.-1.;
+   float y0=.5+sgn*(.26-.245*conv);
+   float wv=.010*sin(uv.x*8.5-t*.6+fi*3.14159);
+   float y=y0+wv;
+   ink=max(ink,hline(uv.y-y,.0030));
+   float mk=gline(uv.x*22.-t*.5*(1.+fi),1.3)*step(abs(uv.y-y),.014);
+   ink=max(ink,mk*.30*(1.-conv));
+  }
+  vec2 c=vec2((uv.x-.84)*asp,uv.y-.5);
+  float r=length(c);
+  float ring=1.-smoothstep(.0012,.0038,abs(r-.075));
+  ink=max(ink,ring);
+  col=ring*step(.5,uv.x);
+  return vec2(min(ink,1.),col);
+ }
+ if(M==23){ // foundations — a chain of nodes standing on one baseline
+  float ink=0.,col=0.;
+  float base=.17;
+  ink=max(ink,hline(uv.y-base,.0024));
+  for(int i=0;i<9;i++){
+   float fi=float(i);
+   float x=(fi+.5)/9.;
+   float grow=clamp(t*.30-fi*.07,0.,1.);
+   float hh=(.09+.40*h1(vec2(fi,7.1)))*grow;
+   float y=base+hh;
+   float r=length(vec2((uv.x-x)*asp,uv.y-y));
+   float node=1.-smoothstep(.0016,.0042,abs(r-.015));
+   ink=max(ink,node);
+   ink=max(ink,hline(uv.x-x,.0014)*step(base,uv.y)*step(uv.y,y)*(1.-node));
+   col=max(col,node*step(.4,grow));
+   if(fi<8.){
+    float x2=(fi+1.5)/9.;
+    float grow2=clamp(t*.30-(fi+1.)*.07,0.,1.);
+    float hh2=(.09+.40*h1(vec2(fi+1.,7.1)))*grow2;
+    float y2=base+hh2;
+    float seg=u5sg(vec2(uv.x*asp,uv.y),vec2(x*asp,y),vec2(x2*asp,y2));
+    ink=max(ink,(1.-smoothstep(.0008,.0020,seg))*step(.15,min(grow,grow2)));
+   }
+  }
+  return vec2(min(ink,1.),col);
+ }
+ if(M==24){ // procedural 3d — instanced cells, each sized and turned by its own data
+  float ink=0.,col=0.;
+  vec2 g=q*13.;
+  vec2 id=floor(g);vec2 f=fract(g)-.5;
+  float hs=h1(id*1.7+3.1);
+  float hs2=h1(id*.7+9.4);
+  float rot=t*.10+hs2*6.2831;
+  vec2 r=vec2(f.x*cos(rot)-f.y*sin(rot),f.x*sin(rot)+f.y*cos(rot));
+  float sz=.16+.46*hs;
+  float box=max(abs(r.x),abs(r.y));
+  float sq=1.-smoothstep(.0022,.0055,abs(box-sz*.5));
+  float fill=step(box,sz*.5)*.34;
+  float sq2=1.-smoothstep(.0018,.0042,abs(box-sz*.5*.58));
+  ink=max(max(sq,fill),sq2*.55);
+  col=max(sq,fill*.8)*step(.72,hs);
+  return vec2(min(ink,1.),col);
+ }
+ if(M==25){ // interactive — a sensor field answering the pointer
+  float ink=0.,col=0.;
+  vec2 g=q*6.;
+  vec2 gf=fract(g)-.5;
+  float nodes=1.-smoothstep(.0020,.0052,abs(length(gf)-.27));
+  ink=max(ink,nodes*.72);
+  ink=max(ink,gline(g.x,1.1)*.30);
+  ink=max(ink,gline(g.y,1.1)*.30);
+  // волна всегда: без указателя расходится от центра — поле живёт само
+  vec2 dc=vec2((uv.x-.5)*asp,uv.y-.5);
+  float rd=length(dc);
+  float ripple=(.5+.5*sin(rd*26.-t*2.2))*exp(-rd*1.5);
+  ink=max(ink,ripple*.85);
+  col=max(col,ripple*step(.62,ripple));
+  return vec2(min(ink,1.),col);
+ }
+ if(M==26){ // 3d path — an isometric wireframe lattice
+  float u=(q.x*.866+q.y*.5);
+  float v=(-q.x*.866+q.y*.5);
+  float w=q.y;
+  float sp=.105;
+  float dr=t*.05;
+  float l1=gline(u/sp+dr,1.25);
+  float l2=gline(v/sp-dr,1.25);
+  float l3=gline(w/sp*.92,1.10);
+  float ink=max(max(l1,l2)*.55,l3*.30);
+  ink*=.30+.70*smoothstep(.10,.92,uv.x);
+  float col=l1*step(.80,uv.x)*step(.5,fract(u/sp+dr));
+  return vec2(min(ink,1.),col);
+ }
+ if(M==27){ // light — pools of light on a stage floor, in perspective
+  float ink=0.,col=0.;
+  for(int i=0;i<5;i++){
+   float fi=float(i);
+   float y=.20+fi*.155;
+   float persp=.55+fi*.34;
+   for(int j=0;j<5;j++){
+    float fj=float(j);
+    float x=.5+((fj-2.)*.30)/(1.+fi*.40);
+    float r=length(vec2((uv.x-x)*asp,(uv.y-y)*persp));
+    float pulse=.50+.50*sin(t*1.05+fi*.9+fj*1.3);
+    float ring=1.-smoothstep(.0030,.0075,abs(r-.150));
+    float glow=(1.-smoothstep(.0,.270,r))*.46;
+    ink=max(ink,max(ring,glow)*pulse);
+    col=max(col,ring*step(.68,pulse));
+   }
+  }
+  return vec2(min(ink,1.),col);
+ }
+ if(M==28){ // av performance — a radial spectrum around the centre
+  float ink=0.,col=0.;
+  vec2 c=vec2((uv.x-.5)*asp,uv.y-.5);
+  float a=atan(c.y,c.x);
+  float r=length(c);
+  float bins=48.;
+  float an=a/6.2831853+.5;
+  float bi=floor(an*bins);
+  float f=fract(an*bins);
+  float amp=.14+.30*(.5+.5*sin(bi*1.7+t*1.8))*(.5+.5*sin(bi*.53-t*.65));
+  float inBar=step(.08,f)*step(f,.92);
+  float bar=step(r,.34+amp)*inBar*step(.150,r);
+  float cap=hline(r-(.34+amp),.0080)*inBar*step(.150,r);
+  ink=max(bar*.72,cap);
+  ink=max(ink,(1.-smoothstep(.0030,.0075,abs(r-.34)))*.85);
+  col=bar*step(.70,amp/.44);
+  return vec2(min(ink,1.),col);
+ }
+if(M==4){ // warp — domain-warped fbm, posterised into dithered tone steps (явный блок; раньше жил как fallback)
   vec2 p=q*.95;vec2 a=vec2(fbm(p+t*.04),fbm(p+vec2(5.2,1.3)-t*.035));
   vec2 b=vec2(fbm(p+2.6*a+vec2(1.7,9.2)+t*.025),fbm(p+2.6*a+vec2(8.3,2.8)));
   float v=fbm(p+2.6*b+lens*1.5);
@@ -2980,7 +3111,7 @@ for(const s of document.querySelectorAll('#ix .hero')){
   sc.bx=[(L-br.left)/br.width,(Tt-br.top)/br.height,(Rr-br.left)/br.width,(B-br.top)/br.height];
   x.restore();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,mk);sc.ht=1;};
  sc.mask=sc_mask;sc.mk=mk;
- const size=()=>{const r=cv.getBoundingClientRect();sc.W=r.width;sc.H=r.height;cv.width=Math.max(1,Math.round(r.width/CELL));cv.height=Math.max(1,Math.round(r.height/CELL));gl.viewport(0,0,cv.width,cv.height);if(sc.ht&&sc_mask)sc_mask()};
+ const size=()=>{const r=cv.getBoundingClientRect();sc.W=r.width;sc.H=r.height;const DP=Math.min(2,window.devicePixelRatio||1);cv.width=Math.max(1,Math.round(r.width/CELL*DP));cv.height=Math.max(1,Math.round(r.height/CELL*DP));gl.viewport(0,0,cv.width,cv.height);if(sc.ht&&sc_mask)sc_mask()};
  size();new ResizeObserver(size).observe(cv);
  const band=s.querySelector('.band');
  band.addEventListener('pointermove',e=>{const r=band.getBoundingClientRect();sc.p=[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height];sc.pat=1});
