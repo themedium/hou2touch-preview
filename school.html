@@ -570,12 +570,13 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 }
 
 /* ---------- сравнимые карточки: одна таблица 5 строк (уровень · объём · формат · софт · цена); Extreme I / I + II — переключатель ---------- */
-/* 23.11.2026: карточек стало пять (программа, Extreme, GLSL, AV Performance, Modular 208).
-   Ряд из трёх давал бы пустую клетку — поэтому флагман занимает две: первый ряд три карточки,
-   второй — Modular 208 и программа на ширину двух. Сетка заполняется ровно, дырки нет,
-   и программа-путь остаётся самым крупным объектом на странице. */
+/* 24.11.2026: карточек снова четыре (Extreme, GLSL, AV Performance, программа Hou2Touch).
+   /modulardesign — английский курс (Language: English в подписанном .md), на русской
+   главной его быть не должно: убран вместе с упоминанием «208» в шапке.
+   Раскладка: три курса в ряд, программа занимает всю вторую строку — она флагман
+   и самый крупный объект страницы. Сетка заполняется ровно, дырки нет. */
 .cs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(8,auto);column-gap:var(--gap);margin-top:var(--pgap)}
-@media (min-width:1321px){#c-h2t{grid-column:span 2}}
+@media (min-width:1321px){#c-h2t{grid-column:1/-1}}
 .cc{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}
 .cc>*{min-width:0}
 .cc>.cc-k,.cc>.cc-n,.cc>.cc-d,.cc>.cc-t,.cc>.cc-p,.cc>.cc-go{padding-inline:20px}
@@ -606,9 +607,8 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 .cs-n{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:var(--pgap);padding:14px 0;border-block:1px solid var(--line)}
 .cs-n b{color:var(--fg);font-weight:500}
 @supports not (grid-template-rows:subgrid){.cc{display:flex;flex-direction:column}.cc-d{min-height:72px}.cc-go{margin-top:auto}}
-/* 601–1320: две колонки. Пять карточек дают 2 + 2 + 1 — последняя (программа) растягивается
-   на оба столбца, иначе справа остаётся пустая клетка. */
-@media (max-width:1320px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}#c-h2t{grid-column:span 2}.cc-n,.cc-p .pr b{font-size:40px}}
+/* 601–1320: две колонки — четыре карточки ложатся ровно 2×2, растягивать нечего. */
+@media (max-width:1320px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}#c-h2t{grid-column:auto}.cc-n,.cc-p .pr b{font-size:40px}}
 @media (max-width:600px){
   /* мобила: карточки — свайп-ряд со снапом (сравнение — по одинаковым строкам таблицы), соседняя карточка подглядывает */
   .cs{display:flex;gap:10px;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
@@ -1940,7 +1940,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
   <div class="hv" aria-hidden="true"><div class="bgimg" id="heroBg"></div><canvas id="gl"></canvas></div>
   <div class="hm mono">
     <div>Формат<b>Онлайн · самообучение</b></div>
-    <div>Курсы<b><a href="#c-h2t">Hou2Touch</a> · <a href="#c-ex">Extreme</a> · <a href="#c-glsl">GLSL</a> · <a href="#c-av">AV</a> · <a href="#c-mod">208</a></b></div>
+    <div>Курсы<b><a href="#c-h2t">Hou2Touch</a> · <a href="#c-ex">Extreme</a> · <a href="#c-glsl">GLSL</a> · <a href="#c-av">AV</a></b></div>
     <div>Уровни<b>Начальный — продвинутый</b></div>
     <div>Софт<b>TouchDesigner · Houdini</b></div>
     <div>Автор<b><a href="#author">Станислав Глазов</a></b></div>
@@ -1956,7 +1956,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
       <div class="hr">
         <div class="ctas"><a class="btn pill rec" href="#courses">Выбрать курс <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="btn ghost" href="#media" id="heroL00">Бесплатный урок 00 <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></div>
         <p class="offer"><b>Программа Hou2Touch</b><br>Houdini + TD · 2 уровня · 195 уроков — 78 ⁠500 ₽</p>
-        <p class="hix mono"><a href="#c-h2t">Hou2Touch</a><a href="#c-ex">Extreme</a><a href="#c-glsl">GLSL</a><a href="#c-av">AV</a><a href="#c-mod">208</a></p>
+        <p class="hix mono"><a href="#c-h2t">Hou2Touch</a><a href="#c-ex">Extreme</a><a href="#c-glsl">GLSL</a><a href="#c-av">AV</a></p>
       </div>
     </div>
   </div>
@@ -2073,16 +2073,6 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
       <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">12 100 ₽</b></div><p class="nt">доступ 2 года</p></div>
       <div class="cc-go"><a class="btn ghost" href="en/ru/av-performance.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
       <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /ru/av‑performance</span><span>самообучение</span></div>
-    </article>
-    <article class="pn cc rv" id="c-mod" style="--c:var(--dat);--d:4">
-      <div class="ph">td208 <u>DAT</u><span class="r">modular design</span></div>
-      <div class="cc-k"><span class="tag" style="--c:var(--dat)">генеративный дизайн</span><span class="tag">средний</span></div>
-      <h3 class="cc-n"><small>TouchDesigner</small>Modular 208</h3>
-      <p class="p cc-d">Модульный подход к генеративному дизайну: проект растёт и не превращается в путаницу.</p>
-      <dl class="cc-t" data-k="mod"></dl>
-      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">€444</b></div><p class="nt">доступ 2 года · курс на английском</p></div>
-      <div class="cc-go"><a class="btn ghost" href="en/modulardesign.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
-      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /modulardesign</span><span>самообучение</span></div>
     </article>
     <article class="pn cc best gr rv" id="c-h2t" style="--c:var(--k-h2t)">
       <div class="ph">hou2touch1 <u>COMP</u><span class="rtag">в маршруте</span><span class="r">программа</span><button class="n3-dv mono" type="button" data-dive="h2t" aria-expanded="false" aria-label="Внутрь hou2touch1: устройство курса"><span>внутрь</span><svg class="ic" aria-hidden="true"><use href="#h2t-i-se"/></svg></button></div>
