@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head><meta name="robots" content="noindex,nofollow">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Houdini + TouchDesigner — курс Hou2Touch</title>
@@ -29,6 +29,24 @@
 <style>
 /* T-01 · T-06 (финал 02.10): Bebas семьи — с ₽ (U+20BD) и узким неразрывным U+202F, как на главной и курсах; метрики те же, что у прежнего otf */
 @font-face{font-family:"H2T Bebas";src:url(fonts/h2t-bebas.woff2) format("woff2"),url(fonts/h2t-bebas.otf) format("opentype");font-weight:100 900;font-display:swap}
+
+/* 23.11.2026 (визуальный аудит): блоки au-cr / au-pj пришли на эту страницу из
+   формы эталона 203, но своих правил у неё не было — заголовок «Избранные
+   проекты» выводился кеглем .H (гигантский, для секций) и наезжал на сетку.
+   Правила 1:1 как на 203: строка кредитов и сетка проектов. */
+#author .au-cr{margin-top:22px;padding-top:20px;border-top:1px solid var(--line2)}
+#author .au-cr p{margin:0 0 8px;font:400 15px/1.55 var(--sans);color:var(--fg8)}
+#author .au-cr p:last-child{margin-bottom:0}
+#author .au-cr b{font-weight:600;color:var(--fg)}
+#author .au-pj{margin-top:40px}
+#author .au-pj .H{font-size:clamp(26px,2.6vw,36px);margin:0 0 20px}
+#author .au-pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+@media (max-width:860px){#author .au-pg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){#author .au-pg{grid-template-columns:minmax(0,1fr)}}
+#author .au-pc{margin:0}
+#author .au-pc img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.06)}
+#author .au-pc figcaption{font:500 12px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;margin-top:9px;color:var(--mute)}
+#author .au-pc figcaption b{color:var(--fg);font-weight:500}
 </style>
 <style>
 /* ================= ФУНДАМЕНТ (этап 1) =================
@@ -56,12 +74,13 @@ body{background:var(--bg)}
 .h2t a:not(.btn){color:inherit}
 .h2t a{text-decoration:none}
 :where(.h2t) button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.h2t ::selection{background:var(--fg);color:#000}
+.h2t ::selection{background:var(--fg);color:var(--ink-000)}
 
 /* утилиты */
 .mono{font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .mono b{color:var(--fg);font-weight:500}
 .wrap{max-width:1680px;margin:0 auto;padding-inline:var(--pad)}
+html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:auto}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
 .muted{color:var(--mute)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -100,20 +119,20 @@ body{background:var(--bg)}
 @media (max-width:600px){.H{font-size:56px;white-space:normal}.dek,.sh>p{font-size:16px;line-height:24px;margin-top:38px}}
 
 /* кнопки: .btn — вторичная (радиус 2, 48); .btn.pill — пилюля 56 (только «Записаться»); .rec — оранжевая */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding:0 26px;border-radius:2px;background:var(--fg);color:#000;font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .3s,box-shadow .3s,color .3s}
-.btn:hover{background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding:0 26px;border-radius:2px;background:var(--fg);color:var(--ink-000);font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .3s,box-shadow .3s,color .3s}
+.btn:hover{background:var(--white)}
 .btn .ar{display:inline-block;transition:transform .4s var(--ease)}.btn:hover .ar{transform:translateX(4px)}
 .btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line2)}
 .btn.ghost:hover{background:rgba(239,238,233,.06);box-shadow:inset 0 0 0 1px var(--fg)}
 .btn.pill{height:56px;padding:0 28px;border-radius:999px}
-.btn.rec{background:var(--hou);color:#000}.btn.rec:hover{background:#f0602d}
+.btn.rec{background:var(--hou);color:var(--ink-000)}.btn.rec:hover{background:#f0602d}
 .btn.sm{height:44px;padding:0 20px}
 .btn.big{height:56px;padding:0 30px}
 .light .btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(11,11,12,.25)}
 @media (max-width:600px){.btn.pill{height:52px;padding:0 20px}}
 
 /* хром панелей: .pn = средний (шапка .ph + подвал .pf); .pn.full = полный (+ порты, флаги .fl в шапке); .pn.lite = лёгкий (линия-заголовок) */
-.pn{position:relative;border:1px solid var(--line2);border-radius:6px;background:linear-gradient(180deg,#141416,#111113)}
+.pn{position:relative;border:1px solid var(--line2);border-radius:6px;background:linear-gradient(180deg,var(--ink-300),var(--ink-250))}
 .pn>.ph{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--txt);white-space:nowrap;min-width:0}
 .pn>.ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c,var(--comp));flex:none}
 .pn>.ph u{text-decoration:none;color:var(--mute)}
@@ -121,7 +140,7 @@ body{background:var(--bg)}
 .pn>.ph .fl{display:flex;gap:3px;margin-left:auto}
 .pn>.ph .r+.fl{margin-left:10px}
 .pn>.ph .fl b{width:16px;height:16px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);font:500 12px/16px var(--mono);text-align:center;color:var(--mute)}
-.pn>.ph .fl b.on{background:var(--td);color:#000;box-shadow:none}
+.pn>.ph .fl b.on{background:var(--td);color:var(--ink-000);box-shadow:none}
 .pn>.pf{display:flex;justify-content:space-between;gap:12px;padding:8px 14px;border-top:1px solid var(--line);font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 .pn>.pf>*{overflow:hidden;text-overflow:ellipsis}
 .pn.full::before,.pn.full::after{content:"";position:absolute;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--c,var(--comp));z-index:3}
@@ -159,7 +178,7 @@ body{background:var(--bg)}
 .mnu .btn{width:100%}
 
 /* ---------- 00 hero ---------- */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000}
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--ink-000)}
 .hero .bgimg{position:absolute;inset:0;background:url(img/hero.webp) 78% 48%/cover no-repeat;opacity:.55;transition:opacity 1s}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;opacity:0;transition:opacity 1.2s}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,11,12,.7) 0%,rgba(11,11,12,.15) 25%,rgba(11,11,12,.1) 55%,rgba(11,11,12,.92) 100%)}
@@ -202,7 +221,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
   .hero .hb{top:0;bottom:40px;display:flex;flex-direction:column;justify-content:flex-end}
   .hero .hlogo{position:absolute;left:-4px;top:37%;font-size:25.8vw;margin:0}
   .hero .hf{display:block;border:0;padding:0}
-  .hero .lead{font-size:16px;line-height:24px;text-shadow:0 2px 24px #000}
+  .hero .lead{font-size:16px;line-height:24px;text-shadow:0 2px 24px var(--ink-000)}
   .hero .ctas{flex-direction:column;align-items:stretch;margin-top:20px}
   .hero .ctas .btn{width:100%;height:52px}
   .hero .ctas .ghost{background:rgba(11,11,12,.6)}
@@ -241,7 +260,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .rv.in{opacity:1;transform:none}
 
 /* ---------- 01 концепция ---------- */
-.pipe .graph{display:block;width:100%;height:auto;background:radial-gradient(circle at 1px 1px,rgba(239,238,233,.11) 1px,transparent 1.4px) 0 0/20px 20px,#0e0e10;touch-action:none}
+.pipe .graph{display:block;width:100%;height:auto;background:radial-gradient(circle at 1px 1px,rgba(239,238,233,.11) 1px,transparent 1.4px) 0 0/20px 20px,var(--ink-100);touch-action:none}
 .graph .node{cursor:grab;transition:opacity .4s}.graph .node:active{cursor:grabbing}
 .graph .wire{animation:flow 1s linear infinite;transition:opacity .4s}.graph.paused .wire{animation-play-state:paused}
 .graph .bx,.graph .mk{transition:opacity .4s}
@@ -252,7 +271,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .pipe-m .pbx>.mono{color:var(--c);margin-bottom:8px}
 .pipe-m .pnd{background:var(--bg3);box-shadow:inset 0 0 0 1px var(--line2);border-top:3px solid var(--c);border-radius:4px;padding:8px 12px;margin-bottom:8px;font:500 14px/1.3 var(--sans)}
 .pipe-m .pnd .mono{margin-left:8px}
-.pipe-m .pnd.out{background:var(--fg);color:#000;border-top:0;margin:0}.pipe-m .pnd.out .mono{color:#55544f}
+.pipe-m .pnd.out{background:var(--fg);color:var(--ink-000);border-top:0;margin:0}.pipe-m .pnd.out .mono{color:var(--tx-2)}
 .pipe-m .pbr{text-align:center;color:var(--fg)}
 .caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:var(--pgap)}
 .cap{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;transition:opacity .4s}
@@ -291,7 +310,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .au-p{grid-column:1/5;display:flex;flex-direction:column}
 .au-p .por{flex:1 0 auto}
 .au-t{grid-column:5/13;display:flex;flex-direction:column}
-.por{position:relative;aspect-ratio:3/4;overflow:hidden;background:#050505}
+.por{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ink-050)}
 .por img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(.98) brightness(.96);transition:filter .8s var(--ease)}
 .por canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none}
 .por:hover img,.por.col img{filter:none}
@@ -325,14 +344,14 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .ch canvas{display:block;width:100%;height:60px;margin-top:4px}
 .ch>.p{padding:12px 16px 16px;color:var(--fg8);flex:1}
 .facts{display:flex;flex-wrap:wrap;gap:12px 40px;padding:18px 0;margin:var(--pgap) 0;border-block:1px solid var(--line)}
-.vid .video{position:relative;height:480px;overflow:hidden;background:#000}
+.vid .video{position:relative;height:480px;overflow:hidden;background:var(--ink-000)}
 .vid .video img{width:100%;height:100%;object-fit:cover;object-position:50% 63%;filter:grayscale(1) contrast(1.05) brightness(.97)}
 .vid .video::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.85) 100%);pointer-events:none}
 .vid .video canvas{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;pointer-events:none;transition:opacity .44s steps(4)} /* SC-05: печать постера; cook 440 мс — .ck canvas.nx семьи */
 @media (hover:hover) and (pointer:fine){.vid .video:hover canvas{opacity:0}}
 .vid .video.col canvas{display:none}
 .vid .video button{position:absolute;inset:0;z-index:4;display:grid;place-items:center}
-.vid .play{width:72px;height:72px;border-radius:50%;background:var(--fg);display:grid;place-items:center;color:#000;transition:transform .5s var(--ease)}
+.vid .play{width:72px;height:72px;border-radius:50%;background:var(--fg);display:grid;place-items:center;color:var(--ink-000);transition:transform .5s var(--ease)}
 .vid .video button:hover .play{transform:scale(1.1)}
 .vid .cap2{position:absolute;left:20px;bottom:18px;z-index:5;pointer-events:none}
 .vid .cap2 b{display:block;font:600 24px/1.2 var(--sans)}
@@ -350,14 +369,14 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .tag.key{color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}.tag.key::before{background:var(--fg)}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .sq{width:32px;height:32px;flex:none;border-radius:2px;box-shadow:inset 0 0 0 1px var(--line2);display:grid;place-items:center;color:var(--fg);font:500 14px/1 var(--sans);transition:background .3s,color .3s}
-.sq:hover{background:var(--fg);color:#000}
+.sq:hover{background:var(--fg);color:var(--ink-000)}
 .pn>.pf a.out{display:inline-flex;align-items:center;min-height:44px;margin-block:-13px;color:var(--fg);transition:opacity .3s}.pn>.pf a.out:hover{opacity:.7}
 .pn>.pf button{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;transition:color .3s}.pn>.pf button:hover,.pn>.pf button[aria-pressed=true]{color:var(--fg)}
 
 /* ---------- 06 что вы будете изучать: патч-матрица 13 × 6 ---------- */
 .mx{--mxw:clamp(360px,39vw,560px)}
 .mx-h,.mx-r{display:grid;grid-template-columns:56px minmax(0,1fr) var(--mxw)}
-.mx-h{background:#161618;border-bottom:1px solid var(--line2);position:relative;z-index:3}
+.mx-h{background:var(--ink-400);border-bottom:1px solid var(--line2);position:relative;z-index:3}
 .mx-h>.mono{padding:14px 16px}
 .mx-c{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
 .mx-c>*{border-left:1px solid var(--line)}
@@ -481,7 +500,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .ap-r.on{background:rgba(255,255,255,.03)}.ap-r.on .mono,.ap-r.on b{color:var(--fg)}
 .ap-r:focus-visible{outline:2px solid var(--td);outline-offset:-2px}
 .ap-v{padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.plt{position:relative;overflow:hidden;border-radius:3px;background:#0b0b0c}
+.plt{position:relative;overflow:hidden;border-radius:3px;background:var(--ink)}
 .plt canvas,.plt img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .plt canvas{image-rendering:pixelated}
 .plt img{object-fit:cover;opacity:0;transition:opacity .5s var(--ease)}
@@ -509,7 +528,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 @media (hover:hover) and (pointer:fine){.wk{cursor:grab}}
 .wk-t{display:flex;gap:32px;width:max-content;padding-inline:calc(50% - 220px)}
 .wk figure{flex:none;width:440px;scroll-snap-align:center}
-.wk .fr{position:relative;display:block;width:100%;aspect-ratio:16/10;border-radius:3px;overflow:hidden;background:#0e0e10;cursor:zoom-in}
+.wk .fr{position:relative;display:block;width:100%;aspect-ratio:16/10;border-radius:3px;overflow:hidden;background:var(--ink-100);cursor:zoom-in}
 .wk .fr img,.wk .fr canvas{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-user-drag:none;user-select:none}
 .wk .fr img{object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .6s var(--ease)}
 .wk .fr canvas{image-rendering:pixelated;transition:opacity .45s var(--ease)}
@@ -544,7 +563,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .qa-l{border-right:1px solid var(--line)}
 .qa-r{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;width:100%;padding:8px 14px;border-bottom:1px solid var(--line);text-align:left;opacity:.72;transition:opacity .3s,background .3s}
 .qa-r:last-child{border-bottom:0}
-.qa-r img{width:40px;height:40px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);background:#1a1a1c}
+.qa-r img{width:40px;height:40px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--ink-450)}
 .qa-r b{display:block;font:500 15px/1.35 var(--sans);color:var(--fg)}
 .qa-r .mono{display:block;margin-top:2px;text-transform:none;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .qa-r:hover,.qa-r[aria-selected=true]{opacity:1}
@@ -652,7 +671,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .fq-l summary i::before,.fq-l summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1px;background:currentColor;transform:translate(-50%,-50%)}
 .fq-l summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
 .fq-l summary:hover i{box-shadow:inset 0 0 0 1px var(--fg)}
-.fq-l details[open] summary i{transform:rotate(45deg);background:var(--fg);color:#000;box-shadow:none}
+.fq-l details[open] summary i{transform:rotate(45deg);background:var(--fg);color:var(--ink-000);box-shadow:none}
 .fq-l summary:focus-visible{outline:2px solid var(--td);outline-offset:2px}
 .fq-a{padding:0 50px 22px 44px}
 .fq-a .p{max-width:62ch}
@@ -970,7 +989,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx-g{display:grid;gap:32px;min-width:0}
 /* ---------- лист ---------- */
 .h2t .rx{--rx-ink:#0b0b0c;--rx-cr:#efeee9;--rx-txt:#2b2a28;--rx-mu:#56544f;--rx-ln:rgba(11,11,12,.13);--rx-ln2:rgba(11,11,12,.45);--rx-tk:rgba(11,11,12,.28);
-  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:#8a63c9;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
+  --rx-dat:#c34f9a;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
   --rx-sans:var(--sans,"Inter Tight",system-ui,sans-serif);--rx-mono:var(--mono,"JetBrains Mono",ui-monospace,monospace);
   --rx-es:cubic-bezier(.2,0,0,1);--rx-em:cubic-bezier(.22,1,.36,1);--rx-ease:var(--ease,cubic-bezier(.19,1,.22,1));--fg:#0b0b0c;
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
@@ -982,7 +1001,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx :focus:not(:focus-visible){outline:none}
 .h2t .rx-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 /* шапка и подвал: служебный mono строчными, +.02em */
-.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:10px 14px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.02em;white-space:nowrap}
+.h2t .rx-ph,.h2t .rx-pf{display:flex;align-items:center;gap:10px;min-width:0;padding:calc(10px) 16px;font:500 12px/1.4 var(--rx-mono);letter-spacing:.06em;white-space:nowrap}
 .h2t .rx-ph{border-bottom:1px solid var(--rx-ln);color:var(--rx-txt)}
 .h2t .rx-ph::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--rx-dat);flex:none}
 .h2t .rx-ph .rx-r,.h2t .rx-pf .rx-r{margin-left:auto;color:var(--rx-mu);overflow:hidden;text-overflow:ellipsis}
@@ -1280,6 +1299,29 @@ html body a.skip{color:var(--bg)!important}
   .f-short .hero .fests{margin-top:calc(8px - var(--tc)*.125);margin-right:calc(-1*min(var(--d)*1000,640px))}
 }
 </style>
+<style id="hex-tokens">
+/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
+:root{
+  --white:#fff;
+  --ink-000:#000;
+  --ink-050:#050505;
+  --ink-100:#0e0e10;
+  --ink-150:#0f0f11;
+  --ink-200:#101012;
+  --ink-250:#111113;
+  --ink-300:#141416;
+  --ink-350:#151517;
+  --ink-400:#161618;
+  --ink-450:#1a1a1c;
+  --plate-a:#e2e0d9;
+  --plate-b:#dcd9d1;
+  --plate-c:#d9d6ce;
+  --tx-1:#5a5853;
+  --tx-2:#55544f;
+  --tx-3:#56544f;
+  --pink:var(--dat);
+}
+</style>
 </head>
 <body>
 <div class="h2t f-family f-rev2 f-lc f-fmask f-short" id="h2t"><svg class="ico" aria-hidden="true" focusable="false"><symbol id="h2t-i-r" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4"/></symbol><symbol id="h2t-i-l" viewBox="0 0 16 16"><path d="M14 8H3M7 4 3 8l4 4"/></symbol><symbol id="h2t-i-u" viewBox="0 0 16 16"><path d="M8 14V3M4 7l4-4 4 4"/></symbol><symbol id="h2t-i-d" viewBox="0 0 16 16"><path d="M8 2v11M4 9l4 4 4-4"/></symbol><symbol id="h2t-i-ne" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></symbol><symbol id="h2t-i-se" viewBox="0 0 16 16"><path d="M4 4l8 8M12 6v6H6"/></symbol><symbol id="h2t-i-p" viewBox="0 0 16 16"><path d="M4.5 3v10L13 8z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-v" viewBox="0 0 16 16"><path d="M4 6h8l-4 5z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol></svg>
@@ -1289,12 +1331,12 @@ html body a.skip{color:var(--bg)!important}
   <path fill-rule="evenodd" clip-rule="evenodd" d="M9.22169 43.8293V39.7561H7.83401C7.42825 39.7561 7.13611 39.6748 6.95758 39.5122C6.79528 39.3496 6.71412 39.0813 6.71412 38.7073V34.122H9.19734V30.1464H6.71412V15.4504C6.8848 15.1999 7.02687 14.9856 7.29421 14.7536C7.82933 14.2892 8.2599 14.0706 8.97403 14.0706C9.6557 14.0706 10.1994 14.2983 10.6052 14.7536C11.0109 15.1926 11.2138 15.8024 11.2138 16.5828V21.9731H15.9855V18.5147L18.7001 18.5147C18.9245 19.2034 19.2383 19.8112 19.6416 20.2802C20.5667 21.3209 21.8246 21.8412 23.4151 21.8412C24.3403 21.8412 25.1599 21.6542 25.874 21.2802C26.5881 20.89 27.1481 20.3859 27.5538 19.768V21.9936H32.3499V8.03631H27.5538V15.3778C27.5538 16.1583 27.351 16.7762 26.9452 17.2314C26.5394 17.6705 25.9876 17.89 25.2897 17.89C24.6081 17.89 24.0562 17.6705 23.6343 17.2314C23.2822 16.8364 23.0829 16.3189 23.0363 15.679V13.5866L23.0366 13.5352H23.0363V13.1123L15.4772 13.1123C15.2562 12.5848 14.963 12.1157 14.5978 11.7048C13.6889 10.6479 12.4554 10.1194 10.8973 10.1194C9.95596 10.1194 9.1201 10.3145 8.38975 10.7048C7.85143 10.9867 7.18861 11.3379 6.71412 11.7584V0H1.91811V5.87552H1.9139V23.9243H1.91811V30.1464H0.238281V34.122H1.91811V38.6341C1.91811 42.0976 3.66285 43.8293 7.15234 43.8293H9.22169ZM20.1825 36.6557C20.1791 36.7613 20.1774 36.8679 20.1774 36.9756C20.1774 38.4065 20.4696 39.6504 21.0539 40.7073C21.6381 41.7642 22.4497 42.5772 23.4884 43.1463C24.5433 43.7155 25.7444 44 27.0915 44C28.8281 44 30.2888 43.5203 31.4736 42.561C32.6584 41.6016 33.4213 40.2764 33.7621 38.5854H28.6983C28.4224 39.4797 27.8543 39.9268 26.9941 39.9268C26.3936 39.9268 25.9148 39.6748 25.5577 39.1707C25.2169 38.6667 25.0465 37.9349 25.0465 36.9756C25.0465 36.0163 25.2169 35.2927 25.5577 34.8049C25.9148 34.3008 26.3936 34.0488 26.9941 34.0488C28.6983 34.0488 28.6983 35.721 28.6983 35.721H33.7621C33.7621 35.721 33.7621 33.2677 31.4736 31.4147C30.2888 30.4553 28.8281 29.9756 27.0915 29.9756C26.3236 29.9756 25.6032 30.0681 24.9302 30.253V26.8356H20.1825V36.6557ZM11.2432 30.1418H15.991V34.2513H11.2432V30.1418ZM11.2432 39.7447H15.991V43.824H11.2432V39.7447Z" fill="currentColor"></path>
 </svg></a><a class="back mono" href="school.html#courses"><svg class="ar" aria-hidden="true"><use href="#h2t-i-l"/></svg><span class="t">Все курсы</span></a></div>
   <ul class="fam mono"><li style="--c:var(--sop)"><a href="index.html" aria-current="page">Hou2Touch</a></li><li class="g" style="--c:var(--chop)"><a href="courses/extreme1.html">Extreme I</a><i aria-hidden="true">·</i><a href="courses/extreme2.html">II</a><i aria-hidden="true">·</i><a href="courses/extreme-bundle.html">(I + II)</a></li><li style="--c:var(--top)"><a href="courses/glsl.html">GLSL</a></li></ul>
-  <div class="end"><button class="snd" type="button" data-snd aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="sndT">Звук выкл</span></button><a class="lgn mono" href="https://hou2touch.com/cms/system/login">Войти</a><a class="btn pill rec sm c2" href="#book" tabindex="-1"><span>Записаться<span class="only-d"> · <span class="num">от 30 342 ₽</span></span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><button class="mb mono" type="button" id="fmb" aria-expanded="false" aria-controls="fmnu">Меню</button></div>
+  <div class="end"><button class="snd" type="button" data-snd aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="sndT">Звук выкл</span></button><a class="lgn mono" href="https://hou2touch.com/cms/system/login">Войти</a><a class="btn pill rec sm c2" href="#book" tabindex="-1"><span>Записаться<span class="only-d"> · <span class="num">78 500 ₽</span></span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><button class="mb mono" type="button" id="fmb" aria-expanded="false" aria-controls="fmnu">Меню</button></div>
 </nav>
 <div class="fmnu" id="fmnu" aria-hidden="true" inert>
   <div><p class="mono h">Курсы</p><ul class="mf-c"><li><a href="index.html" style="--c:var(--sop)" aria-current="page">Hou2Touch <i>вы здесь</i></a></li><li><a href="courses/extreme1.html" style="--c:var(--chop)">Extreme I <i>с нуля</i></a></li><li><a href="courses/extreme2.html" style="--c:var(--chop)">Extreme II <i>после I</i></a></li><li><a href="courses/extreme-bundle.html" style="--c:var(--chop)">Extreme I + II <i>пакет</i></a></li><li><a href="courses/glsl.html" style="--c:var(--top)">GLSL <i>шейдеры</i></a></li><li><a href="school.html#courses" style="--c:var(--comp)">Все курсы <i>главная</i></a></li></ul></div>
   <div><p class="mono h">На странице</p><ul class="mf-s mono"><li><a href="#concept">О курсе</a></li><li><a href="#author">Автор</a></li><li><a href="#program">Программа</a></li><li><a href="#works">Работы</a></li><li><a href="#book">Тарифы</a></li><li><a href="#faq">Вопросы</a></li></ul></div>
-  <a class="btn pill rec" href="#book"><span>Записаться · <span class="num">от 30 342 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="lgn-m mono" href="https://hou2touch.com/cms/system/login">Войти в кабинет <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><button class="snd" type="button" data-snd aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="sndT">Звук выкл</span></button>
+  <a class="btn pill rec" href="#book"><span>Записаться · <span class="num">78 500 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="lgn-m mono" href="https://hou2touch.com/cms/system/login">Войти в кабинет <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><button class="snd" type="button" data-snd aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="sndT">Звук выкл</span></button>
 </div>
 
 <canvas id="trail" aria-hidden="true"></canvas>
@@ -1430,18 +1472,7 @@ html body a.skip{color:var(--bg)!important}
     <div class="au-t">
       <h2 class="au-n">Станислав<br class="only-d"> Глазов</h2>
       <p class="au-r">3D-⁠ и AV‑художник · 22+ года в компьютерной графике · 20 лет преподавания</p>
-      <ul class="cv" id="cv">
-        <li class="c"><span class="mono">После 2010</span><p class="p"><span class="only-d">Система визуализации инфографики для Kommersant TV; видеомэппинг с SilaSveta, Stereotaktik, Raduga Design.</span><span class="only-m">Инфографика для Kommersant TV; видеомэппинг с SilaSveta, Stereotaktik.</span></p></li>
-        <li class="c"><span class="mono">2013</span><p class="p">Студия генеративного дизайна Licht.Pfad.</p></li>
-        <li class="c"><span class="mono">AV</span><p class="p"><span class="only-d">Сотрудничество с WhiteVoid; AV‑перформансы с Dasha Rush и Robert Lippok.</span><span class="only-m">WhiteVoid; AV‑перформансы с Dasha Rush.</span></p></li>
-        <li class="c"><span class="mono">2016 <svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg></span><p class="p">Театральные проекты с Максимом Диденко<span class="only-d">, медиасерверы для спектаклей</span>.</p></li>
-        <li class="f"><span class="mono">До 2010</span><p class="p">Killer Tank, Pilot TV, студия «Классика»; Trixter Film и Scanline: TD по pipeline, Character Animation, Cloth Simulation, R&amp;D VFX.</p></li>
-        <li class="f"><span class="mono">После 2010</span><p class="p">Автоматизированная система визуализации инфографики для Kommersant TV. Видеомэппинг с SilaSveta, Stereotaktik, Invisible, Raduga Design.</p></li>
-        <li class="f"><span class="mono">2013</span><p class="p">Основал студию генеративного дизайна Licht.Pfad.</p></li>
-        <li class="f"><span class="mono">AV</span><p class="p">Сотрудничество с WhiteVoid. Аудиовизуальные перформансы в партнёрстве с Dasha Rush и Robert Lippok.</p></li>
-        <li class="f"><span class="mono">С 2016</span><p class="p">Театральные проекты с Максимом Диденко, в том числе медиасерверы для спектаклей.</p></li>
-        <li class="f"><span class="mono">Сцены</span><p class="p">Berlin Atonal, Mutek Montréal, Ars Electronica Linz, Unsound Kraków, Raster&#8209;Noton · Berghain, Barbican London, Resonance Tokyo, Mira Barcelona, L.E.V. Festival, Fête des Lumières Lyon.</p></li>
-      </ul>
+      <div class="au-cr"><p><b>Где показывали:</b> Berlin Atonal · Ars Electronica · Mutek Montreal · Barbican · Berghain · Fête des Lumières Lyon · Unsound · Sonar Istanbul · L.E.V.</p><p><b>Работал с:</b> Maxim Didenko · Berlin Ballet Company · Dasha Rush · Robert Lippok · Whitevoid</p><p><b>Компании и клиенты:</b> Scanline · Trixter · SILA SVETA · Hyundai</p><p><b>Преподавал в:</b> SAE Institute · Scream School · British Higher School of Art and Design · LPM Rome</p></div><div class="au-pj"><h3 class="H">Избранные проекты</h3><div class="au-pg"><figure class="au-pc"><img loading="eager" src="img/projects/a-techno-ballet-odyssey.jpg" alt="A Techno Ballet Odyssey" decoding="async"><figcaption class="mono"><b>A Techno Ballet Odyssey</b> · 2024</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/terrain.jpg" alt="Terrain" decoding="async"><figcaption class="mono"><b>Terrain</b> · 2022</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/ctrl-shift.jpg" alt="CTRL+SHIFT" decoding="async"><figcaption class="mono"><b>CTRL+SHIFT</b> · 2020</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/drop-it.jpg" alt="Drop it" decoding="async"><figcaption class="mono"><b>Drop it</b> · 2020</figcaption></figure></div></div>
       <button class="btn ghost cv-b" type="button" id="cvB" aria-expanded="false" aria-controls="cv">Полная биография <span>+</span></button>
     </div>
   </div></div>
@@ -1648,8 +1679,8 @@ html body a.skip{color:var(--bg)!important}
 <section id="family" class="sec fstrip"><div class="wrap">
   <div class="lbl mono"><b>12</b> Курсы<i class="op" style="--c:var(--dat)">route1 <u>DAT</u></i></div>
   <div class="sh"><h2 class="H">Курсы Hou2Touch</h2><p class="dek">Порядок по программам: Extreme I <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> Extreme II <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> GLSL. Hou2Touch — отдельный путь с нуля.</p></div>
-  <ol class="rt"><li class="cur"><div class="pn rc" aria-current="page" style="--c:var(--sop)"><div class="ph" style="--c:var(--sop)"><span class="id">hou2touch1</span> <u>COMP</u><span class="r">вы здесь</span></div><div class="rc-b"><h3 class="rc-n"><small>Houdini + TouchDesigner</small>Hou2Touch</h3><p class="rc-d">Концепция, рабочий процесс и инструменты процедурного моделирования и анимации — чтобы делать 3D‑графику для любых задач.</p><p class="rc-m mono">около 46 ч видео · от <b>30 342 ₽</b></p></div></div></li><li class=""><a class="pn rc" href="courses/extreme1.html" style="--c:var(--chop)"><div class="ph" style="--c:var(--chop)"><span class="id">extreme1</span> <u>COMP</u><span class="r">с нуля</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>Extreme I</h3><p class="rc-d">Для медиахудожников, VJ и музыкантов: 3D‑графика, звук, синхронизация с музыкальными программами и свои интерфейсы.</p><p class="rc-m mono">7,5 ч видео · <b>13 990 ₽</b></p></div></a></li><li class=""><a class="pn rc" href="courses/extreme2.html" style="--c:var(--chop)"><div class="ph" style="--c:var(--chop)"><span class="id">extreme2</span> <u>COMP</u><span class="r">после I</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>Extreme II</h3><p class="rc-d">Продолжение Extreme I — коммерческие задачи: моушн‑дизайн, интерфейсы инсталляций и презентаций, управление светом и лазерами.</p><p class="rc-m mono">10 ч видео · <b>13 990 ₽</b></p></div></a></li><li class=""><a class="pn rc" href="courses/glsl.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">glsl1</span> <u>COMP</u><span class="r">шейдеры</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>GLSL</h3><p class="rc-d">Язык GLSL в TouchDesigner: пайплайн рендеринга, техники рендера, geometry‑шейдеры и GLSL в 2D.</p><p class="rc-m mono">11,5 ч видео · <b>19 990 ₽</b></p></div></a></li></ol>
-  <p class="mono rt-n"><a href="courses/extreme-bundle.html" >пакет Extreme I + II — <b>17 500 ₽</b> вместо 27 980 ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a href="school.html#courses"><svg class="ar" aria-hidden="true"><use href="#h2t-i-l"/></svg> все курсы Hou2Touch</a></p>
+  <ol class="rt"><li class="cur"><div class="pn rc" aria-current="page" style="--c:var(--sop)"><div class="ph" style="--c:var(--sop)"><span class="id">hou2touch1</span> <u>COMP</u><span class="r">вы здесь</span></div><div class="rc-b"><h3 class="rc-n"><small>Houdini + TouchDesigner</small>Hou2Touch</h3><p class="rc-d">Программа‑путь: процедурное моделирование, анимация и реалтайм — Houdini и TouchDesigner вместе, уровни один за другим.</p><p class="rc-m mono">около 46 ч видео · от <b>78 500 ₽</b></p></div></div></li><li class=""><a class="pn rc" href="courses/extreme1.html" style="--c:var(--chop)"><div class="ph" style="--c:var(--chop)"><span class="id">extreme1</span> <u>COMP</u><span class="r">с нуля</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>Extreme I</h3><p class="rc-d">Для медиахудожников, VJ и музыкантов: 3D‑графика, звук, синхронизация с музыкальными программами и свои интерфейсы.</p><p class="rc-m mono">7,5 ч видео · <b>12 200 ₽</b></p></div></a></li><li class=""><a class="pn rc" href="courses/extreme2.html" style="--c:var(--chop)"><div class="ph" style="--c:var(--chop)"><span class="id">extreme2</span> <u>COMP</u><span class="r">после I</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>Extreme II</h3><p class="rc-d">Продолжение Extreme I — коммерческие задачи: моушн‑дизайн, интерфейсы инсталляций и презентаций, управление светом и лазерами.</p><p class="rc-m mono">10 ч видео · <b>18 500 ₽</b></p></div></a></li><li class=""><a class="pn rc" href="courses/glsl.html" style="--c:var(--top)"><div class="ph" style="--c:var(--top)"><span class="id">glsl1</span> <u>COMP</u><span class="r">шейдеры</span></div><div class="rc-b"><h3 class="rc-n"><small>TouchDesigner</small>GLSL</h3><p class="rc-d">Язык GLSL в TouchDesigner: пайплайн рендеринга, техники рендера, geometry‑шейдеры и GLSL в 2D.</p><p class="rc-m mono">11,5 ч видео · <b>25 400 ₽</b></p></div></a></li></ol>
+  <p class="mono rt-n"><a href="courses/extreme-bundle.html" >пакет Extreme I + II — <b>27 600 ₽</b> вместо  ₽ <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a href="school.html#courses"><svg class="ar" aria-hidden="true"><use href="#h2t-i-l"/></svg> все курсы Hou2Touch</a></p>
 </div></section>
 
 <!-- 13 ФИНАЛ (SC-06): последним перед подвалом, одна кнопка — оранжевая -->
@@ -1665,7 +1696,7 @@ html body a.skip{color:var(--bg)!important}
   <div class="ft2-a"><a href="#top" class="logo" aria-label="Hou2Touch — наверх"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" aria-hidden="true" viewBox="0 0 34 44" fill="none">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M9.22169 43.8293V39.7561H7.83401C7.42825 39.7561 7.13611 39.6748 6.95758 39.5122C6.79528 39.3496 6.71412 39.0813 6.71412 38.7073V34.122H9.19734V30.1464H6.71412V15.4504C6.8848 15.1999 7.02687 14.9856 7.29421 14.7536C7.82933 14.2892 8.2599 14.0706 8.97403 14.0706C9.6557 14.0706 10.1994 14.2983 10.6052 14.7536C11.0109 15.1926 11.2138 15.8024 11.2138 16.5828V21.9731H15.9855V18.5147L18.7001 18.5147C18.9245 19.2034 19.2383 19.8112 19.6416 20.2802C20.5667 21.3209 21.8246 21.8412 23.4151 21.8412C24.3403 21.8412 25.1599 21.6542 25.874 21.2802C26.5881 20.89 27.1481 20.3859 27.5538 19.768V21.9936H32.3499V8.03631H27.5538V15.3778C27.5538 16.1583 27.351 16.7762 26.9452 17.2314C26.5394 17.6705 25.9876 17.89 25.2897 17.89C24.6081 17.89 24.0562 17.6705 23.6343 17.2314C23.2822 16.8364 23.0829 16.3189 23.0363 15.679V13.5866L23.0366 13.5352H23.0363V13.1123L15.4772 13.1123C15.2562 12.5848 14.963 12.1157 14.5978 11.7048C13.6889 10.6479 12.4554 10.1194 10.8973 10.1194C9.95596 10.1194 9.1201 10.3145 8.38975 10.7048C7.85143 10.9867 7.18861 11.3379 6.71412 11.7584V0H1.91811V5.87552H1.9139V23.9243H1.91811V30.1464H0.238281V34.122H1.91811V38.6341C1.91811 42.0976 3.66285 43.8293 7.15234 43.8293H9.22169ZM20.1825 36.6557C20.1791 36.7613 20.1774 36.8679 20.1774 36.9756C20.1774 38.4065 20.4696 39.6504 21.0539 40.7073C21.6381 41.7642 22.4497 42.5772 23.4884 43.1463C24.5433 43.7155 25.7444 44 27.0915 44C28.8281 44 30.2888 43.5203 31.4736 42.561C32.6584 41.6016 33.4213 40.2764 33.7621 38.5854H28.6983C28.4224 39.4797 27.8543 39.9268 26.9941 39.9268C26.3936 39.9268 25.9148 39.6748 25.5577 39.1707C25.2169 38.6667 25.0465 37.9349 25.0465 36.9756C25.0465 36.0163 25.2169 35.2927 25.5577 34.8049C25.9148 34.3008 26.3936 34.0488 26.9941 34.0488C28.6983 34.0488 28.6983 35.721 28.6983 35.721H33.7621C33.7621 35.721 33.7621 33.2677 31.4736 31.4147C30.2888 30.4553 28.8281 29.9756 27.0915 29.9756C26.3236 29.9756 25.6032 30.0681 24.9302 30.253V26.8356H20.1825V36.6557ZM11.2432 30.1418H15.991V34.2513H11.2432V30.1418ZM11.2432 39.7447H15.991V43.824H11.2432V39.7447Z" fill="currentColor"></path>
 </svg></a><a class="id" href="mailto:hello@hou2touch.com">hello@hou2touch.com</a><a href="https://t.me/prcdrl">Telegram <span class="id">@prcdrl</span></a><a class="so" href="https://www.youtube.com/@StanislavGlazov">YouTube</a><a href="https://www.instagram.com/hou2touch/">Instagram</a><a href="https://x.com/hou2touch">X</a></div>
-  <div class="ft2-b mono"><a href="https://hou2touch.com/oferta_ru">Лицензионный договор</a><a href="https://hou2touch.com/PrivacyPolicy">Политика конфиденциальности</a><span class="cr">hou2touch © 2026</span></div>
+  <div class="ft2-b mono"><a href="impressum.html">Impressum</a><a href="widerruf.html" title="Vertrag widerrufen">Vertrag widerrufen</a><a href="agb.html">AGB</a><a href="privacy-policy.html">Privacy Policy</a><span class="cr">hou2touch © 2026</span></div>
 </div></footer>
 
 </div>
@@ -2402,7 +2433,10 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    // 20.11.2026 (решение владельца): генеративная полоса анимируется ВСЕГДА. «Эффекты анимации» в Windows дают
+    // prefers-reduced-motion: reduce — они не должны останавливать шапку: движение полосы здесь и есть содержание
+    // сцены, а не декоративная анимация страницы. RM жёстко false ⇒ все ветки ниже всегда идут по анимированной;
+    // вернуть реакцию на ОС — одна строка.
     const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
@@ -2412,12 +2446,14 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
         const s = [...logo.querySelectorAll('*'), logo].map(e => { const q = e.getBoundingClientRect(); return q.x.toFixed(1) + q.y.toFixed(1) + q.width.toFixed(1); }).join();
         if (s === prev) break; prev = s; await new Promise(r => setTimeout(r, 120));
       }
-      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0);
+      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0); // RM=false ⇒ старт с кадра 0 (анимация с нуля), а не застывший кадр 6
       // флагман поднимает буквы после входа (.go) — маску зазора пересобрать, когда имя встало
+      // RM=false ⇒ draw(6) не делаем: маска пересобрана, а следующий кадр цикла (rAF или o.loop) перерисует её сам
       setTimeout(() => { build(); if (RM) draw(6); }, 2600);
     })();
     let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); draw(RM ? 6 : (performance.now() - ctl.t0) / 1000); }, 150); });
     let fr = 0;
+    // RM=false ⇒ внешний цикл o.loop, если он есть, иначе свой rAF; ветки взаимоисключающие (if/else if) — двойной отрисовки нет
     if (o.loop && !RM) ctl.ready.then(() => o.loop.add(t => { const s = t - ctl.t0 / 1000; if (window.__h2tRec || (s > 3.2 && (++fr % (o.every || 1)))) return; draw(s); }, hero));
     else if (!RM) {
       let raf = 0, vis = true;
@@ -3161,7 +3197,7 @@ setTimeout(function(){
     gl.uniform2f(uI,im.width,im.height);ok=true;t0=performance.now();setX();setB();
     draw(0,reduce||!XC?1:0);$("#heroBg").style.opacity=0;cv.style.opacity=1}; // reduced-motion — этот кадр и есть шапка (перерисовка — только при ресайзе и шрифтах)
   im.src=HERO_TEX;im.decode().then(up,()=>{if(im.complete&&im.naturalWidth)up();else im.onload=up});
-  /* волна heroanim: ink-шапка анимируется всегда — ранний выход снят, LOOP.add регистрируется (решение владельца 20.11.2026) */
+  /* 20.11.2026 (решение владельца): шапка анимируется всегда — ранний выход снят, LOOP.add регистрируется (заморозка по системной настройке снята) */
   if(fine){hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];hm=1});hero.addEventListener("pointerleave",()=>hm=0)}
   LOOP.add(t=>{if(!ok)return;cm=[lerp(cm[0],tm[0],.1),lerp(cm[1],tm[1],.1)];hh=lerp(hh,hm,.08);
     const k=XC?clamp((performance.now()-t0)/800,0,1):1;draw(t,1-Math.pow(1-k,2))},hero);
