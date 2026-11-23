@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head><meta name="robots" content="noindex,nofollow">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hou2Touch — курсы процедурной графики</title>
@@ -566,7 +566,12 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 }
 
 /* ---------- сравнимые карточки: одна таблица 5 строк (уровень · объём · формат · софт · цена); Extreme I / I + II — переключатель ---------- */
+/* 23.11.2026: карточек стало пять (программа, Extreme, GLSL, AV Performance, Modular 208).
+   Ряд из трёх давал бы пустую клетку — поэтому флагман занимает две: первый ряд три карточки,
+   второй — Modular 208 и программа на ширину двух. Сетка заполняется ровно, дырки нет,
+   и программа-путь остаётся самым крупным объектом на странице. */
 .cs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(8,auto);column-gap:var(--gap);margin-top:var(--pgap)}
+@media (min-width:1321px){#c-h2t{grid-column:span 2}}
 .cc{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}
 .cc>*{min-width:0}
 .cc>.cc-k,.cc>.cc-n,.cc>.cc-d,.cc>.cc-t,.cc>.cc-p,.cc>.cc-go{padding-inline:20px}
@@ -597,7 +602,9 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 .cs-n{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:var(--pgap);padding:14px 0;border-block:1px solid var(--line)}
 .cs-n b{color:var(--fg);font-weight:500}
 @supports not (grid-template-rows:subgrid){.cc{display:flex;flex-direction:column}.cc-d{min-height:72px}.cc-go{margin-top:auto}}
-@media (max-width:1180px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}.cc-n,.cc-p .pr b{font-size:40px}}
+/* 601–1320: две колонки. Пять карточек дают 2 + 2 + 1 — последняя (программа) растягивается
+   на оба столбца, иначе справа остаётся пустая клетка. */
+@media (max-width:1320px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}#c-h2t{grid-column:span 2}.cc-n,.cc-p .pr b{font-size:40px}}
 @media (max-width:600px){
   /* мобила: карточки — свайп-ряд со снапом (сравнение — по одинаковым строкам таблицы), соседняя карточка подглядывает */
   .cs{display:flex;gap:10px;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
@@ -1619,7 +1626,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
 .h2t .rx-g{display:grid;gap:32px;min-width:0}
 /* ---------- лист ---------- */
 .h2t .rx{--rx-ink:#0b0b0c;--rx-cr:#efeee9;--rx-txt:#2b2a28;--rx-mu:#56544f;--rx-ln:rgba(11,11,12,.13);--rx-ln2:rgba(11,11,12,.45);--rx-tk:rgba(11,11,12,.28);
-  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:#8a63c9;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
+  --rx-dat:#c34f9a;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
   --rx-sans:var(--sans,"Inter Tight",system-ui,sans-serif);--rx-mono:var(--mono,"JetBrains Mono",ui-monospace,monospace);
   --rx-es:cubic-bezier(.2,0,0,1);--rx-em:cubic-bezier(.22,1,.36,1);--rx-ease:var(--ease,cubic-bezier(.19,1,.22,1));--fg:#0b0b0c;
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
@@ -1880,7 +1887,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
 <div class="gridov" id="gridov" aria-hidden="true"><div class="wrap"><div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
 
 <!-- мобила (f-mstack): липкая плашка выбранного маршрута — после карточек, прячется у финала -->
-<div class="mbar" id="mbar" aria-hidden="true" inert><span class="mb-t"><span class="mono" id="mbK">маршрут по умолчанию</span><b id="mbR">Hou2Touch: База <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> 3D</b></span><a class="btn pill rec sm" id="mbA" href="index.html#book"><span id="mbP">от <span class="num">30 342 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+<div class="mbar" id="mbar" aria-hidden="true" inert><span class="mb-t"><span class="mono" id="mbK">маршрут по умолчанию</span><b id="mbR">Hou2Touch: Основы <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> 3D</b></span><a class="btn pill rec sm" id="mbA" href="en/ru/course.html#book"><span id="mbP"><span class="num">78 500 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
 <nav class="nav" id="nav" aria-label="Разделы">
   <a href="#top" class="logo" aria-label="hou2touch — наверх">
 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" aria-hidden="true" viewBox="0 0 34 44" fill="none">
@@ -1929,7 +1936,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
   <div class="hv" aria-hidden="true"><div class="bgimg" id="heroBg"></div><canvas id="gl"></canvas></div>
   <div class="hm mono">
     <div>Формат<b>Онлайн · самообучение</b></div>
-    <div>Курсы<b><a href="#c-h2t">Hou2Touch</a> · <a href="#c-ex">Extreme</a> · <a href="#c-glsl">GLSL</a></b></div>
+    <div>Курсы<b><a href="#c-h2t">Hou2Touch</a> · <a href="#c-ex">Extreme</a> · <a href="#c-glsl">GLSL</a> · <a href="#c-av">AV</a> · <a href="#c-mod">208</a></b></div>
     <div>Уровни<b>Начальный — продвинутый</b></div>
     <div>Софт<b>TouchDesigner · Houdini</b></div>
     <div>Автор<b><a href="#author">Станислав Глазов</a></b></div>
@@ -1944,8 +1951,8 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
       </div>
       <div class="hr">
         <div class="ctas"><a class="btn pill rec" href="#courses">Выбрать курс <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="btn ghost" href="#media" id="heroL00">Бесплатный урок 00 <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></div>
-        <p class="offer"><b>Флагманский курс Hou2Touch</b><br>Houdini + TD · 25 недель — от 30 ⁠342 ₽</p>
-        <p class="hix mono"><a href="#c-h2t">Hou2Touch</a><a href="#c-ex">Extreme</a><a href="#c-glsl">GLSL</a></p>
+        <p class="offer"><b>Программа Hou2Touch</b><br>Houdini + TD · 2 уровня · 195 уроков — 78 ⁠500 ₽</p>
+        <p class="hix mono"><a href="#c-h2t">Hou2Touch</a><a href="#c-ex">Extreme</a><a href="#c-glsl">GLSL</a><a href="#c-av">AV</a><a href="#c-mod">208</a></p>
       </div>
     </div>
   </div>
@@ -1985,18 +1992,18 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
               </div><span class="po"></span></div>
             <div class="mp-mid">
               <div class="mp-r1">
-                <div class="mp-bx" id="mpBx"><div class="mono"><span>extreme_bundle</span><span>пакет<span class="np"> · 17 500 ₽</span></span></div>
+                <div class="mp-bx" id="mpBx"><div class="mono"><span>extreme_bundle</span><span>пакет<span class="np"> · 27 600 ₽</span></span></div>
                   <div class="row">
-                    <button class="mn" type="button" data-n="ex1" style="--c:var(--chop)"><span class="mono">extreme1</span><b>Extreme I</b><span class="mm mono"><i>7,5 ч</i><i class="np">13 990 ₽</i><i class="nq">4 части</i></span><span class="pi"></span><span class="po"></span></button>
+                    <button class="mn" type="button" data-n="ex1" style="--c:var(--chop)"><span class="mono">extreme1</span><b>Extreme I</b><span class="mm mono"><i>7,5 ч</i><i class="np">12 200 ₽</i><i class="nq">4 части</i></span><span class="pi"></span><span class="po"></span></button>
                     <button class="mn" type="button" data-n="ex2" style="--c:var(--k-ex2)"><span class="mono">extreme2</span><b>Extreme II</b><span class="mm mono"><i>10 ч</i><i>отдельно</i></span><span class="pi"></span><span class="po"></span></button>
                   </div></div>
-                <button class="mn" type="button" data-n="glsl" style="--c:var(--top)"><span class="mono">glsl1</span><b>GLSL</b><span class="mm mono"><i>11,5 ч</i><i class="np">19 990 ₽</i><i class="nq">4 части</i></span><span class="pi"></span><span class="po"></span></button>
+                <button class="mn" type="button" data-n="glsl" style="--c:var(--top)"><span class="mono">glsl1</span><b>GLSL</b><span class="mm mono"><i>11,5 ч</i><i class="np">25 400 ₽</i><i class="nq">4 части</i></span><span class="pi"></span><span class="po"></span></button>
               </div>
               <div class="mp-h2t" id="mpH2t" style="--c:var(--k-h2t)">
-                <button class="mp-hh" type="button" data-n="h2t"><span class="mono">hou2touch1</span><b>Hou2Touch</b><span class="mono r">флагман · 25 недель</span></button>
+                <button class="mp-hh" type="button" data-n="h2t"><span class="mono">hou2touch1</span><b>Hou2Touch</b><span class="mono r">программа · 2 уровня</span></button>
                 <div class="row">
-                  <button class="mn" type="button" data-n="h2t" data-k="base" style="--c:var(--k-h2t)"><span class="mono">module1</span><b>База</b><span class="mm mono"><i>уроки 01–11</i><i>64 видео</i></span><span class="pi"></span><span class="po"></span></button>
-                  <button class="mn" type="button" data-n="h2t" data-k="d3" style="--c:var(--k-h2t)"><span class="mono">module2</span><b>3D</b><span class="mm mono"><i>уроки 12–25</i><i>101 видео</i></span><span class="pi"></span><span class="po"></span></button>
+                  <button class="mn" type="button" data-n="h2t" data-k="base" style="--c:var(--k-h2t)"><span class="mono">module1</span><b>Основы</b><span class="mm mono"><i>13 модулей</i><i>86 уроков</i></span><span class="pi"></span><span class="po"></span></button>
+                  <button class="mn" type="button" data-n="h2t" data-k="d3" style="--c:var(--k-h2t)"><span class="mono">module2</span><b>Процедурное 3D</b><span class="mm mono"><i>14 модулей</i><i>109 уроков</i></span><span class="pi"></span><span class="po"></span></button>
                 </div></div>
             </div>
             <button class="mn io out" type="button" data-n="out"><span class="mono">out1</span><b>Проекты</b><span class="mono">6 областей</span><span class="pi"></span></button>
@@ -2032,26 +2039,16 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
   </div>
   <!-- сравнимые карточки: одна таблица на курс, строки на общих базовых линиях; кнопка — сразу к тарифам на лендинге -->
   <div class="cs" id="courses">
-    <article class="pn cc best gr rv" id="c-h2t" style="--c:var(--k-h2t)">
-      <div class="ph">hou2touch1 <u>COMP</u><span class="rtag">в маршруте</span><span class="r">флагман</span><button class="n3-dv mono" type="button" data-dive="h2t" aria-expanded="false" aria-label="Внутрь hou2touch1: устройство курса"><span>внутрь</span><svg class="ic" aria-hidden="true"><use href="#h2t-i-se"/></svg></button></div>
-      <div class="cc-k"><span class="tag key">флагман</span><span class="tag" style="--c:var(--k-hou)">Houdini</span><span class="tag" style="--c:var(--top)">TouchDesigner</span></div>
-      <h3 class="cc-n"><small>Houdini + TouchDesigner</small>Hou2Touch</h3>
-      <p class="p cc-d">Программа‑путь: процедурное моделирование, анимация и реалтайм — Houdini и TouchDesigner вместе.</p>
-      <dl class="cc-t" data-k="h2t"></dl>
-      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b><i class="pfx">от</i>30 342 ₽</b><s>38 ⁠900 ₽</s></div><p class="nt">рассрочка 64 / 36 · три тарифа</p></div>
-      <div class="cc-go"><a class="btn" href="index.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
-      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /course_ru</span><span>самообучение</span></div>
-    </article>
     <article class="pn cc rv" id="c-ex" style="--c:var(--chop);--d:1">
       <div class="ph"><span id="exK">extreme1</span> <u>COMP</u><span class="rtag">в маршруте</span><span class="r" id="exOp">touchdesigner</span><button class="n3-dv mono" type="button" data-dive="ex1" aria-expanded="false" aria-label="Внутрь extreme1: устройство курса"><span>внутрь</span><svg class="ic" aria-hidden="true"><use href="#h2t-i-se"/></svg></button></div>
       <!-- Р3: три позиции в порядке чтения I · II · I + II; код data-x: 0 = I, 1 = пакет (как в Р2: RX, «Записаться»), 2 = только II. «Extreme » (.sx) — только когда влезает (контейнерный запрос) -->
-      <div class="cc-k"><div class="seg" role="radiogroup" aria-label="Extreme: I, II или пакет I + II" id="exSeg"><button type="button" role="radio" aria-checked="true" data-x="0"><b><span class="sx">Extreme </span>I</b><span class="mono">с нуля в TD</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="2"><b><span class="sx">Extreme </span>II</b><span class="mono" data-f="net3" data-v0="после&amp;nbsp;I">отдельно</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="1"><b>I + II</b><span class="mono" data-f="net3" data-v0="+3&amp;nbsp;510&amp;nbsp;₽">пакет</span></button></div></div>
+      <div class="cc-k"><div class="seg" role="radiogroup" aria-label="Extreme: I, II или пакет I + II" id="exSeg"><button type="button" role="radio" aria-checked="true" data-x="0"><b><span class="sx">Extreme </span>I</b><span class="mono">с нуля в TD</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="2"><b><span class="sx">Extreme </span>II</b><span class="mono" data-f="net3" data-v0="после&amp;nbsp;I">отдельно</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-x="1"><b>I + II</b><span class="mono" data-f="net3" data-v0="пакет">пакет</span></button></div></div>
       <h3 class="cc-n"><small>TouchDesigner</small><span id="exN">Extreme I</span></h3>
       <p class="p cc-d" id="exD">Быстрый вход в TouchDesigner: 3D‑графика, звук, синхронизация с музыкой и свои интерфейсы.</p>
       <dl class="cc-t" data-k="ex1" id="exT"></dl>
-      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b id="exP" class="l1">13 990 ₽</b><s id="exO">18 ⁠200 ₽</s></div><p class="nt" id="exNt">видео и файлы проектов TouchDesigner</p><button class="cc-pk mono" type="button" id="exPk" hidden></button></div>
-      <div class="cc-go"><a class="btn ghost" id="exA" href="courses/extreme1.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
-      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> <span id="exU">/extreme1</span></span><span>самообучение</span></div>
+      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b id="exP" class="l1">12 200 ₽</b><s id="exO" hidden></s></div><p class="nt" id="exNt">видео и файлы проектов TouchDesigner</p><button class="cc-pk mono" type="button" id="exPk" hidden></button></div>
+      <div class="cc-go"><a class="btn ghost" id="exA" href="en/ru/extreme.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> <span id="exU">/ru/extreme</span></span><span>самообучение</span></div>
     </article>
     <article class="pn cc rv" id="c-glsl" style="--c:var(--top);--d:2">
       <div class="ph">glsl1 <u data-f="fam" data-v0="TOP">COMP</u><span class="rtag">в маршруте</span><span class="r">touchdesigner</span><button class="n3-dv mono" type="button" data-dive="glsl" aria-expanded="false" aria-label="Внутрь glsl1: устройство курса"><span>внутрь</span><svg class="ic" aria-hidden="true"><use href="#h2t-i-se"/></svg></button></div>
@@ -2059,10 +2056,42 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
       <h3 class="cc-n"><small>TouchDesigner</small>GLSL</h3>
       <p class="p cc-d">Шейдеры в TouchDesigner: пайплайн рендеринга, geometry‑шейдеры и GLSL в 2D.</p>
       <dl class="cc-t" data-k="glsl"></dl>
-      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">19 990 ₽</b><s>25 ⁠790 ₽</s></div><p class="nt">видео, файлы проектов и чат</p></div>
-      <div class="cc-go"><a class="btn ghost" href="courses/glsl.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
-      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /glsl_ru</span><span>самообучение</span></div>
+      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">25 400 ₽</b></div><p class="nt">видео, файлы проектов и чат</p></div>
+      <div class="cc-go"><a class="btn ghost" href="en/ru/glsl.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /ru/glsl</span><span>самообучение</span></div>
     </article>
+    <article class="pn cc rv" id="c-av" style="--c:var(--chop);--d:3">
+      <div class="ph">av1 <u>CHOP</u><span class="r">av performance</span></div>
+      <div class="cc-k"><span class="tag" style="--c:var(--chop)">выступления</span><span class="tag">средний</span></div>
+      <h3 class="cc-n"><small>TouchDesigner</small>AV Performance</h3>
+      <p class="p cc-d">Картинка и музыка из Ableton как одна система: готовый патч под каждое выступление.</p>
+      <dl class="cc-t" data-k="av"></dl>
+      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">12 100 ₽</b></div><p class="nt">доступ 2 года</p></div>
+      <div class="cc-go"><a class="btn ghost" href="en/ru/av-performance.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /ru/av‑performance</span><span>самообучение</span></div>
+    </article>
+    <article class="pn cc rv" id="c-mod" style="--c:var(--dat);--d:4">
+      <div class="ph">td208 <u>DAT</u><span class="r">modular design</span></div>
+      <div class="cc-k"><span class="tag" style="--c:var(--dat)">генеративный дизайн</span><span class="tag">средний</span></div>
+      <h3 class="cc-n"><small>TouchDesigner</small>Modular 208</h3>
+      <p class="p cc-d">Модульный подход к генеративному дизайну: проект растёт и не превращается в путаницу.</p>
+      <dl class="cc-t" data-k="mod"></dl>
+      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b class="l1">€444</b></div><p class="nt">доступ 2 года · курс на английском</p></div>
+      <div class="cc-go"><a class="btn ghost" href="en/modulardesign.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> /modulardesign</span><span>самообучение</span></div>
+    </article>
+    <article class="pn cc best gr rv" id="c-h2t" style="--c:var(--k-h2t)">
+      <div class="ph">hou2touch1 <u>COMP</u><span class="rtag">в маршруте</span><span class="r">программа</span><button class="n3-dv mono" type="button" data-dive="h2t" aria-expanded="false" aria-label="Внутрь hou2touch1: устройство курса"><span>внутрь</span><svg class="ic" aria-hidden="true"><use href="#h2t-i-se"/></svg></button></div>
+      <!-- программа Master Course: два уровня идут один за другим; позиции data-l: 0 = Основы, 1 = Процедурное 3D, 2 = оба уровня (по умолчанию) -->
+      <div class="cc-k"><div class="seg" role="radiogroup" aria-label="Hou2Touch: уровень 1, уровень 2 или оба" id="h2Seg"><button type="button" role="radio" aria-checked="false" data-l="0"><b>Основы</b><span class="mono">уровень 1</span></button><button type="button" role="radio" aria-checked="false" tabindex="-1" data-l="1"><b>3D</b><span class="mono">уровень 2</span></button><button type="button" role="radio" aria-checked="true" tabindex="-1" data-l="2"><b>Оба</b><span class="mono">программа</span></button></div></div>
+      <h3 class="cc-n"><small>Houdini + TouchDesigner</small><span id="h2N">Hou2Touch</span></h3>
+      <p class="p cc-d" id="h2D">Программа‑путь: процедурное моделирование, анимация и реалтайм — Houdini и TouchDesigner вместе, уровни один за другим.</p>
+      <dl class="cc-t" data-k="h2t" id="h2T"></dl>
+      <div class="cc-p"><button class="cc-m mono" type="button" aria-expanded="false"></button><div class="pr"><b id="h2P" class="l1">78 500 ₽</b><s id="h2O" hidden></s></div><p class="nt" id="h2Nt">доступ 2 года · две ступени по отдельности</p></div>
+      <div class="cc-go"><a class="btn" id="h2A" href="en/ru/course.html">Подробнее о курсе <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+      <div class="pf"><span><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> <span id="h2U">/ru/course</span></span><span>самообучение</span></div>
+    </article>
+  </div>
   </div>
   <!-- AD-1: courses_en — bypass-строка на 12 колонок под тремя карточками; раскрывается ящиком .n3-x; out1 — только при ?off=apps (Р1) -->
   <div class="n3-b" id="n3B">
@@ -2186,7 +2215,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
       <details><summary><span class="mono">01</span><span class="q">Как проходит обучение?</span><i aria-hidden="true"></i></summary>
         <div class="fq-a"><p class="p">Все курсы на этой странице — на русском, самообучение по предзаписанным видеоурокам в своём темпе. В Hou2Touch старт в день оплаты, новый урок открывается каждую неделю и есть общий чат студентов. Курсы на английском — на <a href="https://hou2touch.com">hou2touch.com</a>.</p></div></details>
       <details><summary><span class="mono">02</span><span class="q">Сколько времени займёт курс?</span><i aria-hidden="true"></i></summary>
-        <div class="fq-a"><p class="p">Hou2Touch — 25 недель, 6–10 часов в неделю. Extreme I, Extreme II и GLSL — в своём темпе: 7,5, 10 и 11,5 ч видео.</p></div></details>
+        <div class="fq-a"><p class="p">Hou2Touch — 195 уроков, урок в неделю, 6–10 часов в неделю. Extreme I, Extreme II, GLSL, AV Performance и Modular 208 — в своём темпе: 7,5, 10, 11,5, 6,7 и 4,7 ч видео.</p></div></details>
       <details><summary><span class="mono">03</span><span class="q">Можно ли платить частями?</span><i aria-hidden="true"></i></summary>
         <div class="fq-a"><p class="p">За Hou2Touch — да: 64 % при записи и 36 % через 30 дней для «Базы» или через 45 дней для «База + 3D» и «3D». По коротким курсам спросите в Telegram.</p></div></details>
       <details><summary><span class="mono">04</span><span class="q">Какие программы нужны?</span><i aria-hidden="true"></i></summary>
@@ -2403,7 +2432,10 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    // 20.11.2026 (решение владельца): генеративная полоса анимируется ВСЕГДА. «Эффекты анимации» в Windows дают
+    // prefers-reduced-motion: reduce — они не должны останавливать шапку: движение полосы здесь и есть содержание
+    // сцены, а не декоративная анимация страницы. RM жёстко false ⇒ все ветки ниже всегда идут по анимированной;
+    // вернуть реакцию на ОС — одна строка.
     const RM = false;
     // имя должно встать (вход «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
@@ -2413,12 +2445,14 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
         const s = [...logo.querySelectorAll('*'), logo].map(e => { const q = e.getBoundingClientRect(); return q.x.toFixed(1) + q.y.toFixed(1) + q.width.toFixed(1); }).join();
         if (s === prev) break; prev = s; await new Promise(r => setTimeout(r, 120));
       }
-      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0);
+      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0); // RM=false ⇒ старт с кадра 0 (анимация с нуля), а не застывший кадр 6
       // флагман поднимает буквы после входа (.go) — маску зазора пересобрать, когда имя встало
+      // RM=false ⇒ draw(6) не делаем: маска пересобрана, а следующий кадр цикла (rAF или o.loop) перерисует её сам
       setTimeout(() => { build(); if (RM) draw(6); }, 2600);
     })();
     let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); draw(RM ? 6 : (performance.now() - ctl.t0) / 1000); }, 150); });
     let fr = 0;
+    // RM=false ⇒ внешний цикл o.loop, если он есть, иначе свой rAF; ветки взаимоисключающие (if/else if) — двойной отрисовки нет
     if (o.loop && !RM) ctl.ready.then(() => o.loop.add(t => { const s = t - ctl.t0 / 1000; if (window.__h2tRec || (s > 3.2 && (++fr % (o.every || 1)))) return; draw(s); }, hero));
     else if (!RM) {
       let raf = 0, vis = true;
@@ -2496,7 +2530,7 @@ const NUMS=p=>{p=nb(String(p));const m=p.match(/^от[\s\u00a0]+/);return (m?"о
 /* T-05 + T-09: токен цены — «от» Inter 16 mute, цифры и ₽ — Bebas; класс b: l1 — цена с «1» (у «1» в Bebas поле 108 ед. против 31–40), d0 — с другой цифры */
 /* Р3: цены в ₽ нет (RU.ex2.p пусто) — вместо числа mono-строка (без зачёркивания и ₽); появится p — рисуется PZ, как у всех */
 const PQ='<span class="mono">цена — на&nbsp;странице курса</span>';
-function PZ(p){p=nb(String(p));const m=p.match(/^от[\s\u00a0]+/),d=m?p.slice(m[0].length):p;return{cls:m?"":d[0]==="1"?"l1":"d0",html:(m?'<i class="pfx">от</i>':"")+d+NB+"₽"}}
+function PZ(p){p=nb(String(p));if(p.includes("€"))return{cls:"l1",html:p};const m=p.match(/^от[\s\u00a0]+/),d=m?p.slice(m[0].length):p;return{cls:m?"":d[0]==="1"?"l1":"d0",html:(m?'<i class="pfx">от</i>':"")+d+NB+"₽"}}
 /* r2 · M2-02 (реш. 4): смена цены при выборе — последовательно, без перекрытия: старая уходит 80 мс (opacity → 0, −4 px), новая приходит 120 мс из +4 px,
    cubic-bezier(.2,0,0,1); двух «₽» одновременно не бывает, «от» едет вместе с цифрами; без прокрутки цифр; reduced-motion — сразу */
 function xfade(el,old,oc){if(reduce||!el||!old||old===el.innerHTML||!el.animate)return;const pr=el.parentNode,E="cubic-bezier(.2,0,0,1)";
@@ -2572,38 +2606,57 @@ const RU={
   d:"Для медиахудожников, VJ и музыкантов: 3D‑графика, звук, синхронизация с музыкальными программами и свои интерфейсы.",   // /extreme1 «О курсе»
   m:[["уровень","начальный, средний"],["объём","7,5 ч видео"],["формат","самообучение · в своём темпе"],["софт","TouchDesigner 2022"]],   // 02.10 финал (реш. 4, марк. 4, 7): «5 недель» — шаблон английской /extreme1; части I–IV — темы программы, в GC их 2
   parts:["Базовая","Геометрия","GLSL","Интерактив и генератив"],   // /extreme1, «Программа курса», части I–IV
-  p:"13 990",o:"18 200",note:"видео и файлы проектов TouchDesigner",u:"https://hou2touch.com/extreme1"},
+  p:"12 200",o:"",note:"видео и файлы проектов TouchDesigner",u:"https://hou2touch.com/extreme1"},
  ex2:{op:"extreme2",fam:"CHOP",t:"TouchDesigner Extreme II",s:"Extreme II",k:"продолжение · отдельно или в пакете",
   d:"Продолжение Extreme I — коммерческие задачи: моушн‑дизайн, интерфейсы инсталляций и презентаций, управление светом и лазерами.",   // /extreme1
   m:[["уровень","после Extreme I"],["объём","10 ч видео"],["формат","самообучение · в своём темпе"],["софт","TouchDesigner 2022"]],   // /extreme1 «Формат курса»
   parts:["Текстовая анимация в 2D и 3D","Интерактивные интерфейсы и дизайн презентаций","Light Design, UI и Ableton"],   // /extreme1, Extreme II, части I–III
-  p:"13 990",o:"",pl:"пакет Extreme I + II",note:"продолжение Extreme I — отдельно или пакетом с Extreme I",u:"https://hou2touch.com/extreme2"},   // 02.10 финал: цена II отдельно — оффер GetCourse 5606844, 13 990 ₽ (h2t-business gc_offers.csv:18), без зачёркнутой; fam → CHOP (как вся линейка Extreme)   // 30.09: владелец — «Extreme I и II продаются по-отдельности и бандлом», /extreme2 опубликована; цены в ₽ ещё нет (на странице — только €) → p:"" = «цена — на странице курса»
+  p:"18 500",o:"",pl:"пакет Extreme I + II",note:"продолжение Extreme I — отдельно или пакетом с Extreme I",u:"https://hou2touch.com/extreme2"},   // 02.10 финал: цена II отдельно — оффер GetCourse 5606844, 13 990 ₽ (h2t-business gc_offers.csv:18), без зачёркнутой; fam → CHOP (как вся линейка Extreme)   // 30.09: владелец — «Extreme I и II продаются по-отдельности и бандлом», /extreme2 опубликована; цены в ₽ ещё нет (на странице — только €) → p:"" = «цена — на странице курса»
  glsl:{op:"glsl1",fam:"TOP",t:"TouchDesigner GLSL",s:"GLSL",k:"шейдеры",
   d:"Язык GLSL в TouchDesigner: пайплайн рендеринга, техники рендера, geometry‑шейдеры и GLSL в 2D.",   // /ru + названия частей (GetCourse, content_inventory §3.4)
   m:[["уровень","средний"],["объём","4 части · 11,5 ч видео"],["формат","самообучение · в своём темпе · чат"],["софт","TouchDesigner 2022"]],   // 01.10 h2t-business: GC 4 части 180+154+168+190 мин = 11 ч 32 мин; «7 Hours / 4 weeks» на /glsl_ru — шаблон английского 301
   parts:["GLSL Rendering Pipeline","Дополнительные техники рендера","Geometry Shaders","GLSL в 2D"],
-  p:"19 990",o:"25 790",note:"видео, файлы проектов и чат",u:"https://hou2touch.com/glsl_ru"},
- h2t:{op:"hou2touch1",fam:"HOU",t:"Houdini + TouchDesigner",s:"Hou2Touch",k:"флагман · Houdini + TouchDesigner",
-  d:"Концепция, рабочий процесс и инструменты процедурного моделирования и анимации — чтобы делать 3D‑графику для любых задач.",   // course_ru, стр. 20–21
-  m:[["уровень","начальный, средний"],["объём","25 уроков · 166 видео · около 46 ч"],["формат","самообучение · 25 недель"],["софт","Houdini 19 · TouchDesigner 2022"]],   // src/course.js (GetCourse) + course_ru паспорт
-  parts:["База — уроки 01–11 · 64 видео","3D — уроки 12–25 · 101 видео"],
-  p:"от 30 342",o:"38 900",note:"рассрочка 64 / 36 · старт в день оплаты",u:"https://hou2touch.com/course_ru",
-  tiers:[["База","30 342","38 900"],["База + 3D","62 088","79 600"],["3D","42 666","54 700"]]}   // course_ru, тарифы
+  p:"25 400",o:"",note:"видео, файлы проектов и чат",u:"https://hou2touch.com/glsl_ru"},
+ h2t:{op:"hou2touch1",fam:"HOU",t:"Houdini + TouchDesigner",s:"Hou2Touch",k:"программа · 2 уровня",
+  d:"Программа‑путь: процедурное моделирование, анимация и реалтайм — Houdini и TouchDesigner вместе, уровни один за другим.",   // /ru/course «О курсе»
+  m:[["уровень","от начального до среднего"],["объём","2 уровня · 195 уроков · 58 ч"],["формат","самообучение · урок в неделю"],["софт","Houdini 19 · TouchDesigner 2022"]],   // /ru/course «Курс в цифрах»
+  parts:["Hou2Touch 1: Основы — 13 модулей, 86 уроков","Hou2Touch 2: Процедурное 3D и симуляции — 14 модулей, 109 уроков"],
+  p:"78 500",o:"",note:"доступ 2 года · две ступени по отдельности",u:"https://hou2touch.com/ru/course"},
+ lv1:{op:"hou2touch1",fam:"HOU",t:"Hou2Touch 1: Основы",s:"Hou2Touch 1",k:"ступень 1 · с нуля",
+  d:"Первая ступень программы: трёхмерная сцена в Houdini, перенос в TouchDesigner, композитинг, управление изображением звуком и временем, Python.",   // /ru/course/1-foundations
+  m:[["уровень","начальный"],["объём","13 модулей · 86 уроков · 29 ч видео"],["формат","самообучение · урок в неделю"],["софт","Houdini 19 · TouchDesigner 2022"]],
+  parts:[],
+  p:"34 400",o:"",note:"доступ 2 года",u:"https://hou2touch.com/ru/course/1‑foundations"},
+ lv2:{op:"hou2touch1",fam:"HOU",t:"Hou2Touch 2: Процедурное 3D",s:"Hou2Touch 2",k:"ступень 2 · после Основ",
+  d:"Вторая ступень: процедурная геометрия и ландшафт, инстансирование, рендер до готового кадра, видеотека на Replicator, симуляции и данные Azure Kinect.",   // /ru/course/2-procedural-3d
+  m:[["уровень","средний"],["объём","14 модулей · 109 уроков · 29 ч видео"],["формат","самообучение · урок в неделю"],["софт","Houdini 19 · TouchDesigner 2022"]],
+  parts:[],
+  p:"52 800",o:"",note:"доступ 2 года",u:"https://hou2touch.com/ru/course/2‑procedural-3d"},
+ av:{op:"av1",fam:"CHOP",t:"TouchDesigner: AV Performance",s:"AV Performance",k:"выступления · средний",
+  d:"Аудиореактивные выступления: картинка и музыка из Ableton как одна система, готовый патч под каждое выступление.",   // /ru/av-performance
+  m:[["уровень","средний"],["объём","4 модуля · 10 уроков · 6,7 ч видео"],["формат","самообучение · все уроки сразу"],["софт","TouchDesigner · Ableton"]],
+  parts:[],
+  p:"12 100",o:"",note:"доступ 2 года",u:"https://hou2touch.com/ru/av‑performance"},
+ mod:{op:"td208",fam:"TOP",t:"Modular Generative Design",s:"Modular 208",k:"генеративный дизайн · средний",
+  d:"Модульный подход к генеративному дизайну в TouchDesigner: проект растёт и не превращается в путаницу.",   // /modulardesign
+  m:[["уровень","средний"],["объём","4 модуля · 4 урока · 4,7 ч видео"],["формат","самообучение · все уроки сразу"],["софт","TouchDesigner"]],
+  parts:[],
+  p:"€444",o:"",note:"€ · доступ 2 года · курс на английском",u:"https://hou2touch.com/modulardesign"}
 };
 /* пакет Extreme I + II — вторая позиция переключателя в карточке Extreme (/extreme1: «TouchDesigner: Extreme Bundle»).
    Разница с Extreme I — арифметика по живой странице: 17 500 − 13 990 = 3 510 ₽; 17+ ч − 7,5 ч ≈ 10 ч (Extreme II — 10 ч).
    02.10 финал (реш. 2): зачёркнутая — 27 980 ₽ = 13 990 + 13 990 (было 36 400, якоря нет в офферах); «скидка 51 %» не пишем. */
 const BUNDLE={s:"Extreme I + II",m:[["уровень","начальный, средний"],["объём","более 17 ч видео"],["формат","самообучение · в своём темпе"],["софт","TouchDesigner 2022"]],
-  p:"17 500",o:"27 980",delta:"+3 510 ₽ · +10 ч к Extreme I",note:"Extreme II можно взять и отдельно"};
+  p:"27 600",o:"",delta:"+10 ч к Extreme I",note:"Extreme II можно взять и отдельно"};
 /* «с чего начать»: профиль в ноде in1 «Ты» → маршрут на карте → рекомендованный курс. Логика — по программам и уровням страниц курсов.
    steps — ноды маршрута в правой панели; from — цена входа в маршрут. */
 const ROUTES=[
- {id:"zero",b:"Никогда не открывал TouchDesigner",n:"ex1",nodes:["in","ex1","ex2","glsl","out"],steps:["ex1","ex2","glsl"],from:"от 13 990",
+ {id:"zero",b:"Никогда не открывал TouchDesigner",n:"ex1",nodes:["in","ex1","ex2","glsl","out"],steps:["ex1","ex2","glsl"],from:"от 12 200",
   why:"Extreme I рассчитан на начинающих: интерфейс, CHOP, звук, 3D и первые шейдеры. Следующий шаг — Extreme II: отдельно или сразу пакетом I + II."},
- {id:"glsl",b:"Знаю основы, хочу шейдеры",n:"glsl",nodes:["in","glsl","out"],steps:["glsl"],from:"19 990",
+ {id:"glsl",b:"Знаю основы, хочу шейдеры",n:"glsl",nodes:["in","glsl","out"],steps:["glsl"],from:"25 400",
   why:"GLSL — курс о шейдерах в TouchDesigner: пайплайн рендеринга, geometry‑шейдеры, GLSL в 2D. По программе он идёт после Extreme I и II."},
- {id:"hou",b:"Хочу Houdini + TouchDesigner",n:"h2t",nodes:["in","base","d3","out"],steps:["base","d3"],from:"от 30 342",
-  why:"Hou2Touch — 25 недель, два модуля: «База» и «3D». Houdini и TouchDesigner изучаются вместе, уровень — начальный и средний."}
+ {id:"hou",b:"Хочу Houdini + TouchDesigner",n:"h2t",nodes:["in","base","d3","out"],steps:["base","d3"],from:"от 34 400",
+  why:"Hou2Touch — программа из двух уровней: «Основы» и «Процедурное 3D», 195 уроков. Houdini и TouchDesigner изучаются вместе, от начального уровня до среднего."}
 ];
 const ROUTE_DEF=2; // профиль по умолчанию — флагман (как оффер шапки)
 
@@ -2670,9 +2723,9 @@ const SOPS={pl:"PLu5d0FltTJ_V22Snp-HldqITLyfwZQOGn",total:"2 ч 56 мин",v:
 /* 05 отзывы: пометки к подписям (решение заказчика 29.09 по crit_joint.md, п. 5) */
 const QNOTE={"Phelan Kane":"сейчас — руководитель обучения Hou2Touch"};
 
-const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "HOUDINI_101", "c": "HOUDINI", "s": "Houdini 103: Extreme", "t": "Houdini 103: Extreme", "g": "основы", "p": []}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "ROY", "c": "ROY", "s": "ROY", "t": "ROY", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "флагман", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "флагман", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "флагман", "p": []}];
+const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "HOUDINI_101", "c": "HOUDINI", "s": "Houdini 103: Extreme", "t": "Houdini 103: Extreme", "g": "основы", "p": []}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "ROY", "c": "ROY", "s": "Modular Generative Design", "t": "Modular Generative Design", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "флагман", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "флагман", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "флагман", "p": []}];
 /* F2: адреса курсов семьи (BASE stand) — school/assemble.py ← family/family.py */
-const HREF={"h2t": "index.html", "ex1": "courses/extreme1.html", "ex2": "courses/extreme2.html", "bundle": "courses/extreme-bundle.html", "glsl": "courses/glsl.html"},HREFD={"h2t": "index.html", "ex1": "courses/extreme1.html", "ex2": "courses/extreme2.html", "bundle": "courses/extreme-bundle.html", "glsl": "courses/glsl.html"};
+const HREF={"h2t": "en/ru/course.html", "lv1": "en/ru/course/1-foundations.html", "lv2": "en/ru/course/2-procedural-3d.html", "ex1": "en/ru/extreme.html", "ex2": "en/ru/extreme2.html", "bundle": "en/ru/extreme-bundle.html", "glsl": "en/ru/glsl.html", "av": "en/ru/av-performance.html", "mod": "en/modulardesign.html"},HREFD={"h2t": "en/ru/course.html", "lv1": "en/ru/course/1-foundations.html", "lv2": "en/ru/course/2-procedural-3d.html", "ex1": "en/ru/extreme.html", "ex2": "en/ru/extreme2.html", "bundle": "en/ru/extreme-bundle.html", "glsl": "en/ru/glsl.html", "av": "en/ru/av-performance.html", "mod": "en/modulardesign.html"};
 
 /* r1 · C: тексты флагов — в разметке новый вид, v10 — в data-v0 (флаг снят → вернуть); финал и подвал — ветки .o1 (f-out) / .o0 (v10) */
 $$("[data-v0]").forEach(e=>{if(!FL(e.dataset.f))e.innerHTML=e.dataset.v0});
@@ -3135,8 +3188,8 @@ const MAP=FL("net3")?MAP_N3():(function(){
   /* правая панель */
   const kv=m=>`<dl class="kv">${m.map(([a,b])=>`<div><dt class="mono">${a}</dt><dd>${b}</dd></div>`).join("")}</dl>`;
   const head=(op,fam,r,c)=>`<div class="ph">${op} <u>${fam}</u><span class="r">${r}</span><span class="fl"><b class="on">D</b><b>V</b><b${c?' class="on"':""}>B</b></span></div>`;
-  const STEP={ex1:["Extreme I","вход · 7,5 ч · 13 990 ₽","ex1"],ex2:["Extreme II","продолжение · 10 ч · отдельно или пакетом","ex2"],glsl:["GLSL","шейдеры · 11,5 ч · 19 990 ₽","glsl"],
-    base:["Hou2Touch · База","уроки 01–11 · 64 видео","h2t"],d3:["Hou2Touch · 3D","уроки 12–25 · 101 видео","h2t"]};
+  const STEP={ex1:["Extreme I","вход · 7,5 ч · 12 200 ₽","ex1"],ex2:["Extreme II","продолжение · 10 ч · отдельно или пакетом","ex2"],glsl:["GLSL","шейдеры · 11,5 ч · 25 400 ₽","glsl"],
+    base:["Hou2Touch 1 · Основы","13 модулей · 86 уроков","h2t"],d3:["Hou2Touch 2 · Процедурное 3D","14 модулей · 109 уроков","h2t"]};
   const STEPN={ex1:"вход · 7,5 ч",ex2:"продолжение · 10 ч",glsl:"шейдеры · 4 части · 11,5 ч",base:STEP.base[1],d3:STEP.d3[1]}; // f-nodup: шаги без цен
   const CARD={ex1:"c-ex",ex2:"c-ex",glsl:"c-glsl",h2t:"c-h2t"};
   /* f-noprice (Р2): «Записаться ↓» — к карточке курса; Extreme — I + II, если в маршруте есть Extreme II, иначе I.
@@ -3314,21 +3367,39 @@ $("#exSeg").addEventListener("click",e=>{const b=e.target.closest("[data-x]");if
 $("#exSeg").addEventListener("keydown",e=>{const S=$$("#exSeg [data-x]"),n=S.length,c=S.findIndex(s=>s.getAttribute("aria-checked")==="true"),d={ArrowRight:1,ArrowLeft:-1,ArrowDown:1,ArrowUp:-1}[e.key];
   const j=e.key==="Home"?0:e.key==="End"?n-1:d?(c+d+n)%n:-1;if(j<0)return;e.preventDefault();EXK(+S[j].dataset.x);S[j].focus({preventScroll:true})});
 
+/* программа Hou2Touch: три позиции карточки — Основы (уровень 1), Процедурное 3D (уровень 2) и оба уровня.
+   data-l: 0 = Основы, 1 = 3D, 2 = оба (по умолчанию — программа целиком, как она продаётся) */
+const LVV={0:{s:"Hou2Touch 1",d:RU.lv1.d,m:RU.lv1.m,p:RU.lv1.p,o:RU.lv1.o,nt:RU.lv1.note,hd:HREFD.lv1,u:RU.lv1.u},
+  1:{s:"Hou2Touch 2",d:RU.lv2.d,m:RU.lv2.m,p:RU.lv2.p,o:RU.lv2.o,nt:RU.lv2.note,hd:HREFD.lv2,u:RU.lv2.u},
+  2:{s:"Hou2Touch",d:RU.h2t.d,m:RU.h2t.m,p:RU.h2t.p,o:RU.h2t.o,nt:RU.h2t.note,hd:HREFD.h2t,u:RU.h2t.u}};
+function LVSET(i){const v=LVV[i]||LVV[2],C=$("#c-h2t");
+  $$("#h2Seg [data-l]").forEach(s=>{const on=+s.dataset.l===i;s.setAttribute("aria-checked",on);s.tabIndex=on?0:-1});
+  $("#h2N").textContent=v.s;$("#h2T").innerHTML=rows(v.m);ccm(C,v.m);
+  const eP=$("#h2P"),ov=eP.innerHTML,oc=eP.className;const z=PZ(v.p);eP.innerHTML=z.html;eP.className=z.cls;xfade(eP,ov,oc);
+  const eO=$("#h2O");eO.innerHTML=v.o?nb(v.o+" ₽"):"";eO.hidden=!v.o;
+  $("#h2D").innerHTML=v.d;$("#h2Nt").innerHTML=v.nt;$("#h2A").href=v.hd;
+  $("#h2U").textContent=v.u.replace(/^https?:\/\/[^/]+/,"")}
+const LVK=i=>{const s=$("#h2Seg"),t0=s.getBoundingClientRect().top;LVSET(i);const d=s.getBoundingClientRect().top-t0;if(Math.abs(d)>.5)scrollBy(0,d)};
+$("#h2Seg").addEventListener("click",e=>{const b=e.target.closest("[data-l]");if(b)LVK(+b.dataset.l)});
+$("#h2Seg").addEventListener("keydown",e=>{const S=$$("#h2Seg [data-l]"),n=S.length,c=S.findIndex(s=>s.getAttribute("aria-checked")==="true"),d={ArrowRight:1,ArrowLeft:-1,ArrowDown:1,ArrowUp:-1}[e.key];
+  const j=e.key==="Home"?0:e.key==="End"?n-1:d?(c+d+n)%n:-1;if(j<0)return;e.preventDefault();LVK(+S[j].dataset.l);S[j].focus({preventScroll:true})});
+LVSET(2);
+
 /* ---------- финал помнит маршрут: строка маршрута первой всегда (выбран — «ваш маршрут», нет — «маршрут по умолчанию»); ниже остальные выходы; Extreme — I · II · I + II (Р3) ---------- */
-function FINAL(ri,picked){const box=$("#fx"),r=ROUTES[ri],nm={ex1:"Extreme I",ex2:"Extreme II",glsl:"GLSL",base:"База",d3:"3D"};
+function FINAL(ri,picked){const box=$("#fx"),r=ROUTES[ri],nm={ex1:"Extreme I",ex2:"Extreme II",glsl:"GLSL",base:"Основы",d3:"Процедурное 3D"};
   const line=(u,k,b,p,on)=>`<a${on?' class="on"':""} href="${u}#book"><span><span class="mono">${k}</span><b>${b}</b></span><span class="pz">${PZ(p).html}</span><svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>`;
   let h=line(HREF[r.n],(picked?"ваш маршрут · ":"маршрут по умолчанию · ")+lc1(plain(r.b)),(r.n==="h2t"?"Hou2Touch: ":"")+r.steps.map(s=>nm[s]).join(" "+ARR+" "),r.from,1);
-  if(r.n!=="h2t")h+=line(HREF.h2t,"Houdini + TouchDesigner · 25 недель","Hou2Touch","от 30 342",0);
+  if(r.n!=="h2t")h+=line(HREF.h2t,"Houdini + TouchDesigner · 2 уровня · 195 уроков","Hou2Touch","78 500",0);
   /* II без цены в ₽ — «на странице курса ↗» на /extreme2; цена появится в RU.ex2.p — встанет, как у I и пакета */
   const xa=(u,k,p)=>`<a href="${u}#book"><span class="mono">${k}</span>${p?`<span class="pz">${PZ(p).html}</span>`:`<span class="mono pq">на&nbsp;странице курса</span><svg class="ar" aria-hidden="true"><use href="#h2t-i-ne"/></svg>`}</a>`;
   if(r.n!=="ex1")h+=`<div class="fx2"><span><span class="mono">вход с&nbsp;нуля в&nbsp;TD, продолжение или оба пакетом</span><b>Extreme</b></span>${xa(HREF.ex1,"I",RU.ex1.p)}${xa(HREF.ex2,"II",RU.ex2.p)}${xa(HREF.bundle,"I + II",BUNDLE.p)}</div>`;
-  if(r.n!=="glsl")h+=line(HREF.glsl,"шейдеры · 11,5 ч","GLSL","19 990",0);
+  if(r.n!=="glsl")h+=line(HREF.glsl,"шейдеры · 11,5 ч","GLSL","25 400",0);
   box.innerHTML=h+`<div class="fin-c"><a class="btn ghost" href="https://t.me/prcdrl">Задать вопрос · Telegram <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>`}
 FINAL(MAP.route,false);
 /* f-mstack: липкая плашка — маршрут, цена входа, кнопка; видна между карточками и финалом (onScroll).
    f-noprice (Р2): без цены — «Записаться ↑» к карточке курса маршрута (плашка видна только ниже карточек — стрелка честно вверх) */
 if(FL("noprice")&&!FL("tocourse")){const u=$("#mbA use");if(u)u.setAttribute("href","#h2t-i-u");$("#mbA").setAttribute("data-rec","")}
-function MBAR(ri,picked){const r=ROUTES[ri],nm={ex1:"Extreme I",ex2:"II",glsl:"GLSL",base:"База",d3:"3D"};
+function MBAR(ri,picked){const r=ROUTES[ri],nm={ex1:"Extreme I",ex2:"II",glsl:"GLSL",base:"Основы",d3:"3D"};
   $("#mbK").textContent=picked?"ваш маршрут":"маршрут по умолчанию";$("#mbR").innerHTML=(r.n==="h2t"?"Hou2Touch: ":"")+r.steps.map(s=>nm[s]).join(" "+ARR+" ");
   if(FL("tocourse")){const a=$("#mbA");$("#mbP").textContent="К курсу";a.href=r.n==="ex1"?(r.steps.includes("ex2")?HREFD.bundle:HREFD.ex1):r.n==="glsl"?HREFD.glsl:HREFD.h2t;delete a.dataset.x;return} // f-tocourse: плашка 390 — на страницу курса маршрута
   if(FL("noprice")){const a=$("#mbA");$("#mbP").textContent="Записаться";a.href="#"+{ex1:"c-ex",glsl:"c-glsl",h2t:"c-h2t"}[r.n];if(r.n==="ex1")a.dataset.x=r.steps.includes("ex2")?1:0;else delete a.dataset.x;return}
