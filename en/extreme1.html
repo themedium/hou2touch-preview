@@ -2086,29 +2086,6 @@ html body #concept .ab-it.ab-wide p b{font-weight:600;color:var(--ink)}
   #concept .m-rule,#concept .m-chain-meta{display:none}
 }
 </style>
-<style id="hex-tokens">
-/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
-:root{
-  --white:#fff;
-  --ink-000:#000;
-  --ink-050:#050505;
-  --ink-100:#0e0e10;
-  --ink-150:#0f0f11;
-  --ink-200:#101012;
-  --ink-250:#111113;
-  --ink-300:#141416;
-  --ink-350:#151517;
-  --ink-400:#161618;
-  --ink-450:#1a1a1c;
-  --plate-a:#e2e0d9;
-  --plate-b:#dcd9d1;
-  --plate-c:#d9d6ce;
-  --tx-1:#5a5853;
-  --tx-2:#55544f;
-  --tx-3:#56544f;
-  --pink:var(--dat);
-}
-</style>
 <style id="l9new-fix">
 /* L9: decorative patch-deck labels are drawn from data, not text (the accessible list is .ix-mxm + Programme) */
 .ix-patch .ipt-h>b::before,.ix-patch .ipt-pl>b::before,.ix-patch .ipt-leg>b::before{content:attr(data-t)}
@@ -2416,6 +2393,29 @@ html body .sec.tf{padding-top:calc(var(--edge,96px) + var(--r-air))}
 <style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
+</style>
+<style id="hex-tokens">
+/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
+:root{
+  --white:#fff;
+  --ink-000:#000;
+  --ink-050:#050505;
+  --ink-100:#0e0e10;
+  --ink-150:#0f0f11;
+  --ink-200:#101012;
+  --ink-250:#111113;
+  --ink-300:#141416;
+  --ink-350:#151517;
+  --ink-400:#161618;
+  --ink-450:#1a1a1c;
+  --plate-a:#e2e0d9;
+  --plate-b:#dcd9d1;
+  --plate-c:#d9d6ce;
+  --tx-1:#5a5853;
+  --tx-2:#55544f;
+  --tx-3:#56544f;
+  --pink:var(--dat);
+}
 </style>
 </head>
 <body>
@@ -3306,12 +3306,12 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   <div class="concept-dat" data-lkey="m3,m3-not">
     <div class="cd-col aud-yes pn full dk" style="--c:var(--top)"><div class="ph"><span class="id">audience1</span><u>DAT</u><span class="r">/ подходит</span></div>
       <h3 class="cd-h mono"><span class="sq9" style="background:var(--chop)"></span>Подходит, если</h3>
-      <ol class="dat"><li><span class="n" style="color:var(--chop)">+01</span><span>вы не выполняете требования раздела «Что нужно до начала»</span></li><li><span class="n" style="color:var(--chop)">+02</span><span>вы уже знаете материал уровня «Начальный» → возьмите <a class="u" href="/ru/extreme2">TouchDesigner 102: Extreme II (RU)</a></span></li></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">AV-артисты и музыканты</b><span class="aud-dash"> — </span><span class="aud-t">Если вы хотите собирать визуал под свой материал, а не по чужим рецептам, курс быстро вводит в процедурный способ мышления, на котором держится работа в TouchDesigner.</span></li><li><b class="aud-who">Авторы инсталляций</b><span class="aud-dash"> — </span><span class="aud-t">Курс начального уровня объясняет контексты и устройство среды, и в своём проекте вы опираетесь на понимание, а не на набор отдельных приёмов.</span></li><li><b class="aud-who">3D-художники</b><span class="aud-dash"> — </span><span class="aud-t">Курс сразу связывает нодовую логику TouchDesigner с основами программирования и с Houdini, поэтому новая среда не кажется вам чужой.</span></li><li><b class="aud-who">Моушн-дизайнеры</b><span class="aud-dash"> — </span><span class="aud-t">Курс даёт достаточно рабочих практик, чтобы вы прошли путь от первого знакомства с TouchDesigner до уверенной работы на среднем уровне.</span></li><li><b class="aud-who">VJ</b><span class="aud-dash"> — </span><span class="aud-t">Курс задуман как экстремально быстрый вход в нодовую среду: вы получаете понимание её логики сразу, без долгого самостоятельного поиска.</span></li></ul></div>
-    <div class="pf aud-pf"><span class="id">→ audience1</span><span>7 причин</span></div></div>
+      <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">AV-артисты и музыканты</b><span class="aud-dash"> — </span><span class="aud-t">Если вы хотите собирать визуал под свой материал, а не по чужим рецептам, курс быстро вводит в процедурный способ мышления, на котором держится работа в TouchDesigner.</span></li><li><b class="aud-who">Авторы инсталляций</b><span class="aud-dash"> — </span><span class="aud-t">Курс начального уровня объясняет контексты и устройство среды, и в своём проекте вы опираетесь на понимание, а не на набор отдельных приёмов.</span></li><li><b class="aud-who">3D-художники</b><span class="aud-dash"> — </span><span class="aud-t">Курс сразу связывает нодовую логику TouchDesigner с основами программирования и с Houdini, поэтому новая среда не кажется вам чужой.</span></li><li><b class="aud-who">Моушн-дизайнеры</b><span class="aud-dash"> — </span><span class="aud-t">Курс даёт достаточно рабочих практик, чтобы вы прошли путь от первого знакомства с TouchDesigner до уверенной работы на среднем уровне.</span></li><li><b class="aud-who">VJ</b><span class="aud-dash"> — </span><span class="aud-t">Курс задуман как экстремально быстрый вход в нодовую среду: вы получаете понимание её логики сразу, без долгого самостоятельного поиска.</span></li></ul></div>
+    <div class="pf aud-pf"><span class="id">→ audience1</span><span>5 причин</span></div></div>
     <div class="cd-col aud-no"><div class="ph"><span class="id">требования</span><u>DAT</u><span class="r">/ не подходит</span></div><h3 class="b3-h">Вам не подойдёт, если</h3>
       <div class="cd-h mono"><span class="sq9" style="background:var(--mute)"></span>требования и кому не подходит</div>
-      <ol class="dat"></ol>
-    <div class="pf aud-pf"><span class="id">→ требования</span><span>0 исключений</span></div></div>
+      <ol class="dat"><li><span class="n">–</span><span>вы не выполняете требования раздела «Что нужно до начала»</span></li><li><span class="n">–</span><span>вы уже знаете материал уровня «Начальный» → возьмите <a class="u" href="/ru/extreme2">TouchDesigner 102: Extreme II (RU)</a></span></li></ol>
+    <div class="pf aud-pf"><span class="id">→ требования</span><span>2 исключений</span></div></div>
   </div>
   
 <div class="ix-blk" data-lkey="m-prereq"><h3 class="ix-h2">Что нужно до начала</h3>

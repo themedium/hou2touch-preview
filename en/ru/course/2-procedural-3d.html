@@ -2105,29 +2105,6 @@ html body #concept .ab-it.ab-wide p b{font-weight:600;color:var(--ink)}
   #concept .m-rule,#concept .m-chain-meta{display:none}
 }
 </style>
-<style id="hex-tokens">
-/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
-:root{
-  --white:#fff;
-  --ink-000:#000;
-  --ink-050:#050505;
-  --ink-100:#0e0e10;
-  --ink-150:#0f0f11;
-  --ink-200:#101012;
-  --ink-250:#111113;
-  --ink-300:#141416;
-  --ink-350:#151517;
-  --ink-400:#161618;
-  --ink-450:#1a1a1c;
-  --plate-a:#e2e0d9;
-  --plate-b:#dcd9d1;
-  --plate-c:#d9d6ce;
-  --tx-1:#5a5853;
-  --tx-2:#55544f;
-  --tx-3:#56544f;
-  --pink:var(--dat);
-}
-</style>
 <style id="l9new-fix">
 /* L9: decorative patch-deck labels are drawn from data, not text (the accessible list is .ix-mxm + Programme) */
 .ix-patch .ipt-h>b::before,.ix-patch .ipt-pl>b::before,.ix-patch .ipt-leg>b::before{content:attr(data-t)}
@@ -2427,6 +2404,29 @@ html body .sec.tf{padding-top:calc(var(--edge,96px) + var(--r-air))}
 <style id="pix-3d-css">/* точки-квадраты: жёсткие пиксели, без сглаживания */
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
+</style>
+<style id="hex-tokens">
+/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
+:root{
+  --white:#fff;
+  --ink-000:#000;
+  --ink-050:#050505;
+  --ink-100:#0e0e10;
+  --ink-150:#0f0f11;
+  --ink-200:#101012;
+  --ink-250:#111113;
+  --ink-300:#141416;
+  --ink-350:#151517;
+  --ink-400:#161618;
+  --ink-450:#1a1a1c;
+  --plate-a:#e2e0d9;
+  --plate-b:#dcd9d1;
+  --plate-c:#d9d6ce;
+  --tx-1:#5a5853;
+  --tx-2:#55544f;
+  --tx-3:#56544f;
+  --pink:var(--dat);
+}
 </style>
 </head>
 <body>
@@ -3326,12 +3326,12 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
   <div class="concept-dat" data-lkey="m3,m3-not">
     <div class="cd-col aud-yes pn full dk" style="--c:var(--top)"><div class="ph"><span class="id">audience1</span><u>DAT</u><span class="r">/ подходит</span></div>
       <h3 class="cd-h mono"><span class="sq9" style="background:var(--sop)"></span>Подходит, если</h3>
-      <ol class="dat"><li><span class="n" style="color:var(--sop)">+01</span><span>вы не выполняете требования раздела «Что нужно до начала»</span></li><li><span class="n" style="color:var(--sop)">+02</span><span>у вас нет ни пройденного курса <a class="u" href="/ru/course/1-foundations">Hou2Touch 1: Основы</a>, ни равноценного опыта</span></li></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">AV-артисты и музыканты</b><span class="aud-dash"> — </span><span class="aud-t">Это курс среднего уровня из программы, которая готовит к работе в медиа, и он подходит, если вы хотите перейти к полноценному 3D и при этом остаться в привычной связке двух программ.</span></li><li><b class="aud-who">Авторы инсталляций</b><span class="aud-dash"> — </span><span class="aud-t">Цель программы — серьёзная всесторонняя подготовка для работы в медиа и 3D-производстве, и этот уровень отвечает за её 3D-часть: геометрию здесь задают правилами, а не собирают вручную.</span></li><li><b class="aud-who">3D-художники</b><span class="aud-dash"> — </span><span class="aud-t">Главное в курсе — разобраться, как геометрия устроена изнутри, поэтому он подойдёт, если вам важно не только получить результат, но и понимать, на чём он держится.</span></li><li><b class="aud-who">Моушн-дизайнеры</b><span class="aud-dash"> — </span><span class="aud-t">Курс выстроен как последовательная подготовка, а не набор разрозненных приёмов, и подходит, если вы хотите перейти от разовых решений к полноценному 3D.</span></li><li><b class="aud-who">VJ</b><span class="aud-dash"> — </span><span class="aud-t">Кроме 3D, в курсе есть отдельные модули о работе с видео и сложными анимационными сценариями, так что переход к полноценному 3D идёт рядом с задачами, которые вам знакомы.</span></li></ul></div>
-    <div class="pf aud-pf"><span class="id">→ audience1</span><span>7 причин</span></div></div>
+      <ol class="dat"></ol><div class="ix-why" data-lkey="m3-why"><ul class="ix-l"><li><b class="aud-who">AV-артисты и музыканты</b><span class="aud-dash"> — </span><span class="aud-t">Это курс среднего уровня из программы, которая готовит к работе в медиа, и он подходит, если вы хотите перейти к полноценному 3D и при этом остаться в привычной связке двух программ.</span></li><li><b class="aud-who">Авторы инсталляций</b><span class="aud-dash"> — </span><span class="aud-t">Цель программы — серьёзная всесторонняя подготовка для работы в медиа и 3D-производстве, и этот уровень отвечает за её 3D-часть: геометрию здесь задают правилами, а не собирают вручную.</span></li><li><b class="aud-who">3D-художники</b><span class="aud-dash"> — </span><span class="aud-t">Главное в курсе — разобраться, как геометрия устроена изнутри, поэтому он подойдёт, если вам важно не только получить результат, но и понимать, на чём он держится.</span></li><li><b class="aud-who">Моушн-дизайнеры</b><span class="aud-dash"> — </span><span class="aud-t">Курс выстроен как последовательная подготовка, а не набор разрозненных приёмов, и подходит, если вы хотите перейти от разовых решений к полноценному 3D.</span></li><li><b class="aud-who">VJ</b><span class="aud-dash"> — </span><span class="aud-t">Кроме 3D, в курсе есть отдельные модули о работе с видео и сложными анимационными сценариями, так что переход к полноценному 3D идёт рядом с задачами, которые вам знакомы.</span></li></ul></div>
+    <div class="pf aud-pf"><span class="id">→ audience1</span><span>5 причин</span></div></div>
     <div class="cd-col aud-no"><div class="ph"><span class="id">требования</span><u>DAT</u><span class="r">/ не подходит</span></div><h3 class="b3-h">Вам не подойдёт, если</h3>
       <div class="cd-h mono"><span class="sq9" style="background:var(--mute)"></span>требования и кому не подходит</div>
-      <ol class="dat"></ol>
-    <div class="pf aud-pf"><span class="id">→ требования</span><span>0 исключений</span></div></div>
+      <ol class="dat"><li><span class="n">–</span><span>вы не выполняете требования раздела «Что нужно до начала»</span></li><li><span class="n">–</span><span>у вас нет ни пройденного курса <a class="u" href="/ru/course/1-foundations">Hou2Touch 1: Основы</a>, ни равноценного опыта</span></li></ol>
+    <div class="pf aud-pf"><span class="id">→ требования</span><span>2 исключений</span></div></div>
   </div>
   
 <div class="ix-blk" data-lkey="m-prereq"><h3 class="ix-h2">Что нужно до начала</h3>
