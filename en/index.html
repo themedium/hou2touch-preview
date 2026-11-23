@@ -566,7 +566,12 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 }
 
 /* ---------- сравнимые карточки: одна таблица 5 строк (уровень · объём · формат · софт · цена); Extreme I / I + II — переключатель ---------- */
+/* 23.11.2026: карточек стало пять (программа, Extreme, GLSL, AV Performance, Modular 208).
+   Ряд of трёх давал бы пустую клетку — поэтому flagship занимает две: первый ряд три карточки,
+   второй — Modular 208 и программа на ширину двух. Сетка заполняется ровно, дырки нет,
+   и программа-путь остаётся самым крупным объектом на странице. */
 .cs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(8,auto);column-gap:var(--gap);margin-top:var(--pgap)}
+@media (min-width:1321px){#c-h2t{grid-column:span 2}}
 .cc{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}
 .cc>*{min-width:0}
 .cc>.cc-k,.cc>.cc-n,.cc>.cc-d,.cc>.cc-t,.cc>.cc-p,.cc>.cc-go{padding-inline:20px}
@@ -597,7 +602,9 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 .cs-n{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:var(--pgap);padding:14px 0;border-block:1px solid var(--line)}
 .cs-n b{color:var(--fg);font-weight:500}
 @supports not (grid-template-rows:subgrid){.cc{display:flex;flex-direction:column}.cc-d{min-height:72px}.cc-go{margin-top:auto}}
-@media (max-width:1180px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}.cc-n,.cc-p .pr b{font-size:var(--fs-4xl)}}
+/* 601–1320: две колонки. Пять карточек дают 2 + 2 + 1 — последняя (программа) растягивается
+   на оба столбца, иначе справа остаётся пустая клетка. */
+@media (max-width:1320px) and (min-width:601px){.cs{grid-template-columns:1fr 1fr}#c-h2t{grid-column:span 2}.cc-n,.cc-p .pr b{font-size:var(--fs-4xl)}}
 @media (max-width:600px){
   /* мобила: карточки — свайп-ряд со снапом (сравнение — по одинаковым строкам таблицы), соседняя карточка подглядывает */
   .cs{display:flex;gap:10px;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
@@ -1619,7 +1626,7 @@ html{scroll-padding-block:73px 46px}@media (max-width:980px){html{scroll-padding
 .h2t .rx-g{display:grid;gap:32px;min-width:0}
 /* ---------- лист ---------- */
 .h2t .rx{--rx-ink:#0b0b0c;--rx-cr:#efeee9;--rx-txt:#2b2a28;--rx-mu:#56544f;--rx-ln:rgba(11,11,12,.13);--rx-ln2:rgba(11,11,12,.45);--rx-tk:rgba(11,11,12,.28);
-  --rx-dat:#c34f9a;--rx-sop:#3d7fd6;--rx-top:#65a30d;--rx-chop:#2f7d3c;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
+  --rx-dat:#c34f9a;--rx-td:#7fe7ff;--rx-per:2;--rx-gap:clamp(10px,1.4vw,20px);
   --rx-sans:var(--sans,"Inter Tight",system-ui,sans-serif);--rx-mono:var(--mono,"JetBrains Mono",ui-monospace,monospace);
   --rx-es:cubic-bezier(.2,0,0,1);--rx-em:cubic-bezier(.22,1,.36,1);--rx-ease:var(--ease,cubic-bezier(.19,1,.22,1));--fg:#0b0b0c;
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
@@ -2221,7 +2228,7 @@ html body .ipt-wave{image-rendering:pixelated}
 <div class="gridov" id="gridov" aria-hidden="true"><div class="wrap"><div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
 
 <!-- мобила (f-mstack): липкая плашка выбранного маршрута — после карточек, прячется у финала -->
-<div class="mbar" id="mbar" aria-hidden="true" inert><span class="mb-t"><span class="mono" id="mbK">default path</span><b id="mbR">Hou2Touch: Flagship <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> 3D</b></span><a class="btn pill rec sm" id="mbA" href="index.html#book"><span id="mbP">from <span class="num">€2,000</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
+<div class="mbar" id="mbar" aria-hidden="true" inert><span class="mb-t"><span class="mono" id="mbK">default path</span><b id="mbR">Hou2Touch: Основы <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> 3D</b></span><a class="btn pill rec sm" id="mbA" href="en/ru/course.html#book"><span id="mbP"><span class="num">78 500 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a></div>
 <nav class="nav" id="nav" aria-label="Sections">
   <a href="#top" class="logo" aria-label="Hou2Touch — back to top">
 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" aria-hidden="true" viewBox="0 0 34 44" fill="none">
@@ -2270,7 +2277,7 @@ html body .ipt-wave{image-rendering:pixelated}
   <div class="hv" aria-hidden="true"><div class="bgimg" id="heroBg"></div><canvas id="gl"></canvas></div>
   <div class="hm mono">
     <div>Format<b>Online · self-paced</b></div>
-    <div>Courses<b><a href="#trk-h2t">Flagship</a> · <a href="#trk-paths">Paths</a> · <a href="#trk-100">100</a> · <a href="#trk-200">200</a> · <a href="#trk-300">300</a></b></div>
+    <div>Courses<b><a href="#trk-h2t">Flagship</a> · <a href="#trk-paths">Paths</a> · <a href="#trk-100">100</a> · <a href="#trk-200">200</a> · <a href="#trk-300">300</a> · <a href="#c-av">AV</a> · <a href="#c-mod">208</a></b></div>
     <div>Levels<b>Beginner to advanced</b></div>
     <div>Software<b>TouchDesigner · Houdini</b></div>
     <div>Teacher<b><a href="#author">Stanislav Glazov</a></b></div>
@@ -2285,7 +2292,7 @@ html body .ipt-wave{image-rendering:pixelated}
       </div>
       <div class="hr">
         <div class="ctas"><a class="btn pill rec" href="#courses">Choose a course <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><a class="btn ghost" href="#media" id="heroL00">Free Lesson 00 <svg class="ar" aria-hidden="true"><use href="#h2t-i-d"/></svg></a></div>
-        <p class="offer"><b>Flagship Hou2Touch Course (/course)</b><br>Houdini + TD · 3 levels · 113 h — €2,000</p>
+        <p class="offer"><b>Программа Hou2Touch</b><br>Houdini + TD · 2 уровня · 195 lessons — 78 ⁠500 ₽</p>
         <p class="hix mono"><a href="#trk-h2t">Flagship</a><a href="#trk-paths">Paths</a><a href="#trk-100">100</a><a href="#trk-200">200</a><a href="#trk-300">300</a></p>
       </div>
     </div>
@@ -3143,7 +3150,10 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     const ctl = { draw, build, t0: 0, name, ready: null };
-    /* волна heroanim: шапка анимируется всегда (решение владельца 20.11.2026) */
+    // 20.11.2026 (решение владельца): генеративная полоса анимируется ВСЕГДА. «Эффекты анимации» в Windows дают
+    // prefers-reduced-motion: reduce — они не должны останавливать шапку: движение полосы здесь и есть содержание
+    // сцены, а не декоративная анимация страницы. RM жёстко false ⇒ все ветки ниже всегда идут по анимированной;
+    // вернуть реакцию на ОС — одна строка.
     const RM = false;
     // имя должно встать (entry «cook», h-pre) — ждём шрифт и неподвижные прямоугольники букв
     ctl.ready = (async () => {
@@ -3153,12 +3163,14 @@ float KO(vec2 p){float g=max(3.,CAP()*.022);return smoothstep(g,g+1.5,D(p));}
         const s = [...logo.querySelectorAll('*'), logo].map(e => { const q = e.getBoundingClientRect(); return q.x.toFixed(1) + q.y.toFixed(1) + q.width.toFixed(1); }).join();
         if (s === prev) break; prev = s; await new Promise(r => setTimeout(r, 120));
       }
-      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0);
+      build(); ctl.t0 = performance.now(); draw(RM ? 6 : 0); // RM=false ⇒ старт с кадра 0 (анимация с нуля), а не застывший кадр 6
       // flagship поднимает буквы после входа (.go) — маску зазора пересобрать, когда имя встало
+      // RM=false ⇒ draw(6) не делаем: маска пересобрана, а следующий кадр цикла (rAF or o.loop) перерисует её сам
       setTimeout(() => { build(); if (RM) draw(6); }, 2600);
     })();
     let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); draw(RM ? 6 : (performance.now() - ctl.t0) / 1000); }, 150); });
     let fr = 0;
+    // RM=false ⇒ внешний цикл o.loop, если он есть, иначе свой rAF; ветки взаимоисключающие (if/else if) — двойной отрисовки нет
     if (o.loop && !RM) ctl.ready.then(() => o.loop.add(t => { const s = t - ctl.t0 / 1000; if (window.__h2tRec || (s > 3.2 && (++fr % (o.every || 1)))) return; draw(s); }, hero));
     else if (!RM) {
       let raf = 0, vis = true;
@@ -3236,7 +3248,7 @@ const NUMS=p=>{p=nb(String(p));const m=p.match(/^от[\s\u00a0]+/);return (m?"о
 /* T-05 + T-09: токен цены — «от» Inter 16 mute, цифры и ₽ — Bebas; класс b: l1 — цена с «1» (у «1» в Bebas поле 108 ед. против 31–40), d0 — с другой цифры */
 /* Р3: цены в ₽ нет (RU.ex2.p пусто) — вместо числа mono-строка (без зачёркивания и ₽); появится p — рисуется PZ, как у всех */
 const PQ='<span class="mono">цена — на&nbsp;странице курса</span>';
-function PZ(p){p=nb(String(p));const m=p.match(/^от[\s\u00a0]+/),d=m?p.slice(m[0].length):p;return{cls:m?"":d[0]==="1"?"l1":"d0",html:(m?'':"")+d+NB+"₽"}}
+function PZ(p){p=nb(String(p));if(p.includes("€"))return{cls:"l1",html:p};const m=p.match(/^от[\s\u00a0]+/),d=m?p.slice(m[0].length):p;return{cls:m?"":d[0]==="1"?"l1":"d0",html:(m?'':"")+d+NB+"₽"}}
 /* r2 · M2-02 (реш. 4): смена цены при выборе — последовательно, без перекрытия: старая уходит 80 мс (opacity → 0, −4 px), новая приходит 120 мс of +4 px,
    cubic-bezier(.2,0,0,1); двух «₽» одновременно не бывает, «от» едет вместе с цифрами; без прокрутки цифр; reduced-motion — сразу */
 function xfade(el,old,oc){if(reduce||!el||!old||old===el.innerHTML||!el.animate)return;const pr=el.parentNode,E="cubic-bezier(.2,0,0,1)";
@@ -3352,7 +3364,7 @@ const SOPS={pl:"PLu5d0FltTJ_V22Snp-HldqITLyfwZQOGn",total:"2 h 56 min",v:[
 /* 05 reviewы: пометки к подписям (решение заказчика 29.09 по crit_joint.md, п. 5) */
 const QNOTE={"Phelan Kane":"now Head of Education at Hou2Touch","c":"cities of students & studios","r":"random order on every visit"};
 
-const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "HOUDINI_101", "c": "HOUDINI", "s": "Houdini 103: Extreme", "t": "Houdini 103: Extreme", "g": "основы", "p": []}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "ROY", "c": "208", "s": "Modular Design", "t": "TouchDesigner 208: Modular Generative Design", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "flagship", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "flagship", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "flagship", "p": []}];
+const EN=[{"k": "101_Extreme_2024", "c": "101", "s": "Extreme I", "t": "TouchDesigner 101: Extreme I", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "102_EXTREME", "c": "102", "s": "Extreme II", "t": "TouchDesigner 102: Extreme II", "g": "основы", "p": ["TouchDesigner 204 — Real Lights", "Audio-Visual Artist", "TouchDesigner Extreme Bundle", "Media Engineer", "VJing with TouchDesigner"]}, {"k": "HOUDINI_101", "c": "HOUDINI", "s": "Houdini 103: Extreme", "t": "Houdini 103: Extreme", "g": "основы", "p": []}, {"k": "201_AV_LIVE", "c": "201", "s": "AV Live", "t": "TouchDesigner 201: AV LIVE using Ableton & Modular Synths", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "202_AV_STREAMING", "c": "202", "s": "AV Streaming", "t": "TouchDesigner 202: AV Streaming", "g": "практика", "p": ["Media Engineer"]}, {"k": "203_MediaServer", "c": "203", "s": "Media Server", "t": "TouchDesigner 203: Developing Media Server", "g": "практика", "p": ["Media Engineer"]}, {"k": "204_REAL_LIGHTS_PREPRODUCTION", "c": "204", "s": "Real Lights I", "t": "TouchDesigner 204: Real Lights — Level 1: Pre-production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "204_REAL_LIGHTS_PRODUCTION", "c": "204", "s": "Real Lights II", "t": "TouchDesigner 204: Real Lights — Level 2: Production", "g": "практика", "p": ["TouchDesigner 204 — Real Lights"]}, {"k": "205_VJ", "c": "205", "s": "VJTool", "t": "TouchDesigner 205: VJTool", "g": "практика", "p": ["VJing with TouchDesigner"]}, {"k": "206_BITWIG", "c": "206", "s": "AV Bitwig", "t": "TouchDesigner 206: AV Bitwig & TouchDesigner", "g": "практика", "p": ["Audio-Visual Artist"]}, {"k": "207_Terrain", "c": "207", "s": "Terrain", "t": "Houdini to TouchDesigner 207: Terrain Pipeline", "g": "практика", "p": []}, {"k": "ROY", "c": "ROY", "s": "Modular Generative Design", "t": "Modular Generative Design", "g": "практика", "p": []}, {"k": "301_2D_GLSL", "c": "301", "s": "2D GLSL", "t": "TouchDesigner 301: 2D GLSL - Procedural Graphics and Postprocessing", "g": "программирование", "p": ["Media Engineer", "VJing with TouchDesigner"]}, {"k": "302_SOP_ON_GPU", "c": "302", "s": "SOP on GPU", "t": "TouchDesigner 302: SOP on GPU - Geometry Shaders", "g": "программирование", "p": []}, {"k": "304_SCRIPT_SOP", "c": "304", "s": "Script SOP", "t": "TouchDesigner 304: Script SOP - Building own geometry Tools", "g": "программирование", "p": []}, {"k": "305_C++", "c": "305", "s": "C++ API", "t": "TouchDesigner 305: C++ API Intro", "g": "программирование", "p": []}, {"k": "LEVEL101", "c": "L101", "s": "Hou2Touch 1", "t": "Hou2Touch (EN) · LEVEL101", "g": "flagship", "p": []}, {"k": "LEVEL102", "c": "L102", "s": "Hou2Touch 2", "t": "Hou2Touch (EN) · LEVEL102", "g": "flagship", "p": []}, {"k": "LEVEL103", "c": "L103", "s": "Hou2Touch 3", "t": "Hou2Touch (EN) · LEVEL103", "g": "flagship", "p": []}];
 /* F2: адреса курсов семьи (BASE stand) — school/assemble.py ← family/family.py */
 const HREF={"h2t": "course.html", "ex1": "101.html", "ex2": "102.html", "bundle": "101.html#book", "glsl": "301.html"},HREFD={"h2t": "course.html", "ex1": "101.html", "ex2": "102.html", "bundle": "101.html#book", "glsl": "301.html"};
 
