@@ -75,7 +75,11 @@
 @media (max-width:600px){:root{--sec:96px;--hgap:40px;--pgap:16px}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg)}
+/* 24.11.2026 (визуальный аудит): фон задавался (--bg тёмный), а цвет текста —
+   нет. Браузер давал чёрный по умолчанию, и на тёмных секциях главной (#works,
+   #reviews, #faq, #out) заголовки .H были почти невидимы: чёрное на чёрном.
+   Светлые секции несут .paper, у которого свой color:var(--ink), — они не меняются. */
+body{background:var(--bg);color:var(--fg)}
 .h2t{background:var(--bg);color:var(--fg);font:400 16px/1.5 var(--sans);overflow-x:clip;text-align:left;letter-spacing:normal;-webkit-font-smoothing:antialiased;position:relative}
 .h2t img{display:block;max-width:100%}
 .h2t a:not(.btn){color:inherit}
@@ -207,6 +211,13 @@ html body .wrap{width:100%;max-width:calc(1328px + 2*var(--pad));margin-inline:a
 .hv canvas{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;opacity:0}
 .hv canvas.on{opacity:1}
 .hv::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(233,231,224,.9) 0%,rgba(233,231,224,0) 20%,rgba(233,231,224,0) 60%,rgba(233,231,224,.92) 88%)}
+
+/* 24.11.2026 (визуальный аудит): скрим #hv гасит верх (0.9 на 0%) и низ (0.92 с 88%),
+   а середина — 0 на 20–60%. Текстовый блок .hb стоит на 28–94% высоты, то есть
+   заголовок и лид приходились ровно на просвет: чернильное облако шло под чёрным
+   текстом, и он терялся. Подложка локальная — только под .hb, мягким градиентом,
+   поэтому облако остаётся видимым выше и ниже и «коробки» не появляется. */
+.hero .hb::before{content:"";position:absolute;left:calc(-1*var(--pad));right:calc(-1*var(--pad));top:-64px;bottom:calc(-1*48px);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(233,231,224,0) 0%,rgba(233,231,224,.72) 34%,rgba(233,231,224,.93) 58%,rgba(233,231,224,.96) 100%)}
 .hero .hm{position:absolute;z-index:2;left:var(--pad);right:var(--pad);top:96px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);padding:14px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line)}
 .hero .hm>div{line-height:24px}
 .hero .hm b{display:block;font:400 16px/24px var(--sans);color:#2b2a28;margin-top:4px;letter-spacing:0;text-transform:none}
