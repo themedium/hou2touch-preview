@@ -69,7 +69,11 @@
 @media (max-width:600px){:root{--sec:96px;--hgap:40px;--pgap:16px}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg)}
+/* 24.11.2026 (визуальный аудит): фон задавался (--bg тёмный), а цвет текста —
+   нет. Браузер давал чёрный по умолчанию, и на тёмных секциях главной (#works,
+   #reviews, #faq, #out) заголовки .H были почти невидимы: чёрное на чёрном.
+   Светлые секции несут .paper, у которого свой color:var(--ink), — они не меняются. */
+body{background:var(--bg);color:var(--fg)}
 .h2t{background:var(--bg);color:var(--fg);font:400 var(--fs-m)/1.5 var(--sans);overflow-x:clip;text-align:left;letter-spacing:normal;-webkit-font-smoothing:antialiased;position:relative}
 .h2t img{display:block;max-width:100%}
 .h2t a:not(.btn){color:inherit}
@@ -1887,7 +1891,12 @@ html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
 .h2t li,.h2t .q,.h2t .fq-a p{text-wrap:pretty}
 /* T-07: последняя строка не из одного слова (пункты, темы, вопросы, ответы) */
 .h2t :is(.dek,.p,li,.mx-r .t,.fq-l .q,.nd .nt,.pl-r .t,.h3,.cap b){text-wrap:pretty}}</style>
-<style id="ix-fin">@layer page{#out{contain-intrinsic-block-size:auto 911px}
+<style id="ix-fin">@layer page{/* 24.11.2026 (визуальный аудит): фон задавался (--bg тёмный), а цвет текста —
+   нет. Браузер давал чёрный default, и на тёмных секциях главной (#works,
+   #reviews, #faq, #out) заголовки .H были почти невидимы: чёрное на чёрном.
+   Светлые секции несут .paper, у которого свой color:var(--ink), — они не меняются. */
+body{background:var(--bg);color:var(--fg)}
+#out{contain-intrinsic-block-size:auto 911px}
 @media (max-width:600px){#out{contain-intrinsic-block-size:auto 738px}}
 /* r2 · D: перемер 1440 / 390 — #author 390 (C2-08, портрет во всю колонку), #out 390 (T2-04), f-faq2: #faq ≥981 и #reviews 390 */
 

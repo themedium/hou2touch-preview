@@ -69,7 +69,11 @@ You take on interactive work with sensors, data and sound, across several progra
 @media (max-width:600px){:root{--sec:96px;--hgap:40px;--pgap:16px}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg)}
+/* 24.11.2026 (визуальный аудит): фон задавался (--bg тёмный), а цвет текста —
+   нет. Браузер давал чёрный по умолчанию, и на тёмных секциях главной (#works,
+   #reviews, #faq, #out) заголовки .H были почти невидимы: чёрное на чёрном.
+   Светлые секции несут .paper, у которого свой color:var(--ink), — они не меняются. */
+body{background:var(--bg);color:var(--fg)}
 .h2t{background:var(--bg);color:var(--fg);font:400 var(--fs-m)/1.5 var(--sans);overflow-x:clip;text-align:left;letter-spacing:normal;-webkit-font-smoothing:antialiased;position:relative}
 .h2t img{display:block;max-width:100%}
 .h2t a:not(.btn){color:inherit}
@@ -1887,7 +1891,12 @@ html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
 .h2t li,.h2t .q,.h2t .fq-a p{text-wrap:pretty}
 /* T-07: последняя строка не из одного слова (пункты, темы, вопросы, ответы) */
 .h2t :is(.dek,.p,li,.mx-r .t,.fq-l .q,.nd .nt,.pl-r .t,.h3,.cap b){text-wrap:pretty}}</style>
-<style id="ix-fin">@layer page{#out{contain-intrinsic-block-size:auto 911px}
+<style id="ix-fin">@layer page{/* 24.11.2026 (визуальный аудит): фон задавался (--bg тёмный), а цвет текста —
+   нет. Браузер давал чёрный default, и на тёмных секциях главной (#works,
+   #reviews, #faq, #out) заголовки .H были почти невидимы: чёрное на чёрном.
+   Светлые секции несут .paper, у которого свой color:var(--ink), — они не меняются. */
+body{background:var(--bg);color:var(--fg)}
+#out{contain-intrinsic-block-size:auto 911px}
 @media (max-width:600px){#out{contain-intrinsic-block-size:auto 738px}}
 /* r2 · D: перемер 1440 / 390 — #author 390 (C2-08, портрет во всю колонку), #out 390 (T2-04), f-faq2: #faq ≥981 и #reviews 390 */
 
@@ -1955,26 +1964,7 @@ html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
 .f-out.ck #finR:not(.pr){-webkit-mask-image:linear-gradient(transparent,transparent);mask-image:linear-gradient(transparent,transparent)}
 .f-out.ck #finR.pr{-webkit-mask-size:40px 40px;mask-size:40px 40px;animation:cook .8s both}
 .f-out.ck #finR.pr.dn{animation:none;-webkit-mask-image:none;mask-image:none}
-@media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}
-/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
-html body #out .enl b{color:var(--fg)}
-/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
-   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
-   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
-/* P4 (18.11): футер и #out — цвета темы.
-   Корень «чёрного по чёрному»: у body нет собственного color, поэтому footer.ft и #out
-   наследовали UA-чёрный (1.07 к --bg). В 203 правило `a{color:inherit}
-html body #out{color:var(--fg)}
-html body #out .enl{color:var(--fg)}
-/* P4 (18.11): футер, #out и вынесенный tbar — цвета/иконки темы */
-html body footer.ft{color:var(--fg)}
-html body #out{color:var(--fg)}
-html body #out .enl{color:var(--fg)}
-html body #out .enl b{color:var(--fg)}
-mbC=$("#courses"),mbF=$(FL("out")?"#out":"#contacts"); // плашка прячется у финала (f-out — у верха секции 08)
-/* границы плашки: #courses (и #contacts без f-out) лежат внутри секций с content-visibility — пропущенное поддерево отдаёт пустую рамку;
-   храним смещение от верха своей секции (рамка секции есть всегда),пустую рамку не берём */
-const RL=[[mbC,"bottom"],[mbF,"top"]].map(([e,k])=>({e,k,s:e.closest(".sec,.ft")||H,o:NaN,v:NaN}}</style>
+@media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}}</style>
 <style id="ix-dock">@layer page{/* dock: page timeline (>980px) and sign-up bar (<=980px), ported from the flagship index.html (16.11) */
 .tlb{position:fixed;left:0;right:0;bottom:0;z-index:55;height:34px;display:flex;align-items:center;gap:18px;padding:0 var(--pad);background:rgba(11,11,12,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(100%);transition:transform .8s var(--ease)}
 .tlb.on{transform:none}
