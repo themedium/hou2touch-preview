@@ -1952,6 +1952,16 @@ html:not(.x-flat) .ix-rv-car .ix-rvbtn[data-d="1"]{right:10px}
 .f-out.ck #finR.pr{-webkit-mask-size:40px 40px;mask-size:40px 40px;animation:cook .8s both}
 .f-out.ck #finR.pr.dn{animation:none;-webkit-mask-image:none;mask-image:none}
 @media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}
+/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
+html body #out .enl b{color:var(--fg)}
+/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
+   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
+   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
+/* P4 (18.11): футер и #out — цвета темы.
+   Корень «чёрного по чёрному»: у body нет собственного color, поэтому footer.ft и #out
+   наследовали UA-чёрный (1.07 к --bg). В 203 правило `a{color:inherit}
+html body #out{color:var(--fg)}
+html body #out .enl{color:var(--fg)}
 /* P4 (18.11): футер, #out и вынесенный tbar — цвета/иконки темы */
 html body footer.ft{color:var(--fg)}
 html body #out{color:var(--fg)}

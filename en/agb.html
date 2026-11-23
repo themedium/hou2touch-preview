@@ -2022,6 +2022,88 @@ html body .sec.tf{padding-top:calc(var(--edge,96px) + var(--r-air))}
 #audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
 html body .ipt-wave{image-rendering:pixelated}
 </style>
+<style id="l9new-fix">
+/* L9: decorative patch-deck labels are drawn from data, not text (the accessible list is .ix-mxm + Programme) */
+.ix-patch .ipt-h>b::before,.ix-patch .ipt-pl>b::before,.ix-patch .ipt-leg>b::before{content:attr(data-t)}
+.ix-patch .ipt-h>i::before{content:attr(data-t)}
+.ix-patch .ipt-h>span.d::before{content:attr(data-t)}
+.ix-patch .ipt-t>b::before,.ix-patch .ipt-t>small::before{content:attr(data-t)}
+.ix-mxm b::before{content:attr(data-t)}
+/* номер курса в заголовке карточки 204-страниц — декор из data-t (в .md названия курса нет) */
+.tn .tn-n::before{content:attr(data-t)}
+/* teacher: passport stats strip — number on top, caption in caps below, rules as in the reference */
+html body #author .au-s{margin-top:22px;border-block:1px solid var(--line2)}
+html body #author .au-s>div{display:flex;flex-direction:column;padding:16px 18px 18px 0;min-width:0}
+html body #author .au-s>div+div{border-left:1px solid var(--line);padding-left:18px}
+html body #author .au-s .au-last b{order:-1}
+html body #author .au-s b{display:block;font:700 var(--fs-4xl)/0.9 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
+html body #author .au-s .mono{display:block;margin-top:10px;font:500 var(--fs-xs)/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+html body #author .au-cr{display:grid;grid-template-columns:1fr 1fr;gap:18px clamp(24px,3vw,48px);margin-top:28px;border-top:1px solid var(--line2);padding-top:22px}
+html body #author .au-cr p{margin:0;font:400 var(--fs-m)/1.6 var(--sans);color:var(--txt);max-width:34em}
+html body #author .au-cr b{display:block;font:500 var(--fs-xs)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+html body #author .au-pj{margin-top:40px}
+html body #author .au-pj .H{font-size:clamp(26px,2.6vw,36px)}
+html body #author .au-pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);margin-top:18px}
+html body #author .au-pc{margin:0}
+html body #author .au-pc img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;filter:grayscale(1) contrast(1.06)}
+html body #author .au-pc figcaption{margin-top:10px;font:500 var(--fs-xs)/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+html body #author .au-pc figcaption b{color:var(--fg);font-weight:600}
+@media(max-width:760px){html body #author .au-cr{grid-template-columns:1fr}html body #author .au-pg{grid-template-columns:1fr 1fr}}
+/* festivals marquee band (as in 203) */
+.marq-gap{background:var(--paper);padding-top:var(--r-block,clamp(28px,3.2vw,48px))}
+.marq-gap .wrap{background:var(--paper);color:var(--ink);margin:0;padding:0}
+.marq-gap .marq-c{color:var(--mute);padding-block:10px 0}
+/* bundle note under the buy button */
+/* п.46 чекера: при 46ch текст 205 занимает три строки, и .buy-x (он входит в набор
+   «кнопок») выходит из лестницы 203 — 79 px вместо 49. При 56ch те же две строки и
+   те же 49 px, что на 203; текст не меняется (L9 остаётся GREEN). */
+html body #book .tier .buy-x,html body #buy .tier .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:var(--fs-s);line-height:20px;color:var(--txt);max-width:56ch}
+html body #book .tier .buy-x a.u,html body #buy .tier .buy-x a.u{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+/* P1 (18.11): ссылки в тексте не подчёркнуты и не синие от UA. Правило живёт В СЛОЕ
+   page: страницы объявляют `@layer tpl,page`, и неслоёное правило 0,0,1 перебило бы
+   ВСЁ (слои решают раньше специфичности) — в слое же оно бьёт только UA-default и
+   tpl-базу, а намеренные `.u`, `.fq-a a`, `.buy-x a.u` (0,1,x) остаются. */
+@layer page{a{text-decoration:none;color:inherit}a:visited{color:inherit}}
+/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
+html body #out .enl b{color:var(--fg)}
+/* P2 (18.11): на 390px дефолтный SVG без CSS = 300x150 (чёрный треугольник).
+   Копия правила 203 + обобщение на стрелки внутри ссылок/кнопок (футер, .rt-n, .tbar),
+   где 203 тоже течёт; иконочные правила сильнее по специфичности и не страдают. */
+html body #buy svg.ar,html body #buy svg.ic,html body #reviews svg.ar,html body #reviews svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+html body a svg.ar,html body a svg.ic,html body button svg.ar,html body button svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
+   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
+   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
+/* P4 (18.11): футер и #out — цвета темы.
+   Корень «чёрного по чёрному»: у body нет собственного color, поэтому footer.ft и #out
+   наследовали UA-чёрный (1.07 к --bg). В 203 правило `a{color:inherit}` из @layer page
+   перебивало и `.ft2-a a:not(.logo){color:var(--txt)}` из tpl (слой page объявлен позже),
+   поэтому все ссылки футера тоже становились чёрными. Здесь правила БЕЗ слоя — они выше
+   любого @layer, и цвета ссылок возвращаются к замыслу 202/301: текст --txt, ховер --fg. */
+html body footer.ft{color:var(--fg)}
+html body footer.ft a.logo{color:var(--fg)}
+html body footer.ft .ft2-a a:not(.logo){color:var(--txt)}
+html body footer.ft .ft2-a a:not(.logo):hover{color:var(--fg)}
+html body #out{color:var(--fg)}
+html body #out .enl{color:var(--fg)}
+/* P4: 390px — футер. Логотип выезжал в padding на 7px (margin-left:-7px — оптическая
+   выключка, рассчитанная на --pad 56px), а хит-зона X (padding-inline:16/margin-inline:-16)
+   упиралась в самый край экрана. На ≤760 (там живёт сетка .ft2-a из шаблона) снимаем только
+   эти два смещения; на ≤600 сетка auto/1fr/1fr давала колонке письма ровно его min-content
+   (155px при 358 доступных), поэтому там переходим на flex: строка логотипа, строка почты,
+   строка соцсетей — всё внутри --pad. */
+@media(max-width:760px){
+html body footer.ft .ft2-a .logo{margin-left:0}
+html body footer.ft .ft2-a a[href*="x.com"]{padding-inline:0;margin-inline:0}
+}
+@media(max-width:600px){
+html body footer.ft .ft2-a{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:0}
+html body footer.ft .ft2-a .logo{flex:none}
+html body footer.ft .ft2-a .id{flex:1 0 100%}
+html body footer.ft .ft2-a .so{margin-left:0}
+}
+</style>
+<style id="marq-fix">html body #author .marq-gap .marq{margin-top:0}</style>
 <style id="hex-tokens">
 /* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
 :root{
@@ -5465,5 +5547,121 @@ setTimeout(function(){
 },0);
 })();
 </script>
+<style id="l9new-b2b3">
+/* B1 (19.11) — блок m4: шапка-строка .m-bar, как в 203 */
+html body #audience .pn.lite[data-lkey="m4"]>.ph{display:block;margin:0 0 var(--r-sub);padding:0;border:0;background:none;box-shadow:none;min-height:0;white-space:normal}
+html body #audience .pn.lite[data-lkey="m4"]>.ph::before,html body #audience .pn.lite[data-lkey="m4"]>.ph::after{content:none}
+html body #audience .pn.lite[data-lkey="m4"]>.ph h3{font:700 clamp(28px,2.6vw,36px)/.9 var(--disp)!important;letter-spacing:0!important;text-transform:uppercase!important;color:var(--ink)!important;white-space:nowrap}
+html body #audience .pn.lite[data-lkey="m4"]>.ph h3::before,html body #audience .pn.lite[data-lkey="m4"]>.ph h3::after{content:none!important}
+html body #audience .m-bar{display:flex;align-items:center;gap:0;min-width:0}
+html body #audience .m-bar>h3.b3-h{margin:0 16px 0 0!important;font:700 clamp(28px,2.6vw,36px)/.9 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+html body #audience .m-rule{flex:1 1 auto;height:1px;margin:0 18px 0 0;background:var(--line2)}
+html body #audience .m-chain-meta{display:flex;align-items:center;gap:7px;margin-left:18px;font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+html body #audience .m-chain-meta i{display:inline-flex;gap:2px;margin-left:7px;font-style:normal}
+html body #audience .m-chain-meta s{display:block;width:9px;height:9px;border-radius:2px;background:var(--top)}html body #audience .m-chain-meta s:nth-child(2){background:var(--ink)}
+/* B2 (19.11) — отступы: верх секций на --r-air (как 203: 74.88 против 160),
+   .sec.tf сохраняет свой край (+96), зазор под шапкой #audience — 56 */
+html body #audience .sh{align-items:start;margin-bottom:clamp(40px,4vw,56px)}
+html body .sec{padding-top:var(--r-air)}
+html body .sec.tf{padding-top:calc(var(--edge,96px) + var(--r-air))}
+/* B3 (19.11) — деки: высота полотна и пиксельная сетка, как в 203 (158px @1440) */
+html body .ipt-wave{height:clamp(120px,11vw,170px);image-rendering:pixelated}
+#audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+</style>
+<script id="pix-3d">/* декор: плоская графика из точек 4 px; x вправо, y вверх, без перспективы */
+(()=>{const P=4,INK="#0b0b0c";
+const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+const bay=(x,y)=>B[(x&3)+4*(y&3)]/16;
+/* --- ДЕКА: две переплетающиеся ленты (коса) + пунктирные контуры + метки --- */
+const deck=(nx,ny)=>{const out=[],AMP=.20,LAM=1.30,TH=.13,PW=1.8,TAPER=.09,MOD=.25;
+ /* две ленты в противофазе: плотность максимальна на осевой линии и гаснет к краям */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.9+.6);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.3+Math.PI*1.2);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1); let v=0;
+   for(const [ph,amp,th,mod] of [[0,AMP,TH,m1],[Math.PI,AMP*.9,TH*.85,m2]]){
+    const yc=.5+amp*Math.sin(2*Math.PI*u/LAM+ph);
+    const d=1-Math.abs(y-yc)/th;
+    if(d>0){const p=Math.pow(d,PW)*mod; if(p>v)v=p;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* пунктирные контурные кривые, огибающие косу сверху и снизу */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const [ph,off] of [[.4,.36],[Math.PI+.4,-.36]]){
+   const yc=.5+off*Math.sin(2*Math.PI*u/1.15+ph);
+   const cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);}}
+ /* регистрационные метки: пунктирная вертикаль с квадратом-рамкой на концах */
+ const vline=cu=>{const cx=Math.round(cu*(nx-1));
+  for(let cy=2;cy<ny-3;cy+=2) out.push([cx,cy]);
+  for(const top of [1,ny-4]) for(const [a,b] of [[0,0],[1,0],[2,0],[0,1],[2,1],[0,2],[1,2],[2,2]]){
+   const x=cx-1+a, y=top-1+b; if(x>=0&&x<nx&&y>=0&&y<ny) out.push([x,y]);}};
+ vline(.21); vline(.75);
+ /* кресты-опорные точки */
+ const cross=(cu,cv)=>{const cx=Math.round(cu*(nx-1)), cy=Math.round(cv*(ny-1));
+  for(const k of [-1,0,1]){
+   if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+   if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}};
+ cross(.34,.14); cross(.70,.86);
+ return out};
+/* --- ШАПКА «Who this course is for»: схождение двух лент, средняя сложность --- */
+const audience=(nx,ny)=>{const out=[],AMP=.30,TH=.10,PW=2.0,TAPER=.10,MOD=.22,PATCH=.15;
+ /* две ленты сходятся к правому краю; на слитой части — рябь, вдоль ленты —
+    мягкие нашлёпки полутона (±0.15), тональность только дизером b4 */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const gap=AMP*Math.pow(1-u,1.15);
+  const wig=.05*Math.sin(2*Math.PI*u/1.15+.8);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.7+.4);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.1+Math.PI);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1);
+   const patch=1-PATCH+PATCH*Math.sin(2*Math.PI*u/.62+1.3);
+   let v=0;
+   for(const [sgn,mod] of [[1,m1],[-1,m2]]){
+    const yc=.5+sgn*gap+wig*(.35+.65*u);
+    const d=1-Math.abs(y-yc)/TH;
+    if(d>0){const pr=Math.pow(d,PW)*mod*patch; if(pr>v)v=pr;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* четыре пунктирных контура: два внешних огибают схождение, два внутренних
+    вдвое реже проходят вдоль самих лент */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const sgn of [1,-1]){
+   const g=AMP*Math.pow(1-u,1.15);
+   let yc=.5+sgn*(g+.17), cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);
+   if(cx%4===0){
+    yc=.5+sgn*(g*.45+.07); cy=Math.round((1-yc)*(ny-1));
+    if(cy>=0&&cy<ny&&bay(cx,cy)<.4*fade) out.push([cx,cy]);}}}
+ /* метка: пунктирная вертикаль с квадратом-рамкой сверху */
+ const mx=Math.round(.62*(nx-1));
+ for(let cy=2;cy<ny-4;cy+=2) out.push([mx,cy]);
+ for(const [a,b] of [[0,0],[1,0],[2,0],[0,1],[2,1],[0,2],[1,2],[2,2]]){
+  const x=mx-1+a, y=b; if(x>=0&&x<nx&&y>=0&&y<ny) out.push([x,y]);}
+ /* два креста-опоры */
+ for(const [cu,cv] of [[.16,.72],[.44,.24]]){
+  const cx=Math.round(cu*(nx-1)), cy=Math.round(cv*(ny-1));
+  for(const k of [-1,0,1]){
+   if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+   if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}}
+ return out};
+const FN={deck,aud:audience};
+const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
+ const D=Math.min(2.5,window.devicePixelRatio||1);
+ cv.width=Math.round(w*D);cv.height=Math.round(h*D);
+ const g=cv.getContext("2d");g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,w,h);g.fillStyle=INK;
+ const nx=Math.ceil(w/P), ny=Math.ceil(h/P);
+ const seen=new Set();
+ for(const [cx,cy] of (FN[cv.dataset["3d"]]||FN.aud)(nx,ny)){   /* data-3d → dataset["3d"] */
+  if(cx<0||cy<0||cx>=nx||cy>=ny)continue;
+  const k=cy*nx+cx; if(seen.has(k))continue; seen.add(k);
+  g.fillRect(cx*P,cy*P,P,P);}
+ cv.dataset.drawn="1"};
+const all=()=>document.querySelectorAll("[data-3d]").forEach(draw);
+window.H2T3D={draw,all};
+if(document.readyState!=="loading")all();else document.addEventListener("DOMContentLoaded",all);
+addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeout(all,180)});
+})();</script>
 </body>
 </html>
