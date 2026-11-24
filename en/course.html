@@ -1781,7 +1781,7 @@ function blkWall(){(function(){
     const r=$("#works").getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)col(!wl.classList.contains("col"))});
 })();}
 function blkReviews(){(function(){
-  const L=$("#qaL"),Q=$("#qaQ"),n=QUOTES.length,txt=s=>s.replace(/&nbsp;/g," ");
+  const L=$("#qaL"),Q=$("#qaQ");if(!L||!Q)return;const n=QUOTES.length,txt=s=>s.replace(/&nbsp;/g," ");
   const q4=q=>txt(q.q).length>240&&q.qm?q.qm:q.q; // цитата — не длиннее ≈ 4 строк; есть короткая редакция — берём её
   const qs=(t,c="")=>{const p=/(?<!\.)\.\s*$/.test(t);return `<span class="${c}${p?" pt":""}">${p?t.replace(/\.\s*$/,""):t}</span>`}; // r2 · T2-06: точка of данных — после «»» (::after «».»), «?», «!», «…» остаются внутри; src/data.js лендинга не трогаем
   L.innerHTML=QUOTES.map((q,i)=>`<button class="qa-r" type="button" role="tab" id="qaT${i}" aria-controls="qaP${i}" aria-selected="false" tabindex="-1" data-i="${i}"><span class="av"><img src="${IMG(q.img+"s")}" alt="" loading="lazy" decoding="async" crossorigin="anonymous" width="40" height="40"><canvas aria-hidden="true"></canvas></span><span><b>${q.n}</b><span class="mono">${QNOTE[q.n]||q.s}</span></span></button>`).join("");
@@ -3642,7 +3642,7 @@ const B8=(()=>{let M=[[0]];for(let k=0;k<3;k++){const n=M.length,N=[];for(let i=
 
 /* ---------- 09: text1 — список авторов + цитата; ≤600 — полоса аватаров; все цитаты в одной ячейке (без скачков высоты) ---------- */
 (function(){
-  const L=$("#qaL"),Q=$("#qaQ"),n=QUOTES.length,pad=i=>String(i+1).padStart(2,"0"),txt=s=>s.replace(/&nbsp;/g," ");
+  const L=$("#qaL"),Q=$("#qaQ");if(!L||!Q)return;const n=QUOTES.length,pad=i=>String(i+1).padStart(2,"0"),txt=s=>s.replace(/&nbsp;/g," ");
   L.innerHTML=QUOTES.map((q,i)=>`<button class="qa-r" type="button" role="tab" id="qaT${i}" aria-controls="qaP${i}" aria-selected="false" tabindex="-1" data-i="${i}"><img src="${IMG(q.img)}" alt="" loading="lazy" decoding="async" width="40" height="40"><span><b>${q.n}</b><span class="mono">${q.s}</span></span></button>`).join("");
   Q.innerHTML=QUOTES.map((q,i)=>`<figure role="tabpanel" id="qaP${i}" aria-labelledby="qaT${i}"${txt(q.q).length>220?' class="l"':""}><blockquote>${q.qm?`<span class="only-d">${q.q}</span><span class="only-m">${q.qm}</span>`:q.q}</blockquote><figcaption class="mono"><b>${q.n}</b> — <span class="only-d">${q.r}</span><span class="only-m">${q.s}</span>${q.u?` · <a href="${q.u}" target="_blank" rel="noopener">${q.ul}&nbsp;↗</a>`:""}</figcaption></figure>`).join("");
   const rows=[...L.children],figs=[...Q.children];let act=-1;
