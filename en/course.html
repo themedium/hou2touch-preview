@@ -39,7 +39,7 @@
   --fg:#efeee9; --fg8:rgba(239,238,233,.8); --txt:#cfcec9; --mute:#8f8e8a; --dim:#5a5956;
   --line:rgba(239,238,233,.11); --line2:rgba(239,238,233,.22);
   --hou:#e5501e; --td:#7fe7ff;
-  --sop:#3d7fd6; --top:#8a63c9; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
+  --sop:#3d7fd6; --top:#65a30d; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
   --pad:clamp(16px,3.9vw,56px); --gap:clamp(10px,1.4vw,20px);
   --sec:160px; --hgap:56px; --pgap:24px;
   --disp:"H2T Bebas","Bebas Neue",Impact,sans-serif;
@@ -698,7 +698,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .au-p{grid-column:1/5;display:flex;flex-direction:column}
 .au-p .por{flex:1 0 auto}
 .au-t{grid-column:5/13;display:flex;flex-direction:column;min-width:0}
-.por{position:relative;aspect-ratio:4/5;overflow:hidden;background:#050505}
+.por{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink-050)}
 .por img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(.98) brightness(.96);transition:filter .8s var(--ease)}
 .por canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none}
 .por.col img{filter:none}
@@ -735,13 +735,13 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .wl-f button{display:inline-flex;align-items:center;min-height:44px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--fg);transition:opacity .3s}
 @media (hover:hover){.wl-f button:hover{opacity:.7}}
 .wl{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:2px;padding:0;background:var(--line)}
-.wt{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#0e0e10;cursor:zoom-in}
+.wt{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--ink-100);cursor:zoom-in}
 .wt.big{grid-column:span 3;grid-row:span 2;aspect-ratio:auto}
 .wt.big i{font-size:12px;left:12px;bottom:10px}
 .wt img,.wt canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .wt img{object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .5s var(--ease),transform .8s var(--ease)}
 .wt canvas{image-rendering:pixelated;transition:opacity .35s var(--ease)}
-.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:#efeee9;opacity:0;transition:opacity .3s;text-shadow:0 1px 6px #000}
+.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:#efeee9;opacity:0;transition:opacity .3s;text-shadow:0 1px 6px var(--ink-000)}
 @media (hover:hover) and (pointer:fine){.wt:hover canvas{opacity:0}.wt:hover img{transform:scale(1.04)}.wt:hover i{opacity:1}}
 .wt:focus-visible canvas{opacity:0}
 .wt:focus-visible i{opacity:1}
@@ -768,7 +768,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .qa-l{border-right:1px solid var(--line)}
 .qa-r{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;width:100%;min-height:58px;padding:8px 14px;border-bottom:1px solid var(--line);text-align:left;color:var(--txt);transition:color .3s,background .3s}
 .qa-r:last-child{border-bottom:0}
-.qa-r .av{position:relative;display:block;width:40px;height:40px;border-radius:50%;overflow:hidden;background:#1a1a1c}
+.qa-r .av{position:relative;display:block;width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--ink-450)}
 .qa-r img{width:40px;height:40px;object-fit:cover;filter:grayscale(1) contrast(1.05)}
 .qa-r .av canvas{position:absolute;inset:0;width:100%;height:100%;display:none;image-rendering:pixelated;transition:opacity .3s}
 .qa-r b{display:block;font:500 16px/1.3 var(--sans);color:inherit}
@@ -793,7 +793,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 @media (max-width:600px){.qa-c{margin:-8px 0 14px}.qa-c button{font-size:28px;min-height:44px}.qa-c button::after{padding-left:8px}.qa-b{display:block}.qa-l{display:flex;gap:8px;padding:14px 14px 2px;border-right:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.qa-l::-webkit-scrollbar{display:none}.qa-r{display:block;flex:none;width:44px;min-height:44px;height:44px;padding:2px;border:0;border-radius:50%;background:none!important;box-shadow:none!important}.qa-r>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.qa-r img{filter:grayscale(1) contrast(1.05) brightness(.8)}.qa-r[aria-selected=true] img{filter:grayscale(1) contrast(1.05)}.qa-r[aria-selected=true] .av{box-shadow:0 0 0 2px var(--fg)}.qa-s{padding:16px 14px 14px}.qa-q blockquote{font-size:20px;line-height:28px;letter-spacing:-.01em}.qa-q figcaption{margin-top:14px}.qa-nv{padding-top:16px}}
 .sheet{--bg:#efeee9;--bg2:#e4e2dc;--fg:var(--ink);--fg8:rgba(11,11,12,.8);--txt:#2b2a28;--mute:#56544f;--dim:#7a7872;--line:rgba(11,11,12,.13);--line2:rgba(11,11,12,.26);--pnb:#efeee9;--hv:#2c2c2f;color:var(--fg);border-color:#efeee9}
 .sheet .qa-r[aria-selected=true]{background:rgba(11,11,12,.05)}
-.sheet .qa-r .av{background:#d9d6ce}
+.sheet .qa-r .av{background:var(--plate-c)}
 @media (prefers-reduced-motion:reduce){.fq-l details[open] .fq-a,.anim,.mp-p .mp-b.anim,.pri-t.nx,.cv li{animation:none}}
 .wt:focus-visible{z-index:3;outline-offset:-3px}
 .x-seamfull #works{padding-top:112px}
@@ -879,7 +879,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 @media (max-width:1060px){.fnav{grid-template-columns:1fr auto}.fnav .fam{display:none}.fnav .mb{display:inline-flex}}
 @media (max-width:600px){.h2t .fnav .back{display:none}.fnav .c2 .only-d{display:none}.fnav .end{gap:8px}}
 /* меню: курсы семьи крупно (Bebas 40), ниже — разделы страницы */
-.fmnu{position:fixed;inset:0;z-index:59;background:#0b0b0c;display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
+.fmnu{position:fixed;inset:0;z-index:59;background:var(--ink);display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
 .fmnu.on{opacity:1;pointer-events:auto}
 .fmnu .mono.h{margin-bottom:10px}
 .fmnu ul{list-style:none;border-top:1px solid var(--line2)}
@@ -977,7 +977,7 @@ html{scroll-padding-block:73px 46px}
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
   font:400 16px/1.5 var(--rx-sans);letter-spacing:normal;text-align:left;text-transform:none;opacity:1;transform:none}
 /* порты TD по бокам, как у .pn.full: заливка — тьма секции, кольцо — DAT */
-.h2t .rx::before,.h2t .rx::after{content:"";position:absolute;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg,#0b0b0c);box-shadow:inset 0 0 0 1.5px var(--rx-dat);z-index:3}
+.h2t .rx::before,.h2t .rx::after{content:"";position:absolute;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--rx-dat);z-index:3}
 .h2t .rx::before{left:-5px}.h2t .rx::after{right:-5px}
 .h2t .rx :focus-visible{outline:2px solid var(--rx-ink);outline-offset:2px}
 .h2t .rx :focus:not(:focus-visible){outline:none}
@@ -1005,8 +1005,8 @@ html{scroll-padding-block:73px 46px}
 /* флаги nodesы: V (viewer) включён — «открытая строка», проверенность без слов (C-M1) */
 .h2t .rx-fl{display:inline-flex;gap:3px}
 .h2t .rx-fl b{display:block;width:16px;height:16px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--rx-ln2);font:500 12px/16px var(--rx-mono);text-align:center;color:var(--rx-mu)}
-.h2t .rx-fl b.rx-on{background:var(--rx-td);color:#000;box-shadow:none}
-.h2t .rx-fp{position:relative;display:block;width:100%;max-width:168px;aspect-ratio:4/5;overflow:hidden;background:#e2e0d9}
+.h2t .rx-fl b.rx-on{background:var(--rx-td);color:var(--ink-000);box-shadow:none}
+.h2t .rx-fp{position:relative;display:block;width:100%;max-width:168px;aspect-ratio:4/5;overflow:hidden;background:var(--plate-a)}
 .h2t .rx-fq{grid-column:3/13;grid-row:1;position:relative;min-width:0;margin:0;padding:0;border:0;quotes:none;
   font:300 var(--fs)/var(--lh) var(--rx-sans);letter-spacing:var(--ls);text-wrap:pretty;color:var(--rx-ink)}
 /* кегль по длине, 3 ступени (TM-01): короткий вынос не крупнее H2 страницы — --rx-h2 повторяет токен .H (главная и курсы — школьный, флагман —
@@ -1090,7 +1090,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx-cq[data-t=m]{--fs:22px;--lh:1.32;--ls:-.02em;max-width:26em}
 .h2t .rx-cq[data-t=s]{--fs:18px;--lh:1.45;--ls:-.006em;font-weight:400;max-width:32em}
 .h2t .rx-cc{align-self:start;display:flex;align-items:flex-start;gap:14px;min-width:0;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rx-ln)}
-.h2t .rx-av{position:relative;flex:none;display:block;width:52px;height:65px;overflow:hidden;background:#e2e0d9}
+.h2t .rx-av{position:relative;flex:none;display:block;width:52px;height:65px;overflow:hidden;background:var(--plate-a)}
 .h2t .rx-ct{display:grid;justify-items:start;gap:2px;min-width:0;font:500 12px/1.5 var(--rx-mono);letter-spacing:.02em;color:var(--rx-mu)}
 .h2t .rx-ct>b{font:600 16px/1.3 var(--rx-sans);letter-spacing:0;color:var(--rx-ink);margin-bottom:3px;overflow-wrap:anywhere}
 .h2t .rx-ct .rx-nt::before{width:7px;height:7px}
@@ -1281,6 +1281,90 @@ html body a.skip{color:var(--bg)!important}
   .f-short .hero .fests{margin-top:calc(8px - var(--tc)*.125);margin-right:calc(-1*min(var(--d)*1000,640px))}
 }
 </style>
+<style id="ix-fs-edge">#book .edge{--bg:var(--ink)!important}#book .edge.t{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink)}#book .edge.b{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink);transform:scaleY(-1)}@media (max-width:760px){#book .edge{background-size:24px 64px,auto}}</style><style id="ix-rv-fallback">.h2t .rv{opacity:1!important;transform:none!important;transition:none!important}</style><style id="l9new-fix">
+/* L9: decorative patch-deck labels are drawn from data, not text (the accessible list is .ix-mxm + Programme) */
+.ix-patch .ipt-h>b::before,.ix-patch .ipt-pl>b::before,.ix-patch .ipt-leg>b::before{content:attr(data-t)}
+.ix-patch .ipt-h>i::before{content:attr(data-t)}
+.ix-patch .ipt-h>span.d::before{content:attr(data-t)}
+.ix-patch .ipt-t>b::before,.ix-patch .ipt-t>small::before{content:attr(data-t)}
+.ix-mxm b::before{content:attr(data-t)}
+/* номер курса в заголовке карточки 204-страниц — декор из data-t (в .md названия курса нет) */
+.tn .tn-n::before{content:attr(data-t)}
+/* teacher: passport stats strip — number on top, caption in caps below, rules as in the reference */
+html body #author .au-s{margin-top:22px;border-block:1px solid var(--line2)}
+html body #author .au-s>div{display:flex;flex-direction:column;padding:16px 18px 18px 0;min-width:0}
+html body #author .au-s>div+div{border-left:1px solid var(--line);padding-left:18px}
+html body #author .au-s .au-last b{order:-1}
+html body #author .au-s b{display:block;font:700 var(--fs-4xl)/0.9 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
+html body #author .au-s .mono{display:block;margin-top:10px;font:500 var(--fs-xs)/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+html body #author .au-cr{display:grid;grid-template-columns:1fr 1fr;gap:18px clamp(24px,3vw,48px);margin-top:28px;border-top:1px solid var(--line2);padding-top:22px}
+html body #author .au-cr p{margin:0;font:400 var(--fs-m)/1.6 var(--sans);color:var(--txt);max-width:34em}
+html body #author .au-cr b{display:block;font:500 var(--fs-xs)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+html body #author .au-pj{margin-top:40px}
+html body #author .au-pj .H{font-size:clamp(26px,2.6vw,36px)}
+html body #author .au-pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);margin-top:18px}
+html body #author .au-pc{margin:0}
+html body #author .au-pc img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;filter:grayscale(1) contrast(1.06)}
+html body #author .au-pc figcaption{margin-top:10px;font:500 var(--fs-xs)/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+html body #author .au-pc figcaption b{color:var(--fg);font-weight:600}
+@media(max-width:760px){html body #author .au-cr{grid-template-columns:1fr}html body #author .au-pg{grid-template-columns:1fr 1fr}}
+/* festivals marquee band (as in 203) */
+.marq-gap{background:var(--paper);padding-top:var(--r-block,clamp(28px,3.2vw,48px))}
+.marq-gap .wrap{background:var(--paper);color:var(--ink);margin:0;padding:0}
+.marq-gap .marq-c{color:var(--mute);padding-block:10px 0}
+/* bundle note under the buy button */
+/* п.46 чекера: при 46ch текст 205 занимает три строки, и .buy-x (он входит в набор
+   «кнопок») выходит из лестницы 203 — 79 px вместо 49. При 56ch те же две строки и
+   те же 49 px, что на 203; текст не меняется (L9 остаётся GREEN). */
+html body #book .tier .buy-x,html body #buy .tier .buy-x{margin:14px 0 0;font-family:var(--sans);font-size:var(--fs-s);line-height:20px;color:var(--txt);max-width:56ch}
+html body #book .tier .buy-x a.u,html body #buy .tier .buy-x a.u{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+/* P1 (18.11): ссылки в тексте не подчёркнуты и не синие от UA. Правило живёт В СЛОЕ
+   page: страницы объявляют `@layer tpl,page`, и неслоёное правило 0,0,1 перебило бы
+   ВСЁ (слои решают раньше специфичности) — в слое же оно бьёт только UA-default и
+   tpl-базу, а намеренные `.u`, `.fq-a a`, `.buy-x a.u` (0,1,x) остаются. */
+@layer page{a{text-decoration:none;color:inherit}a:visited{color:inherit}}
+/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
+html body #out .enl b{color:var(--fg)}
+/* P2 (18.11): на 390px дефолтный SVG без CSS = 300x150 (чёрный треугольник).
+   Копия правила 203 + обобщение на стрелки внутри ссылок/кнопок (футер, .rt-n, .tbar),
+   где 203 тоже течёт; иконочные правила сильнее по специфичности и не страдают. */
+html body #buy svg.ar,html body #buy svg.ic,html body #reviews svg.ar,html body #reviews svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+html body a svg.ar,html body a svg.ic,html body button svg.ar,html body button svg.ic{width:1em;height:1em;flex:none;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.5;overflow:visible}
+/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
+   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
+   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
+/* P4 (18.11): футер и #out — цвета темы.
+   Корень «чёрного по чёрному»: у body нет собственного color, поэтому footer.ft и #out
+   наследовали UA-чёрный (1.07 к --bg). В 203 правило `a{color:inherit}` из @layer page
+   перебивало и `.ft2-a a:not(.logo){color:var(--txt)}` из tpl (слой page объявлен позже),
+   поэтому все ссылки футера тоже становились чёрными. Здесь правила БЕЗ слоя — они выше
+   любого @layer, и цвета ссылок возвращаются к замыслу 202/301: текст --txt, ховер --fg. */
+html body footer.ft{color:var(--fg)}
+html body footer.ft a.logo{color:var(--fg)}
+html body footer.ft .ft2-a a:not(.logo){color:var(--txt)}
+html body footer.ft .ft2-a a:not(.logo):hover{color:var(--fg)}
+html body #out{color:var(--fg)}
+html body #out .enl{color:var(--fg)}
+/* P4: 390px — футер. Логотип выезжал в padding на 7px (margin-left:-7px — оптическая
+   выключка, рассчитанная на --pad 56px), а хит-зона X (padding-inline:16/margin-inline:-16)
+   упиралась в самый край экрана. На ≤760 (там живёт сетка .ft2-a из шаблона) снимаем только
+   эти два смещения; на ≤600 сетка auto/1fr/1fr давала колонке письма ровно его min-content
+   (155px при 358 доступных), поэтому там переходим на flex: строка логотипа, строка почты,
+   строка соцсетей — всё внутри --pad. */
+@media(max-width:760px){
+html body footer.ft .ft2-a .logo{margin-left:0}
+html body footer.ft .ft2-a a[href*="x.com"]{padding-inline:0;margin-inline:0}
+}
+@media(max-width:600px){
+html body footer.ft .ft2-a{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:0}
+html body footer.ft .ft2-a .logo{flex:none}
+html body footer.ft .ft2-a .id{flex:1 0 100%}
+html body footer.ft .ft2-a .so{margin-left:0}
+}
+</style>
+<style id="family-ink">/* #family: цвета тёмной темы (у секции нет своих) */
+html body #family{color:var(--fg)}html body #family .H{color:var(--fg)}html body #family a.pn.rc{color:var(--fg)}html body #family .rc .rc-n small{color:var(--mute)}html body #family .rc .rc-d{color:var(--txt)}</style>
+<style id="marq-fix">html body #author .marq-gap .marq{margin-top:0}</style>
 <style id="hex-tokens">
 /* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
 :root{
@@ -1304,7 +1388,7 @@ html body a.skip{color:var(--bg)!important}
   --pink:var(--dat);
 }
 </style>
-<style id="ix-fs-edge">#book .edge{--bg:var(--ink)!important}#book .edge.t{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink)}#book .edge.b{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink);transform:scaleY(-1)}@media (max-width:760px){#book .edge{background-size:24px 64px,auto}}</style><style id="ix-rv-fallback">.h2t .rv{opacity:1!important;transform:none!important;transition:none!important}</style></head>
+</head>
 <body>
 <div class="h2t f-family f-lc f-fmask f-short" id="h2t"><svg class="ico" aria-hidden="true" focusable="false"><symbol id="h2t-i-r" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4"/></symbol><symbol id="h2t-i-l" viewBox="0 0 16 16"><path d="M14 8H3M7 4 3 8l4 4"/></symbol><symbol id="h2t-i-u" viewBox="0 0 16 16"><path d="M8 14V3M4 7l4-4 4 4"/></symbol><symbol id="h2t-i-d" viewBox="0 0 16 16"><path d="M8 2v11M4 9l4 4 4-4"/></symbol><symbol id="h2t-i-ne" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></symbol><symbol id="h2t-i-se" viewBox="0 0 16 16"><path d="M4 4l8 8M12 6v6H6"/></symbol><symbol id="h2t-i-p" viewBox="0 0 16 16"><path d="M4.5 3v10L13 8z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-v" viewBox="0 0 16 16"><path d="M4 6h8l-4 5z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol></svg>
 <a class="skip" href="#main">Skip to content</a>
@@ -1455,7 +1539,6 @@ html body a.skip{color:var(--bg)!important}
       <h2 class="au-n">Stanislav<br class="only-d"> Glazov</h2>
       <p class="au-r">3D and AV artist · 28 years in computer graphics · teaching since 2001</p>
       <div class="au-cr"><p><b>Shown at:</b> Berlin Atonal · Ars Electronica · Mutek Montreal · Barbican · Berghain · Fête des Lumières Lyon · Unsound · Sonar Istanbul · L.E.V.</p><p><b>Worked with:</b> Maxim Didenko · Berlin Ballet Company · Dasha Rush · Robert Lippok · Whitevoid</p><p><b>Companies and clients:</b> Scanline · Trixter · SILA SVETA · Hyundai</p><p><b>Taught at:</b> SAE Institute · Scream School · British Higher School of Art and Design · LPM Rome</p></div><div class="au-pj"><h3 class="H">Selected projects</h3><div class="au-pg"><figure class="au-pc"><img loading="eager" src="img/projects/a-techno-ballet-odyssey.jpg" alt="A Techno Ballet Odyssey" decoding="async"><figcaption class="mono"><b>A Techno Ballet Odyssey</b> · 2024</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/terrain.jpg" alt="Terrain" decoding="async"><figcaption class="mono"><b>Terrain</b> · 2022</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/ctrl-shift.jpg" alt="CTRL+SHIFT" decoding="async"><figcaption class="mono"><b>CTRL+SHIFT</b> · 2020</figcaption></figure><figure class="au-pc"><img loading="eager" src="img/projects/drop-it.jpg" alt="Drop it" decoding="async"><figcaption class="mono"><b>Drop it</b> · 2020</figcaption></figure></div></div>
-      <button class="btn ghost cv-b" type="button" id="cvB" aria-expanded="false" aria-controls="cv">Full biography <span>+</span></button>
     </div>
   </div></div>
   <div class="marq" id="fests" aria-label="Festivals and venues"><div class="marq-t" id="festT"></div></div>
@@ -3333,7 +3416,7 @@ if(fnav){H2TF.nav({hero,paper:".light",dark:1});const c2=fnav.querySelector(".c2
 /* ---------- 01: pipeline — Houdini сверху вниз, TD слева направо; nodesы перетаскиваются ---------- */
 (function(){
   const svg=$("#graph"),gw=$("#gWires"),gn=$("#gNodes"),gb=$("#gBoxes"),gm=$("#gMarks");
-  const C={SOP:"#3d7fd6",VEX:"#b8a88a",ROP:"#b8a88a",TOP:"#8a63c9",CHOP:"#45a654",COMP:"#9a9a96",OUT:"#efeee9"};
+  const C={SOP:"#3d7fd6",VEX:"#b8a88a",ROP:"#b8a88a",TOP:"#65a30d",CHOP:"#45a654",COMP:"#9a9a96",OUT:"#efeee9"};
   const VW=1240,VH=480,W=140,Hn=46;
   const N=[
     {id:"g",k:"h",v:1,x:150,y:84,t:"grid1",f:"SOP"},{id:"m",k:"h",v:1,x:150,y:168,t:"mountain1",f:"SOP"},
@@ -3344,7 +3427,7 @@ if(fnav){H2TF.nav({hero,paper:".light",dark:1});const c2=fnav.querySelector(".c2
     {id:"y",k:"t",x:1050,y:390,t:"you_out",f:"OUT",out:1,vin:1}
   ];
   const E=[["g","m"],["m","w"],["w","r"],["r","fi","b",".bgeo.classic · .abc · .fbx"],["a","z"],["z","ge","t","export → noise.amp",1],["fi","ge"],["ge","rn"],["rn","o"],["o","y","t",0,1]];
-  const B=[{k:"h",x:40,y:40,w:380,h:380,t:"/obj/geo1 · Houdini 19",c:"#3d7fd6"},{k:"t",x:500,y:58,w:720,h:392,t:"/project1 · TouchDesigner 2022",c:"#8a63c9"}];
+  const B=[{k:"h",x:40,y:40,w:380,h:380,t:"/obj/geo1 · Houdini 19",c:"#3d7fd6"},{k:"t",x:500,y:58,w:720,h:392,t:"/project1 · TouchDesigner 2022",c:"#65a30d"}];
   const byId=Object.fromEntries(N.map(n=>[n.id,n]));
   gb.innerHTML=B.map(b=>`<g class="bx" data-k="${b.k}"><rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" rx="10" fill="rgba(255,255,255,.012)" stroke="${b.c}" stroke-opacity=".45" stroke-dasharray="4 6"/><text x="${b.x+16}" y="${b.y+26}" font-family="JetBrains Mono,monospace" font-size="11.5" fill="${b.c}">${b.t.toLowerCase()}</text></g>`).join("");
   gn.innerHTML=N.map(n=>{const c=C[n.f];const pin=n.vin?`<circle cx="${W/2}" cy="0" r="4.5" fill="#0e0e10" stroke="#efeee9" stroke-width="1.5"/>`:n.v?`<circle cx="${W/2}" cy="0" r="4.5" fill="#0e0e10" stroke="${c}" stroke-width="1.5"/><circle cx="${W/2}" cy="${Hn}" r="4.5" fill="${c}"/>`:`<circle cx="0" cy="${Hn/2}" r="4.5" fill="#0e0e10" stroke="${c}" stroke-width="1.5"/><circle cx="${W}" cy="${Hn/2}" r="4.5" fill="${c}"/>`;
@@ -3473,7 +3556,7 @@ $("#video button").addEventListener("click",function(){this.remove();$("#video")
 
 /* ================= ЭТАП 2: секции 05–08 ================= */
 /* цвета семейств TD — только nodesы lessons, порты, легенда, метки операторов */
-const FAM={SOP:"#3d7fd6",TOP:"#8a63c9",CHOP:"#45a654",DAT:"#c34f9a",COMP:"#9a9a96",HOU:"#b8a88a",VEX:"#b8a88a",ROP:"#b8a88a",DOP:"#b8a88a",MAT:"#b8a88a",GLSL:"#8a63c9",COP:"#8a63c9",PY:"#c34f9a",PANEL:"#9a9a96"};
+const FAM={SOP:"#3d7fd6",TOP:"#65a30d",CHOP:"#45a654",DAT:"#c34f9a",COMP:"#9a9a96",HOU:"#b8a88a",VEX:"#b8a88a",ROP:"#b8a88a",DOP:"#b8a88a",MAT:"#b8a88a",GLSL:"#65a30d",COP:"#65a30d",PY:"#c34f9a",PANEL:"#9a9a96"};
 const tagH=f=>`<span class="tag" style="--c:${FAM[f]}">${f}</span>`;
 
 /* ---------- 06: патч-матрица 13 тем × 6 семейств; наведение/тап/фокус подсвечивает строку и тянет провода к заголовкам колонок ---------- */
@@ -3973,5 +4056,121 @@ addEventListener("keydown",e=>{if((e.key==="g"||e.key==="G"||e.key==="п"||e.key
   },true);
 })();
 </script>
-<script>(function(){var F=window.H2TF;if(!F)return;try{if(F.digits)F.digits();}catch(e){}try{if(F.reveal)F.reveal();}catch(e){}try{if(F.nav)F.nav({dark:true,hero:document.querySelector(".hero")});}catch(e){}})();</script></body>
+<script>(function(){var F=window.H2TF;if(!F)return;try{if(F.digits)F.digits();}catch(e){}try{if(F.reveal)F.reveal();}catch(e){}try{if(F.nav)F.nav({dark:true,hero:document.querySelector(".hero")});}catch(e){}})();</script><style id="l9new-b2b3">
+/* B1 (19.11) — блок m4: шапка-строка .m-bar, как в 203 */
+html body #audience .pn.lite[data-lkey="m4"]>.ph{display:block;margin:0 0 var(--r-sub);padding:0;border:0;background:none;box-shadow:none;min-height:0;white-space:normal}
+html body #audience .pn.lite[data-lkey="m4"]>.ph::before,html body #audience .pn.lite[data-lkey="m4"]>.ph::after{content:none}
+html body #audience .pn.lite[data-lkey="m4"]>.ph h3{font:700 clamp(28px,2.6vw,36px)/.9 var(--disp)!important;letter-spacing:0!important;text-transform:uppercase!important;color:var(--ink)!important;white-space:nowrap}
+html body #audience .pn.lite[data-lkey="m4"]>.ph h3::before,html body #audience .pn.lite[data-lkey="m4"]>.ph h3::after{content:none!important}
+html body #audience .m-bar{display:flex;align-items:center;gap:0;min-width:0}
+html body #audience .m-bar>h3.b3-h{margin:0 16px 0 0!important;font:700 clamp(28px,2.6vw,36px)/.9 var(--disp)!important;letter-spacing:0;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+html body #audience .m-rule{flex:1 1 auto;height:1px;margin:0 18px 0 0;background:var(--line2)}
+html body #audience .m-chain-meta{display:flex;align-items:center;gap:7px;margin-left:18px;font:500 var(--fs-xs)/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+html body #audience .m-chain-meta i{display:inline-flex;gap:2px;margin-left:7px;font-style:normal}
+html body #audience .m-chain-meta s{display:block;width:9px;height:9px;border-radius:2px;background:var(--top)}html body #audience .m-chain-meta s:nth-child(2){background:var(--ink)}
+/* B2 (19.11) — отступы: верх секций на --r-air (как 203: 74.88 против 160),
+   .sec.tf сохраняет свой край (+96), зазор под шапкой #audience — 56 */
+html body #audience .sh{align-items:start;margin-bottom:clamp(40px,4vw,56px)}
+html body .sec{padding-top:var(--r-air)}
+html body .sec.tf{padding-top:calc(var(--edge,96px) + var(--r-air))}
+/* B3 (19.11) — деки: высота полотна и пиксельная сетка, как в 203 (158px @1440) */
+html body .ipt-wave{height:clamp(120px,11vw,170px);image-rendering:pixelated}
+#audience .aud-dith canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+</style>
+<script id="pix-3d">/* декор: плоская графика из точек 4 px; x вправо, y вверх, без перспективы */
+(()=>{const P=4,INK="#0b0b0c";
+const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+const bay=(x,y)=>B[(x&3)+4*(y&3)]/16;
+/* --- ДЕКА: две переплетающиеся ленты (коса) + пунктирные контуры + метки --- */
+const deck=(nx,ny)=>{const out=[],AMP=.20,LAM=1.30,TH=.13,PW=1.8,TAPER=.09,MOD=.25;
+ /* две ленты в противофазе: плотность максимальна на осевой линии и гаснет к краям */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.9+.6);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.3+Math.PI*1.2);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1); let v=0;
+   for(const [ph,amp,th,mod] of [[0,AMP,TH,m1],[Math.PI,AMP*.9,TH*.85,m2]]){
+    const yc=.5+amp*Math.sin(2*Math.PI*u/LAM+ph);
+    const d=1-Math.abs(y-yc)/th;
+    if(d>0){const p=Math.pow(d,PW)*mod; if(p>v)v=p;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* пунктирные контурные кривые, огибающие косу сверху и снизу */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const [ph,off] of [[.4,.36],[Math.PI+.4,-.36]]){
+   const yc=.5+off*Math.sin(2*Math.PI*u/1.15+ph);
+   const cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);}}
+ /* регистрационные метки: пунктирная вертикаль с квадратом-рамкой на концах */
+ const vline=cu=>{const cx=Math.round(cu*(nx-1));
+  for(let cy=2;cy<ny-3;cy+=2) out.push([cx,cy]);
+  for(const top of [1,ny-4]) for(const [a,b] of [[0,0],[1,0],[2,0],[0,1],[2,1],[0,2],[1,2],[2,2]]){
+   const x=cx-1+a, y=top-1+b; if(x>=0&&x<nx&&y>=0&&y<ny) out.push([x,y]);}};
+ vline(.21); vline(.75);
+ /* кресты-опорные точки */
+ const cross=(cu,cv)=>{const cx=Math.round(cu*(nx-1)), cy=Math.round(cv*(ny-1));
+  for(const k of [-1,0,1]){
+   if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+   if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}};
+ cross(.34,.14); cross(.70,.86);
+ return out};
+/* --- ШАПКА «Who this course is for»: схождение двух лент, средняя сложность --- */
+const audience=(nx,ny)=>{const out=[],AMP=.30,TH=.10,PW=2.0,TAPER=.10,MOD=.22,PATCH=.15;
+ /* две ленты сходятся к правому краю; на слитой части — рябь, вдоль ленты —
+    мягкие нашлёпки полутона (±0.15), тональность только дизером b4 */
+ for(let cx=0;cx<nx;cx++){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  const gap=AMP*Math.pow(1-u,1.15);
+  const wig=.05*Math.sin(2*Math.PI*u/1.15+.8);
+  const m1=1-MOD+MOD*Math.sin(2*Math.PI*u/1.7+.4);
+  const m2=1-MOD+MOD*Math.sin(2*Math.PI*u/2.1+Math.PI);
+  for(let cy=0;cy<ny;cy++){const y=1-cy/(ny-1);
+   const patch=1-PATCH+PATCH*Math.sin(2*Math.PI*u/.62+1.3);
+   let v=0;
+   for(const [sgn,mod] of [[1,m1],[-1,m2]]){
+    const yc=.5+sgn*gap+wig*(.35+.65*u);
+    const d=1-Math.abs(y-yc)/TH;
+    if(d>0){const pr=Math.pow(d,PW)*mod*patch; if(pr>v)v=pr;}}
+   if(bay(cx,cy)<v*fade) out.push([cx,cy]);}}
+ /* четыре пунктирных контура: два внешних огибают схождение, два внутренних
+    вдвое реже проходят вдоль самих лент */
+ for(let cx=0;cx<nx;cx+=2){const u=nx>1?cx/(nx-1):0;
+  const fade=Math.min(1,u/TAPER)*Math.min(1,(1-u)/TAPER);
+  for(const sgn of [1,-1]){
+   const g=AMP*Math.pow(1-u,1.15);
+   let yc=.5+sgn*(g+.17), cy=Math.round((1-yc)*(ny-1));
+   if(cy>=0&&cy<ny&&bay(cx,cy)<.5*fade) out.push([cx,cy]);
+   if(cx%4===0){
+    yc=.5+sgn*(g*.45+.07); cy=Math.round((1-yc)*(ny-1));
+    if(cy>=0&&cy<ny&&bay(cx,cy)<.4*fade) out.push([cx,cy]);}}}
+ /* метка: пунктирная вертикаль с квадратом-рамкой сверху */
+ const mx=Math.round(.62*(nx-1));
+ for(let cy=2;cy<ny-4;cy+=2) out.push([mx,cy]);
+ for(const [a,b] of [[0,0],[1,0],[2,0],[0,1],[2,1],[0,2],[1,2],[2,2]]){
+  const x=mx-1+a, y=b; if(x>=0&&x<nx&&y>=0&&y<ny) out.push([x,y]);}
+ /* два креста-опоры */
+ for(const [cu,cv] of [[.16,.72],[.44,.24]]){
+  const cx=Math.round(cu*(nx-1)), cy=Math.round(cv*(ny-1));
+  for(const k of [-1,0,1]){
+   if(cx+k>=0&&cx+k<nx&&cy>=0&&cy<ny) out.push([cx+k,cy]);
+   if(cx>=0&&cx<nx&&cy+k>=0&&cy+k<ny) out.push([cx,cy+k]);}}
+ return out};
+const FN={deck,aud:audience};
+const draw=cv=>{const w=cv.clientWidth|0,h=cv.clientHeight|0;if(!w||!h)return;
+ const D=Math.min(2.5,window.devicePixelRatio||1);
+ cv.width=Math.round(w*D);cv.height=Math.round(h*D);
+ const g=cv.getContext("2d");g.setTransform(D,0,0,D,0,0);g.clearRect(0,0,w,h);g.fillStyle=INK;
+ const nx=Math.ceil(w/P), ny=Math.ceil(h/P);
+ const seen=new Set();
+ for(const [cx,cy] of (FN[cv.dataset["3d"]]||FN.aud)(nx,ny)){   /* data-3d → dataset["3d"] */
+  if(cx<0||cy<0||cx>=nx||cy>=ny)continue;
+  const k=cy*nx+cx; if(seen.has(k))continue; seen.add(k);
+  g.fillRect(cx*P,cy*P,P,P);}
+ cv.dataset.drawn="1"};
+const all=()=>document.querySelectorAll("[data-3d]").forEach(draw);
+window.H2T3D={draw,all};
+if(document.readyState!=="loading")all();else document.addEventListener("DOMContentLoaded",all);
+addEventListener("resize",()=>{clearTimeout(window.__d3T);window.__d3T=setTimeout(all,180)});
+})();</script>
+</body>
 </html>
