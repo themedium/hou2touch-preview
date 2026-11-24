@@ -39,7 +39,7 @@
   --fg:#efeee9; --fg8:rgba(239,238,233,.8); --txt:#cfcec9; --mute:#8f8e8a; --dim:#5a5956;
   --line:rgba(239,238,233,.11); --line2:rgba(239,238,233,.22);
   --hou:#e5501e; --td:#7fe7ff;
-  --sop:#3d7fd6; --top:#8a63c9; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
+  --sop:#3d7fd6; --top:#65a30d; --chop:#45a654; --dat:#c34f9a; --comp:#9a9a96; --sand:#b8a88a;
   --pad:clamp(16px,3.9vw,56px); --gap:clamp(10px,1.4vw,20px);
   --sec:160px; --hgap:56px; --pgap:24px;
   --disp:"H2T Bebas","Bebas Neue",Impact,sans-serif;
@@ -698,7 +698,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .au-p{grid-column:1/5;display:flex;flex-direction:column}
 .au-p .por{flex:1 0 auto}
 .au-t{grid-column:5/13;display:flex;flex-direction:column;min-width:0}
-.por{position:relative;aspect-ratio:4/5;overflow:hidden;background:#050505}
+.por{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink-050)}
 .por img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(.98) brightness(.96);transition:filter .8s var(--ease)}
 .por canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none}
 .por.col img{filter:none}
@@ -735,13 +735,13 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .wl-f button{display:inline-flex;align-items:center;min-height:44px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--fg);transition:opacity .3s}
 @media (hover:hover){.wl-f button:hover{opacity:.7}}
 .wl{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:2px;padding:0;background:var(--line)}
-.wt{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#0e0e10;cursor:zoom-in}
+.wt{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:var(--ink-100);cursor:zoom-in}
 .wt.big{grid-column:span 3;grid-row:span 2;aspect-ratio:auto}
 .wt.big i{font-size:12px;left:12px;bottom:10px}
 .wt img,.wt canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .wt img{object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .5s var(--ease),transform .8s var(--ease)}
 .wt canvas{image-rendering:pixelated;transition:opacity .35s var(--ease)}
-.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:#efeee9;opacity:0;transition:opacity .3s;text-shadow:0 1px 6px #000}
+.wt i{position:absolute;left:6px;bottom:5px;z-index:2;font:500 12px/1 var(--mono);font-style:normal;color:#efeee9;opacity:0;transition:opacity .3s;text-shadow:0 1px 6px var(--ink-000)}
 @media (hover:hover) and (pointer:fine){.wt:hover canvas{opacity:0}.wt:hover img{transform:scale(1.04)}.wt:hover i{opacity:1}}
 .wt:focus-visible canvas{opacity:0}
 .wt:focus-visible i{opacity:1}
@@ -768,7 +768,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 .qa-l{border-right:1px solid var(--line)}
 .qa-r{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;width:100%;min-height:58px;padding:8px 14px;border-bottom:1px solid var(--line);text-align:left;color:var(--txt);transition:color .3s,background .3s}
 .qa-r:last-child{border-bottom:0}
-.qa-r .av{position:relative;display:block;width:40px;height:40px;border-radius:50%;overflow:hidden;background:#1a1a1c}
+.qa-r .av{position:relative;display:block;width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--ink-450)}
 .qa-r img{width:40px;height:40px;object-fit:cover;filter:grayscale(1) contrast(1.05)}
 .qa-r .av canvas{position:absolute;inset:0;width:100%;height:100%;display:none;image-rendering:pixelated;transition:opacity .3s}
 .qa-r b{display:block;font:500 16px/1.3 var(--sans);color:inherit}
@@ -793,7 +793,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 @media (max-width:600px){.qa-c{margin:-8px 0 14px}.qa-c button{font-size:28px;min-height:44px}.qa-c button::after{padding-left:8px}.qa-b{display:block}.qa-l{display:flex;gap:8px;padding:14px 14px 2px;border-right:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.qa-l::-webkit-scrollbar{display:none}.qa-r{display:block;flex:none;width:44px;min-height:44px;height:44px;padding:2px;border:0;border-radius:50%;background:none!important;box-shadow:none!important}.qa-r>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.qa-r img{filter:grayscale(1) contrast(1.05) brightness(.8)}.qa-r[aria-selected=true] img{filter:grayscale(1) contrast(1.05)}.qa-r[aria-selected=true] .av{box-shadow:0 0 0 2px var(--fg)}.qa-s{padding:16px 14px 14px}.qa-q blockquote{font-size:20px;line-height:28px;letter-spacing:-.01em}.qa-q figcaption{margin-top:14px}.qa-nv{padding-top:16px}}
 .sheet{--bg:#efeee9;--bg2:#e4e2dc;--fg:var(--ink);--fg8:rgba(11,11,12,.8);--txt:#2b2a28;--mute:#56544f;--dim:#7a7872;--line:rgba(11,11,12,.13);--line2:rgba(11,11,12,.26);--pnb:#efeee9;--hv:#2c2c2f;color:var(--fg);border-color:#efeee9}
 .sheet .qa-r[aria-selected=true]{background:rgba(11,11,12,.05)}
-.sheet .qa-r .av{background:#d9d6ce}
+.sheet .qa-r .av{background:var(--plate-c)}
 @media (prefers-reduced-motion:reduce){.fq-l details[open] .fq-a,.anim,.mp-p .mp-b.anim,.pri-t.nx,.cv li{animation:none}}
 .wt:focus-visible{z-index:3;outline-offset:-3px}
 .x-seamfull #works{padding-top:112px}
@@ -879,7 +879,7 @@ html.x-fcook:not(.vt-in) .h2t.go #heroH{-webkit-mask-size:32px 32px;mask-size:32
 @media (max-width:1060px){.fnav{grid-template-columns:1fr auto}.fnav .fam{display:none}.fnav .mb{display:inline-flex}}
 @media (max-width:600px){.h2t .fnav .back{display:none}.fnav .c2 .only-d{display:none}.fnav .end{gap:8px}}
 /* меню: курсы семьи крупно (Bebas 40), ниже — разделы страницы */
-.fmnu{position:fixed;inset:0;z-index:59;background:#0b0b0c;display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
+.fmnu{position:fixed;inset:0;z-index:59;background:var(--ink);display:flex;flex-direction:column;gap:28px;padding:84px var(--pad) 24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .35s}
 .fmnu.on{opacity:1;pointer-events:auto}
 .fmnu .mono.h{margin-bottom:10px}
 .fmnu ul{list-style:none;border-top:1px solid var(--line2)}
@@ -977,7 +977,7 @@ html{scroll-padding-block:73px 46px}
   position:relative;display:block;margin:0;padding:0;background:var(--rx-cr);color:var(--rx-ink);border:0;border-radius:6px;
   font:400 16px/1.5 var(--rx-sans);letter-spacing:normal;text-align:left;text-transform:none;opacity:1;transform:none}
 /* порты TD по бокам, как у .pn.full: заливка — тьма секции, кольцо — DAT */
-.h2t .rx::before,.h2t .rx::after{content:"";position:absolute;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg,#0b0b0c);box-shadow:inset 0 0 0 1.5px var(--rx-dat);z-index:3}
+.h2t .rx::before,.h2t .rx::after{content:"";position:absolute;top:19px;width:9px;height:9px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--rx-dat);z-index:3}
 .h2t .rx::before{left:-5px}.h2t .rx::after{right:-5px}
 .h2t .rx :focus-visible{outline:2px solid var(--rx-ink);outline-offset:2px}
 .h2t .rx :focus:not(:focus-visible){outline:none}
@@ -1005,8 +1005,8 @@ html{scroll-padding-block:73px 46px}
 /* флаги nodesы: V (viewer) включён — «открытая строка», проверенность без слов (C-M1) */
 .h2t .rx-fl{display:inline-flex;gap:3px}
 .h2t .rx-fl b{display:block;width:16px;height:16px;border-radius:2px;box-shadow:inset 0 0 0 1px var(--rx-ln2);font:500 12px/16px var(--rx-mono);text-align:center;color:var(--rx-mu)}
-.h2t .rx-fl b.rx-on{background:var(--rx-td);color:#000;box-shadow:none}
-.h2t .rx-fp{position:relative;display:block;width:100%;max-width:168px;aspect-ratio:4/5;overflow:hidden;background:#e2e0d9}
+.h2t .rx-fl b.rx-on{background:var(--rx-td);color:var(--ink-000);box-shadow:none}
+.h2t .rx-fp{position:relative;display:block;width:100%;max-width:168px;aspect-ratio:4/5;overflow:hidden;background:var(--plate-a)}
 .h2t .rx-fq{grid-column:3/13;grid-row:1;position:relative;min-width:0;margin:0;padding:0;border:0;quotes:none;
   font:300 var(--fs)/var(--lh) var(--rx-sans);letter-spacing:var(--ls);text-wrap:pretty;color:var(--rx-ink)}
 /* кегль по длине, 3 ступени (TM-01): короткий вынос не крупнее H2 страницы — --rx-h2 повторяет токен .H (главная и курсы — школьный, флагман —
@@ -1090,7 +1090,7 @@ html{scroll-padding-block:73px 46px}
 .h2t .rx-cq[data-t=m]{--fs:22px;--lh:1.32;--ls:-.02em;max-width:26em}
 .h2t .rx-cq[data-t=s]{--fs:18px;--lh:1.45;--ls:-.006em;font-weight:400;max-width:32em}
 .h2t .rx-cc{align-self:start;display:flex;align-items:flex-start;gap:14px;min-width:0;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--rx-ln)}
-.h2t .rx-av{position:relative;flex:none;display:block;width:52px;height:65px;overflow:hidden;background:#e2e0d9}
+.h2t .rx-av{position:relative;flex:none;display:block;width:52px;height:65px;overflow:hidden;background:var(--plate-a)}
 .h2t .rx-ct{display:grid;justify-items:start;gap:2px;min-width:0;font:500 12px/1.5 var(--rx-mono);letter-spacing:.02em;color:var(--rx-mu)}
 .h2t .rx-ct>b{font:600 16px/1.3 var(--rx-sans);letter-spacing:0;color:var(--rx-ink);margin-bottom:3px;overflow-wrap:anywhere}
 .h2t .rx-ct .rx-nt::before{width:7px;height:7px}
@@ -1281,29 +1281,6 @@ html body a.skip{color:var(--bg)!important}
   .f-short .hero .fests{margin-top:calc(8px - var(--tc)*.125);margin-right:calc(-1*min(var(--d)*1000,640px))}
 }
 </style>
-<style id="hex-tokens">
-/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
-:root{
-  --white:#fff;
-  --ink-000:#000;
-  --ink-050:#050505;
-  --ink-100:#0e0e10;
-  --ink-150:#0f0f11;
-  --ink-200:#101012;
-  --ink-250:#111113;
-  --ink-300:#141416;
-  --ink-350:#151517;
-  --ink-400:#161618;
-  --ink-450:#1a1a1c;
-  --plate-a:#e2e0d9;
-  --plate-b:#dcd9d1;
-  --plate-c:#d9d6ce;
-  --tx-1:#5a5853;
-  --tx-2:#55544f;
-  --tx-3:#56544f;
-  --pink:var(--dat);
-}
-</style>
 <style id="ix-fs-air">:root{--r-air:clamp(48px,5.2vw,80px);--r-block:clamp(28px,3.2vw,48px);--r-head:clamp(20px,2vw,32px);--r-sub:clamp(16px,1.6vw,24px)}@media (max-width:600px){:root{--r-air:48px;--r-block:40px;--r-sub:16px}}</style><style id="ix-fs-edge">#book .edge{--bg:var(--ink)!important}#book .edge.t{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink)}#book .edge.b{background:var(--dedge,none) 0 0/32px 96px repeat-x,var(--ink);transform:scaleY(-1)}@media (max-width:760px){#book .edge{background-size:24px 64px,auto}}</style><style id="ix-fs-family-cw">#family .cc-vw{position:relative;height:96px;margin:0;background:var(--ink);border-bottom:1px solid var(--line2);overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:0 14px}#family .cc-vw-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:100% 35%;opacity:.42;filter:grayscale(.25) contrast(1.15) blur(1px);transform:scale(1.08);transition:opacity .4s,filter .4s,transform .6s cubic-bezier(.22,1,.36,1)}#family .rc:hover .cc-vw-bg{opacity:.68;filter:grayscale(0) contrast(1.05) blur(0);transform:scale(1.02)}#family .cc-vw::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,11,12,.90) 0%,rgba(11,11,12,.38) 55%,rgba(11,11,12,.78) 100%)}#family .cc-vw-meta{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px;min-width:0}#family .cc-vw-meta .mono{color:var(--mute);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#family .cc-vw-meta b{font:700 var(--fs-xl,24px)/.9 var(--disp);color:var(--fg);letter-spacing:.01em;text-transform:uppercase}#family .cc-vw-box{position:relative;z-index:2;width:76px;height:76px;flex:none;border-radius:2px;overflow:hidden;border:1px solid var(--line2);box-shadow:inset 0 2px 0 var(--c);background:var(--ink)}#family .cc-vw-box img{width:100%;height:100%;object-fit:cover;display:block}</style><style id="ix-fs-book1col">#book .book-1col{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:clamp(32px,4.4vw,80px);align-items:start}#book .book-1col>.tier{grid-column:2;margin:0}#book .book-open-left{grid-column:1;display:flex;flex-direction:column;padding:18px 0 0;border-top:1px solid rgba(11,11,12,.16)}#book .book-pay>.cd-h{display:none}#book .book-pay>.ix-wyg{margin:0 0 6px;font:700 clamp(24px,2.2vw,34px)/1 var(--disp);text-transform:uppercase;color:var(--ink)}#book .book-pay>ul.ix-l{list-style:none;margin:0 0 8px;padding:0;border:0}#book .book-pay>ul.ix-l>li{padding:13px 0;line-height:1.55;font:400 clamp(14px,1.05vw,16px)/1.55 var(--sans);color:var(--ink);border-top:1px solid rgba(11,11,12,.16)}#book .book-pay>ul.ix-l>li:first-child{border-top:0;padding-top:0}#book .book-pay>.ix-pay{margin:26px 0 10px;font:700 clamp(20px,1.7vw,26px)/1 var(--disp);text-transform:uppercase;color:var(--ink)}#book .book-pay>p{margin:0 0 10px;max-width:44ch;font:400 clamp(14px,1.05vw,16px)/1.55 var(--sans);color:var(--ink)}@media (max-width:900px){#book .book-1col{grid-template-columns:1fr;row-gap:28px}#book .book-1col>.tier{grid-column:1;order:-1}#book .book-open-left{grid-column:1}}</style><style id="ix-rv-fallback">.h2t .rv{opacity:1!important;transform:none!important;transition:none!important}</style><style id="l9new-fix">
 /* L9: decorative patch-deck labels are drawn from data, not text (the accessible list is .ix-mxm + Programme) */
 .ix-patch .ipt-h>b::before,.ix-patch .ipt-pl>b::before,.ix-patch .ipt-leg>b::before{content:attr(data-t)}
@@ -1388,6 +1365,29 @@ html body footer.ft .ft2-a .so{margin-left:0}
 <style id="family-ink">/* #family: цвета тёмной темы (у секции нет своих) */
 html body #family{color:var(--fg)}html body #family .H{color:var(--fg)}html body #family a.pn.rc{color:var(--fg)}html body #family .rc .rc-n small{color:var(--mute)}html body #family .rc .rc-d{color:var(--txt)}</style>
 <style id="marq-fix">html body #author .marq-gap .marq{margin-top:0}</style>
+<style id="hex-tokens">
+/* п.49: все сырые значения цвета вынесены в токены. Значения 1:1 — визуал не меняется. */
+:root{
+  --white:#fff;
+  --ink-000:#000;
+  --ink-050:#050505;
+  --ink-100:#0e0e10;
+  --ink-150:#0f0f11;
+  --ink-200:#101012;
+  --ink-250:#111113;
+  --ink-300:#141416;
+  --ink-350:#151517;
+  --ink-400:#161618;
+  --ink-450:#1a1a1c;
+  --plate-a:#e2e0d9;
+  --plate-b:#dcd9d1;
+  --plate-c:#d9d6ce;
+  --tx-1:#5a5853;
+  --tx-2:#55544f;
+  --tx-3:#56544f;
+  --pink:var(--dat);
+}
+</style>
 </head>
 <body>
 <div class="h2t f-family f-lc f-fmask f-short" id="h2t"><svg class="ico" aria-hidden="true" focusable="false"><symbol id="h2t-i-r" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4"/></symbol><symbol id="h2t-i-l" viewBox="0 0 16 16"><path d="M14 8H3M7 4 3 8l4 4"/></symbol><symbol id="h2t-i-u" viewBox="0 0 16 16"><path d="M8 14V3M4 7l4-4 4 4"/></symbol><symbol id="h2t-i-d" viewBox="0 0 16 16"><path d="M8 2v11M4 9l4 4 4-4"/></symbol><symbol id="h2t-i-ne" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></symbol><symbol id="h2t-i-se" viewBox="0 0 16 16"><path d="M4 4l8 8M12 6v6H6"/></symbol><symbol id="h2t-i-p" viewBox="0 0 16 16"><path d="M4.5 3v10L13 8z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-v" viewBox="0 0 16 16"><path d="M4 6h8l-4 5z" fill="currentColor" stroke="none"/></symbol><symbol id="h2t-i-x" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol></svg>
@@ -3408,7 +3408,7 @@ if(fnav){H2TF.nav({hero,paper:".light",dark:1});const c2=fnav.querySelector(".c2
 /* ---------- 01: pipeline — Houdini сверху вниз, TD слева направо; nodesы перетаскиваются ---------- */
 (function(){
   const svg=$("#graph"),gw=$("#gWires"),gn=$("#gNodes"),gb=$("#gBoxes"),gm=$("#gMarks");
-  const C={SOP:"#3d7fd6",VEX:"#b8a88a",ROP:"#b8a88a",TOP:"#8a63c9",CHOP:"#45a654",COMP:"#9a9a96",OUT:"#efeee9"};
+  const C={SOP:"#3d7fd6",VEX:"#b8a88a",ROP:"#b8a88a",TOP:"#65a30d",CHOP:"#45a654",COMP:"#9a9a96",OUT:"#efeee9"};
   const VW=1240,VH=480,W=140,Hn=46;
   const N=[
     {id:"g",k:"h",v:1,x:150,y:84,t:"grid1",f:"SOP"},{id:"m",k:"h",v:1,x:150,y:168,t:"mountain1",f:"SOP"},
@@ -3419,7 +3419,7 @@ if(fnav){H2TF.nav({hero,paper:".light",dark:1});const c2=fnav.querySelector(".c2
     {id:"y",k:"t",x:1050,y:390,t:"you_out",f:"OUT",out:1,vin:1}
   ];
   const E=[["g","m"],["m","w"],["w","r"],["r","fi","b",".bgeo.classic · .abc · .fbx"],["a","z"],["z","ge","t","export → noise.amp",1],["fi","ge"],["ge","rn"],["rn","o"],["o","y","t",0,1]];
-  const B=[{k:"h",x:40,y:40,w:380,h:380,t:"/obj/geo1 · Houdini 19",c:"#3d7fd6"},{k:"t",x:500,y:58,w:720,h:392,t:"/project1 · TouchDesigner 2022",c:"#8a63c9"}];
+  const B=[{k:"h",x:40,y:40,w:380,h:380,t:"/obj/geo1 · Houdini 19",c:"#3d7fd6"},{k:"t",x:500,y:58,w:720,h:392,t:"/project1 · TouchDesigner 2022",c:"#65a30d"}];
   const byId=Object.fromEntries(N.map(n=>[n.id,n]));
   gb.innerHTML=B.map(b=>`<g class="bx" data-k="${b.k}"><rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" rx="10" fill="rgba(255,255,255,.012)" stroke="${b.c}" stroke-opacity=".45" stroke-dasharray="4 6"/><text x="${b.x+16}" y="${b.y+26}" font-family="JetBrains Mono,monospace" font-size="11.5" fill="${b.c}">${b.t.toLowerCase()}</text></g>`).join("");
   gn.innerHTML=N.map(n=>{const c=C[n.f];const pin=n.vin?`<circle cx="${W/2}" cy="0" r="4.5" fill="#0e0e10" stroke="#efeee9" stroke-width="1.5"/>`:n.v?`<circle cx="${W/2}" cy="0" r="4.5" fill="#0e0e10" stroke="${c}" stroke-width="1.5"/><circle cx="${W/2}" cy="${Hn}" r="4.5" fill="${c}"/>`:`<circle cx="0" cy="${Hn/2}" r="4.5" fill="#0e0e10" stroke="${c}" stroke-width="1.5"/><circle cx="${W}" cy="${Hn/2}" r="4.5" fill="${c}"/>`;
@@ -3548,7 +3548,7 @@ $("#video button").addEventListener("click",function(){this.remove();$("#video")
 
 /* ================= ЭТАП 2: секции 05–08 ================= */
 /* цвета семейств TD — только nodesы lessons, порты, легенда, метки операторов */
-const FAM={SOP:"#3d7fd6",TOP:"#8a63c9",CHOP:"#45a654",DAT:"#c34f9a",COMP:"#9a9a96",HOU:"#b8a88a",VEX:"#b8a88a",ROP:"#b8a88a",DOP:"#b8a88a",MAT:"#b8a88a",GLSL:"#8a63c9",COP:"#8a63c9",PY:"#c34f9a",PANEL:"#9a9a96"};
+const FAM={SOP:"#3d7fd6",TOP:"#65a30d",CHOP:"#45a654",DAT:"#c34f9a",COMP:"#9a9a96",HOU:"#b8a88a",VEX:"#b8a88a",ROP:"#b8a88a",DOP:"#b8a88a",MAT:"#b8a88a",GLSL:"#65a30d",COP:"#65a30d",PY:"#c34f9a",PANEL:"#9a9a96"};
 const tagH=f=>`<span class="tag" style="--c:${FAM[f]}">${f}</span>`;
 
 /* ---------- 06: патч-матрица 13 тем × 6 семейств; наведение/тап/фокус подсвечивает строку и тянет провода к заголовкам колонок ---------- */

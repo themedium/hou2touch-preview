@@ -1964,7 +1964,22 @@ body{background:var(--bg);color:var(--fg)}
 .f-out.ck #finR:not(.pr){-webkit-mask-image:linear-gradient(transparent,transparent);mask-image:linear-gradient(transparent,transparent)}
 .f-out.ck #finR.pr{-webkit-mask-size:40px 40px;mask-size:40px 40px;animation:cook .8s both}
 .f-out.ck #finR.pr.dn{animation:none;-webkit-mask-image:none;mask-image:none}
-@media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}}</style>
+@media (min-width:601px){.fin .fx,.fin .enl{max-width:none;width:var(--fw,960px);margin-left:var(--fl,auto);margin-right:auto}}
+/* P1: из 203 — .enl внутри #out не должен ловить UA-цвет на <b> */
+html body #out .enl b{color:var(--fg)}
+/* P3 (18.11): в 203 hero помечен .long — декоративный номер .ttl .num мельче
+   (clamp(64px,9.4vw,176px) вместо базовых clamp(96px,15vw,280px)).
+   .h1q/.lead уже совпадают с 203 1:1 на 1920/1440/1200/900 — их не трогаем. */
+/* P4 (18.11): футер и #out — цвета темы.
+   Корень «чёрного по чёрному»: у body нет собственного color, поэтому footer.ft и #out
+   наследовали UA-чёрный (1.07 к --bg). В 203 правило `a{color:inherit}
+html body #out{color:var(--fg)}
+html body #out .enl{color:var(--fg)}
+;
+const MB=$("#mbar"),mbC=$("#courses"),mbF=$(FL("out")?"#out":"#contacts"); // плашка прячется у финала (f-out — у верха секции 08)
+/* границы плашки: #courses (и #contacts без f-out) лежат внутри секций с content-visibility — пропущенное поддерево отдаёт пустую рамку;
+   храним смещение от верха своей секции (рамка секции есть всегда), пустую рамку не берём */
+const RL=[[mbC,"bottom"],[mbF,"top"]].map(([e,k])=>({e,k,s:e.closest(".sec,.ft")||H,o:NaN,v:NaN}}</style>
 <style id="ix-dock">@layer page{/* dock: page timeline (>980px) and sign-up bar (<=980px), ported from the flagship index.html (16.11) */
 .tlb{position:fixed;left:0;right:0;bottom:0;z-index:55;height:34px;display:flex;align-items:center;gap:18px;padding:0 var(--pad);background:rgba(11,11,12,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(100%);transition:transform .8s var(--ease)}
 .tlb.on{transform:none}
@@ -2435,12 +2450,12 @@ html body .ipt-wave{image-rendering:pixelated}
   <div class="fn-a"><a href="../school.html" class="logo" aria-label="Hou2Touch — all courses" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="44" aria-hidden="true" viewBox="0 0 34 44" fill="none">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M9.22169 43.8293V39.7561H7.83401C7.42825 39.7561 7.13611 39.6748 6.95758 39.5122C6.79528 39.3496 6.71412 39.0813 6.71412 38.7073V34.122H9.19734V30.1464H6.71412V15.4504C6.8848 15.1999 7.02687 14.9856 7.29421 14.7536C7.82933 14.2892 8.2599 14.0706 8.97403 14.0706C9.6557 14.0706 10.1994 14.2983 10.6052 14.7536C11.0109 15.1926 11.2138 15.8024 11.2138 16.5828V21.9731H15.9855V18.5147L18.7001 18.5147C18.9245 19.2034 19.2383 19.8112 19.6416 20.2802C20.5667 21.3209 21.8246 21.8412 23.4151 21.8412C24.3403 21.8412 25.1599 21.6542 25.874 21.2802C26.5881 20.89 27.1481 20.3859 27.5538 19.768V21.9936H32.3499V8.03631H27.5538V15.3778C27.5538 16.1583 27.351 16.7762 26.9452 17.2314C26.5394 17.6705 25.9876 17.89 25.2897 17.89C24.6081 17.89 24.0562 17.6705 23.6343 17.2314C23.2822 16.8364 23.0829 16.3189 23.0363 15.679V13.5866L23.0366 13.5352H23.0363V13.1123L15.4772 13.1123C15.2562 12.5848 14.963 12.1157 14.5978 11.7048C13.6889 10.6479 12.4554 10.1194 10.8973 10.1194C9.95596 10.1194 9.1201 10.3145 8.38975 10.7048C7.85143 10.9867 7.18861 11.3379 6.71412 11.7584V0H1.91811V5.87552H1.9139V23.9243H1.91811V30.1464H0.238281V34.122H1.91811V38.6341C1.91811 42.0976 3.66285 43.8293 7.15234 43.8293H9.22169ZM20.1825 36.6557C20.1791 36.7613 20.1774 36.8679 20.1774 36.9756C20.1774 38.4065 20.4696 39.6504 21.0539 40.7073C21.6381 41.7642 22.4497 42.5772 23.4884 43.1463C24.5433 43.7155 25.7444 44 27.0915 44C28.8281 44 30.2888 43.5203 31.4736 42.561C32.6584 41.6016 33.4213 40.2764 33.7621 38.5854H28.6983C28.4224 39.4797 27.8543 39.9268 26.9941 39.9268C26.3936 39.9268 25.9148 39.6748 25.5577 39.1707C25.2169 38.6667 25.0465 37.9349 25.0465 36.9756C25.0465 36.0163 25.2169 35.2927 25.5577 34.8049C25.9148 34.3008 26.3936 34.0488 26.9941 34.0488C28.6983 34.0488 28.6983 35.721 28.6983 35.721H33.7621C33.7621 35.721 33.7621 33.2677 31.4736 31.4147C30.2888 30.4553 28.8281 29.9756 27.0915 29.9756C26.3236 29.9756 25.6032 30.0681 24.9302 30.253V26.8356H20.1825V36.6557ZM11.2432 30.1418H15.991V34.2513H11.2432V30.1418ZM11.2432 39.7447H15.991V43.824H11.2432V39.7447Z" fill="currentColor"></path>
 </svg></a> <a class="back mono" href="../school.html#courses"><svg class="ar" aria-hidden="true"><use href="#h2t-i-l"/></svg><span class="t">Все курсы</span></a></div>
-  <ul class="fam mono"><li style="--c:var(--chop)"><a href="#concept">О курсе</a></li><li style="--c:var(--chop)"><a href="#program">Программа</a></li><li style="--c:var(--chop)"><a href="#reviews">Отзывы</a></li><li style="--c:var(--chop)"><a href="#book">Цена</a></li><li style="--c:var(--chop)"><a href="#faq">Вопросы</a></li></ul>
+  <ul class="fam mono"><li style="--c:var(--sop)"><a href="../index.html" title="Hou2Touch Master Course — флагман">Hou2Touch</a></li><li style="--c:var(--chop)"><a href="#concept">О курсе</a></li><li style="--c:var(--chop)"><a href="#program">Программа</a></li><li style="--c:var(--chop)"><a href="#reviews">Отзывы</a></li><li style="--c:var(--chop)"><a href="#book">Цена</a></li><li style="--c:var(--chop)"><a href="#faq">Вопросы</a></li></ul>
   <div class="end"><a class="lgn mono" href="https://hou2touch.com/cms/system/login">Войти</a> <a class="btn pill rec sm c2" href="#book" tabindex="-1"><span>Записаться<span class="only-d">&nbsp;· <span class="num">18 500 ₽</span></span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a><button class="mb mono" type="button" id="fmb" aria-expanded="false" aria-controls="fmnu">Меню</button></div>
 </nav>
 <div class="fmnu" id="fmnu" aria-hidden="true" inert>
   <div><p class="mono h">На этой странице</p><ul class="mf-s mono"><li><a href="#concept">О курсе</a></li><li><a href="#program">Программа</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#book">Цена</a></li><li><a href="#faq">Вопросы</a></li></ul></div>
-  <div><p class="mono h">Связанные курсы</p><ul class="mf-c"><li><a href="101.html" style="--c:var(--chop)">101 · Extreme I <i><span data-h2t="price" data-slug="/101">€255</span></i></a></li><li><a href="102.html" style="--c:var(--chop)">102 · Extreme II <i><span data-h2t="price" data-slug="/102">€380</span></i></a></li><li><a href="204.html" style="--c:var(--chop)">204 · Real Lights <i><span data-h2t="price" data-slug="/204">€1,590</span></i></a></li><li><a href="301.html" style="--c:var(--top)">301 · 2D GLSL <i><span data-h2t="price" data-slug="/301">€380</span></i></a></li><li><a href="../school.html#courses" style="--c:var(--comp)">Все курсы &amp; paths <i>каталог</i></a></li></ul></div>
+  <div><p class="mono h">Связанные курсы</p><ul class="mf-c"><li><a href="../index.html" style="--c:var(--sop)">Hou2Touch <i>флагман</i></a></li><li><a href="101.html" style="--c:var(--chop)">101 · Extreme I <i><span data-h2t="price" data-slug="/101">€255</span></i></a></li><li><a href="102.html" style="--c:var(--chop)">102 · Extreme II <i><span data-h2t="price" data-slug="/102">€380</span></i></a></li><li><a href="204.html" style="--c:var(--chop)">204 · Real Lights <i><span data-h2t="price" data-slug="/204">€1,590</span></i></a></li><li><a href="301.html" style="--c:var(--top)">301 · 2D GLSL <i><span data-h2t="price" data-slug="/301">€380</span></i></a></li><li><a href="../school.html#courses" style="--c:var(--comp)">Все курсы &amp; paths <i>каталог</i></a></li></ul></div>
   <a class="btn pill rec" href="#book"><span>Записаться · <span class="num">18 500 ₽</span></span> <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a> <a class="lgn-m mono" href="https://hou2touch.com/cms/system/login">Войти в GetCourse <svg class="ar" aria-hidden="true"><use href="#h2t-i-r"/></svg></a>
 </div>
 <main id="main" tabindex="-1">
@@ -3433,13 +3448,13 @@ r.addEventListener("focusin",e=>sh(e.target.closest(".ipt-t")));r.addEventListen
 
 </div>
 <script>window.H2T_A="../";
-/* ядро семьи Hou2Touch — family/family.py: вынутое of главной + family/family.js; всё под H2TF */
+/* ядро семьи Hou2Touch — family/family.py: вынутое из главной + family/family.js; всё под H2TF */
 window.H2TF=(function(){
 const R=document,H=R.getElementById("h2t");const $=s=>R.querySelector(s),$$=s=>[...R.querySelectorAll(s)];
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;const FL=v=>H.classList.contains("f-"+v);
 const A=window.H2T_A||"",IMG=n=>A+"img/"+n+".webp",PD=n=>A+"img/wd"+n+".png"; /* база ассетов страницы (window.H2T_A) */
-/* ↓ вынуто of school/src/template.html: onView, Байер, bakeDither, fitBmp, dcd, очередь печати DQ, маски cook */
+/* ↓ вынуто из school/src/template.html: onView, Байер, bakeDither, fitBmp, dcd, очередь печати DQ, маски cook */
 function onView(el,cb,o){o=o||{};const th=o.threshold||0;
   const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.isIntersecting&&e.intersectionRatio>=th*.98;if(o.once){if(v){io.disconnect();cb(true,e)}}else cb(v,e)}),{threshold:th?[0,th]:0,rootMargin:o.margin||"0px"});io.observe(el);return io}
 const B4=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
@@ -3470,11 +3485,11 @@ const idle=window.requestIdleCallback?f=>requestIdleCallback(f,{timeout:200}):f=
 function dq(f){DQ.push(f);if(!dqOn){dqOn=true;idle(dqRun)}}
 function dqRun(){const f=DQ.shift();try{f&&f()}catch(e){}if(DQ.length)idle(dqRun);else dqOn=false}
 if(!reduce)H.classList.add("ck");
-/* ↑ конец вынутого of главной */
-const QUOTES=[{"img": "t2", "n": "Ahmet Said Kaplan", "s": "Creative Director · Decol · Istanbul", "r": "Creative Director, Artist, Decol Studio · Istanbul", "u": "https://www.decol.tv/", "ul": "decol.tv", "q": "We had a very effective workshop with Stanislav around 10 years ago — Stanislav opened my eyes and showed me numberless potentials of creating real-time and interactive visuals. As our studio DECOL grew, he was always a supporter and collaborator. On his workshop series Hou2Touch our upcoming talents fell in love with the software.", "qm": "Stanislav opened my eyes to the potentials of real-time and interactive visuals. On Hou2Touch our upcoming talents at DECOL fell in love with the software."}, {"img": "t1", "n": "VJ Dzhezus", "s": "Media artist, VJ · Moscow", "r": "Media artist, VJ, Setup Design · Moscow", "u": "https://setup.design", "ul": "setup.design", "q": "Stanislav Glazov’s courses are the best thing that happened in my professional life. So if anyone is still hesitating — here is your sign."}, {"img": "t3", "n": "Ildar Iakubov", "s": "Artist, curator · Kargat · Tbilisi", "r": "Artist, Curator & Educator, Kargat Studio · Tbilisi", "u": "https://www.kargat.studio/", "ul": "kargat.studio", "q": "I was lucky to meet Stanislav at the very beginning of my career, about twelve years ago. His courses greatly accelerated my learning and built a rock-solid foundation for further growth. With his vast experience, he remains a unique source of knowledge."}, {"img": "t4", "n": "Phelan Kane", "s": "Producer, educator · Essen", "r": "Producer, Educator, Artist, Meta Function · Essen", "u": "https://www.metafunction.co.uk", "ul": "metafunction.co.uk", "q": "Detailed courses with great examples and techniques hard to find elsewhere. You are definitely one of the world’s leading TouchDesigner experts. The best TD courses I have come across."}, {"img": "t5", "n": "Tam Kar Wing", "s": "Founder · Quitjobmakeart · Hong Kong", "r": "Founder, Quitjobmakeart Studio · Hong Kong", "u": "https://www.quitjobmakeart.com/", "ul": "quitjobmakeart.com", "q": "Very academic teaching — clear structure from principles to working systems."}, {"img": "t6", "n": "Piotr Wojtczak", "s": "Art Director · Katowice", "r": "Creative & Art Director, Motion Designer · Katowice", "u": "https://www.piotr.works/about", "ul": "piotr.works", "q": "Depth of knowledge and strong, practical examples you can immediately apply."}, {"img": "t7", "n": "Vadim Bioman", "s": "Media artist, VJ · Moscow", "r": "Media artist, VJ · Moscow", "u": "https://www.instagram.com/vadbioman/", "ul": "@vadbioman", "q": "Deep research and great approaches from a procedural thinking standpoint."}, {"img": "t8", "n": "Jacopo William de Denaro", "s": "Visual artist · Milan", "r": "Visual Artist, Freelance Designer · Milan", "u": "https://jwdd.webflow.io/", "ul": "jwdd.webflow.io", "q": "I truly appreciate what I am learning — it is an edgy topic and a pleasure to learn it from a master, not an easy thing to find in standard education. Very high level of knowledge."}];
+/* ↑ конец вынутого из главной */
+const QUOTES=[{"img": "t2", "n": "Ahmet Said Kaplan", "s": "Creative Director · Decol · Istanbul", "r": "Istanbul, DECOL creative Director. Minus Label", "u": "https://www.decol.tv/", "ul": "decol.tv", "q": "We had very effective workshop with Stanislav around 10 years ago, I can honestly say that, Stanislav opens my eyes and show me numberless potantials of creating real-time and interactive visuals."}, {"img": "t1", "n": "VJ Dzhezus", "s": "Media artist, VJ · Moscow", "r": "Media artist, VJ, Setup Design, Moscow, Russia", "u": "https://setup.design", "ul": "setup.design", "q": "Stanislav Glazov's courses are the best thing that happened in my life. So if suddenly someone is still in thought - here's a sign for you."}, {"img": "t3", "n": "Ildar Iakubov", "s": "Artist, curator · Kargat · Tbilisi", "r": "Artist, Curator and Educator, Kargat Studio, Tbilisi, Georgia", "u": "https://www.kargat.studio/", "ul": "kargat.studio", "q": "I was lucky to meet Stanislav in the very beginning of my career, about 12 years ago. His courses made a great effect on my learning progress and built a strong foundation for further development. We are good friends since then and he is still a unique source of knowledge, thanks to his broad experience."}, {"img": "t4", "n": "Phelan Kane", "s": "Producer, educator · Essen", "r": "Music, DSP, Education, MA, MSc, Germany", "u": "https://www.metafunction.co.uk", "ul": "metafunction.co.uk", "q": "The courses were detailed and provided some excellent examples and techniques that are difficult to find examples of elsewhere. You are definitely a world leading expert in TD."}, {"img": "t5", "n": "Tam Kar Wing", "s": "Founder · Quitjobmakeart · Hong Kong", "r": "Web Design, Hong Kong", "u": "https://www.quitjobmakeart.com/", "ul": "quitjobmakeart.com", "q": "Very Academic teaching."}, {"img": "t6", "n": "Piotr Wojtczak", "s": "Art Director · Katowice", "r": "motion designer / musician, Polska", "u": "https://www.piotr.works/about", "ul": "piotr.works", "q": "Depth of knowledge, nice and practical examples"}, {"img": "t8", "n": "Jacopo William de Denaro", "s": "Visual artist · Milan", "r": "Italy", "u": "https://jwdd.webflow.io/", "ul": "jwdd.webflow.io", "q": "I truly appreciate what I am learning, it is an edgy topic and it is a pleasure to learn it from a master, not an easy thing to find In standard education."}, {"img": "t2", "n": "Ahmet Said Kaplan", "s": "Creative Director · Decol · Istanbul", "r": "Istanbul, DECOL creative Director. Minus Label", "u": "https://www.decol.tv/", "ul": "decol.tv", "q": "Now, as our studio DECOL grows, he was always been supporter and collabrator with us. We were also lucky enough to catch his new workshop series 'Hou2Touch' and our upcoming talents fall in love with the softwares with the help of Stanislav."}];
 const QNOTE={"Phelan Kane": "now Head of Education at Hou2Touch", "c": "cities of students & studios", "r": "random order on every visit"};
 const WORKS=Array.from({length:27});
-/* ↓ вынуто of school/src/template.html: печать полутоном и дизером, автор, марка фестивалей, стена, reviewы */
+/* ↓ вынуто из school/src/template.html: печать полутоном и дизером, автор, марка фестивалей, стена, reviewы */
 const PRN=(()=>{const cs=getComputedStyle(document.documentElement),g=n=>cs.getPropertyValue(n).trim(),r=h=>h.replace('#','').match(/../g).map(x=>parseInt(x,16));return{ink:g('--ink'),org:r(g('--hou')),pap:r(g('--paper'))}})();
 const pad2=i=>String(i+1).padStart(2,"0");
 const IC=(n,c)=>`<svg class="${c||"ic"}" aria-hidden="true"><use href="#h2t-i-${n}"/></svg>`,ARR=`<svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg>`;
@@ -3578,7 +3593,7 @@ function blkWall(){(function(){
 function blkReviews(){(function(){
   const L=$("#qaL"),Q=$("#qaQ"),n=QUOTES.length,txt=s=>s.replace(/&nbsp;/g," ");
   const q4=q=>txt(q.q).length>240&&q.qm?q.qm:q.q; // цитата — не длиннее ≈ 4 строк; есть короткая редакция — берём её
-  const qs=(t,c="")=>{const p=/(?<!\.)\.\s*$/.test(t);return `<span class="${c}${p?" pt":""}">${p?t.replace(/\.\s*$/,""):t}</span>`}; // r2 · T2-06: точка of данных — после «»» (::after «».»), «?», «!», «…» остаются внутри; src/data.js лендинга не трогаем
+  const qs=(t,c="")=>{const p=/(?<!\.)\.\s*$/.test(t);return `<span class="${c}${p?" pt":""}">${p?t.replace(/\.\s*$/,""):t}</span>`}; // r2 · T2-06: точка из данных — после «»» (::after «».»), «?», «!», «…» остаются внутри; src/data.js лендинга не трогаем
   L.innerHTML=QUOTES.map((q,i)=>`<button class="qa-r" type="button" role="tab" id="qaT${i}" aria-controls="qaP${i}" aria-selected="false" tabindex="-1" data-i="${i}"><span class="av"><img src="${IMG(q.img+"s")}" alt="" loading="lazy" decoding="async" crossorigin="anonymous" width="40" height="40"><canvas aria-hidden="true"></canvas></span><span><b>${q.n}</b><span class="mono">${QNOTE[q.n]||q.s}</span></span></button>`).join("");
   Q.innerHTML=QUOTES.map((q,i)=>`<figure role="tabpanel" id="qaP${i}" aria-labelledby="qaT${i}"><blockquote>${q.qm?qs(q4(q),"only-d")+qs(q.qm,"only-m"):qs(q.q)}</blockquote><figcaption class="mono"><b>${q.n}</b> — ${q.r}${q.u?` · <a class="id" href="${q.u}" target="_blank" rel="noopener">${q.ul}&nbsp;${IC("ne")}</a>`:""}${QNOTE[q.n]?`<span class="nt">${QNOTE[q.n]}</span>`:""}</figcaption></figure>`).join("");
   const rows=[...L.children],figs=[...Q.children];let act=-1;
@@ -3605,8 +3620,8 @@ function blkReviews(){(function(){
 })();}
 /* ↑ */
 /* ================= СЕМЬЯ HOU2TOUCH — своё у модуля (family/family.js) =================
-   Выше (family.py → js()) уже вынуто of главной: onView, B4/bth/B8, rdCtx/SCR/bakeDither, очередь печати DQ (dq), маски cook (.ck).
-   Здесь: константы движения, ядро LOOP со сном, появления .rv, инертность под слоями, разряды в Inter, навбар семьи (тон of кеша + theme-color). */
+   Выше (family.py → js()) уже вынуто из главной: onView, B4/bth/B8, rdCtx/SCR/bakeDither, очередь печати DQ (dq), маски cook (.ck).
+   Здесь: константы движения, ядро LOOP со сном, появления .rv, инертность под слоями, разряды в Inter, навбар семьи (тон из кеша + theme-color). */
 
 /* константы движения — значения главной: появление IO −8 % и страховка .dn 900 мс (r1), cook 440 мс, выбор 120 мс (.2,0,0,1) (M2-03a) */
 const MOTION={io:"0px 0px -8% 0px",dn:900,cook:440,sel:120};
@@ -3640,8 +3655,8 @@ function fit(el,fn){let w=-1,h=-1,tm=0;const run=f=>{const W=el.clientWidth,Hh=e
 const PIXBG={glsl:`uniform vec3 PXC;uniform float PXT;
   float pxv(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(pk(vec2(i,3.1)),pk(vec2(i+1.,3.1)),f);}
   float pxm(vec2 p){float y=R.y-p.y;if(y>B+72.)return 1.;y+=16.*(.5*pxv(p.x/61.)+.3*pxv(p.x/19.)+.2*pxv(p.x/7.)-.5);return smoothstep(B,B+28.+28.*pxv(p.x/83.+5.),y);}
-  /* d — плотность точек в клетке (0…1): её считает шейдер сцены of тона под клеткой; точки остаются точками — плотность ≤ ~0,6 */
-  /* pxbgm — маска m (0…1) дана снаружи (гибрид GLSL берёт её of поля 1/8); pxbg — маска облака считается здесь */
+  /* d — плотность точек в клетке (0…1): её считает шейдер сцены из тона под клеткой; точки остаются точками — плотность ≤ ~0,6 */
+  /* pxbgm — маска m (0…1) дана снаружи (гибрид GLSL берёт её из поля 1/8); pxbg — маска облака считается здесь */
   vec3 pxbgm(vec2 fc,float d,vec3 base,float m){float cb=max(2.,floor(R.y/300.)),th=b8(fc/cb)+.5/64.;vec2 qb=(floor(fc/cb)+.5)*cb;
     float on=step(th,d*K)*step(th,m)*smoothstep(PXT,PXT+90.,qb.y);   /* «печать» сетки — плотность растёт с K порядком Байера (без хеша на пиксель) */
     return mix(base,mix(vec3(.914,.906,.878),PXC,.9),on);}
@@ -3709,7 +3724,7 @@ window.REV2={"items":[{"id":1,"grp":"rec","n":"Phelan Kane","r":"Music, DSP, Edu
 /* f-rev2 · «switch1» — блок «Отзывы» на шести страницах (консилиум REV 02.10.2026, review/school/awwwards/rev/PLAN.md; основа — прототип
    моушн-директора rev/tmp_motion/proto.html, спецификация rev_motion.md + дополнения rev_type_on_motion.md и rev_concept_on_motion.md).
    Основной лист — таблица text1 DAT (все записи без поля set). sort1 перемешивает её с seed захода (mulberry32; ?seed=N — повторить порядок
-   для проверки и снимков), строка 01 — вынос (select1: случайный of pool[data-pg], прошлый вынос не повторяется), остальные листает switch1
+   для проверки и снимков), строка 01 — вынос (select1: случайный из pool[data-pg], прошлый вынос не повторяется), остальные листает switch1
    по своему таймлайну; смена строк печатается cook. Серии (поле set, описание — sets[key]; дополнение заказчика №3) — свой компактный лист
    под основным: тот же switch1, свой случайный порядок и счёт, без выноса.
    Высота окон и выноса постоянны для страницы и ширины: максимум по данным, мера в простое на подлёте, пересчёт на resize и шрифты.
@@ -3740,7 +3755,7 @@ if(!box)return;
    цитата сверху, подпись сразу под ней (rx-flow: высота окна — по самой высокой строке целиком, а не по сумме рядов) */
 {const xv=(QP.get("x")||"").match(/(?:^|[,\s])(rt0)(?=[,\s]|$)/);if(!xv){G.classList.add("rx-rt1","rx-flow")}}   /* 02.10 заказчик выбрал rt1 «Один голос» — умолчание; ?x=rt0 — прежний набор (rt2/rt3 убраны 03.10) */
 const FLOW=G.classList.contains("rx-flow");
-/* A-01 (финал, арт-директор): в наборе rt1 окно — по 90-му перцентилю высоты строк, а не по самой высокой. Строки выше p90 (≈ 4 of 46)
+/* A-01 (финал, арт-директор): в наборе rt1 окно — по 90-му перцентилю высоты строк, а не по самой высокой. Строки выше p90 (≈ 4 из 46)
    набираются ступенью меньше тем же Regular (1440 — 17 / 1,45, 390 — 15 / 22; data-l) и влезают в окно. LONG — id таких строк при этой ширине */
 const P90=G.classList.contains("rx-rt1"),LONG=new Set();
 
@@ -3765,7 +3780,7 @@ if(P90){const sc=x=>x.q.length+(x.u?40:0)+(x.note?80:0)+((x.r||"")+(x.c||"")).le
 /* ---------- набор: „лапки“ внутри «ёлочек», хвост «»» (в выносе без точки, в ячейке — «».», как T2-06), купюра « … » — в конце строки и приглушённо ---------- */
 const GRP={h2t:["sop","hou2touch"],glsl:["top","glsl"],extreme:["chop","extreme"]}; // цвет курса (C-M5); остальные группы — нейтрально
 const NE='<svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
-const AR='<svg class="ic" aria-hidden="true" focusable="false"><use href="#h2t-i-r"/></svg>'; // стрелка — of спрайта страницы, как «→» в разметке после набора
+const AR='<svg class="ic" aria-hidden="true" focusable="false"><use href="#h2t-i-r"/></svg>'; // стрелка — из спрайта страницы, как «→» в разметке после набора
 const EN=`<span class="rx-en"><span aria-hidden="true">en ${AR} ru</span><span class="rx-vh">original English</span></span>`;
 const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(_){return ""}};
 const link=x=>{const t=x.u&&(x.ul||host(x.u));return t?`<a class="rx-lk" href="${esc(x.u)}" target="_blank" rel="noopener">${esc(t)}${NE}<span class="rx-vh"> (opens in a new tab)</span></a>`:""}; // только сайт автора, слова «источник» нет
@@ -3789,7 +3804,7 @@ const featInner=x=>`<div class="rx-fm"><span class="rx-no"><span class="rx-n1"><
 const chH=(x,row)=>{const g=GRP[x.grp];return `<div class="rx-ch"><b>${pad(row)}</b><span class="rx-tg">${g?`<span class="rx-cs" style="--rx-k:var(--rx-${g[0]})">${g[1]}</span>`:""}${x.lang==="en"?EN:""}</span></div>`};
 const cqH=(x,l)=>`<blockquote class="rx-cq" data-t="${tierC(x.q.length)}"${(l===undefined?LONG.has(x.id):l)?" data-l":""}>${qhtml(x.q)}</blockquote>`;
 const ccH=x=>`<figcaption class="rx-cc">${avH(x)}<span class="rx-ct"><b>${esc(x.n)}</b>${x.r?`<span>${esc(x.r)}</span>`:""}${x.c?`<span>${esc(x.c)}</span>`:""}${x.note?`<span class="rx-nt">${esc(x.note)}</span>`:""}${link(x)}</span></figcaption>`;
-const card=(x,row,n,cls)=>`<div class="rx-c${cls?" "+cls:""}" role="group" aria-roledescription="review" aria-label="${row} of ${n}"><figure class="rx-ci">${chH(x,row)}${cqH(x)}${ccH(x)}</figure></div>`;
+const card=(x,row,n,cls)=>`<div class="rx-c${cls?" "+cls:""}" role="group" aria-roledescription="review" aria-label="${row} из ${n}"><figure class="rx-ci">${chH(x,row)}${cqH(x)}${ccH(x)}</figure></div>`;
 
 /* ---------- печать портретов: заранее, в простое (очередь), на подлёте; смена строки только кладёт готовый кадр ---------- */
 const IMS={},AVD={};
@@ -3859,7 +3874,7 @@ function Switch(root,rows,b0){
     b.style.transition=!ANIM||!steps?"none":`transform ${Math.min(320,120+steps*25)}ms steps(${Math.min(steps,8)},jump-end)`;
     b.style.setProperty("--bl",rs.length);b.style.setProperty("--bi",rs[0])}
   function state(steps){const rs=rowsOf(page),a=rs[0]+1,z=rs[rs.length-1]+1,txt=rs.length>1?`${pad(a)}–${pad(z)}`:pad(a);
-    K.innerHTML=`<b>${txt}</b> / ${N}`;ru.setAttribute("aria-valuenow",page+1);ru.setAttribute("aria-valuetext",`reviewы ${txt} of ${N}`);band(steps)}
+    K.innerHTML=`<b>${txt}</b> / ${N}`;ru.setAttribute("aria-valuenow",page+1);ru.setAttribute("aria-valuetext",`reviewы ${txt} из ${N}`);band(steps)}
   /* смена страницы: цель считается от цели, а не от положения — серия кликов не теряется; идущая смена дожимается мгновенно */
   function finish(){swaps.forEach(o=>{clearTimeout(o.t);o.old.remove();o.nw.classList.remove("rx-k1");o.nw.style.removeProperty("--dl")});swaps=[]}
   function show(np,dir,how){if(!P)return;np=((np%P)+P)%P;if(np===page&&how!=="force")return;finish();revealed=true;
@@ -3878,7 +3893,7 @@ function Switch(root,rows,b0){
     state(Math.max(1,Math.min(d,P*per-d)))}
   /* постоянная высота окна (C-M2): максимум по всем строкам листа при этой ширине — subgrid: ряды шапка · цитата · подпись по максимумам;
      одна колонка — по самой высокой строке. Цитаты — по 16 за задачу очереди */
-  /* F-10 (финал, моушн): пока шрифты не загружены, замер идёт по запасным метрикам — окно не сжимаем ниже резерва of CSS (--rx-vh0),
+  /* F-10 (финал, моушн): пока шрифты не загружены, замер идёт по запасным метрикам — окно не сжимаем ниже резерва из CSS (--rx-vh0),
      окончательная высота — повторным замером после document.fonts.ready (prep) */
   const setH=h=>{if(!fontsOk()){const r=parseFloat(getComputedStyle(root).getPropertyValue("--rx-vh0"));if(r>h)h=r}vp.style.height=h+"px"};
   function measure(){const g=++MG,st=[],run=[],I=rows,n=I.length,hk=x=>(GRP[x.grp]?GRP[x.grp][1]:"")+(x.lang==="en"?"|en":""),HV={},hq=[];
@@ -3942,7 +3957,7 @@ function Switch(root,rows,b0){
   function reveal(){if(revealed)return;revealed=true;
     [...vp.children].forEach((sl,s)=>{const c=sl.querySelector(".rx-c.rx-pre");if(!c)return;c.style.setProperty("--dl",(s*80)+"ms");c.style.setProperty("--dx0","12px");c.classList.replace("rx-pre","rx-k1");
       setTimeout(()=>{c.classList.remove("rx-k1");c.style.removeProperty("--dl")},440+s*80+40)})}
-  function resize(){finish();const bp=layout();if(bp)vp.style.height="";if(prepared)measure();state();return bp} // высота — поверх старой; при смене раскладки — стартовая of CSS
+  function resize(){finish();const bp=layout();if(bp)vp.style.height="";if(prepared)measure();state();return bp} // высота — поверх старой; при смене раскладки — стартовая из CSS
   layout();
   return {root,vp,reveal,measure,resize,setVis(v){vis=v;arm()},get page(){return page},get P(){return P},get per(){return per},get MS(){return MS},N,b0,
     show:(p,d,h)=>user(p,d||1,h||"cook")}}
@@ -3984,7 +3999,7 @@ function printFeat(){if(!ANIM||!fq.classList.contains("rx-pre"))return;enter(box
   const fp=fF.querySelector(".rx-fp.rx-pre");if(fp)fp.classList.replace("rx-pre","rx-k1");
   setTimeout(()=>{fq.classList.remove("rx-pr");fF.classList.remove("rx-pr");ws.forEach(w=>w.style.removeProperty("--k"));if(fp)fp.classList.remove("rx-k1")},base+k*90+440+520)}
 /* подлёт (900 px): мера высот и печать портретов — по секции. Её содержимое может быть ещё пропущено content-visibility (нулевые размеры):
-   тогда мера и печать выноса откладываются и повторяются при входе листа в кадр; до того стоят стартовые высоты of CSS */
+   тогда мера и печать выноса откладываются и повторяются при входе листа в кадр; до того стоят стартовые высоты из CSS */
 function retry(){SW.forEach(s=>{if(!s.MS)s.measure()});fpBake()}
 const near=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){near.disconnect();prep()}},{rootMargin:"900px 0px"});
 near.observe(sec||G);
