@@ -2899,7 +2899,7 @@ addEventListener("keydown",e=>{if(e.key==="Escape"&&mnu.classList.contains("on")
   },{once:true,threshold:.45}));
 })();
 /* ---------- 01: полная биография раскрытием ---------- */
-(function(){const b=$("#cvB"),cv=$("#cv");b.addEventListener("click",()=>{const on=cv.hidden;cv.hidden=!on;b.setAttribute("aria-expanded",on);b.firstChild.textContent=on?"Свернуть ":"Полная биография ";b.lastElementChild.textContent=on?"−":"+"})})();
+(function(){const b=$("#cvB"),cv=$("#cv");if(!b||!cv)return;b.addEventListener("click",()=>{const on=cv.hidden;cv.hidden=!on;b.setAttribute("aria-expanded",on);b.firstChild.textContent=on?"Свернуть ":"Полная биография ";b.lastElementChild.textContent=on?"−":"+"})})();
 /* ---------- 01: марка фестивалей ≤ 40 px/с, пауза на hover ---------- */
 (function(){
   const FESTS=["Berlin Atonal","Mutek Montréal","Ars Electronica","Unsound Kraków","Barbican London","Resonance Tokyo","Mira Barcelona","L.E.V. Festival","Fête des Lumières Lyon"];
