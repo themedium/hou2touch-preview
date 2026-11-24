@@ -1639,15 +1639,7 @@ html body #family{color:var(--fg)}html body #family .H{color:var(--fg)}html body
 </div></section>
 
 <!-- 08 WORKS -->
-<section id="works" class="sec"><div class="wrap">
-  <div class="lbl mono"><b>08</b> Student work<i class="op" style="--c:var(--top)">works1 <u>TOP</u></i></div>
-  <div class="sh"><h2 class="H" data-split>What students make</h2><p class="dek only-d">Almost every lesson ends with an assignment; by the end they add up to a set of your own works.</p></div>
-  <div class="pn rv" style="--c:var(--top)">
-    <div class="ph">works1 <u>TOP</u><span class="r"><span class="only-d">no frames yet</span><span class="only-m">—</span></span></div>
-    <div class="wk" id="wk" tabindex="0" aria-label="Student work reel"><div class="wk-t" id="wkT"></div></div>
-    <div class="pf"><span><a class="out only-d" href="#book"><svg class="ic" aria-hidden="true"><use href="#h2t-i-r"/></svg> book1 · go to price</a><span class="only-m">tap <svg class="ic" role="img" aria-label="→"><use href="#h2t-i-r"/></svg> colour</span></span><span><button class="only-d" type="button" id="wkV" aria-pressed="false">all in colour</button><span class="only-d"> · works1 · </span><span id="wkN">03 / 27</span></span></div>
-  </div>
-</div></section>
+
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Student work" aria-hidden="true"><button class="x mono" type="button">Close <svg class="ic" aria-hidden="true"><use href="#h2t-i-x"/></svg></button><figure><img alt=""><figcaption class="mono"></figcaption></figure></div>
 
 <!-- 09 ОТЗЫВЫ -->
@@ -3681,7 +3673,7 @@ const tagH=f=>`<span class="tag" style="--c:${FAM[f]}">${f}</span>`;
 /* ---------- 08: works1 — одна лента 16:10; центральный кадр в тоне, остальные — ordered dither 4 уровня (запекается один раз);
    клик → цвет крупно; V — вся лента в цвет; подписи только у полностью видимых кадров; ≤600 — все в тоне, ряд с «подглядывающим» кадром ---------- */
 (function(){
-  const sc=$("#wk"),tr=$("#wkT"),num=$("#wkN"),vb=$("#wkV"),lb=$("#lb"),mob=matchMedia("(max-width:600px)"),n=WORKS.length;
+  const sc=$("#wk"),tr=$("#wkT"),num=$("#wkN"),vb=$("#wkV"),lb=$("#lb"),mob=matchMedia("(max-width:600px)"),n=WORKS.length;if(!sc||!tr)return;
   const pad=i=>String(i+1).padStart(2,"0");
   tr.innerHTML=WORKS.map((w,i)=>`<figure data-i="${i}"><button class="fr" type="button" aria-label="Work ${pad(i)} — open in colour"><img alt="Student work ${pad(i)}" crossorigin="anonymous" data-src="${IMG("w"+(i+1))}" draggable="false"><canvas aria-hidden="true"></canvas></button><figcaption><span class="mono a">${pad(i)}${NB}· работа студента</span></figcaption></figure>`).join("");
   const figs=[...tr.children],prepped=new Set();if(!figs.length)return;let pos=[],act=-1;
